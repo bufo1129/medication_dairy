@@ -1,24 +1,40 @@
-# README
+# animal medication dairy　記録アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+動物の投薬記録と日々の日誌を記録することができるアプリケーションです。
 
-Things you may want to cover:
+### サイトテーマ
+動物×投薬記録×日誌×コミュニティ(共有)
 
-* Ruby version
+### テーマを選んだ理由
+治療の経過報告をする時に記録をさかのぼるのが大変であったことと、薬を作る際に計算に苦労したことがありました。
+人間用の医師や薬剤師用のアプリは多いですが、動物用が少ないため、動物用にも自動計算ができて、一目で投薬履歴が確認できるアプリケーションがあれば作業効率につながると考え、このテーマにしました。
 
-* System dependencies
+### ターゲットユーザ
+動物の飼育日誌を付ける人、投薬計算が苦手な人、記録をさかのぼりたい人
 
-* Configuration
+### 主な利用シーン
+薬を作成する時、治療の経過報告をする時、日々の飼育の記録をつける時
 
-* Database creation
+## 設計書
+ER図
+テーブル定義書
+アプリケーション詳細設計
+フローチャート
 
-* Database initialization
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* How to run the test suite
+## 使用方法
+- 管理者ページのログインについて
+    - 初期段階での管理者ページのログインに必要なアドレス及びパスワードは下記です。
+        - メールアドレス：
+        - パスワード：
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- ~~外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。~~
+- ~~使用しない場合は、使用素材の項目をREADMEから削除してください。~~
