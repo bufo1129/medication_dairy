@@ -17,10 +17,12 @@
 薬を作成する時、治療の経過報告をする時、日々の飼育の記録をつける時
 
 ## 設計書
-ER図
-テーブル定義書
-アプリケーション詳細設計
-フローチャート
+- ER図&flow：<br>
+    &nbsp;https://drive.google.com/file/d/1hnYddk0Pi-oPQPCTSO-xDCENFIctS9uR/view?usp=sharing
+- テーブル定義書：<br>
+    &nbsp;https://drive.google.com/file/d/1hnYddk0Pi-oPQPCTSO-xDCENFIctS9uR/view?usp=sharing
+- 詳細設計：<br>
+    &nbsp;https://docs.google.com/spreadsheets/d/1KMCX0b80AefoTZAB54EsUAHwPmpKducdaNo07zCo4NA/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
