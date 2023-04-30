@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
+
+# 店舗客用
+# URL /cstore/sign_in ...
+devise_for :stores, skip: [:passwords], controllers: {
+  registrations: "store/registrations",
+  sessions: 'store/sessions'
+}
+
+# 管理者用
+# URL /admin/sign_in ...
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
