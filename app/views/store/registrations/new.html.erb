@@ -1,13 +1,33 @@
-<h2>Sign up</h2>
+<h2>店舗Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "store/shared/error_messages", resource: resource %>
 
+店舗名
+ <div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+
+メール
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+住所
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+電話
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+  </div>
+
+パスワード
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -16,6 +36,7 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+パスワード確認
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
