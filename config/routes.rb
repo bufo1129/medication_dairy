@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'medicines/index'
-    get 'medicines/new'
-    get 'medicines/show'
-    get 'medicines/edit'
+    # get 'medicines/index'
+    # get 'medicines/new'
+    # get 'medicines/show'
+    # get 'medicines/edit'
+    resources :medicines, only: [:index, :edit, :create, :update, :destroy]
   end
 # 店舗客用
   #ログイン

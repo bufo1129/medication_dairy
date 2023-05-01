@@ -1,2 +1,7 @@
-<h1>Admin::Medicines#edit</h1>
-<p>Find me in app/views/admin/medicines/edit.html.erb</p>
+<h1>薬の名前編集</h1>
+
+  <%= form_with model: @medicine, url: admin_medicine_path, method: :patch do |f| %>
+    <%= f.label :name, '薬名' %>
+    <%= f.text_field :name %>
+    <%= f.submit "変更保存", class: "btn btn-success" %>
+  <% end %>

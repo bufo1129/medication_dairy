@@ -1,2 +1,16 @@
-<h1>Admin::Medicines#index</h1>
-<p>Find me in app/views/admin/medicines/index.html.erb</p>
+<h1>薬の名前登録</h1>
+
+  <%= form_with model: @medicine, url: admin_medicines_path, method: :post, local: true do |f| %>
+    <h4>薬名</h4>
+      <%= f.text_field :name %>
+      <%= f.submit '登録' %>
+  <% end %>
+
+<h1>薬一覧</h1>
+
+  <% @medicines.each do |medicine| %>
+  <%= medicine.name %>
+  <%= link_to "編集", edit_admin_medicine_path(medicine.id), class: "btn btn-outline-success" %>
+  <%= link_to "削除", admin_medicine_path(medicine.id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
+  <% end %>
+
