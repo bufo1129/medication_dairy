@@ -1,0 +1,31 @@
+<h1>店舗情報編集ページ</h1>
+
+<%= form_with model: @each_store, url: edit_each_store_path, method: :patch do |f| %>
+
+<h2>店舗名</h2>
+<div>
+  <%= f.text_field :name, autofocus:true, autocomplete: "name" %>
+</div>
+
+<h2>メールアドレス</h2>
+<div>
+  <%= f.text_field :email, autocomplete: "email" %>
+</div>
+<h2>郵便番号</h2>
+<div>
+  <%= f.text_field :postal_code, autocomplete: "postal_code" %>
+</div>
+<h2>住所</h2>
+<div>
+  <%= f.text_field :address, autocomplete: "address" %>
+</div>
+<h2>電話番号</h2>
+<div>
+  <%= f.text_field :phone_number, autocomplete: "phone_number" %>
+</div>
+
+
+<%= link_to '変更保存', each_store_path, class: "btn btn-sm btn-success" %>
+<%#= link_to "削除する", each_stores_close_path, class: "btn btn-sm btn-danger" %>
+<!--↑退会用のリンク-->
+<% end %>
