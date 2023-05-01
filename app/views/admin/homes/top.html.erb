@@ -1,4 +1,17 @@
 管理者トップページ
 
-管理者ログアウト
-<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+
+<h1>管理者ログアウト</h1>
+<div>
+  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+</div>
+
+<h1>薬名一覧</h1>
+<div>
+  <%= link_to '薬名一覧', admin_medicines_path %>
+</div>
+
+<h1>種類名一覧</h1>
+<div>
+  <%= link_to '薬名一覧', admin_animal_species_path %>
+</div>

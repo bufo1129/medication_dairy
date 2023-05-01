@@ -14,3 +14,7 @@
   <%= link_to "削除", admin_medicine_path(medicine.id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
   <% end %>
 
+  <h1>管理者トップ</h1>
+<div>
+  <%= link_to 'トップへ', admin_root_path %>
+</div>

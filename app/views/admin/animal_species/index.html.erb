@@ -1,0 +1,20 @@
+<h1>種類名登録</h1>
+
+  <%= form_with model: @animal_specy, url: admin_animal_species_path, method: :post, local: true do |f| %>
+    <h4>種類名</h4>
+      <%= f.text_field :name %>
+      <%= f.submit '登録' %>
+  <% end %>
+
+<h1>種類一覧</h1>
+
+  <% @animal_species.each do |animal_species| %>
+  <%= animal_species.name %>
+  <%= link_to "編集", edit_admin_medicine_path(animal_species.id), class: "btn btn-outline-success" %>
+  <%= link_to "削除", admin_animal_specy_path(animal_species.id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
+  <% end %>
+  
+  <h1>管理者トップ</h1>
+<div>
+  <%= link_to 'トップへ', admin_root_path %>
+</div>
