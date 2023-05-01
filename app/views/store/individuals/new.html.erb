@@ -1,0 +1,28 @@
+<h1>個体登録</h1>
+
+<%= form_with model: @individual, url: individuals_path, method: :post, local: true do |f| %>
+  <h4>個体名</h4>
+  <div>
+    <%= f.text_field :name %>
+  </div>
+   <h4>動物種</h4>
+  <div>
+    <%= f.label :animal_spacies_id %>
+    <%= f.collection_select :animal_spacies_id, AnimalSpecy.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+  </div>
+  <h4>生年月日</h4>
+  <div>
+    <%= f.date_field :create_at %>
+  </div>
+  <h4>年齢</h4>
+  <div>
+    <%= f.text_field :age %>
+  </div>
+  <h4>体重</h4>
+  <div>
+    <%= f.text_field :weight %>
+  </div>
+
+
+    <%= f.submit '登録' %>
+<% end %>

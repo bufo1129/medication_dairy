@@ -1,0 +1,7 @@
+<h1>個体詳細ページ</h1>
+
+<% @individuals.each do |individual| %>
+  <%= individual.name %>
+  <%= link_to "編集", edit_aindividual_path(medicine.id), class: "btn btn-outline-success" %>
+  <%= link_to "削除", individual_path(medicine.id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
+<% end %>

@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     get 'each_stores/close'
     patch 'each_stores/withdraw'
 
+    resources :dairies    #日報
+    resources :medications #投薬記録
+    resources :individuals #個体
+
   end
 
 

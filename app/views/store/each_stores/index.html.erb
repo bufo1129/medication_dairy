@@ -1,5 +1,11 @@
-店舗一覧ページ
+<h1>店舗一覧ページ</h1>
 
-<%# @each_stores.each do |each_store| %>
-<%#= each_store.name %>
-<%# end %>
+<div>
+  <% @stores.each do |store| %>
+
+  <%= link_to each_store_path(store.id) do %>
+  <%= store.name %>
+  <% end %>
+
+  <% end %>
+</div>

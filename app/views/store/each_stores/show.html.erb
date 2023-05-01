@@ -1,6 +1,5 @@
 <h1>店舗詳細ページ</h1>
 
-<%= link_to '編集', edit_each_store_path, class: "btn btn-sm btn-success" %>
 
 <h2>名前</h2>
 <div><%= @each_store.name %></div>
@@ -14,4 +13,9 @@
 <div><%= @each_store.phone_number %></div>
 <!--<h2>店舗ステータス</h2>-->
 <div><%#= @each_store.is_deleted %></div>
+
+<%= link_to '編集', edit_each_store_path, class: "btn btn-sm btn-success" %>
+ログインユーザ以外は編集ボタン表示なしにする、リダイレクトさせる
+
+<%= link_to '店舗一覧', each_stores_path, class: "btn btn-sm btn-success" %>
 

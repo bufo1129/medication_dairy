@@ -1,6 +1,6 @@
 <h1>店舗情報編集ページ</h1>
 
-<%= form_with model: @each_store, url: edit_each_store_path, method: :patch do |f| %>
+<%= form_with model: @each_store, url: each_store_path(@each_store), method: :patch do |f| %>
 
 <h2>店舗名</h2>
 <div>
@@ -24,8 +24,8 @@
   <%= f.text_field :phone_number, autocomplete: "phone_number" %>
 </div>
 
+<%= f.submit '変更保存', class: "btn btn-sm btn-success" %>
 
-<%= link_to '変更保存', each_store_path, class: "btn btn-sm btn-success" %>
 <%#= link_to "削除する", each_stores_close_path, class: "btn btn-sm btn-danger" %>
 <!--↑退会用のリンク-->
 <% end %>

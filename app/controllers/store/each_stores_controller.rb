@@ -1,12 +1,11 @@
 class Store::EachStoresController < ApplicationController
 
   def index
-    # @each_stores = EachStore.all
+    @stores = Store.all
   end
 
   def show
-    
-    @each_store = current_store
+    @each_store = Store.find(params[:id])
   end
 
   def edit
@@ -32,7 +31,7 @@ class Store::EachStoresController < ApplicationController
   private
 
   def each_store_params
-    params.require(:each_store).permit(:name, :email, :postal_code, :address, :phone_number, :is_deleted)
+    params.require(:store).permit(:name, :email, :postal_code, :address, :phone_number, :is_deleted)
   end
 
 end

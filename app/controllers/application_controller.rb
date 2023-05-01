@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     case resource
     when :admin
-    　root_path
+      root_path
     when :store
       root_path
     end
