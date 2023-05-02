@@ -1,21 +1,54 @@
-<h1>個体一覧</h1>
 
-<h4>新規個体登録</h4>
-<div>
-  <%= link_to '新規個体登録', new_individual_path %>
-</div>
-プラスボタン、またはボタン
+<div class="text-center mb-5"></div>
 
-<div>
-  <% @individuals.each do |individual| %>
+<div class="container">
+  <!--<div class="row">-->
+  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
+  <!--</div>-->
 
-  <%= link_to each_store_path(individual.id) do %>
-  <%= individual.name %>
-  <% end %>
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">個体一覧</h3>
 
-    <%= individual.birthday %>
-    <%= individual.age %>
-    <%= individual.weight %>
+  <div class="text-center mb-5"></div>
+    <%= link_to '新規個体登録', new_individual_path, class: "btn btn-outline-success" %>
+<div class="text-center mb-5"></div>
 
-  <% end %>
+<div class="table-responsive">
+  <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">個体名</th>
+          <th scope="col">生年月日</th>
+          <th scope="col">年齢</th>
+          <th scope="col">体重</th>
+        </tr>
+      </thead>
+
+      <tbody class="table table-hover">
+        <% @individuals.each do |individual| %>
+        <tr>
+          <td class="h5">
+            <%= link_to each_store_path(individual.id) do %>
+              <%= individual.name %>
+            <% end %>
+          </td>
+          <td class="h5">
+            <%= individual.birthday %>
+          </td>
+          <td class="h5">
+            <%= individual.age %>
+          </div>
+          <td class="h5">
+            <%= individual.weight %>
+          </div>
+          <td class="h5">
+            <%= link_to "編集する", edit_individual_path(individual.id), class: "btn btn-outline-success" %>
+            <%= link_to "削除", individual_path(individual.id), method: :delete,
+              data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <%#= paginate @seeds, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

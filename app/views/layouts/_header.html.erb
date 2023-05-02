@@ -18,12 +18,12 @@
             </li>
             <li>
               <%=  link_to admin_stores_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-users"></i> Stores
+                <i class="fas fa-users"></i> 店舗
               <% end %>
             </li>
             <li>
               <%=  link_to admin_medicines_path ,class: 'nav-link text-light' do %>
-                <i class="fas fa-book-open"></i> Medicines
+                <i class="fas fa-book-open"></i> 薬
               <% end %>
             </li>
             <li>
@@ -64,22 +64,22 @@
           <h4 class="navbar-text-light d-flex align-items-center mr-5"><strong><%= current_store.name %></strong></h4>
           <li>
             <%=  link_to each_stores_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> Stores
+              <i class="fas fa-users"></i> 店舗
             <% end %>
           </li>
           <li>
             <%=  link_to dairies_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> Dairies
+              <i class="fas fa-book-open"></i> 日報
             <% end %>
           </li>
           <li>
             <%=  link_to medications_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> Medications
+              <i class="fas fa-book-open"></i> 投薬記録
             <% end %>
           </li>
           <li>
             <%= link_to individuals_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Individuals
+              <i class="fas fa-home"></i> 個体
             <% end %>
           </li>
           <li>

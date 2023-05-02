@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_02_122306) do
+ActiveRecord::Schema.define(version: 2023_05_02_161109) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
   end
 
   create_table "individuals", force: :cascade do |t|
-    t.integer "animal_species_id", null: false
     t.string "name", null: false
     t.date "birthday", null: false
     t.integer "age", null: false
@@ -84,7 +83,6 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
 
   create_table "medications", force: :cascade do |t|
     t.integer "medicine_id", null: false
-    t.integer "animal_species_id", null: false
     t.integer "individual_id", null: false
     t.integer "dosage_indicated", null: false
     t.integer "ingredients_per_tablets", null: false

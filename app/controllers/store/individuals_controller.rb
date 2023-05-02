@@ -11,12 +11,10 @@ class Store::IndividualsController < ApplicationController
   def create
     @individual = Individual.new(individual_params)
     @individual.store = current_store
-   #  @individual.animal_species_id = individual_params[:animal_species_id]
-    #current_store
-    if @individual.save!
-      redirect_to individual_path
-    else
+    if @individual.save
       redirect_to individuals_path
+    else
+      render :index
     end
   end
 
