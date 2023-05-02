@@ -17,6 +17,7 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">個体名</th>
+          <th scope="col">種類</th>
           <th scope="col">生年月日</th>
           <th scope="col">年齢</th>
           <th scope="col">体重</th>
@@ -30,6 +31,13 @@
             <%= link_to each_store_path(individual.id) do %>
               <%= individual.name %>
             <% end %>
+          </td>
+          <td class="h5">
+            <%#= link_to each_store_path(individual.id) do %>
+            <!--↑種類絞り込みページに飛ばすよう-->
+              <%= individual.seed_id %>
+              <p>※日本語表示</p>
+            <%# end %>
           </td>
           <td class="h5">
             <%= individual.birthday %>

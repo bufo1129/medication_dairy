@@ -30,7 +30,7 @@ class Store::IndividualsController < ApplicationController
     @individual = Individual.find(params[:id])
     if @individual.update(individual_params)
       flash[:notice] = "変更が完了しました"
-      redirect_to individual_path
+      redirect_to individuals_path
     else
       render :edit
     end

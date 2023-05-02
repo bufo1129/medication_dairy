@@ -1,28 +1,36 @@
-<h1>個体登録</h1>
-※クリエイトアクションうまくうごかず、登録できない
+<div class="text-center mb-5"></div>
 
-<%= form_with model: @individual, url: individuals_path, method: :post, local: true do |f| %>
-  <h4>個体名</h4>
-  <div>
-    <%= f.text_field :name %>
-  </div>
-   <h4>動物種</h4>
-  <div>
-    <%= f.select :seed_id, Seed.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" } %>
-  </div>
-  <h4>生年月日</h4>
-  <div>
-    <%= f.date_field :birthday %>
-  </div>
-  <h4>年齢</h4>
-  <div>
-    <%= f.text_field :age %>
-  </div>
-  <h4>体重</h4>
-  <div>
-    <%= f.text_field :weight %>
-  </div>
+<div class="container mt-5">
+  <h3>
+  <span style="background-color: #c0c0c0;">新規個体登録</span>
+  </h3>
+  <div class="text-center mb-5"></div>
 
-
-    <%= f.submit '登録', class: "btn btn-outline-success" %>
-<% end %>
+  <%= form_with model: @individual, url: individuals_path, method: :post, local: true do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="customer_name">個体名</label>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_email">動物種</label>
+          <%= f.select :seed_id, Seed.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_post_code">生年月日</label>
+          <%= f.date_field :birthday, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_address">年齢</label>
+          <%= f.text_field :age, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_phone_number">体重</label>
+          <%= f.text_field :weight, class: "form-control" %>
+        </div>
+        <%= f.submit "登録する", class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
