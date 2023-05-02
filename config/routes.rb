@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'seeds/index'
+    get 'seeds/edit'
+  end
+  namespace :admin do
     root to: 'homes#top'
     resources :medicines, only: [:index, :edit, :create, :update, :destroy]
-    resources :animal_species, only: [:index, :edit, :create, :update, :destroy]
+    resources :seeds, only: [:index, :edit, :create, :update, :destroy]
     resources :stores, only: [:index, :show, :update] #店舗管理
+    
+    # resources :animal_species, only: [:index, :edit, :create, :update, :destroy]
   end
 
   scope module: :store do
@@ -22,10 +28,6 @@ Rails.application.routes.draw do
     resources :dairies    #日報
     resources :medications #投薬記録
     resources :individuals #個体
-
-    #退会処理⇒可能であれば追加する
-    # get '/stores/close' => 'stores#close'
-    # patch '/stores/withdraw' => 'stores#withdraw'
 
   end
 

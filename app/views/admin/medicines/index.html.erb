@@ -1,20 +1,43 @@
-<h1>薬の名前登録</h1>
+<div class="text-center mb-5"></div>
 
-  <%= form_with model: @medicine, url: admin_medicines_path, method: :post, local: true do |f| %>
-    <h4>薬名</h4>
+<div class="container">
+  <!--<div class="row">-->
+  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
+  <!--</div>-->
+
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">薬の登録</h3>
+
+  <div class="text-center mb-5"></div>
+    <%= form_with model: @medicine, url: admin_medicines_path, method: :post, local: true do |f| %>
+      <%= f.label :name, '薬名' %>
       <%= f.text_field :name %>
-      <%= f.submit '登録' %>
-  <% end %>
+      <%= f.submit "新規登録", class: "btn btn-outline-success" %>
+    <% end %>
 
-<h1>薬一覧</h1>
+<div class="text-center mb-5"></div>
 
-  <% @medicines.each do |medicine| %>
-  <%= medicine.name %>
-  <%= link_to "編集", edit_admin_medicine_path(medicine.id), class: "btn btn-outline-success" %>
-  <%= link_to "削除", admin_medicine_path(medicine.id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
-  <% end %>
+<div class="table-responsive table-hover">
+  <table class="table table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">薬一覧</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
 
-  <h1>管理者トップ</h1>
-<div>
-  <%= link_to 'トップへ', admin_root_path %>
+      <tbody>
+        <% @medicines.each do |medicine| %>
+        <tr>
+          <td class="h5"><%= medicine.name %></td>
+          <td class="h5">
+            <%= link_to "編集する", edit_admin_medicine_path(medicine.id), class: "btn btn-outline-success" %>
+            <%= link_to "削除", admin_medicine_path(medicine.id), method: :delete,
+              data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <%#= paginate @medications, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

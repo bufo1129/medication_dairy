@@ -1,8 +1,18 @@
 class Store::DairiesController < ApplicationController
-  def index
-  end
 
   def new
+    @store = current_store
+    @dairy = Dairy.new
+  end
+
+  def create
+    @dairy = Dairy.new(dairy_params)
+    @dairy.store_id = current_store.id
+    @dairy.save
+    redirect_to dairies_path
+  end
+
+  def index
   end
 
   def show
@@ -10,4 +20,11 @@ class Store::DairiesController < ApplicationController
 
   def edit
   end
+
+  private
+
+  def dairy_params
+    params.require(:dairy).permit(:title, :body)
+  end
+
 end

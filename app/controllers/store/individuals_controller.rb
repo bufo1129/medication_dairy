@@ -10,10 +10,13 @@ class Store::IndividualsController < ApplicationController
 
   def create
     @individual = Individual.new(individual_params)
-    if @individual.save
+    @individual.store = current_store
+   #  @individual.animal_species_id = individual_params[:animal_species_id]
+    #current_store
+    if @individual.save!
       redirect_to individual_path
     else
-      render :index
+      redirect_to individuals_path
     end
   end
 
@@ -45,7 +48,7 @@ class Store::IndividualsController < ApplicationController
   private
 
   def individual_params
-    params.require(:individual).permit(:animal_species_id, :name, :birthday, :age, :weight)
+    params.require(:individual).permit(:seed_id, :name, :birthday, :age, :weight)
   end
 
 end

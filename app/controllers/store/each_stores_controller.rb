@@ -22,18 +22,6 @@ class Store::EachStoresController < ApplicationController
     end
   end
 
-  # def close
-  #   @store = current_store
-  # end
-
-  # def withdraw
-  #   @store = current_store
-  #   @store.update(is_deleted: true)
-  #   reset_session
-  #   flash[:notice] = "店舗登録を削除しました"
-  #   redirect_to root_path
-  # end
-
   private
 
   def each_store_params

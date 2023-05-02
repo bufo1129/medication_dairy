@@ -1,2 +1,29 @@
-<h1>Store::Dairies#new</h1>
+<h1>日報の新規投稿</h1>
 <p>Find me in app/views/store/dairies/new.html.erb</p>
+
+<h4>店舗名</h4>
+  <%= @store.name %>
+
+<h1>画像投稿フォーム</h1>
+  <%= form_with model: @dairy do |f| %>
+    <h4>投薬記録</h4>
+      リンクひっぱってくる
+
+    <h4>API表示</h4>
+
+    <h4>天気</h4>
+    <p>セレクト晴れ、曇りetc</p>
+
+    <h4>最高気温</h4>
+
+    <h4>最低気温</h4>
+
+    <h4>タイトル</h4>
+      <%= f.text_field :title %>
+
+    <h4>内容</h4>
+    <%= f.text_area :body %>
+
+
+    <%= f.submit '投稿' %>
+  <% end %>

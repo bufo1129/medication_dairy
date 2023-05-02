@@ -8,13 +8,14 @@
   </div>
    <h4>動物種</h4>
   <div>
-    <%#= f.label :animal_spacies_id %>
+    <%= f.label :seed_id %>
     <%#= f.collection_select :animal_spacies_id, AnimalSpecy.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+    <%= f.select :seed_id, Seed.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" } %>
     ※管理者側で作成したジャンル(動物種)を選べるようにしたい、現状paramsのidがないよ！ってエラーがでる
   </div>
   <h4>生年月日</h4>
   <div>
-    <%= f.date_field :birthday%>
+    <%= f.date_field :birthday %>
   </div>
   <h4>年齢</h4>
   <div>
