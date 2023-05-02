@@ -1,11 +1,35 @@
-<h1>店舗一覧ページ</h1>
+<div class="text-center mb-5"></div>
 
-<div>
-  <% @stores.each do |store| %>
-
-  <%= link_to each_store_path(store.id) do %>
-  <%= store.name %>
-  <% end %>
-
-  <% end %>
+<div class="container">
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">店舗一覧</h3>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">店舗名</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">電話番号</th>
+        <th scope="col">住所</th>
+      </tr>
+    </thead>
+    <tbody class="table table-hover">
+      <% @stores.each do |store| %>
+      <tr>
+        <td>
+          <%= link_to each_store_path(store.id) do %>
+            <%= store.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= store.email %>
+        </td>
+        <td>
+          <%= store.phone_number %>
+        </td>
+        <td>
+          <%= store.address %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

@@ -1,22 +1,54 @@
-<h1>店舗詳細ページ</h1>
+<div class="text-center mb-5"></div>
 
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
-<h2>名前</h2>
-<div><%= @each_store.name %></div>
-<h2>メールアドレス</h2>
-<div><%= @each_store.email %></div>
-<h2>郵便番号</h2>
-<div><%= @each_store.postal_code %></div>
-<h2>住所</h2>
-<div><%= @each_store.address %></div>
-<h2>電話番号</h2>
-<div><%= @each_store.phone_number %></div>
-<!--<h2>店舗ステータス</h2>-->
-<div><%#= @each_store.is_deleted %></div>
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">店舗情報詳細</h2>
+      <table class="table">
+        <tr>
+          <td>店舗名</td>
+          <td><%= @each_store.name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @each_store.email %></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= @each_store.postal_code %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @each_store.address %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @each_store.phone_number %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <% if current_store != @each_store %>
+              <%= link_to '戻る', each_stores_path, class: "btn btn-success" %>
+            <% else %>
+              <%= link_to '編集する', edit_each_store_path, class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
-<% %>
-<%= link_to '編集', edit_each_store_path, class: "btn btn-sm btn-success" %>
-ログインユーザ以外は編集ボタン表示なしにする、リダイレクトさせる
+      <table>
+        <tr>
+          <th style="width: 30%">投薬一覧</th>
+          <td style="width: 40%">リンク張る<%#= link_to "一覧を見る", addresses_path, class: "btn btn-outline-info" %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%">日報一覧</th>
+          <td style="width: 40%">リンクはる<%#= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-info" %></td>
+        </tr>
+      </table>
 
-<%= link_to '店舗一覧', each_stores_path, class: "btn btn-sm btn-success" %>
-
+    </div>
+  </div>
+</div>
