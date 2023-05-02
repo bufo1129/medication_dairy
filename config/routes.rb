@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     resources :medications #投薬記録
     resources :individuals #個体
 
+    #退会処理⇒可能であれば追加する
+    # get '/stores/close' => 'stores#close'
+    # patch '/stores/withdraw' => 'stores#withdraw'
+
   end
 
 
