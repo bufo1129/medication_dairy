@@ -11,7 +11,7 @@ class Store::IndividualsController < ApplicationController
   def create
     @individual = Individual.new(individual_params)
     if @individual.save
-      redirect_to individuals_path
+      redirect_to individual_path
     else
       render :index
     end

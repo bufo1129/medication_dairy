@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :medicines, only: [:index, :edit, :create, :update, :destroy]
     resources :animal_species, only: [:index, :edit, :create, :update, :destroy]
+    resources :stores, only: [:index, :show, :update] #店舗管理
   end
 
   scope module: :store do

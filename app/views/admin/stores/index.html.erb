@@ -1,0 +1,12 @@
+<h1>管理者側、店舗情報</h1>
+
+<div>
+<% @stores.each do |store| %>
+
+  <%#= link_to admin_store_path(sotre.id) do %>
+  <%= store.name %>
+  <%# end %>
+
+<% end %>
+</div>
+
