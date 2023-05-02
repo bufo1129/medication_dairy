@@ -13,6 +13,7 @@ class Store::EachStoresController < ApplicationController
   end
 
   def update
+    byebug
     @each_store = current_store
     if @each_store.update(each_store_params)
       flash[:notice] = "店舗情報を変更しました"
@@ -23,9 +24,15 @@ class Store::EachStoresController < ApplicationController
   end
 
   def close
+    @store = current_store
   end
 
   def withdraw
+    @store = current_store
+    @store.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "店舗登録を削除しました"
+    redirect_to root_path
   end
 
   private
