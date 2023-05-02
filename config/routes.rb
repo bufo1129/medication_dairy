@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :medicines, only: [:index, :edit, :create, :update, :destroy]
     resources :seeds, only: [:index, :edit, :create, :update, :destroy]
-    resources :stores, only: [:index, :show, :update] #店舗管理
-    
+    resources :stores, only: [:index, :show, :edit, :update] #店舗管理
+
     # resources :animal_species, only: [:index, :edit, :create, :update, :destroy]
   end
 

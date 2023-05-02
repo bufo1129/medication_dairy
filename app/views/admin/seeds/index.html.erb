@@ -30,7 +30,7 @@
         <tr>
           <td class="h5"><%= seed.name %></td>
           <td class="h5">
-            <%= link_to "編集する", edit_admin_medicine_path(seed.id), class: "btn btn-outline-success" %>
+            <%= link_to "編集する", edit_admin_seed_path(seed.id), class: "btn btn-outline-success" %>
             <%= link_to "削除", admin_seed_path(seed.id), method: :delete,
               data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
           </td>
@@ -38,6 +38,6 @@
       <% end %>
       </tbody>
     </table>
-  <%#= paginate @medications, theme: 'twitter-bootstrap-4' %>
+  <%#= paginate @seeds, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

@@ -1,12 +1,31 @@
-<h1>管理者側、店舗情報</h1>
 
-<div>
-<% @stores.each do |store| %>
-
-  <%#= link_to admin_store_path(sotre.id) do %>
-  <%= store.name %>
-  <%# end %>
-
-<% end %>
-</div>
-
+<table class="table table-hover ">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">店舗名</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">電話番号</th>
+      <th scope="col">住所</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stores.each do |store| %>
+    <tr>
+      <td>
+        <%= link_to admin_store_path(store.id) do %>
+          <%= store.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= store.email %>
+      </td>
+      <td>
+        <%= store.phone_number %>
+      </td>
+      <td>
+        <%= store.address %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

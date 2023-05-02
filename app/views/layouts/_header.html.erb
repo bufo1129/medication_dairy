@@ -10,7 +10,7 @@
 
         <% if admin_signed_in? %>
           <% if request.fullpath.include? "/admin" %>
-            <h4 class="navbar-text-light d-flex align-items-center mr-5"><strong>管理人ページ</strong></h4>
+            <h4 class="navbar-text-dark d-flex align-items-center mr-5"><strong>管理人ページ</strong></h4>
             <li>
               <%= link_to root_path,class: 'nav-link text-light' do %>
                 <i class="fas fa-home"></i> Home
@@ -22,12 +22,7 @@
               <% end %>
             </li>
             <li>
-              <%=  link_to medications_path ,class: 'nav-link text-light' do %>
-                <i class="fas fa-book-open"></i> Medicines
-              <% end %>
-            </li>
-            <li>
-              <%=  link_to medications_path ,class: 'nav-link text-light' do %>
+              <%=  link_to admin_medicines_path ,class: 'nav-link text-light' do %>
                 <i class="fas fa-book-open"></i> Medicines
               <% end %>
             </li>

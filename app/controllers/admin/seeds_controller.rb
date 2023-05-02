@@ -21,7 +21,7 @@ class Admin::SeedsController < ApplicationController
 
   def update
     @seed = Seed.find(params[:id])
-    if @seed.update(animal_species_params)
+    if @seed.update(seed_params)
       flash[:notice] = "変更が完了しました"
       redirect_to admin_seeds_path
     else

@@ -1,2 +1,7 @@
-<h1>Admin::Seeds#edit</h1>
-<p>Find me in app/views/admin/seeds/edit.html.erb</p>
+<h1>種類名の編集</h1>
+
+  <%= form_with model: @seed, url: admin_seed_path, method: :patch do |f| %>
+    <%= f.label :name, '種類名' %>
+    <%= f.text_field :name %>
+    <%= f.submit "変更保存", class: "btn btn-success" %>
+  <% end %>

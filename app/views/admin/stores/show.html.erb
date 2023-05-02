@@ -1,15 +1,62 @@
-<h1>管理者側、店舗情報詳細</h1>
+<div class="text-center mb-5"></div>
 
-<div>
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">マイページ</h2>
 
-  <%= @store.name %>
-  <%= @store.email %>
-  <%= @store.postal_code %>
-  <%= @store.address %>
-  <%= @store.phone_number %>
-  <%#= @store.is_deleted %>
-  <%= @store.created_at %>
+      <div class="d-flex flex-row">
+        <p class="mr-2"><strong>店舗情報詳細</p></strong>
+        <P class="ml-3"><%= link_to '編集する', edit_admin_store_path, class: "btn btn-outline-success" %></P>
+      </div>
 
+      <table class="table">
+        <tr>
+          <td>店舗名</td>
+          <td><%= @store.name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @store.email %></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= @store.postal_code %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @store.address %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @store.phone_number %></td>
+        </tr>
+        <tr>
+          <td>店舗ステータス</td>
+          <td>
+            <% if @store.is_deleted == false %>
+              <span class="font-weight-bold text-success">有効</span>
+            <% else %>
+              <span class="font-weight-bold text-danger">無効</span>
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
+      <table>
+        <tr>
+          <th style="width: 30%">投薬一覧</th>
+          <td style="width: 40%">リンク張る<%#= link_to "一覧を見る", addresses_path, class: "btn btn-outline-info" %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%">日報一覧</th>
+          <td style="width: 40%">リンクはる<%#= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-info" %></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
 </div>
+
+
