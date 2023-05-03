@@ -6,9 +6,6 @@ class Medication < ApplicationRecord
   belongs_to :seed
   belongs_to :individual
   belongs_to :store
-
-  # belongs_to :animal_specy#消す
-
-
+  has_many :dairies, dependent: :destroy
 
 end

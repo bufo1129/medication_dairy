@@ -21,6 +21,7 @@
           <th scope="col">生年月日</th>
           <th scope="col">年齢</th>
           <th scope="col">体重</th>
+          <th scope="col"></th>
         </tr>
       </thead>
 
@@ -48,7 +49,7 @@
           <td class="h5">
             <%= individual.weight %>
           </div>
-          <td class="h5">
+          <td>
             <%= link_to "編集する", edit_individual_path(individual.id), class: "btn btn-outline-success" %>
             <%= link_to "削除", individual_path(individual.id), method: :delete,
               data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>

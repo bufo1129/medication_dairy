@@ -16,8 +16,8 @@
 
 <div class="text-center mb-5"></div>
 
-<div class="table-responsive table-hover">
-  <table class="table table-hover">
+<div class="table-responsive">
+  <table class="table">
       <thead class="table-dark">
         <tr>
           <th scope="col">動物種一覧</th>
@@ -25,7 +25,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody class="table table-hover">
         <% @seeds.each do |seed| %>
         <tr>
           <td class="h5"><%= seed.name %></td>

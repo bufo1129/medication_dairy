@@ -1,30 +1,38 @@
-<h1>日報の新規投稿</h1>
-<p>Find me in app/views/store/dairies/new.html.erb</p>
-
-<h4>店舗名</h4>
-  <%#= @store.name %>
-
-<h1>画像投稿フォーム</h1>
-  <%= form_with model: @dairy do |f| %>
-    <h4>投薬記録</h4>
-      リンクひっぱってくる
-    <h4>API表示</h4>
-    <h4>天気</h4>
-    <p>セレクト晴れ、曇りetc</p>
-    <h4>最高気温</h4>
-    <h4>最低気温</h4>
-    <h4>タイトル</h4>
-      <%= f.text_field :title %>
-    <h4>内容</h4>
-    <%= f.text_area :body %>
-    <%= f.submit '投稿' %>
-  <% end %>
+  <body>
+    <h3>世界の天気</h3>
+    <p><%= @store.prefecture_name %></p>
+    <!--<label>都市名：</label>-->
+    <!--<input id="prefecture_name" type="text" size="14" maxlength="14" placeholder="Tokyo">-->
+    <!--<button id="btn">検索</button><br>-->
+    <span>場所 :</span>
+    <span id="prefecture_name"><%= @store.prefecture_name %></span><br>
+    <span>場所 :</span>
+    <span id="place"></span><br>
+    <span>最高気温 :</span>
+    <span id="temp_max"></span>
+    <span> ℃</span><br>
+    <span>最低気温 :</span>
+    <span id="temp_min"></span>
+    <span> ℃</span><br>
+    <span>湿度 :</span>
+    <span id="humidity"></span>
+    <span> %</span><br>
+    <span>風速 :</span>
+    <span id="speed"></span>
+    <span> m/s</span><br>
+    <span>天気 :</span>
+    <span id="weather"></span>
+    <div id="icon"><img id="img"></div>
+    <script src="jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 
 <div class="text-center mb-5"></div>
 
 <div class="container mt-5">
   <h3>
   <span style="background-color: #c0c0c0;">日報の新規投稿</span>
+  ※投稿できない、アソシエーションが原因の可能性あり、または、投薬記録作ってからじゃないと作れない？
   </h3>
   <div class="text-center mb-5"></div>
 
@@ -33,34 +41,43 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="store_name">店舗名</label>
-          <%= f.text_field :name, class: "form-control", placeholder: "店舗名" %>
+          <%= f.select :store_id, Store.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
         </div>
         <div class="form-group">
           <label for="customer_email">今日の天気</label>
-          <%= f.text_field :email, class: "form-control" %>
+          API表示、コントローラで定義
         </div>
         <div class="form-group">
-          <label for="customer_post_code">天気</label>
-          <%= f.text_ :weather, class: "form-control" %>
+          <label for="api_weather">天気</label>
+          <%= f.select :weather, {'晴れ': 1, '曇り': 2, '雨': 3, '曇/雨': 4, '豪雨': 5, '雪': 6}, { include_blank: '選択してください。'}, { class: 'form-control'} %>
         </div>
         <div class="form-group">
-          <label for="customer_address">住所</label>
-          <%= f.text_field :title %>
+          <label for="high_temperature">最高気温</label>
+          <%= f.text_field :high_temperature, class: "form-control" %>
         </div>
         <div class="form-group">
-          <label for="customer_address">住所</label>
-          <%= f.text_field :title %>
+          <label for="low_temperature">最低気温</label>
+          <%= f.text_field :low_temperature, class: "form-control" %>
         </div>
         <div class="form-group">
-          <label for="customer_phone_number">電話番号</label>
-          <%= f.text_area :body %>
+          <label for="title">タイトル</label>
+          <%= f.text_field :title, class: "form-control" %>
         </div>
-
         <div class="form-group">
-          <label for="customer_is_deleted">会員ステータス</label>
-          <%= f.select :is_deleted, [['有効', false], ['無効', true]], {selected: @store.is_deleted}, {class: "form-control"} %>
+          <label for="body">内容</label>
+          <%= f.text_area :body, class: "form-control" %>
         </div>
-        <%= f.submit "更新する", class: "btn btn-primary" %>
+        <div class="form-group">
+          <%= f.label :give_medicine_not_give, '投薬なし' %>
+          <%= f.radio_button :give_medicine, :not_give %>
+          <%= f.label :give_medicine_give, '投薬あり' %>
+          <%= f.radio_button :give_medicine, :give %>
+        </div>
+        <div class="form-group">
+          <label for="store_name">投薬日誌</label>
+          <%= f.select :medication_id, Medication.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+        </div>
+        <%= f.submit "作成する", class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>

@@ -1,2 +1,60 @@
-<h1>Store::Dairies#show</h1>
-<p>Find me in app/views/store/dairies/show.html.erb</p>
+<div class="text-center mb-5"></div>
+
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報情報詳細</h2>
+      <table class="table">
+        <tr>
+          <td>店舗名</td>
+          <td><%= @dairy.name %></td>
+        </tr>
+        <tr>
+          <td>天気</td>
+          <td><%= @dairy.weather %></td>
+        </tr>
+        <tr>
+          <td>最高気温</td>
+          <td><%= @dairy.high_temperature %></td>
+        </tr>
+        <tr>
+          <td>最低気温</td>
+          <td>
+            <%= @dairy.low_temperature %>
+          </td>
+        </tr>
+        <tr>
+          <td>タイトル</td>
+          <td><%= @dairy.title %></td>
+        </tr>
+        <tr>
+          <td>内容</td>
+          <td><%= @dairy.body %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <% if current_store != @each_store %>
+              <%= link_to '戻る', dairies_path, class: "btn btn-success" %>
+            <% else %>
+              <%= link_to '編集する', dairy_path, class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th style="width: 30%">投薬一覧</th>
+          <td style="width: 40%">リンク張る<%#= link_to "一覧を見る", addresses_path, class: "btn btn-outline-info" %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%">日報一覧</th>
+          <td style="width: 40%">リンクはる<%#= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-info" %></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>

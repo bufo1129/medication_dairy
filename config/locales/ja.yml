@@ -1,0 +1,6 @@
+  ja:
+    enums:
+      dairies:
+        give_medicine:
+          not_give: "投薬なし"
+          give: "投薬あり"
