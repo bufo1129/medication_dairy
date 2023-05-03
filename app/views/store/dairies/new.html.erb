@@ -2,28 +2,66 @@
 <p>Find me in app/views/store/dairies/new.html.erb</p>
 
 <h4>店舗名</h4>
-  <%= @store.name %>
+  <%#= @store.name %>
 
 <h1>画像投稿フォーム</h1>
   <%= form_with model: @dairy do |f| %>
     <h4>投薬記録</h4>
       リンクひっぱってくる
-
     <h4>API表示</h4>
-
     <h4>天気</h4>
     <p>セレクト晴れ、曇りetc</p>
-
     <h4>最高気温</h4>
-
     <h4>最低気温</h4>
-
     <h4>タイトル</h4>
       <%= f.text_field :title %>
-
     <h4>内容</h4>
     <%= f.text_area :body %>
-
-
     <%= f.submit '投稿' %>
   <% end %>
+
+<div class="text-center mb-5"></div>
+
+<div class="container mt-5">
+  <h3>
+  <span style="background-color: #c0c0c0;">日報の新規投稿</span>
+  </h3>
+  <div class="text-center mb-5"></div>
+
+  <%= form_with model: @dairy do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="store_name">店舗名</label>
+          <%= f.text_field :name, class: "form-control", placeholder: "店舗名" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_email">今日の天気</label>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_post_code">天気</label>
+          <%= f.text_ :weather, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_address">住所</label>
+          <%= f.text_field :title %>
+        </div>
+        <div class="form-group">
+          <label for="customer_address">住所</label>
+          <%= f.text_field :title %>
+        </div>
+        <div class="form-group">
+          <label for="customer_phone_number">電話番号</label>
+          <%= f.text_area :body %>
+        </div>
+
+        <div class="form-group">
+          <label for="customer_is_deleted">会員ステータス</label>
+          <%= f.select :is_deleted, [['有効', false], ['無効', true]], {selected: @store.is_deleted}, {class: "form-control"} %>
+        </div>
+        <%= f.submit "更新する", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
