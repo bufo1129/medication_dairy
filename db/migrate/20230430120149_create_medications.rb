@@ -3,7 +3,7 @@ class CreateMedications < ActiveRecord::Migration[6.1]
     create_table :medications do |t|
 
       t.integer :medicine_id,             null: false
-      t.integer :animal_species_id,       null: false
+      # t.integer :animal_species_id,       null: false
       t.integer :individual_id,           null: false
       t.integer :dosage_indicated,        null: false
       t.integer :ingredients_per_tablets, null: false
