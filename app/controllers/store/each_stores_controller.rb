@@ -25,7 +25,18 @@ class Store::EachStoresController < ApplicationController
   private
 
   def each_store_params
-    params.require(:store).permit(:name, :email, :postal_code, :address, :phone_number, :is_deleted)
+    params.require(:store).permit(
+      :name, 
+      :email, 
+      :postal_code, 
+      # :address, 
+      :phone_number, 
+      :prefecture_name,
+      :address_city,
+      :address_street,
+      :address_building,
+      :phone_number,
+      :is_deleted)
   end
 
 end

@@ -1,37 +1,83 @@
-<h2>店舗Sign up</h2>
+<div class="container">
+        <h2>店舗Sign up</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "store/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "store/shared/error_messages", resource: resource %>
+      <div class="form-group">
+        <label for="store_name">店舗名</label>
+        <%= f.text_field :name, class: "form-control", placeholder: "店舗名" %>
+      </div>
+<!--店舗名-->
+<!-- <div class="field">-->
+<!--  <%#= f.label :name %><br>-->
+<!--  <%#= f.text_field :name %>-->
+<!--</div>-->
 
-店舗名
- <div class="field">
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-</div>
+        <div class="form-group">
+          <label for="customer_email">メールアドレス</label>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
 
-メール
+<!--メール-->
+<!--  <div class="field">-->
+<!--    <%#= f.label :email %><br />-->
+<!--    <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>-->
+<!--  </div>-->
+        <div class="form-group">
+          <label for="customer_post_code">郵便番号</label>
+          <%= f.text_field :postal_code, class: "form-control" %>
+        </div>
+
+<!--郵便番号-->
+<!--  <div class="field">-->
+<!--    <%#= f.label :postal_code %><br />-->
+<!--    <%#= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>-->
+<!--  </div>-->
+
+        <!--<div class="form-group">-->
+        <!--  <label for="customer_address">住所</label>-->
+          <%#= f.text_field :address, class: "form-control" %>
+        <!--</div>-->
+
+<!--住所-->
+<!--  <div class="field">-->
+<!--    <%#= f.label :address %><br />-->
+<!--    <%#= f.text_field :address, autofocus: true, autocomplete: "address" %>-->
+<!--  </div>-->
+
+都道府県
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :prefecture_name %><br />
+    <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all,
+      :code, :name,  { prompt: '選択してください' }, class: 'form-control' %>
+  </div>
+市町村
+  <div class="field">
+    <%= f.label :address_city %><br />
+    <%= f.text_field :address_city, autofocus: true, autocomplete: "address_city" %>
+  </div>
+番地
+  <div class="field">
+    <%= f.label :address_street %><br />
+    <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street" %>
+  </div>
+建物
+  <div class="field">
+    <%= f.label :address_building %><br />
+    <%= f.text_field :address_building, autofocus: true, autocomplete: "address_building" %>
   </div>
 
-郵便番号
-  <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-  </div>
-
-住所
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
-
-電話
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
+        <div class="form-group">
+          <label for="customer_phone_number">電話番号</label>
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+<!--電話-->
+<!--  <div class="field">-->
+    <%#= f.label :phone_number %><br />
+    <%#= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+<!--  </div>-->
 
 パスワード
   <div class="field">
@@ -53,4 +99,8 @@
   </div>
 <% end %>
 
-<%= render "store/shared/links" %>
+    <%= render "store/shared/links" %>
+    </div>
+  </div>
+</div>
+
