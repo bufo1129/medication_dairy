@@ -26,7 +26,12 @@
         </tr>
         <tr>
           <td>住所</td>
-          <td><%#= @store.address %></td>
+          <td>
+            <%= @store.prefecture_name %>
+            <%= @store.address_city %>
+            <%= @store.address_street %>
+            <%= @store.address_building %>
+          </td>
         </tr>
         <tr>
           <td>電話番号</td>

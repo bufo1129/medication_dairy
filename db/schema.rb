@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
 
   create_table "medications", force: :cascade do |t|
     t.integer "medicine_id", null: false
+    t.integer "animal_species_id", null: false
     t.integer "individual_id", null: false
     t.integer "dosage_indicated", null: false
     t.integer "ingredients_per_tablets", null: false

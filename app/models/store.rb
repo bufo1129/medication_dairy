@@ -6,7 +6,7 @@ class Store < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   # ここから　住所自動入力
   include JpPrefecture
   jp_prefecture :prefecture_code
@@ -19,5 +19,5 @@ class Store < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
   # ↑ここまで　住所自動入力
-  
+
 end

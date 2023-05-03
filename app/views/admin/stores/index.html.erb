@@ -1,31 +1,34 @@
+<div class="text-center mb-5"></div>
 
-<table class="table table-hover ">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">店舗名</th>
-      <th scope="col">メールアドレス</th>
-      <th scope="col">電話番号</th>
-      <th scope="col">住所</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @stores.each do |store| %>
-    <tr>
-      <td>
-        <%= link_to admin_store_path(store.id) do %>
-          <%= store.name %>
-        <% end %>
-      </td>
-      <td>
-        <%= store.email %>
-      </td>
-      <td>
-        <%= store.phone_number %>
-      </td>
-      <td>
-        <%#= store.address %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">店舗名</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">電話番号</th>
+        <th scope="col">住所</th>
+      </tr>
+    </thead>
+    <tbody class="table table-hover">
+      <% @stores.each do |store| %>
+      <tr>
+        <td>
+          <%= link_to admin_store_path(store.id) do %>
+            <%= store.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= store.email %>
+        </td>
+        <td>
+          <%= store.phone_number %>
+        </td>
+        <td>
+          <%#= store.address %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
