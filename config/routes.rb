@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'seeds/index'
-    get 'seeds/edit'
-  end
+  # namespace :admin do
+  #   get 'seeds/index'
+  #   get 'seeds/edit'
+  # end
   namespace :admin do
     root to: 'homes#top'
     resources :medicines, only: [:index, :edit, :create, :update, :destroy]
@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
     #店舗情報
     resources :each_stores, only: [:index, :show, :edit, :update]
-    get 'each_stores/close'
-    patch 'each_stores/withdraw'
+    # get 'each_stores/close'
+    # patch 'each_stores/withdraw'
 
     resources :dairies    #日報
     resources :medications #投薬記録
