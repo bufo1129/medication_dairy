@@ -1,4 +1,5 @@
 class Store::EachStoresController < ApplicationController
+  before_action :authenticate_store!
 
   def index
     @stores = Store.all
