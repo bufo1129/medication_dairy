@@ -10,17 +10,12 @@
 <div class="text-center mb-5"></div>
   <%= link_to "日報作成する", new_dairy_path, class: "btn btn-success" %>
 <div class="text-center mb-5"></div>
-<h4 class="text-success"><%= flash[:notice] %></h4>
 <div class="table-responsive">
   <table class="table">
       <thead class="table-dark">
         <tr>
+          <th scope="col">日付</th>
           <th scope="col">店舗名</th>
-          <th scope="col">タイトル</th>
-          <th scope="col">投薬ステータス</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
         </tr>
       </thead>
 
@@ -28,21 +23,19 @@
         <% @dairies.each do |dairy| %>
         <tr>
           <td class="h5">
+            <%= link_to dairy_path(dairy.id) do %>
+              <%= dairy.created_date %>
+            <% end %>
+          </td>
+          <td class="h5">
             <!--↓店舗名押すと、店舗の日報絞り込み-->
             <%= link_to each_store_path(dairy.store_id) do %>
               <%= dairy.store.name %>
             <% end %>
           </td>
           <td class="h5">
-            <%= link_to dairy_path(dairy.id) do %>
-              <%= dairy.title %>
-            <% end %>
-          </td>
-          <td class="h5">
             <%= dairy.medication_id %>
           </td>
-          <td class="h5"></div>
-          <td class="h5"></div>
         </tr>
       <% end %>
       </tbody>

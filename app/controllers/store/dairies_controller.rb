@@ -57,7 +57,7 @@ class Store::DairiesController < ApplicationController
     params.require(:dairy).permit(
       :give_medicine, :medication_id,
       :store_id, :weather, :high_temperature,
-      :low_temperature, :title, :body
+      :low_temperature, :title, :body, :created_date
       )
   end
 
