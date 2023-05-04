@@ -24,6 +24,7 @@ class Store::DairiesController < ApplicationController
   end
 
   def show
+    @dairy = Dairy.find(params[:id])
   end
 
   def edit

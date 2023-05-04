@@ -19,3 +19,17 @@
 <div>
   <%= link_to '管理者ログインページ', new_admin_session_path %>
 </div>
+
+  <%=  link_to each_stores_path,class: 'nav-link text-light' %>
+店舗
+
+  <%=  link_to dairies_path ,class: 'nav-link text-light' %>
+日報
+
+
+  <%=  link_to medications_path ,class: 'nav-link text-light' %>
+投薬記録
+
+
+  <%= link_to individuals_path,class: 'nav-link text-light' %>
+ 個体

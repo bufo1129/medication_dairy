@@ -1,11 +1,10 @@
   <body>
     <h3>世界の天気</h3>
-    <p><%= @store.prefecture_name %></p>
-    <!--<label>都市名：</label>-->
-    <!--<input id="prefecture_name" type="text" size="14" maxlength="14" placeholder="Tokyo">-->
-    <!--<button id="btn">検索</button><br>-->
+    <label>都市名：</label>
+    <input id="prefecture_name" type="text" size="14" maxlength="14" placeholder="Tokyo">
+    <button id="btn">検索</button><br>
     <span>場所 :</span>
-    <span id="prefecture_name"><%= @store.prefecture_name %></span><br>
+    <span id="prefecture_name"><%#= @store.prefecture_name %></span><br>
     <span>場所 :</span>
     <span id="place"></span><br>
     <span>最高気温 :</span>
@@ -36,7 +35,7 @@
   </h3>
   <div class="text-center mb-5"></div>
 
-  <%= form_with model: @dairy do |f| %>
+  <%= form_with model: @dairy, url: dairies_path, method: :post do |f| %>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
