@@ -5,11 +5,10 @@
   <!--<div class="row">-->
   <!--  <%#= render 'layouts/errors', obj: @genre %>-->
   <!--</div>-->
-
-<h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">個体一覧</h3>
-
+<h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">個体一覧</h2>
+<h4 class="text-success"><%= flash[:notice] %></h4>
 <div class="text-center mb-5"></div>
-  <%= link_to '新規個体登録', new_individual_path, class: "btn btn-outline-success" %>
+  <%= link_to '新規個体登録', new_individual_path, class: "btn btn-success" %>
 <div class="text-center mb-5"></div>
 
 <div class="table-responsive">
@@ -29,7 +28,7 @@
         <% @individuals.each do |individual| %>
         <tr>
           <td class="h5">
-            <%= link_to each_store_path(individual.id) do %>
+            <%= link_to individual_path(individual.id) do %>
               <%= individual.name %>
             <% end %>
           </td>
@@ -50,9 +49,9 @@
             <%= individual.weight %>
           </div>
           <td>
-            <%= link_to "編集する", edit_individual_path(individual.id), class: "btn btn-outline-success" %>
+            <%= link_to "編集する", edit_individual_path(individual.id), class: "btn btn-success" %>
             <%= link_to "削除", individual_path(individual.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
+              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
           </td>
         </tr>
       <% end %>

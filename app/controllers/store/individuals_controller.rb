@@ -13,6 +13,7 @@ class Store::IndividualsController < ApplicationController
     @individual = Individual.new(individual_params)
     @individual.store = current_store
     if @individual.save
+      flash[:notice] = "登録が完了しました"
       redirect_to individuals_path
     else
       render :index
