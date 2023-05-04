@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 2023_05_03_143840) do
   create_table "dairies", force: :cascade do |t|
     t.integer "medication_id", null: false
     t.integer "store_id", null: false
-    t.string "weather", null: false
-    t.integer "high_temperature", null: false
-    t.integer "low_temperature", null: false
-    t.string "body", null: false
+    t.string "weather"
+    t.integer "high_temperature"
+    t.integer "low_temperature"
+    t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title", null: false
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2023_05_03_143840) do
   create_table "individuals", force: :cascade do |t|
     t.string "name", null: false
     t.date "birthday", null: false
-    t.integer "age", null: false
-    t.integer "weight", null: false
+    t.integer "age"
+    t.integer "weight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "store_id", null: false
@@ -85,15 +85,15 @@ ActiveRecord::Schema.define(version: 2023_05_03_143840) do
   create_table "medications", force: :cascade do |t|
     t.integer "medicine_id", null: false
     t.integer "individual_id", null: false
-    t.integer "dosage_indicated", null: false
-    t.integer "ingredients_per_tablets", null: false
-    t.integer "number_of_tablets", null: false
-    t.integer "dosing_times", null: false
-    t.integer "liquid_amount", null: false
-    t.datetime "dosing_start_date", null: false
-    t.datetime "dosing_end_date", null: false
-    t.boolean "medication_status", null: false
-    t.text "body", null: false
+    t.integer "dosage_indicated"
+    t.integer "ingredients_per_tablets"
+    t.integer "number_of_tablets"
+    t.integer "dosing_times"
+    t.integer "liquid_amount"
+    t.datetime "dosing_start_date"
+    t.datetime "dosing_end_date"
+    t.boolean "medication_status"
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "store_id", null: false
@@ -116,13 +116,13 @@ ActiveRecord::Schema.define(version: 2023_05_03_143840) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
-    t.string "postal_code", null: false
-    t.string "phone_number", null: false
+    t.string "postal_code"
+    t.string "phone_number"
     t.boolean "is_deleted", default: false, null: false
-    t.integer "prefecture_code", null: false
-    t.string "address_city", null: false
-    t.string "address_street", null: false
-    t.string "address_building", null: false
+    t.integer "prefecture_code"
+    t.string "address_city"
+    t.string "address_street"
+    t.string "address_building"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

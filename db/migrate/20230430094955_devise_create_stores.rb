@@ -7,15 +7,15 @@ class DeviseCreateStores < ActiveRecord::Migration[6.1]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :name,               null: false
-      t.string :postal_code,        null: false
-      t.string :phone_number,       null: false
+      t.string :postal_code
+      t.string :phone_number
       t.boolean :is_deleted,        null: false, default: false
 
       #天気用に店舗情報カラム追加
-      t.integer :prefecture_code, null: false
-      t.string :address_city,     null: false
-      t.string :address_street,   null: false
-      t.string :address_building, null: false
+      t.integer :prefecture_code
+      t.string :address_city
+      t.string :address_street
+      t.string :address_building
 
 
       ## Recoverable

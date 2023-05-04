@@ -5,8 +5,8 @@ class CreateIndividuals < ActiveRecord::Migration[6.1]
       # t.integer :animal_species_id, null: false
       t.string :name,               null: false
       t.date :birthday,             null: false
-      t.integer :age,               null: false
-      t.integer :weight,            null: false
+      t.integer :age
+      t.integer :weight
 
       t.timestamps
     end

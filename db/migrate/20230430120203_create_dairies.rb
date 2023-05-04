@@ -4,10 +4,10 @@ class CreateDairies < ActiveRecord::Migration[6.1]
 
       t.integer :medication_id,       null: false
       t.integer :store_id,            null: false
-      t.string :weather,              null: false
-      t.integer :high_temperature,    null: false
-      t.integer :low_temperature,     null: false
-      t.string :body,                 null: false
+      t.string :weather
+      t.integer :high_temperature
+      t.integer :low_temperature
+      t.string :body
 
       t.timestamps
     end
