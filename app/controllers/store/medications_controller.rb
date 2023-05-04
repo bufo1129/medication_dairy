@@ -1,4 +1,6 @@
 class Store::MedicationsController < ApplicationController
+  #before_action :authenticate_store!
+
   def index
   end
 

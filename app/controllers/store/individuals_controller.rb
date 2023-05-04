@@ -1,4 +1,5 @@
 class Store::IndividualsController < ApplicationController
+  #before_action :authenticate_store!
 
   def index
     @individuals = Individual.all

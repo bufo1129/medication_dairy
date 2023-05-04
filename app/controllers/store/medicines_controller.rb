@@ -1,4 +1,6 @@
 class Store::MedicinesController < ApplicationController
+  #before_action :authenticate_store!
+
   # 保留
   def show
     @medicine = Medicine.find(params[:id])
