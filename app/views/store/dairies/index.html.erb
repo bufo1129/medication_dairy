@@ -10,7 +10,7 @@
 <div class="text-center mb-5"></div>
   <%= link_to "日報作成する", new_dairy_path, class: "btn btn-success" %>
 <div class="text-center mb-5"></div>
-
+<h4 class="text-success"><%= flash[:notice] %></h4>
 <div class="table-responsive">
   <table class="table">
       <thead class="table-dark">
@@ -28,6 +28,7 @@
         <% @dairies.each do |dairy| %>
         <tr>
           <td class="h5">
+            <!--↓店舗名押すと、店舗の日報絞り込み-->
             <%= link_to each_store_path(dairy.store_id) do %>
               <%= dairy.store.name %>
             <% end %>
@@ -42,11 +43,6 @@
           </td>
           <td class="h5"></div>
           <td class="h5"></div>
-          <td>
-            <%= link_to "編集する", dairy_path(dairy.id), class: "btn btn-outline-success" %>
-            <%= link_to "削除", dairy_path(dairy.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
-          </td>
         </tr>
       <% end %>
       </tbody>

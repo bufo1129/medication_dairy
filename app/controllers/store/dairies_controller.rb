@@ -4,17 +4,16 @@ class Store::DairiesController < ApplicationController
   def new
     @store = current_store
     @dairy = Dairy.new
-    #API取得
   end
 
   def create
     @dairy = Dairy.new(dairy_params)
     @dairy.store_id = current_store.id
     if @dairy.save!
-      flash[:notice] = "登録が完了しました"
+      flash[:notice] = "投稿が完了しました"
       redirect_to dairy_path(@dairy)
     else
-      flash[:alert] = "登録に失敗しました"
+      flash[:alert] = "投稿に失敗しました"
       render :new
     end
   end
@@ -32,12 +31,34 @@ class Store::DairiesController < ApplicationController
   end
 
   def edit
+    @dairy = Dairy.find(params[:id])
+  end
+
+  def update
+    @dairy = Dairy.find(params[:id])
+    if @dairy.update(dairy_params)
+      flash[:notice] = "変更が完了しました"
+      redirect_to dairy_path(@dairy)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @dairy = Dairy.find(params[:id])
+    @dairy.destroy
+    flash[:notice] = "削除しました"
+    redirect_to dairies_path
   end
 
   private
 
   def dairy_params
-    params.require(:dairy).permit(:give_medicine, :medication_id, :store_id, :weather, :high_temperature, :low_temperature, :title, :body)
+    params.require(:dairy).permit(
+      :give_medicine, :medication_id,
+      :store_id, :weather, :high_temperature,
+      :low_temperature, :title, :body
+      )
   end
 
 end

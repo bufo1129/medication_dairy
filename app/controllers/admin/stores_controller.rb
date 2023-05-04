@@ -32,7 +32,11 @@ class Admin::StoresController < ApplicationController
   end
 
   def store_params
-    params.require(:store).permit(:name, :email, :postal_code, :address, :phone_number, :is_deleted)
+    params.require(:store).permit(
+      :name, :email, :postal_code,
+      :phone_number, :is_deleted,
+      :prefecture_name, :address_city,
+      :address_street, :address_building)
   end
 
 end

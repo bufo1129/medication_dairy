@@ -5,6 +5,8 @@
     <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報情報詳細</h2>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <!--<h4 class="text-danger"><%#= flash[:alert] %></h4>-->
       <table class="table">
         <tr>
           <td>店舗名</td>
@@ -37,23 +39,26 @@
         <tr>
           <td></td>
           <td>
-            <% if current_store != @each_store %>
-              <%= link_to '戻る', dairies_path, class: "btn btn-success" %>
-            <% else %>
-              <%= link_to '編集する', dairy_path, class: "btn btn-success" %>
-            <% end %>
+            <%# if current_store != @each_store %>
+              <%= link_to '日報一覧へ戻る', dairies_path, class: "btn btn-success" %>
+            <%# else %>
+              <%= link_to '編集する', edit_dairy_path, class: "btn btn-success" %>
+              <%= link_to "削除", dairy_path(@dairy.id), method: :delete,
+              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
+            <%#end %>
           </td>
         </tr>
       </table>
 
       <table>
         <tr>
-          <th style="width: 30%">投薬一覧</th>
-          <td style="width: 40%">リンク張る<%#= link_to "一覧を見る", addresses_path, class: "btn btn-outline-info" %></td>
+          <th style="width: 30%"><%= @dairy.store.name %> 投薬一覧</th>
+          <td style="width: 40%"><%= link_to "一覧を見る", medications_path(medication_id: @each_store) %></td>
         </tr>
         <tr>
-          <th style="width: 30%">日報一覧</th>
-          <td style="width: 40%">リンクはる<%#= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-info" %></td>
+          <th style="width: 30%"><%= @dairy.store.name %> 日報一覧</th>
+          <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(dairy_id: @each_store) %></td>
+          <!--↑店舗の日報一覧に絞り込み-->
         </tr>
       </table>
 

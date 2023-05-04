@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
     t.integer "high_temperature"
     t.integer "low_temperature"
     t.string "body"
+    t.date "created_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,8 +74,8 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
   create_table "individuals", force: :cascade do |t|
     t.string "name", null: false
     t.date "birthday", null: false
-    t.integer "age"
-    t.integer "weight"
+    t.decimal "age"
+    t.decimal "weight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "store_id", null: false
@@ -84,13 +85,13 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
   create_table "medications", force: :cascade do |t|
     t.integer "medicine_id", null: false
     t.integer "individual_id", null: false
-    t.integer "dosage_indicated"
-    t.integer "ingredients_per_tablets"
-    t.integer "number_of_tablets"
+    t.decimal "dosage_indicated"
+    t.decimal "ingredients_per_tablets"
+    t.decimal "number_of_tablets"
     t.integer "dosing_times"
-    t.integer "liquid_amount"
-    t.datetime "dosing_start_date"
-    t.datetime "dosing_end_date"
+    t.decimal "liquid_amount"
+    t.date "dosing_start_date"
+    t.date "dosing_end_date"
     t.boolean "medication_status"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false

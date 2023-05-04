@@ -29,7 +29,6 @@ class Store::EachStoresController < ApplicationController
       :name, 
       :email, 
       :postal_code, 
-      # :address, 
       :phone_number, 
       :prefecture_name,
       :address_city,

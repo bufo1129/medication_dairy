@@ -5,6 +5,7 @@
     <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">店舗情報詳細</h2>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
       <table class="table">
         <tr>
           <td>店舗名</td>
@@ -46,13 +47,16 @@
       <table>
         <tr>
           <th style="width: 30%">投薬一覧</th>
-          <td style="width: 40%">リンク張る<%#= link_to "一覧を見る", addresses_path, class: "btn btn-outline-info" %></td>
+          <td style="width: 40%"><%= link_to "一覧を見る", medications_path(medication_id: @each_store.id) %></td>
         </tr>
         <tr>
           <th style="width: 30%">日報一覧</th>
           <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @each_store.id) %></td>
         </tr>
       </table>
+    </div>
+  </div>
+</div>
 
       <!--<h5>日報一覧</h5>-->
       <!--<table class="table">-->
@@ -63,7 +67,3 @@
       <!--    </tr>-->
       <!--  <%# end %>-->
       <!--</table>-->
-
-    </div>
-  </div>
-</div>
