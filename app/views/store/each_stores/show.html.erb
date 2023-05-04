@@ -50,9 +50,19 @@
         </tr>
         <tr>
           <th style="width: 30%">日報一覧</th>
-          <td style="width: 40%">リンクはる<%#= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-info" %></td>
+          <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @each_store.id) %></td>
         </tr>
       </table>
+
+      <!--<h5>日報一覧</h5>-->
+      <!--<table class="table">-->
+      <!--  <%# @each_store.dairies.each do |dairy| %>-->
+      <!--    <tr>-->
+      <!--      <td><%#= dairy.title %></td>-->
+      <!--      <td><%#= dairy.created_at %></td>-->
+      <!--    </tr>-->
+      <!--  <%# end %>-->
+      <!--</table>-->
 
     </div>
   </div>

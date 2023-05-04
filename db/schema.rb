@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_143840) do
+ActiveRecord::Schema.define(version: 2023_05_02_122306) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,7 +59,8 @@ ActiveRecord::Schema.define(version: 2023_05_03_143840) do
   end
 
   create_table "dairies", force: :cascade do |t|
-    t.integer "medication_id", null: false
+    t.string "title", null: false
+    t.integer "medication_id"
     t.integer "store_id", null: false
     t.string "weather"
     t.integer "high_temperature"
@@ -67,8 +68,6 @@ ActiveRecord::Schema.define(version: 2023_05_03_143840) do
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title", null: false
-    t.boolean "give_medicine"
   end
 
   create_table "individuals", force: :cascade do |t|

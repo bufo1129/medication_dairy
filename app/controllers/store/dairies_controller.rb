@@ -1,4 +1,5 @@
 class Store::DairiesController < ApplicationController
+  before_action :authenticate_store!
 
   def new
     @store = current_store
@@ -9,18 +10,21 @@ class Store::DairiesController < ApplicationController
   def create
     @dairy = Dairy.new(dairy_params)
     @dairy.store_id = current_store.id
-    if @dairy.save
+    if @dairy.save!
       flash[:notice] = "登録が完了しました"
-      redirect_to dairy_path
+      redirect_to dairy_path(@dairy)
     else
       flash[:alert] = "登録に失敗しました"
       render :new
     end
-
   end
 
   def index
-    @dairies = Dairy.all
+    if params[:store_id].present?
+      @dairies = Dairy.where(store_id: params[:store_id])
+    else
+      @dairies = Dairy.all
+    end
   end
 
   def show

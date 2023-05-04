@@ -57,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem "enum_help"
-gem 'jquery-rails'
+# gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem 'bootstrap4-kaminari-views'
 gem 'httpclient' #API天気取得表示用

@@ -28,8 +28,8 @@
         <% @dairies.each do |dairy| %>
         <tr>
           <td class="h5">
-            <%= link_to each_store_path(each_store.id) do %>
-              <%= dairy.name %>
+            <%= link_to each_store_path(dairy.store_id) do %>
+              <%= dairy.store.name %>
             <% end %>
           </td>
           <td class="h5">

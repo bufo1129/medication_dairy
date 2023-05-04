@@ -8,11 +8,13 @@
       <table class="table">
         <tr>
           <td>店舗名</td>
-          <td><%= @dairy.name %></td>
+          <td><%= @dairy.store.name %></td>
         </tr>
         <tr>
           <td>天気</td>
-          <td><%= @dairy.weather %></td>
+          <td>
+            <%= @dairy.weather?(@dairy.weather) %>
+          </td>
         </tr>
         <tr>
           <td>最高気温</td>
