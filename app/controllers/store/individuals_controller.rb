@@ -23,7 +23,7 @@ class Store::IndividualsController < ApplicationController
   def show
     @individual = Individual.find(params[:id])
     @seed = Seed.find_by(id: @individual.seed_id)
-    #↑動物種のidを文字で表儒
+    #↑動物種のidを文字で表儒するため
   end
 
   def edit
@@ -43,8 +43,8 @@ class Store::IndividualsController < ApplicationController
   def destroy
     @individual = Individual.find(params[:id])
     if @individual.store != current_store
-      flash[:alert] = "自店のみしか編集できません"
-      redirect_to individuals_path
+      flash[:alert] = "自店のみしか削除できません"
+      redirect_to request.referer
     else
       @individual.destroy
       flash[:notice] = "削除しました"

@@ -7,6 +7,7 @@
 
   <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">動物種の登録</h3>
   <h4 class="text-success"><%= flash[:notice] %></h4>
+  <h4 class="text-danger"><%= flash[:alert] %></h4>
 
   <div class="text-center mb-5"></div>
     <%= form_with model: @seed, url: admin_seeds_path, method: :post, local: true do |f| %>

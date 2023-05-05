@@ -6,6 +6,7 @@
   <!--</div>-->
 
 <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報一覧</h3>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
 
 <div class="text-center mb-5"></div>
   <%= link_to "日報作成する", new_dairy_path, class: "btn btn-success" %>
@@ -17,6 +18,7 @@
           <th scope="col">日付</th>
           <th scope="col">店舗名</th>
           <th scope="col">投薬記録</th>
+          <th scope="col"></th>
         </tr>
       </thead>
 
@@ -36,6 +38,10 @@
           </td>
           <td class="h5">
             <%= dairy.medication_id %>
+          </td>
+          <td class="h5">
+            <%= link_to "削除", dairy_path(dairy.id), method: :delete,
+            data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
           </td>
         </tr>
       <% end %>

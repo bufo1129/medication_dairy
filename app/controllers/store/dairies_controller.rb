@@ -46,9 +46,14 @@ class Store::DairiesController < ApplicationController
 
   def destroy
     @dairy = Dairy.find(params[:id])
-    @dairy.destroy
-    flash[:notice] = "削除しました"
-    redirect_to dairies_path
+    if @dairy != current_store
+      flash[:alert] = "自店のみしか削除できません"
+      redirect_to request.referer
+    else
+      @dairy.destroy
+      flash[:notice] = "削除しました"
+      redirect_to dairies_path
+    end
   end
 
   private

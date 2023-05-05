@@ -6,6 +6,8 @@
   <!--</div>-->
 
   <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">薬の登録</h3>
+  <h4 class="text-success"><%= flash[:notice] %></h4>
+  <h4 class="text-danger"><%= flash[:alert] %></h4>
 
   <div class="text-center mb-5"></div>
     <%= form_with model: @animal_specy, url: admin_animal_species_path, method: :post, local: true do |f| %>
