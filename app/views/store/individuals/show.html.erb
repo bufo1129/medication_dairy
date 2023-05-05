@@ -4,9 +4,14 @@
   <div class = "row" >
     <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
-      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">店舗情報詳細</h2>
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @individual.name %>情報詳細</h2>
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <table class="table">
+        <tr>
+          <td>店舗名</td>
+          <!--名前表示-->
+          <td><%= @individual.store.name %></td>
+        </tr>
         <tr>
           <td>個体名</td>
           <td><%= @individual.name %></td>
@@ -27,18 +32,17 @@
         </tr>
         <tr>
           <td>種類名</td>
-          <td><%= @individual.seed_id %></td>
+          <td><%= @seed.name %></td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <% if current_store == @individual.store_id %>
-              <%= link_to "編集", edit_individual_path, class: "btn btn-outline-success" %>
-              <%= link_to "削除", individual_path, method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
+            <% if @individual.store == current_store %>
+              <%= link_to "編集", edit_individual_path, class: "btn btn-success" %>
+              <%= link_to "削除", individual_path, method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
             <% else %>
-              <%= link_to "戻る", individuals_path, class: "btn btn-outline-success" %>
+              <%= link_to "戻る", individuals_path, class: "btn btn-success" %>
             <% end %>
-            <!--編集権限を作成した店舗にしたいがうまくいかない-->
           </td>
         </tr>
       </table>

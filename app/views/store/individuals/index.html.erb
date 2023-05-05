@@ -7,6 +7,7 @@
   <!--</div>-->
 <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">個体一覧</h2>
 <h4 class="text-success"><%= flash[:notice] %></h4>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
 <div class="text-center mb-5"></div>
   <%= link_to '新規個体登録', new_individual_path, class: "btn btn-success" %>
 <div class="text-center mb-5"></div>
@@ -15,6 +16,7 @@
   <table class="table">
       <thead class="table-dark">
         <tr>
+          <th scope="col">店舗名</th>
           <th scope="col">個体名</th>
           <th scope="col">種類</th>
           <th scope="col">生年月日</th>
@@ -28,6 +30,12 @@
         <% @individuals.each do |individual| %>
         <tr>
           <td class="h5">
+            <!--↓店舗名押すと、店舗の日報絞り込み-->
+            <%= link_to each_store_path(individual.store_id) do %>
+              <%= individual.store.name %>
+            <% end %>
+          </td>
+          <td class="h5">
             <%= link_to individual_path(individual.id) do %>
               <%= individual.name %>
             <% end %>
@@ -35,7 +43,7 @@
           <td class="h5">
             <%#= link_to each_store_path(individual.id) do %>
             <!--↑種類絞り込みページに飛ばすよう-->
-              <%= individual.seed_id %>
+              <%= individual.seed.name %>
               <p>※日本語表示</p>
             <%# end %>
           </td>
@@ -49,7 +57,6 @@
             <%= individual.weight %>
           </div>
           <td>
-            <%= link_to "編集する", edit_individual_path(individual.id), class: "btn btn-success" %>
             <%= link_to "削除", individual_path(individual.id), method: :delete,
               data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
           </td>
