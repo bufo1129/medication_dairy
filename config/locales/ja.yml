@@ -1,7 +1,7 @@
 ja:
   enums:
     dairies:
-      give_medicine:
+      medication_status:
         not_give: "投薬なし"
         give: "投薬あり"
   activerecord:
