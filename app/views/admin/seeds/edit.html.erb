@@ -1,7 +1,14 @@
-<h1>種類名の編集</h1>
+<div class="text-center mb-5"></div>
 
-  <%= form_with model: @seed, url: admin_seed_path, method: :patch do |f| %>
-    <%= f.label :name, '種類名' %>
-    <%= f.text_field :name %>
-    <%= f.submit "変更保存", class: "btn btn-success" %>
-  <% end %>
+<div class="container">
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">種類名の編集</h3>
+  <div class="row">
+    <%= form_with model: @medicine, url: admin_medicine_path, method: :patch do |f| %>
+    <div class="form-group">
+      <label for="seed_name">種類名:</label>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
