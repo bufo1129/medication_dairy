@@ -4,8 +4,5 @@ class Individual < ApplicationRecord
 
   belongs_to :store
   belongs_to :seed
-  
-  # belongs_to :animal_species#消す
-
 
 end

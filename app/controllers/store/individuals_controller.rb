@@ -16,6 +16,7 @@ class Store::IndividualsController < ApplicationController
       flash[:notice] = "登録が完了しました"
       redirect_to individuals_path
     else
+      flash[:alert] = "必須項目が選択またはされていません"
       render :new
     end
   end
