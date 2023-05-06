@@ -4,6 +4,11 @@ ja:
       medication_status:
         not_give: "投薬なし"
         give: "投薬あり"
+    # medications:
+    #   dosing_times:
+    #     sid: "SID(1日1回)"
+    #     bid: "BID(1日2回)"
+    #     tid: "TID(1日3回)"
   activerecord:
     errors:
       messages:
