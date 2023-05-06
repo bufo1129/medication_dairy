@@ -52,12 +52,6 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "animal_species", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "dairies", force: :cascade do |t|
     t.string "title", null: false
     t.integer "medication_id"
