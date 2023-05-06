@@ -16,7 +16,7 @@ class Store::IndividualsController < ApplicationController
       flash[:notice] = "登録が完了しました"
       redirect_to individuals_path
     else
-      render :index
+      render :new
     end
   end
 

@@ -63,3 +63,4 @@ gem 'bootstrap4-kaminari-views'
 gem 'httpclient' #API天気取得表示用
 gem 'dotenv-rails' #必要なかったら消す(.envとgitignoreも)
 gem 'jp_prefecture'#住所自動入力
+gem 'rails-i18n'

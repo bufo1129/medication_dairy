@@ -63,8 +63,7 @@
             <label for="dosage_indicated">投薬回数：</label>
             <%#= f.select :dosing_times, Medication.dosing_times.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" },class: "form-control"  %>
             <!--日本語化できない、map内の意味が理解できない(配列の書き方)-->
-            <%#= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enum.medication.dosing_times.#{k}"),k]}, class: "form-control"  %>
-            <%= f.select :dosing_times, Medication.dosing_times_i18n.to_a.map{|s| [t("medication.enum.dosing_times.#{s[0]}"),s[1]]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
+            <%= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enums.medication.dosing_times.#{k}"),k]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
           </div>
 
 
@@ -94,3 +93,11 @@
       <%= f.submit "投稿する", class: "btn btn-primary" %>
     <% end %>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="formgroup">
+      下に枠つくる
+    </div>
+  </div>
+</div>
+

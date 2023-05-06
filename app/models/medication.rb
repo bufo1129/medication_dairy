@@ -10,7 +10,7 @@ class Medication < ApplicationRecord
 
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }
-  enum dosing_times: { sid: 0, bid: 1, tid: 3 }
+  enum dosing_times: { sid: 1, bid: 2, tid: 3 }
 
   #投薬計算
 
