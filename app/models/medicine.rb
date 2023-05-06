@@ -1,5 +1,6 @@
 class Medicine < ApplicationRecord
 
-  has_many :medications, dependent: :destroy
+  has_many :medicine_records
+  has_many :medications, through: :medicine_record
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_02_122306) do
+ActiveRecord::Schema.define(version: 2023_05_06_083113) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,21 +66,20 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
   end
 
   create_table "individuals", force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.integer "seed_id", null: false
     t.string "name", null: false
     t.date "birthday", null: false
     t.decimal "age"
     t.decimal "weight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "store_id", null: false
-    t.integer "seed_id", null: false
   end
 
   create_table "medications", force: :cascade do |t|
-    t.integer "medicine_id", null: false
     t.integer "individual_id", null: false
-    t.decimal "dosage_indicated"
-    t.decimal "ingredients_per_tablets"
+    t.integer "seed_id", null: false
+    t.integer "store_id", null: false
     t.decimal "number_of_tablets"
     t.integer "dosing_times"
     t.decimal "liquid_amount"
@@ -90,12 +89,19 @@ ActiveRecord::Schema.define(version: 2023_05_02_122306) do
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "store_id", null: false
-    t.integer "seed_id", null: false
+  end
+
+  create_table "medicine_records", force: :cascade do |t|
+    t.integer "medication_id", null: false
+    t.integer "medicine_id", null: false
+    t.decimal "dosage_indicated", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "medicines", force: :cascade do |t|
     t.string "name", null: false
+    t.decimal "ingredients_per_tablet", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
