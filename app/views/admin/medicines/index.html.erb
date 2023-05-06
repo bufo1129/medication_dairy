@@ -1,44 +1,54 @@
 <div class="text-center mb-5"></div>
 
 <div class="container">
-  <!--<div class="row">-->
-  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
-  <!--</div>-->
-
   <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">薬の登録</h3>
   <h4 class="text-success"><%= flash[:notice] %></h4>
 
   <div class="text-center mb-5"></div>
+  <div class="row">
     <%= form_with model: @medicine, url: admin_medicines_path, method: :post, local: true do |f| %>
-      <%= f.label :name, '薬名' %>
-      <%= f.text_field :name %>
-      <%= f.submit "新規登録", class: "btn btn-outline-success" %>
+    <div class="form-group">
+      <label for="medication_name">薬名:</label>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="ingredients_per_tablet">1錠分の成分量:</label>
+      <%= f.text_field :ingredients_per_tablet, class: "form-control" %>
+    </div>
+      <%= f.submit "新規登録", class: "btn btn-success" %>
     <% end %>
+  </div>
+</div>
 
 <div class="text-center mb-5"></div>
 
-<div class="table-responsive table-hover">
-  <table class="table table-hover">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">薬一覧</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @medicines.each do |medicine| %>
-        <tr>
-          <td class="h5"><%= medicine.name %></td>
-          <td class="h5">
-            <%= link_to "編集する", edit_admin_medicine_path(medicine.id), class: "btn btn-outline-success" %>
-            <%= link_to "削除", admin_medicine_path(medicine.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
-          </td>
-        </tr>
+<div class="container">
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">薬の一覧</h3>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">薬名</th>
+        <th scope="col">1錠分の成分量</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="table table-hover">
+      <% @medicines.each do |medicine| %>
+      <tr>
+        <td>
+          <%= medicine.name %>
+        </td>
+        <td>
+          <%= medicine.ingredients_per_tablet %>
+        </td>
+        <td>
+          <%= link_to "編集する", edit_admin_medicine_path(medicine.id), class: "btn btn-outline-success" %>
+          <%= link_to "削除", admin_medicine_path(medicine.id), method: :delete,
+            data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
+        </td>
+      </tr>
       <% end %>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
   <%#= paginate @medications, theme: 'twitter-bootstrap-4' %>
-  </div>
 </div>

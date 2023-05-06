@@ -39,7 +39,7 @@ class Admin::MedicinesController < ApplicationController
   private
 
   def medicine_params
-    params.require(:medicine).permit(:name)
+    params.require(:medicine).permit(:name, :ingredients_per_tablet)
   end
 
 end
