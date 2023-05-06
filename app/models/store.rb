@@ -16,7 +16,7 @@ class Store < ApplicationRecord
   end
 
   def prefecture_name=(prefecture_name)
-    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).present? ? JpPrefecture::Prefecture.find(name: prefecture_name).code : 0
   end
   # ↑ここまで　住所自動入力
 

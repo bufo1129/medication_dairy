@@ -1,28 +1,31 @@
 <script>
-  $(document).ready(function () {
+   $(document).ready(function () {
     // 入力された都市名でWebAPIに天気情報をリクエスト
-    $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?q=<%= JpPrefecture::Prefecture.find(current_store.prefecture_code).name %>&units=metric&appid=" + OWM_API_KEY,
-      dataType : 'json',
-    }).done(function (data){
-      //通信成功
-      // 最高気温
-      $('#temp_max').text(data.main.temp_max);
-      // 最低気温
-      $('#temp_min').text(data.main.temp_min);
-      //湿度
-      $('#humidity').text(data.main.humidity);
-      // 天気
-      $('#weather').text(data.weather[0].main);
-      // 天気画像
-      $('#img').attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
-      $('#img').attr("alt",data.weather[0].main);
+    <% if JpPrefecture::Prefecture.find(current_store.prefecture_code).blank? %>
+      alert('天気情報の取得に失敗しました。\n住所登録をして再度お試しください。')
+    <% else %>
+      $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/weather?q=<%= JpPrefecture::Prefecture.find(current_store.prefecture_code).name %>&units=metric&appid=" + OWM_API_KEY,
+        dataType : 'json',
+      }).done(function (data){
+        //通信成功
+        // 最高気温
+        $('#temp_max').text(data.main.temp_max);
+        // 最低気温
+        $('#temp_min').text(data.main.temp_min);
+        //湿度
+        $('#humidity').text(data.main.humidity);
+        // 天気
+        $('#weather').text(data.weather[0].main);
+        // 天気画像
+        $('#img').attr("src","http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+        $('#img').attr("alt",data.weather[0].main);
 
-    }).fail(function (data) {
-      //通信失敗
-      alert('天気情報の取得に失敗しました。\n再度時間をおいてページをリロードしてください。')
-    });
-
+      }).fail(function (data) {
+        //通信失敗
+        alert('天気情報の取得に失敗しました。\n再度時間をおいてページをリロードしてください。')
+      });
+    <% end %>
   });
 </script>
 

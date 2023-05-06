@@ -4,6 +4,9 @@ class Store::DairiesController < ApplicationController
   def new
     @store = current_store
     @dairy = Dairy.new
+    pp @store
+    pp current_store.prefecture_code
+    pp JpPrefecture::Prefecture.find(current_store.prefecture_code)
   end
 
   def create
