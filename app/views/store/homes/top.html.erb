@@ -1,37 +1,41 @@
-店舗トップページ
 <h4 class="text-success"><%= flash[:notice] %></h4>
-<!--ログアウト成功-->
-
-<h1>店舗新規登録</h1>
-<div>
-  <%= link_to '店舗新規登録ページ', new_store_registration_path %>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto text-responsive'>
+      <h1>welcome to <i class="fas fa-paw"></i></h1>
+      <h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong> </h1>
+      <p><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </p>
+      <p>動物の日誌や薬の計算をすることができるアプリです。</p>
+      <p> 詳細はアバウトページを見てください<i class="fas fa-paw"></i></p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%#= link_to 'ゲストログイン（閲覧用）', stores_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
+        <div class="row">
+          <%= link_to '店舗ログインページ', new_store_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to '店舗新規登録ページ', new_store_registration_path, class: "btn btn-success btn-block mb-3 sign_up" %>
+        </div>
+        <div class="row">
+          <%= link_to '管理者ログイン', new_admin_session_path, class: "btn btn-info btn-sm btn-block sign_up" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h1>店舗ログイン</h1>
-<div>
-  <%= link_to '店舗ログインページ', new_store_session_path %>
+<!--仮置き-->
+<div class="container">
+  <div class="row">
+    <%= link_to '店舗新規登録ページ', new_store_registration_path %>
+    <%= link_to '店舗ログインページ', new_store_session_path %>
+    <%= link_to '店舗ログアウト', destroy_store_session_path, method: :delete %>
+  </div>
+  <div class="row">
+    <%= link_to '個体一覧', individuals_path %>
+    <%=  link_to '投薬記録', medications_path %>
+    <%=  link_to '日報', dairies_path %>
+    <%=  link_to '店舗一覧', each_stores_path %>
+  </div>
 </div>
-
-<h1>店舗ログアウト</h1>
-<div>
-  <%= link_to 'ログアウト', destroy_store_session_path, method: :delete %>
-</div>
-
-<h1>管理者ログイン</h1>
-<div>
-  <%= link_to '管理者ログインページ', new_admin_session_path %>
-</div>
-
-  <%=  link_to each_stores_path,class: 'nav-link text-light' %>
-店舗
-
-  <%=  link_to dairies_path ,class: 'nav-link text-light' %>
-日報
-
-
-  <%=  link_to medications_path ,class: 'nav-link text-light' %>
-投薬記録
-
-
-  <%= link_to individuals_path,class: 'nav-link text-light' %>
- 個体

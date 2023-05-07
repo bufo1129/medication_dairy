@@ -23,11 +23,10 @@ class Store::MedicationsController < ApplicationController
 
   def medication_params
     params.require(:medication).permit(
-      :medication_id, :individual_id,
-      :dosage_indicated, :ingredients_per_tablets,
-      :number_of_tablets, :dosing_times,
+
+      :individual_id,:number_of_tablets, :dosing_times,
       :liquid_amount, :dosing_start_date, :dosing_end_date,
-      :medication_status, :body, :store_id, :seed_i
+      :medication_status, :body, :store_id, :seed_id
       )
   end
 

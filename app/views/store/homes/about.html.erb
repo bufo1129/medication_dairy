@@ -1,14 +1,40 @@
-店舗アバウトページ
-
-「本社からのお知らせとか通知とか載せられたらいいな」
 <h4 class="text-success"><%= flash[:notice] %></h4>
-
-<h1>個体一覧</h1>
-<div>
-  <%= link_to '個体一覧ページ', individuals_path %>
-</div>
-
-<h1>店舗一覧</h1>
-<div>
-  <%= link_to '店舗一覧ページ', each_stores_path %>
+<div class="mb-5"></div>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto text-responsive'>
+      <h1>welcome to <i class="fas fa-paw"></i></h1>
+      <h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong> </h1>
+      <p><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </p>
+      <p>動物の日誌や薬の計算をすることができるアプリです。</p>
+      <p> 詳細はアバウトページを見てください<i class="fas fa-paw"></i></p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to each_stores_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
+            <i class="fas fa-store"></i> 店舗一覧
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to dairies_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
+          <i class="fas fa-book-open"></i> 日報一覧ページ
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to medications_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
+          <i class="fas fa-pills"></i> 投薬一覧ページ
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to individuals_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
+          <i class="fas fa-paw"></i> 個体一覧ページ
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to destroy_store_session_path, method: :delete, class: "btn btn-danger btn-sm btn-block mb-3" do %>
+            <i class="fas fa-sign-out-alt"></i> Log out
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

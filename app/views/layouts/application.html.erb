@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MedicationDairy</title>
+    <title>AnimalMedicationDairy</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,10 +17,17 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.34/jquery.jpostal.min.js"></script>
   </head>
 
-  <!--ヘッダー　ナビリンク-->
+  <!--header-->
   <%= render 'layouts/header' %>
 
   <body>
     <%= yield %>
   </body>
+
+  <!--fooder-->
+  <fooder>
+    <%= render 'layouts/fooder' %>
+  </fooder>
+
+
 </html>

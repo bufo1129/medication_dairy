@@ -31,7 +31,6 @@ Rails.application.routes.draw do
 
   end
 
-
 #deviseルート
 # 店舗客用
   devise_for :stores, skip: [:passwords], controllers: {

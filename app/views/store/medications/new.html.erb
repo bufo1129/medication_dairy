@@ -21,13 +21,15 @@
 
     <%= form_with model: @medication, url: individuals_path, method: :post, local: true do |f| %>
     <div class="row">
-      <div class="col"><label for="dosing_start_date">投薬開始日</label>
+      <div class="col">
+        <label for="dosing_start_date">投薬開始日</label>
         <%= f.date_field :dosing_start_date, class: "form-control" %>
       </div>
-      <div class="col"><label for="dosing_end_date">投薬終了予定日</label>
+      <div class="col">
+        <label for="dosing_end_date">投薬終了予定日</label>
         <%= f.date_field :dosing_end_date, class: "form-control" %>
       </div>
-      <div class="col-7">
+      <div class="col">
         <div class="form-group">
           <label for="medication_status">投薬ステータス: </label></br>
           <%= f.label :medication_status_give, '投薬あり' %>
@@ -35,7 +37,6 @@
           <%= f.label :medication_status_, '投薬なし' %>
           <%= f.radio_button :medication_status, :not_give %>
         </div>
-        
       </div>
       <div class="col"></div>
     </div>
@@ -43,8 +44,7 @@
     <!--スペース用-->
     <div class="mb-3"></div>
     <div class="row">
-      <div class="col-md-6">
-        
+      <div class="col-md-4">
         <div class="form-group">
           <label for="individual">個体</label>
           <%= f.select :individual_id, Individual.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
@@ -52,19 +52,19 @@
         </div>
         <div class="form-group">
           <label for="weight">体重</label>
-          <%= f.text_field :weight, placeholder: "体重を入力してください(小数点第１位まで「0.1」)", class: "form-control" %>
+          <%= f.text_field :weight, placeholder: "小数点第１位まで「0.1」)", class: "form-control" %>
         </div>
-        <div class="form-group">
-          <label for="dosage_indicated">投薬回数：</label>
-          <%= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enums.medication.dosing_times.#{k}"),k]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
-        </div>
+
+      </div>
+
+      <div class="col-md-8">
         <div class="form-group">
           <label for="medication_body">備考</label>
           <%= f.text_area :body, class: "form-control" %>
         </div>
       </div>
     </div>
-    
+
     <!--スペース用-->
     <div class="mb-3"></div>
     <div class="row">
@@ -81,30 +81,40 @@
     <div class="row">
       <div class="col-md-6">
 
+        <!--薬の種類選択-->
         <div class="form-group">
-          <label for="dosage_indicated">必要量(mg/kg)：先生からの指示量を入力</label>
-          <%= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください",class: "form-control" %>
+          <label for="individual">薬の種類</label></br>
+          1錠分の成分量(mg/T)登録数値反映
+          <%= f.select :medicine_id, Medicine.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
         </div>
         <div class="form-group">
-          <label for="ingredients_per_tablets">1錠分の成分量(mg/T)：箱に記載されている量</label>
-          <%= f.text_field :ingredients_per_tablets, placeholder: "箱に記載されている成分量を入力してください",class: "form-control" %>
+          <label for="dosage_indicated">投薬回数：</label>
+          <%= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enums.medication.dosing_times.#{k}"),k]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
         </div>
+        <div class="form-group">
+          <label for="dosage_indicated">必要量(mg/kg)：</label>
+          <%= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="liquid_amount">与えたい液体量(ml)：</label>
+          <%= f.text_field :liquid_amount, placeholder: "例）1、0.5など",class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="liquid_amount">投薬日数：</label></br>
+          ※カレンダーから取得したい
+          <%= f.text_field :dosing_times, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
         <div class="form-group">
           <label for="number_of_tablets">錠剤の個数(個)：分数表示or分数表示(結果)</label>
           <%= f.text_field :number_of_tablets, class: "form-control" %>
         </div>
-        <div class="form-group">
-          <label for="liquid_amount">液体量(ml)</label>
-          <%= f.text_field :liquid_amount, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <label for="medication_body">備考</label>
-          <%= f.text_area :body, class: "form-control" %>
-        </div>
       </div>
+
     </div>
-    <%= f.submit "投稿する", class: "btn btn-primary" %>
+    <%= f.submit "保存する", class: "btn btn-primary" %>
   <% end %>
-    
 </div>
 

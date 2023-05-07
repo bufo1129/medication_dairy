@@ -1,7 +1,7 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>Medication_Dairy</span></a>
+      <a class="navbar-brand" href="/"><i class="fas fa-notes-medical"></i> <span>Animal Medication Dairy</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -18,17 +18,17 @@
             </li>
             <li>
               <%=  link_to admin_stores_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-users"></i> 店舗
+                <i class="fas fa-store"></i> 店舗
               <% end %>
             </li>
             <li>
               <%=  link_to admin_medicines_path ,class: 'nav-link text-light' do %>
-                <i class="fas fa-book-open"></i> 薬
+                <i class="fas fa-pills"></i> 薬
               <% end %>
             </li>
             <li>
               <%=  link_to admin_seeds_path ,class: 'nav-link text-light' do %>
-                <i class="fas fa-book-open"></i> 動物種
+                <i class="fas fa-paw"></i> 動物種
               <% end %>
             </li>
             <!--<li>-->
@@ -73,27 +73,31 @@
         <% elsif store_signed_in? %>
           <h4 class="navbar-text-light d-flex align-items-center mr-5"><strong><%= current_store.name %></strong></h4>
           <li>
+              <%= link_to about_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-link"></i> About
+              <% end %>
+            </li>
+          <li>
             <%=  link_to each_stores_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> 店舗
+              <i class="fas fa-store"></i> 店舗
             <% end %>
           </li>
           <li>
             <%=  link_to dairies_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> 日報
+              <i class="fas fa-book-open"></i> 日報一覧
             <% end %>
           </li>
           <li>
             <%=  link_to medications_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> 投薬記録
+              <i class="fas fa-pills"></i> 投薬一覧
             <% end %>
           </li>
           <li>
             <%= link_to individuals_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> 個体
+              <i class="fas fa-paw"></i> 個体一覧
             <% end %>
           </li>
           <li>
-            <%#= link_to destroy_store_session_path, method: :delete, class: 'nav-link text-light' do %>
             <%= link_to destroy_store_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> Log out
             <% end %>

@@ -26,4 +26,5 @@ class Store < ApplicationRecord
   end
   # ↑住所自動入力、都道府県未登録の際でも取得できるように定義
 
+
 end
