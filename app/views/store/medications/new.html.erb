@@ -19,7 +19,7 @@
     <!--スペース用-->
     <div class="mb-3"></div>
 
-    <%= form_with model: @medication, url: individuals_path, method: :post, local: true do |f| %>
+    <%= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
     <div class="row">
       <div class="col">
         <label for="dosing_start_date">投薬開始日</label>
@@ -51,8 +51,8 @@
           <!--できたら自店の個体のみ選択欄に入れるor検索して登録-->
         </div>
         <div class="form-group">
-          <label for="weight">体重</label>
-          <%= f.text_field :weight, placeholder: "小数点第１位まで「0.1」)", class: "form-control" %>
+          <label for="weight">①　体重</label>
+          <%= f.text_field :weight, placeholder: "小数点第１位まで「0.1」)", class: "form-control", id: "weight" %>
         </div>
 
       </div>
@@ -83,38 +83,95 @@
 
         <!--薬の種類選択-->
         <div class="form-group">
-          <label for="individual">薬の種類</label></br>
+          <label for="individual">②　薬の種類</label></br>
           1錠分の成分量(mg/T)登録数値反映
           <%= f.select :medicine_id, Medicine.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
         </div>
         <div class="form-group">
-          <label for="dosage_indicated">投薬回数：</label>
+          <label for="dosage_indicated">B.　投薬回数：</label>
           <%= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enums.medication.dosing_times.#{k}"),k]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
         </div>
         <div class="form-group">
-          <label for="dosage_indicated">必要量(mg/kg)：</label>
-          <%= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control" %>
+          <label for="dosage_indicated" >③　必要量(mg/kg)：</label>
+          <%= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
         </div>
         <div class="form-group">
-          <label for="liquid_amount">与えたい液体量(ml)：</label>
+          <label for="liquid_amount">④　与えたい液体量(ml)：</label>
           <%= f.text_field :liquid_amount, placeholder: "例）1、0.5など",class: "form-control" %>
         </div>
         <div class="form-group">
-          <label for="liquid_amount">投薬日数：</label></br>
+          <label for="liquid_amount">A.　投薬日数：</label></br>
           ※カレンダーから取得したい
           <%= f.text_field :dosing_times, class: "form-control" %>
         </div>
+
       </div>
+
+
 
       <div class="col-md-6">
+        <h3>計算結果：</h3>
+        <!--<input type="text"  id="first">-->
+        <input type="text"  id="second">
+        <input type="text"  id="last">
         <div class="form-group">
-          <label for="number_of_tablets">錠剤の個数(個)：分数表示or分数表示(結果)</label>
-          <%= f.text_field :number_of_tablets, class: "form-control" %>
+          <p>　＝　①体重*③必要量(先生指示)</p>
+          <%#= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "weight_requirement" %>
+          <div id="weight_requirement"></div>
+          <%= f.hidden_field :出力結果のカラム名, id: "weight_requirement_value" %>
+        </div>
+        <div>
+          <label>⑥1回に必要な錠剤の個数 1/x錠(分母出す)</label>
+          <p>　＝　③必要量/⑤体重に対する必要量</p>
+        </div>
+        <div>
+          <label>⑦1回に必要な錠剤の個数(整数)</label>
+          <p>　＝　１/⑥</p>
+        </div>
+        <div>
+          <label>⑧ｎ日分に必要な錠剤の個数(整数)</label>
+          <p>　＝　1/⑨</p>
+        </div>
+        <div>
+          <label>⑨ｎ日分に必要な錠剤の個数(整数)</label>
+          <p>　＝　A*B*⑦</p>
+        </div>
+        <h3>1錠を溶かす場合：</h3>
+        <div>
+          <label>溶かすための液体量</label>
+          <p>　＝　⑥*④</p>
         </div>
       </div>
-
+      <%= f.submit "保存する", class: "btn btn-primary" %>
+     <% end %>
     </div>
-    <%= f.submit "保存する", class: "btn btn-primary" %>
-  <% end %>
 </div>
 
+
+<!--↓初心者にわかりやすい、ダブりのコード-->
+
+<!--// function orgFloor(value, base) {-->
+<!--// 　return Math.floor(value * base) / base;-->
+<!--// }-->
+
+<!--// $(document).ready(function() {-->
+<!--//     $("#dosage_indicated").focusout(function() {-->
+<!--//       var inputWeight = $("#weight").val();-->
+<!--//       var inputIndicated = $("#dosage_indicated").val();-->
+<!--//       if (inputWeight && inputIndicated) {-->
+<!--//         var resultDivision = inputWeight*inputIndicated;-->
+<!--//         $("#weight_requirement").append(resultDivision);-->
+<!--//         $("#weight_requirement_value").val(resultDivision);-->
+<!--//       }-->
+<!--//     })-->
+<!--//     $("#weight").focusout(function() {-->
+<!--//       var inputWeight = $("#weight").val();-->
+<!--//       var inputIndicated = $("#dosage_indicated").val();-->
+<!--//       if (inputWeight && inputIndicated) {-->
+<!--//         var resultDivision = inputWeight*inputIndicated;-->
+<!--//         $("#weight_requirement").append(resultDivision);-->
+<!--//         $("#weight_requirement_value").val(resultDivision);-->
+<!--//       }-->
+<!--//     })-->
+<!--//     function-->
+<!--// });-->

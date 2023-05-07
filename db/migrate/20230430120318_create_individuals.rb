@@ -8,6 +8,7 @@ class CreateIndividuals < ActiveRecord::Migration[6.1]
       t.date    :birthday,          null: false
       t.decimal :age
       t.decimal :weight
+      t.integer :medication_id,     null: false
 
       t.timestamps
     end

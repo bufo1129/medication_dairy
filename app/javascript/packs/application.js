@@ -14,6 +14,7 @@ import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 import './address_autofill.js'
+import './dosageCalculation'
 // import './script.js'
 // import 'jquery-3.6.4.min.js'
 

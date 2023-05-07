@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_083113) do
     t.date "birthday", null: false
     t.decimal "age"
     t.decimal "weight"
+    t.integer "medication_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -4,5 +4,6 @@ class Individual < ApplicationRecord
 
   belongs_to :store
   belongs_to :seed
+  belongs_to :medication
 
 end
