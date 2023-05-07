@@ -11,6 +11,8 @@ class CreateMedications < ActiveRecord::Migration[6.1]
       t.date      :dosing_end_date
       t.boolean   :medication_status
       t.text      :body
+      t.decimal   :give_liquid
+      t.integer   :several_days
 
       t.timestamps
     end

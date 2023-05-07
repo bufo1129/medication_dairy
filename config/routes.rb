@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :dairies    #日報
     resources :medications #投薬記録
     resources :individuals #個体
-    resources :medicines, only: [:show]
+    resources :medicines, only: [:show]#保留
 
   end
 

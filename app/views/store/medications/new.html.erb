@@ -38,7 +38,6 @@
           <%= f.radio_button :medication_status, :not_give %>
         </div>
       </div>
-      <div class="col"></div>
     </div>
 
     <!--スペース用-->
@@ -84,7 +83,7 @@
         <!--薬の種類選択-->
         <div class="form-group">
           <label for="medicine">②　薬の種類</label></br>
-          1錠分の成分量(mg/T)登録数値反映
+          1錠分の成分量(mg/T)登録数値反映されてる
           <%= f.select :medicine_id, Medicine.all.map{|o| [o.name, o.ingredients_per_tablet]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
         </div>
         <div class="form-group">
@@ -97,13 +96,12 @@
           <%= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
         </div>
         <div class="form-group">
-          <label for="liquid_amount">④　与えたい液体量(ml)：</label>
-          <%= f.text_field :liquid_amount, placeholder: "例）1、0.5など",class: "form-control" %>
+          <label for="give_liquid">④　与えたい液体量(ml)：</label>
+          <%= f.text_field :give_liquid, placeholder: "例）1、0.5など",class: "form-control", id: "give_liquid" %>
         </div>
         <div class="form-group">
-          <label for="liquid_amount">A.　投薬日数：</label></br>
-          ※カレンダーから取得したい
-          <%= f.text_field :dosing_times, class: "form-control" %>
+          <label for="several_days">A.　投薬日数：</label></br>
+          <%= f.text_field :several_days, class: "form-control", id: "several_days" %>
         </div>
 
       </div>
@@ -112,7 +110,7 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          <label>⑤体重に対する必要量：</label>
+          <label>⑤体重に対する必要量：いらないけど</label>
           <p>　＝　①体重*③必要量(先生指示)</p>
           <div id="weight_requirement"></div>
           <%= f.hidden_field :出力結果のカラム名, id: "weight_requirement_value" %>
@@ -120,8 +118,8 @@
         <div>
           <label>⑥1回に必要な錠剤の個数 x錠：</label>
           <p>　＝　①体重*⑤必要量/③1錠分の成分量：</p>
-          <div id="required_quantity"></div>
-          <%= f.hidden_field :出力結果のカラム名, id: "required_quantity" %>
+          <div id="number_of_tablets"></div>
+          <%= f.hidden_field :number_of_tablets, id: "number_of_tablets_value" %>
         </div>
         <div>
           <label>⑦1回に必要な錠剤の個数(整数)：</label>

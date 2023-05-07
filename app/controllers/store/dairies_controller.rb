@@ -1,6 +1,15 @@
 class Store::DairiesController < ApplicationController
   before_action :authenticate_store!
 
+
+  def index
+    if params[:store_id].present?
+      @dairies = Dairy.where(store_id: params[:store_id])
+    else
+      @dairies = Dairy.all.order(created_at: :desc)
+    end
+  end
+
   def new
     @store = current_store
     @dairy = Dairy.new
@@ -21,14 +30,6 @@ class Store::DairiesController < ApplicationController
     end
   end
 
-  def index
-    if params[:store_id].present?
-      @dairies = Dairy.where(store_id: params[:store_id])
-    else
-      @dairies = Dairy.all.order(created_at: :desc)
-    end
-  end
-
   def show
     @dairy = Dairy.find(params[:id])
   end
@@ -43,6 +44,7 @@ class Store::DairiesController < ApplicationController
       flash[:notice] = "変更が完了しました"
       redirect_to dairy_path(@dairy)
     else
+      flash[:alert] = "変更に失敗しました"
       render :edit
     end
   end

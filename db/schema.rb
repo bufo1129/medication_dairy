@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 2023_05_07_123644) do
     t.date "dosing_end_date"
     t.boolean "medication_status"
     t.text "body"
+    t.decimal "give_liquid"
+    t.integer "several_days"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
