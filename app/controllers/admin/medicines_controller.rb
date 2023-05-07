@@ -1,4 +1,5 @@
 class Admin::MedicinesController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @medicine = Medicine.new

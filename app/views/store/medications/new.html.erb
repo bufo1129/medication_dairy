@@ -69,10 +69,10 @@
     <div class="mb-3"></div>
     <div class="row">
       <div class="col">
-        <h4><span style="background-color: #c0c0c0;">投薬記録の新規作成</span></h4>
+        <h4><span style="background-color: #c0c0c0;">投薬情報入力</span></h4>
       </div>
       <div class="col">
-        <h4><span style="background-color: #c0c0c0;">計算する</span></h4>
+        <h4><span style="background-color: #c0c0c0;">投薬計算結果</span></h4>
       </div>
     </div>
 
@@ -83,13 +83,14 @@
 
         <!--薬の種類選択-->
         <div class="form-group">
-          <label for="individual">②　薬の種類</label></br>
+          <label for="medicine">②　薬の種類</label></br>
           1錠分の成分量(mg/T)登録数値反映
-          <%= f.select :medicine_id, Medicine.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+          <%= f.select :medicine_id, Medicine.all.map{|o| [o.name, o.ingredients_per_tablet]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
         </div>
         <div class="form-group">
-          <label for="dosage_indicated">B.　投薬回数：</label>
-          <%= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enums.medication.dosing_times.#{k}"),k]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
+          <label for="dosing_times">B.　投薬回数：</label>
+          <%= f.select :dosing_times, NumberOfTime.all.map{|o| [o.name, o.dosing_times]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
+          <%#= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enums.medication.dosing_times.#{k}"),k]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
         </div>
         <div class="form-group">
           <label for="dosage_indicated" >③　必要量(mg/kg)：</label>
@@ -110,30 +111,28 @@
 
 
       <div class="col-md-6">
-        <h3>計算結果：</h3>
-        <!--<input type="text"  id="first">-->
-        <input type="text"  id="second">
-        <input type="text"  id="last">
         <div class="form-group">
+          <label>⑤体重に対する必要量：</label>
           <p>　＝　①体重*③必要量(先生指示)</p>
-          <%#= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "weight_requirement" %>
           <div id="weight_requirement"></div>
           <%= f.hidden_field :出力結果のカラム名, id: "weight_requirement_value" %>
         </div>
         <div>
-          <label>⑥1回に必要な錠剤の個数 1/x錠(分母出す)</label>
-          <p>　＝　③必要量/⑤体重に対する必要量</p>
+          <label>⑥1回に必要な錠剤の個数 x錠：</label>
+          <p>　＝　①体重*⑤必要量/③1錠分の成分量：</p>
+          <div id="required_quantity"></div>
+          <%= f.hidden_field :出力結果のカラム名, id: "required_quantity" %>
         </div>
         <div>
-          <label>⑦1回に必要な錠剤の個数(整数)</label>
+          <label>⑦1回に必要な錠剤の個数(整数)：</label>
           <p>　＝　１/⑥</p>
         </div>
         <div>
-          <label>⑧ｎ日分に必要な錠剤の個数(整数)</label>
+          <label>⑧ｎ日分に必要な錠剤の個数(整数)：</label>
           <p>　＝　1/⑨</p>
         </div>
         <div>
-          <label>⑨ｎ日分に必要な錠剤の個数(整数)</label>
+          <label>⑨ｎ日分に必要な錠剤の個数(整数)：</label>
           <p>　＝　A*B*⑦</p>
         </div>
         <h3>1錠を溶かす場合：</h3>
@@ -146,32 +145,3 @@
      <% end %>
     </div>
 </div>
-
-
-<!--↓初心者にわかりやすい、ダブりのコード-->
-
-<!--// function orgFloor(value, base) {-->
-<!--// 　return Math.floor(value * base) / base;-->
-<!--// }-->
-
-<!--// $(document).ready(function() {-->
-<!--//     $("#dosage_indicated").focusout(function() {-->
-<!--//       var inputWeight = $("#weight").val();-->
-<!--//       var inputIndicated = $("#dosage_indicated").val();-->
-<!--//       if (inputWeight && inputIndicated) {-->
-<!--//         var resultDivision = inputWeight*inputIndicated;-->
-<!--//         $("#weight_requirement").append(resultDivision);-->
-<!--//         $("#weight_requirement_value").val(resultDivision);-->
-<!--//       }-->
-<!--//     })-->
-<!--//     $("#weight").focusout(function() {-->
-<!--//       var inputWeight = $("#weight").val();-->
-<!--//       var inputIndicated = $("#dosage_indicated").val();-->
-<!--//       if (inputWeight && inputIndicated) {-->
-<!--//         var resultDivision = inputWeight*inputIndicated;-->
-<!--//         $("#weight_requirement").append(resultDivision);-->
-<!--//         $("#weight_requirement_value").val(resultDivision);-->
-<!--//       }-->
-<!--//     })-->
-<!--//     function-->
-<!--// });-->

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_06_083113) do
+ActiveRecord::Schema.define(version: 2023_05_07_123644) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,23 +66,22 @@ ActiveRecord::Schema.define(version: 2023_05_06_083113) do
   end
 
   create_table "individuals", force: :cascade do |t|
-    t.integer "store_id", null: false
+    t.integer "store_id"
     t.integer "seed_id", null: false
     t.string "name", null: false
     t.date "birthday", null: false
     t.decimal "age"
     t.decimal "weight"
-    t.integer "medication_id", null: false
+    t.integer "medication_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "medications", force: :cascade do |t|
     t.integer "individual_id", null: false
-    t.integer "seed_id", null: false
-    t.integer "store_id", null: false
+    t.integer "seed_id"
+    t.integer "store_id"
     t.decimal "number_of_tablets"
-    t.integer "dosing_times"
     t.decimal "liquid_amount"
     t.date "dosing_start_date"
     t.date "dosing_end_date"
@@ -103,6 +102,13 @@ ActiveRecord::Schema.define(version: 2023_05_06_083113) do
   create_table "medicines", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "ingredients_per_tablet", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "number_of_times", force: :cascade do |t|
+    t.string "name"
+    t.integer "dosing_times"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

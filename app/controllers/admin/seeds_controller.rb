@@ -1,4 +1,5 @@
 class Admin::SeedsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @seed = Seed.new
@@ -8,8 +9,10 @@ class Admin::SeedsController < ApplicationController
   def create
     @seed = Seed.new(seed_params)
     if @seed.save
+      flash[:notice] = "変更が完了しました"
       redirect_to admin_seeds_path
     else
+      flash[:alert] = "失敗しました"
       @seeds = Seed.all
       render :index
     end
@@ -25,6 +28,7 @@ class Admin::SeedsController < ApplicationController
       flash[:notice] = "変更が完了しました"
       redirect_to admin_seeds_path
     else
+      flash[:alert] = "失敗しました"
       render :edit
     end
   end
