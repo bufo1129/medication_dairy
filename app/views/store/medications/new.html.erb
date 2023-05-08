@@ -109,34 +109,27 @@
 
 
       <div class="col-md-6">
+        <h3>必要な錠剤数の結果：</h3>
         <div class="form-group">
-          <label>⑤体重に対する必要量：いらないけど</label>
+          <label>体重に対する必要量：</br>※いらないけど正常動作している</label>
           <p>　＝　①体重*③必要量(先生指示)</p>
           <div id="weight_requirement"></div>
           <%= f.hidden_field :出力結果のカラム名, id: "weight_requirement_value" %>
         </div>
         <div>
-          <label>⑥1回に必要な錠剤の個数 x錠：</label>
-          <p>　＝　①体重*⑤必要量/③1錠分の成分量：</p>
+          <label>⑤1回に必要な錠剤の個数 x錠：※保存対象</label>
+          <p>　＝　①体重*③必要量/②1錠分の成分量：</p>
           <div id="number_of_tablets"></div>
           <%= f.hidden_field :number_of_tablets, id: "number_of_tablets_value" %>
         </div>
         <div>
-          <label>⑦1回に必要な錠剤の個数(整数)：</label>
-          <p>　＝　１/⑥</p>
-        </div>
-        <div>
-          <label>⑧ｎ日分に必要な錠剤の個数(整数)：</label>
-          <p>　＝　1/⑨</p>
-        </div>
-        <div>
-          <label>⑨ｎ日分に必要な錠剤の個数(整数)：</label>
-          <p>　＝　A*B*⑦</p>
+          <label>⑥ｎ日分に必要な錠剤の個数(整数)：</label>
+          <p>　＝ ⑤*A*B</p>
         </div>
         <h3>1錠を溶かす場合：</h3>
         <div>
           <label>溶かすための液体量</label>
-          <p>　＝　⑥*④</p>
+          <p>　＝　⑤/④</p>
         </div>
       </div>
       <%= f.submit "保存する", class: "btn btn-primary" %>
