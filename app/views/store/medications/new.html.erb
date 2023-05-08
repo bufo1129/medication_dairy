@@ -47,13 +47,11 @@
         <div class="form-group">
           <label for="individual">個体</label>
           <%= f.select :individual_id, Individual.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
-          <!--できたら自店の個体のみ選択欄に入れるor検索して登録-->
         </div>
         <div class="form-group">
           <label for="weight">①　体重</label>
           <%= f.text_field :weight, placeholder: "小数点第１位まで「0.1」)", class: "form-control", id: "weight" %>
         </div>
-
       </div>
 
       <div class="col-md-8">
@@ -108,20 +106,17 @@
       <div class="col-md-6">
         <h3>必要な錠剤数の結果：</h3>
         <div>
-          <label>⑤1回に必要な錠剤の個数 x錠：※保存対象</label>
-          <p>　＝　①体重*③必要量/②1錠分の成分量：</p>
+          <label>⑤1回に必要な錠剤の個数</label>
           <div id="number_of_tablets"></div>
           <%= f.hidden_field :number_of_tablets, id: "number_of_tablets_value" %>
         </div>
         <div>
           <label>⑥ｎ日分に必要な錠剤の個数(整数)：</label>
-          <p>　＝ ⑤*A*B</p>
           <div id="n_days_tablets"></div>
         </div>
         <h3>1錠を溶かす場合：</h3>
         <div>
           <label>溶かすための液体量</label>
-          <p>　＝　⑤/④</p>
           <div id="liquid_amount"></div>
           <%= f.hidden_field :number_of_tablets, id: "liquid_amount_value" %>
         </div>

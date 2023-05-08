@@ -32,9 +32,10 @@ class Store::IndividualsController < ApplicationController
 
   def update
     if @individual.update(individual_params)
-      flash[:notice] = "変更が完了しました"
+      flash[:notice] = "更新が完了しました"
       redirect_to individuals_path
     else
+      flash[:alert] = "更新に失敗しました"
       render :edit
     end
   end
@@ -58,7 +59,7 @@ class Store::IndividualsController < ApplicationController
 
   def individual_params
     params.require(:individual).permit(
-      :seed_id, :name, :birthday, :age, :weight, :store_id
+      :seed_id, :name, :birthday, :age, :weight, :store_id, :image
       )
   end
 

@@ -13,7 +13,6 @@ class Admin::IndividualsController < ApplicationController
 
   def individual_params
     params.require(:individual).permit(
-      :seed_id, :name, :birthday, :age, :weight, :store_id
-      )
+      :seed_id, :name, :birthday, :age, :weight, :store_id, :image)
   end
 end
