@@ -1,0 +1,2 @@
+module Admin::DairiesHelper
+end

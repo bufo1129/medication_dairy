@@ -1,21 +1,18 @@
 class Admin::StoresController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_store, only: [:show, :update]
+  before_action :set_store, only: [:show, :edit, :update]
 
   def index
     @stores = Store.all
   end
 
   def show
-    @store = Store.find(params[:id])
   end
 
   def edit
-    @store = Store.find(params[:id])
   end
 
   def update
-    @store = Store.find(params[:id])
     if @store.update(store_params)
       flash[:notice] = "店舗情報が更新されました"
       redirect_to admin_store_path(@store)

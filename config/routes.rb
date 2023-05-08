@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'dairies/index'
+    get 'dairies/show'
+    get 'dairies/edit'
+  end
   # namespace :admin do
   #   get 'seeds/index'
   #   get 'seeds/edit'
