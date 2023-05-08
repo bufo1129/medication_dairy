@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :number_of_times, only: [:index, :create, :edit, :update, :destroy] #回数
     resources :dairies, only: [:index, :show] #日報
     resources :individuals, only: [:index, :show] #個体
-    resources :weathers, only: [:index, :show, :edit] #天気
+    resources :weathers, only: [:index, :edit, :create, :update, :destroy] #天気
   end
 
   scope module: :store do

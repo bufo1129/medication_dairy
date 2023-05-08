@@ -1,2 +1,47 @@
-<h1>Admin::Weathers#index</h1>
-<p>Find me in app/views/admin/weathers/index.html.erb</p>
+<div class="text-center mb-5"></div>
+
+<div class="container">
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">天気の登録</h3>
+  <h4 class="text-success"><%= flash[:notice] %></h4>
+  <h4 class="text-danger"><%= flash[:alert] %></h4>
+
+  <div class="text-center mb-5"></div>
+  <div class="row">
+    <%= form_with model: @weather, url: admin_weathers_path, method: :post, local: true do |f| %>
+    <div class="form-group">
+      <label for="medication_name">登録名:</label>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center mb-5"></div>
+
+<div class="container">
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">登録名一覧</h3>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">登録名</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="table table-hover">
+      <% @weathers.each do |weather| %>
+      <tr>
+        <td>
+          <%= weather.name %>
+        </td>
+        <td>
+          <%= link_to "編集する", edit_admin_weather_path(weather.id), class: "btn btn-outline-success" %>
+          <%= link_to "削除", admin_weather_path(weather.id), method: :delete,
+            data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%#= paginate @medications, theme: 'twitter-bootstrap-4' %>
+</div>

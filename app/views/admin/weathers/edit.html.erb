@@ -1,2 +1,14 @@
-<h1>Admin::Weathers#edit</h1>
-<p>Find me in app/views/admin/weathers/edit.html.erb</p>
+<div class="text-center mb-5"></div>
+
+<div class="container">
+  <div class="row">
+    <%= form_with model: @weather, url: admin_weather_path(@weather), method: :patch do |f| %>
+    <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">天気の登録名編集</h3>
+    <div class="form-group">
+      <label for="medication_name">登録名:</label>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+      <%= f.submit "変更する", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
