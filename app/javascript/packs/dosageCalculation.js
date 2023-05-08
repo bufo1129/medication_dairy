@@ -24,12 +24,11 @@ $(document).ready(function() {
       console.log('outputWeightRequirement()')
       if (inputWeight &&  selectMedicine && inputIndicated) {
         var resultDivision = inputWeight*inputIndicated/selectMedicine;
-        // 「1回に必要な錠剤の個数に表示(小数点第1位まで)」
         $("#number_of_tablets").append(resultDivision.toFixed(1));
-        // 「1回に必要な錠剤の個数に表示(小数点第1位まで)を保存するため、hidden_fieldへ」
         $("#number_of_tablets_value").val(resultDivision.toFixed(1));
         console.log("仕事してますか？")
         outputTabletRequirement();
+        outputRiquidRequirement();
       }
     }
     // ここまで
@@ -59,6 +58,30 @@ $(document).ready(function() {
       if ( resultDivision && inputDay && selectTime) {
         var resultQuantity = resultDivision*inputDay*selectTime;
         $("#n_days_tablets").append(resultQuantity.toFixed(1));
+      }
+    }
+    // ここまで
+
+    // ここから:溶かすための液体量:liquid_amount
+    $("#number_of_tablets").on('change',function() {
+      console.log('number_of_tablets');
+      outputRiquidRequirement();
+    })
+    $("#give_liquid").on('change',function() {
+      console.log('give_liqui');
+      outputRiquidRequirement();
+    })
+    function outputRiquidRequirement() {
+      $("#liquid_amount").empty();
+      var resultDivision = $("#number_of_tablets").text();
+      var inputLiquid = $("#give_liquid").val();
+      console.log('resultDivision='+resultDivision );
+      console.log('inputLiquid='+inputLiquid );
+      console.log('outputRiquidRequirement()');
+      if ( resultDivision && inputLiquid ) {
+        var resultQuantity = resultDivision/inputLiquid;
+        $("#liquid_amount").append(resultQuantity.toFixed(1));
+        $("#liquid_amount_value").append(resultQuantity.toFixed(1));
       }
     }
     // ここまで
