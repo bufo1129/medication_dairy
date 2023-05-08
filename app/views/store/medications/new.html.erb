@@ -89,7 +89,6 @@
         <div class="form-group">
           <label for="dosing_times">B.　投薬回数：</label>
           <%= f.select :dosing_times, NumberOfTime.all.map{|o| [o.name, o.dosing_times]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
-          <%#= f.select :dosing_times, Medication.dosing_times_i18n.keys.map{|k| [I18n.t("enums.medication.dosing_times.#{k}"),k]},{ include_blank: "--選択してください--" }, class: "form-control"  %>
         </div>
         <div class="form-group">
           <label for="dosage_indicated" >③　必要量(mg/kg)：</label>
@@ -106,16 +105,8 @@
 
       </div>
 
-
-
       <div class="col-md-6">
         <h3>必要な錠剤数の結果：</h3>
-        <div class="form-group">
-          <label>体重に対する必要量：</br>※いらないけど正常動作している</label>
-          <p>　＝　①体重*③必要量(先生指示)</p>
-          <div id="weight_requirement"></div>
-          <%= f.hidden_field :出力結果のカラム名, id: "weight_requirement_value" %>
-        </div>
         <div>
           <label>⑤1回に必要な錠剤の個数 x錠：※保存対象</label>
           <p>　＝　①体重*③必要量/②1錠分の成分量：</p>
@@ -125,11 +116,14 @@
         <div>
           <label>⑥ｎ日分に必要な錠剤の個数(整数)：</label>
           <p>　＝ ⑤*A*B</p>
+          <div id="n_days_tablets"></div>
         </div>
         <h3>1錠を溶かす場合：</h3>
         <div>
           <label>溶かすための液体量</label>
           <p>　＝　⑤/④</p>
+          <div id="liquid_amount"></div>
+          <%= f.hidden_field :number_of_tablets, id: "liquid_amount_value" %>
         </div>
       </div>
       <%= f.submit "保存する", class: "btn btn-primary" %>

@@ -20,7 +20,7 @@
         </td>
         <td>
           <!--リンク先店舗の詳細にしたい、admin_store_pathにするとmethodエラー-->
-          <%= link_to admin_dairy_path(dairy.id) do %>
+          <%= link_to admin_store_path(dairy.store.id) do %>
             <%= dairy.store.name %>
           <% end %>
         </td>

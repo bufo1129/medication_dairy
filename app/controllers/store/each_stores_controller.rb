@@ -19,6 +19,7 @@ class Store::EachStoresController < ApplicationController
       flash[:notice] = "店舗情報を変更しました"
       redirect_to  each_store_path
     else
+      flash[:alert] = "変更に失敗しました"
       render :edit
     end
   end
@@ -27,16 +28,17 @@ class Store::EachStoresController < ApplicationController
 
   def each_store_params
     params.require(:store).permit(
-      :name, 
-      :email, 
-      :postal_code, 
-      :phone_number, 
+      :name,
+      :email,
+      :postal_code,
+      :phone_number,
       :prefecture_name,
       :address_city,
       :address_street,
       :address_building,
       :phone_number,
-      :is_deleted)
+      :is_deleted,
+      :prefecture_code)
   end
 
 end

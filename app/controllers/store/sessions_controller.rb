@@ -32,7 +32,8 @@ class Store::SessionsController < Devise::SessionsController
     @store = Store.find_by(email: params[:store][:email])
     return if !@store
     if @store.valid_password?(params[:store][:password]) && @store.is_deleted == true
-    flash[:alert] = "店舗削除済みです"
+    flash[:alert] = "この店舗は無効です。管理者にお問い合わせください。"
+    redirect_to store_session_path
     end
   end
 

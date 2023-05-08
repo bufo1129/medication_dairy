@@ -33,7 +33,7 @@ class Admin::StoresController < ApplicationController
       :name, :email, :postal_code,
       :phone_number, :is_deleted,
       :prefecture_name, :address_city,
-      :address_street, :address_building)
+      :address_street, :address_building, :prefecture_code)
   end
 
 end
