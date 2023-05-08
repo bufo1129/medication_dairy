@@ -6,7 +6,7 @@
       <h1>welcome to </h1>
       <h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong> </h1>
       <p><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </p>
-      <p>動物の日誌や投薬計算と記録をすることができるアプリです<i class="fas fa-paw"></i></p>
+      <p>動物の日誌や投薬計算とをすることができるアプリです<i class="fas fa-paw"></i></p>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row">
           <%= link_to admin_stores_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
@@ -26,6 +26,11 @@
         <div class="row">
           <%= link_to individuals_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
           <i class="fas fa-paw"></i> 動物種登録
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to admin_dairies_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
+          <i class="fas fa-book-open"></i> 日報一覧
           <% end %>
         </div>
         <div class="row">

@@ -1,2 +1,34 @@
-<h1>Admin::Dairies#index</h1>
-<p>Find me in app/views/admin/dairies/index.html.erb</p>
+<div class="text-center mb-5"></div>
+
+<div class="container">
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報一覧</h3>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">日付</th>
+        <th scope="col">店舗名</th>
+        <th scope="col">タイトル</th>
+      </tr>
+    </thead>
+    <tbody class="table table-hover">
+      <% @dairies.each do |dairy| %>
+      <tr>
+        <td>
+          <%= link_to admin_dairy_path(dairy.id) do %>
+            <%= dairy.created_date %>
+          <% end %>
+        </td>
+        <td>
+          <!--リンク先店舗の詳細にしたい、admin_store_pathにするとmethodエラー-->
+          <%= link_to admin_dairy_path(dairy.id) do %>
+            <%= dairy.store.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= dairy.title %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

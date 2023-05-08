@@ -1,22 +1,12 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'dairies/index'
-    get 'dairies/show'
-    get 'dairies/edit'
-  end
-  # namespace :admin do
-  #   get 'seeds/index'
-  #   get 'seeds/edit'
-  # end
-  namespace :admin do
     root to: 'homes#top'
-    resources :medicines, only: [:index, :edit, :create, :update, :destroy]
-    resources :seeds, only: [:index, :edit, :create, :update, :destroy]
     resources :stores, only: [:index, :show, :edit, :update] #店舗
+    resources :medicines, only: [:index, :edit, :create, :update, :destroy] #薬
+    resources :seeds, only: [:index, :edit, :create, :update, :destroy] #種類
     resources :number_of_times, only: [:index, :create, :edit, :update, :destroy] #回数
-
-    # resources :animal_species, only: [:index, :edit, :create, :update, :destroy]
+    resources :dairies, only: [:index, :show] #日報
   end
 
   scope module: :store do
