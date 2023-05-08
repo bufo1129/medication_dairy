@@ -2,8 +2,7 @@ class Dairy < ApplicationRecord
 
   belongs_to :store
   belongs_to :medication, optional: true
-
-  # enum give_medicine: { not_give: true, give: false }
+  belongs_to :weather
 
   def weather?(weather)
     case weather.to_i

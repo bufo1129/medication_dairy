@@ -1,5 +1,6 @@
 class Admin::NumberOfTimesController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_number_of_time, only: [:edit, :update, :destroy]
 
   def index
     @number_of_time = NumberOfTime.new
@@ -19,11 +20,9 @@ class Admin::NumberOfTimesController < ApplicationController
   end
 
   def edit
-     @number_of_time =  NumberOfTime.find(params[:id])
   end
 
   def update
-    @number_of_time =  NumberOfTime.find(params[:id])
     if @number_of_time.update(number_of_time_params)
       flash[:notice] = "変更が完了しました"
       redirect_to admin_number_of_times_path
@@ -32,15 +31,18 @@ class Admin::NumberOfTimesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
-    @number_of_time =  NumberOfTime.find(params[:id])
     @number_of_time.destroy
     flash[:notice] = "削除しました"
     redirect_to admin_number_of_times_path
   end
 
   private
+
+  def set_number_of_time
+    @number_of_time =  NumberOfTime.find(params[:id])
+  end
 
   def number_of_time_params
     params.require(:number_of_time).permit(:name, :dosing_times)

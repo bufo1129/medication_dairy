@@ -1,5 +1,6 @@
 class Admin::SeedsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_seed, only: [:edit, :update, :destroy]
 
   def index
     @seed = Seed.new
@@ -19,11 +20,9 @@ class Admin::SeedsController < ApplicationController
   end
 
   def edit
-    @seed = Seed.find(params[:id])
   end
 
   def update
-    @seed = Seed.find(params[:id])
     if @seed.update(seed_params)
       flash[:notice] = "変更が完了しました"
       redirect_to admin_seeds_path
@@ -34,13 +33,17 @@ class Admin::SeedsController < ApplicationController
   end
 
   def destroy
-    @seed = Seed.find(params[:id])
     @seed.destroy
     flash[:notice] = "削除しました"
     redirect_to admin_seeds_path
   end
 
   private
+
+  def set_seed
+    @seed = Seed.find(params[:id])
+  end
+
 
   def seed_params
     params.require(:seed).permit(:name)

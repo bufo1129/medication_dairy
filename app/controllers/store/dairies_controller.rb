@@ -1,5 +1,6 @@
 class Store::DairiesController < ApplicationController
   before_action :authenticate_store!
+  before_action :set_store, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -31,15 +32,12 @@ class Store::DairiesController < ApplicationController
   end
 
   def show
-    @dairy = Dairy.find(params[:id])
   end
 
   def edit
-    @dairy = Dairy.find(params[:id])
   end
 
   def update
-    @dairy = Dairy.find(params[:id])
     if @dairy.update(dairy_params)
       flash[:notice] = "変更が完了しました"
       redirect_to dairy_path(@dairy)
@@ -50,7 +48,6 @@ class Store::DairiesController < ApplicationController
   end
 
   def destroy
-    @dairy = Dairy.find(params[:id])
     if @dairy != current_store
       flash[:alert] = "自店のみしか削除できません"
       redirect_to request.referer
@@ -62,6 +59,10 @@ class Store::DairiesController < ApplicationController
   end
 
   private
+
+  def set_store
+    @dairy = Dairy.find(params[:id])
+  end
 
   def dairy_params
     params.require(:dairy).permit(

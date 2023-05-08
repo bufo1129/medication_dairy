@@ -1,5 +1,6 @@
 class Store::MedicationsController < ApplicationController
   before_action :authenticate_store!
+  # before_action :set_medication, only: [:show, :edit, :update, :destroy] #リファクタリング用
 
   def index
     if params[:store_id].present?
@@ -58,6 +59,11 @@ class Store::MedicationsController < ApplicationController
   end
 
   private
+
+  # リファクタリング用
+  # def set_medication
+  #   @medication = Medication.find(params[:id])
+  # end
 
   def medication_params
     params.require(:medication).permit(

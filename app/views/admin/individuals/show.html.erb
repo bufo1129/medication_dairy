@@ -1,0 +1,47 @@
+<div class="text-center mb-5"></div>
+
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @individual.name %>情報詳細</h2>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <!--↑-->
+      <table class="table">
+        <tr>
+          <td>店舗名</td>
+          <!--名前表示-->
+          <td><%= @individual.store.name %></td>
+        </tr>
+        <tr>
+          <td>個体名</td>
+          <td><%= @individual.name %></td>
+        </tr>
+        <tr>
+          <td>年齢</td>
+          <td><%= @individual.age %></td>
+        </tr>
+        <tr>
+          <td>生年月日</td>
+          <td><%= @individual.birthday %></td>
+        </tr>
+        <tr>
+          <td>体重</td>
+          <td>
+            <%= @individual.weight %>
+          </td>
+        </tr>
+        <tr>
+          <td>種類名</td>
+          <td><%= @individual.seed.name %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= link_to "戻る", admin_individuals_path, class: "btn btn-success" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 class Store::IndividualsController < ApplicationController
   before_action :authenticate_store!
+  before_action :set_individual, only: [:show, :edit, :update, :destroy]
 
   def index
     @individuals = Individual.all.order(created_at: :desc)
@@ -22,17 +23,14 @@ class Store::IndividualsController < ApplicationController
   end
 
   def show
-    @individual = Individual.find(params[:id])
     @seed = Seed.find_by(id: @individual.seed_id)
     #↑動物種のidを文字で表儒するため
   end
 
   def edit
-    @individual = Individual.find(params[:id])
   end
 
   def update
-    @individual = Individual.find(params[:id])
     if @individual.update(individual_params)
       flash[:notice] = "変更が完了しました"
       redirect_to individuals_path
@@ -42,7 +40,6 @@ class Store::IndividualsController < ApplicationController
   end
 
   def destroy
-    @individual = Individual.find(params[:id])
     if @individual.store != current_store
       flash[:alert] = "自店のみしか削除できません"
       redirect_to request.referer
@@ -54,6 +51,10 @@ class Store::IndividualsController < ApplicationController
   end
 
   private
+
+  def set_individual
+    @individual = Individual.find(params[:id])
+  end
 
   def individual_params
     params.require(:individual).permit(

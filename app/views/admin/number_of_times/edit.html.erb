@@ -2,8 +2,8 @@
 
 <div class="container">
   <div class="row">
-    <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">回数登録の編集</h3>
     <%= form_with model: @number_of_time, url: admin_number_of_time_path, method: :patch do |f| %>
+    <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">回数登録の編集</h3>
     <div class="form-group">
       <label for="times_name">登録名:</label>
       <%= f.text_field :name, class: "form-control" %>

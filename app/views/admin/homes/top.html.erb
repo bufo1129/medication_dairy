@@ -29,8 +29,18 @@
           <% end %>
         </div>
         <div class="row">
+          <%= link_to weathers_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
+          <i class="fas fa-cloud-sun"></i> 天気登録
+          <% end %>
+        </div>
+        <div class="row">
           <%= link_to admin_dairies_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
           <i class="fas fa-book-open"></i> 日報一覧
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to admin_individuals_path, class: "btn btn-success btn-sm btn-block mb-3" do %>
+          <i class="fas fa-paw"></i> 個体一覧
           <% end %>
         </div>
         <div class="row">
