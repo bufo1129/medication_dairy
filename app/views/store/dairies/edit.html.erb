@@ -68,7 +68,8 @@
         </div>
         <div class="form-group">
           <label for="api_weather">天気</label>
-          <%= f.select :weather, {'晴れ': 1, '曇り': 2, '雨': 3, '曇/雨': 4, '豪雨': 5, '雪': 6}, { include_blank: '選択してください。'}, { class: 'form-control'} %>
+          <%= f.select :weather_id, Weather.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+          <%#= f.select :weather, {'晴れ': 1, '曇り': 2, '雨': 3, '曇/雨': 4, '豪雨': 5, '雪': 6}, { include_blank: '選択してください。'}, { class: 'form-control'} %>
         </div>
         <div class="form-group">
           <label for="high_temperature">最高気温</label>
