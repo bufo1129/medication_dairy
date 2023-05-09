@@ -22,6 +22,11 @@ Rails.application.routes.draw do
     get 'searches/search'
   end
 
+  # ゲストログイン
+  devise_scope :store do
+    post 'stores/guest_sign_in', to: 'stores/sessions#guest_sign_in'
+  end
+
 #deviseルート
 # 店舗客用
   devise_for :stores, skip: [:passwords], controllers: {

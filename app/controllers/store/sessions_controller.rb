@@ -20,6 +20,13 @@ class Store::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  # ゲストログイン↓
+  def guest_sign_in
+    store = Store.guest
+    sign_in store
+    redirect_to store_path(store), notice: 'guestuserでログインしました。'
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.

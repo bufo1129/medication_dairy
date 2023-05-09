@@ -26,5 +26,12 @@ class Store < ApplicationRecord
   end
   # ↑住所自動入力、都道府県未登録の際でも取得できるように定義
 
+  # ゲストログイン↓
+  def self.guest
+    find_or_create_by!(name: 'guest' ,email: 'guest@example.com') do |store|
+      store.password = SecureRandom.urlsafe_base64
+      store.name = "guest"
+    end
+  end
 
 end
