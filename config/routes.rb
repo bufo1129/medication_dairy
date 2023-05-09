@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'searches/search'
-  end
-  namespace :admin do
     root to: 'homes#top'
+    get 'searches/search'
     resources :stores, only: [:index, :show, :edit, :update] #店舗
     resources :medicines, only: [:index, :edit, :create, :update, :destroy] #薬
     resources :seeds, only: [:index, :edit, :create, :update, :destroy] #種類
@@ -17,12 +15,12 @@ Rails.application.routes.draw do
   scope module: :store do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    get "search" => "searches#search"
     resources :each_stores, only: [:index, :show, :edit, :update] #店舗
     resources :dairies    #日報
     resources :medications #投薬記録
     resources :individuals #個体
     resources :medicines, only: [:show]#保留
-    get "search" => "searches#search"
   end
 
   # ゲストログイン
@@ -31,7 +29,7 @@ Rails.application.routes.draw do
   end
 
 #deviseルート
-# 店舗客用
+# 店舗用
   devise_for :stores, skip: [:passwords], controllers: {
     registrations: "store/registrations",
     sessions: 'store/sessions'
@@ -41,6 +39,5 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-
 
 end

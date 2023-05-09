@@ -13,6 +13,7 @@ class CreateMedications < ActiveRecord::Migration[6.1]
       t.text      :body
       t.decimal   :give_liquid
       t.integer   :several_days
+      t.integer   :number_of_time_id
 
       t.timestamps
     end

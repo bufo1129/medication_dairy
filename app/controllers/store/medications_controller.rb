@@ -12,13 +12,15 @@ class Store::MedicationsController < ApplicationController
 
   def new
     @store = current_store
-    @Medication = Medication.new
+    @medication = Medication.new
   end
 
   def create
-    @mecication = Medication.new(medication_params)
+    @medication = Medication.new(medication_params)
     @medication.store_id = current_store.id
     if @medication.save!
+      @medicine_record = MedicineRecord.new(medicine_record_params)
+      @medicine_record.save
       flash[:notice] = "投稿が完了しました"
       redirect_to medication_path(@medication)
     else
@@ -75,12 +77,17 @@ class Store::MedicationsController < ApplicationController
       :medication_status,
       :body,
       :store_id,
-      :seed_id,
       :give_liquid,
       :several_days,
-      :dosage_indicated,
-      :medicine_record_id
+      :medicine_record_id,
+      :number_of_time_id
       )
+  end
+
+  def medicine_record_params
+    params.require(:medicine_record).permit(
+      :dosage_indicated
+    )
   end
 
 end

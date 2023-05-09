@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2023_05_08_053723) do
     t.text "body"
     t.decimal "give_liquid"
     t.integer "several_days"
+    t.integer "number_of_time_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

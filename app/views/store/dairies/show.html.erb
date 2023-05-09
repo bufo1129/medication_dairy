@@ -61,7 +61,7 @@
         </tr>
         <tr>
           <th style="width: 30%"><%= @dairy.store.name %> 日報一覧</th>
-          <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(dairy_id: @each_store) %></td>
+          <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @dairy.store_id) %></td>
           <!--↑店舗の日報一覧に絞り込み-->
         </tr>
       </table>

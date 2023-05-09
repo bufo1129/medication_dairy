@@ -2,21 +2,20 @@ class Store::DairiesController < ApplicationController
   before_action :authenticate_store!
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
-
   def index
     if params[:store_id].present?
       @dairies = Dairy.where(store_id: params[:store_id])
     else
-      @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(10)
+      @dairies = Dairy.all#.order(created_at: :desc).page(params[:page]).per(10)
     end
 
     if params[:latest]
-      @dairies = Dairy.latest.page(params[:page]).per(10)
+      @dairies = @dairies.latest.page(params[:page]).per(10)
     elsif params[:old]
-      @dairies = Dairy.old.page(params[:page]).per(10)
+      @dairies = @dairies.old.page(params[:page]).per(10)
     else
-      @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(10)
-   end
+      @dairies = @dairies.all.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   def new
