@@ -1,4 +1,4 @@
-class Store::SerchesController < ApplicationController
+class Store::SearchesController < ApplicationController
 
   def search
     @content = params['search']['content']

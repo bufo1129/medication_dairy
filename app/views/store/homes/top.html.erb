@@ -24,18 +24,3 @@
     </div>
   </div>
 </div>
-
-<!--仮置き-->
-<div class="container">
-  <div class="row">
-    <%= link_to '店舗新規登録ページ', new_store_registration_path %>
-    <%= link_to '店舗ログインページ', new_store_session_path %>
-    <%= link_to '店舗ログアウト', destroy_store_session_path, method: :delete %>
-  </div>
-  <div class="row">
-    <%= link_to '個体一覧', individuals_path %>
-    <%=  link_to '投薬記録', medications_path %>
-    <%=  link_to '日報', dairies_path %>
-    <%=  link_to '店舗一覧', each_stores_path %>
-  </div>
-</div>

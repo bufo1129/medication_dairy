@@ -2,7 +2,7 @@ class Store::EachStoresController < ApplicationController
   before_action :authenticate_store!
 
   def index
-    @stores = Store.all
+    @stores = Store.all.page(params[:page]).per(10)
   end
 
   def show

@@ -1,4 +1,4 @@
-<% if @model == "store" %>
+<% if @model == "user" %>
 <div class="row  justify-content-center">
   <h2>店舗 一覧</h2>
 </div>
@@ -11,28 +11,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <%= datas.name %>
-        </td>
-      </tr>
+        <tr>
+            <td>
+              <%= link_to datas.name, each_stores_path(datas.id) %>
+            </td>
+        </tr>
     </tbody>
   </table>
   <% end %>
 </div>
 
-<% elsif @model == "individual" %>
+<% elsif @model == "muscle"%>
 <div class="row  justify-content-center">
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>個体一覧</th>
-    </tr>
-   </thead>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>タグ一覧</th>
+      </tr>
+    </thead>
     <tbody>
       <tr>
         <td>
-            <%= datas.name %>
+          <%= link_to datas.work_tag, muscle_path(datas.id) %>
         </td>
       </tr>
     </tbody>

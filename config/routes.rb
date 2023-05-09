@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :store do
-    get 'serches/search'
-  end
   namespace :admin do
     root to: 'homes#top'
     resources :stores, only: [:index, :show, :edit, :update] #店舗
@@ -22,6 +19,7 @@ Rails.application.routes.draw do
     resources :medications #投薬記録
     resources :individuals #個体
     resources :medicines, only: [:show]#保留
+    get 'searches/search'
   end
 
 #deviseルート

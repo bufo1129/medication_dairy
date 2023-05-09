@@ -79,7 +79,7 @@ class Store::MedicationsController < ApplicationController
       :give_liquid,
       :several_days,
       :dosage_indicated,
-      :medicine_id
+      :medicine_record_id
       )
   end
 

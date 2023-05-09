@@ -1,2 +1,0 @@
-module Store::SerchesHelper
-end

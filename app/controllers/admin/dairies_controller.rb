@@ -2,7 +2,13 @@ class Admin::DairiesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @dairies = Dairy.all
+    if params[:latest]
+      @dairies = Dairy.latest.page(params[:page]).per(10)
+    elsif params[:old]
+      @dairies = Dairy.old.page(params[:page]).per(10)
+    else
+      @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(10)
+   end
   end
 
   def show

@@ -4,6 +4,8 @@
   <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報一覧</h3>
   <table class="table">
     <thead class="table-dark">
+      <%= link_to '新しい順', admin_dairies_path(latest: "true") %>
+     |<%= link_to '古い順', admin_dairies_path(old: "true") %>
       <tr>
         <th scope="col">日付</th>
         <th scope="col">店舗名</th>
@@ -31,4 +33,5 @@
       <% end %>
     </tbody>
   </table>
+   <%= paginate @dairies, theme: 'twitter-bootstrap-4' %>
 </div>
