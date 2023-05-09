@@ -24,7 +24,7 @@ class Store < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).present? ? JpPrefecture::Prefecture.find(name: prefecture_name).code : 0
   end
-
+  
   #↓ゲストログイン
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com' ,postal_code: '222222' ,prefecture_code: '神奈川県') do |store|
@@ -32,7 +32,7 @@ class Store < ApplicationRecord
       store.name = "guestuser"
     end
   end
-
+  
   #検索機能
   def self.looks(search, word)
     if search == "perfect_match"

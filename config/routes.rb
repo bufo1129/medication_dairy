@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'searches/search'
+  end
+  namespace :admin do
     root to: 'homes#top'
     resources :stores, only: [:index, :show, :edit, :update] #店舗
     resources :medicines, only: [:index, :edit, :create, :update, :destroy] #薬
