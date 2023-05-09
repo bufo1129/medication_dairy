@@ -19,12 +19,12 @@ Rails.application.routes.draw do
     resources :medications #投薬記録
     resources :individuals #個体
     resources :medicines, only: [:show]#保留
-    get 'searches/search'
+    get "search" => "searches#search"
   end
 
   # ゲストログイン
   devise_scope :store do
-    post 'stores/guest_sign_in', to: 'stores/sessions#guest_sign_in'
+    post 'store/guest_sign_in', to: 'store/sessions#guest_sign_in'
   end
 
 #deviseルート

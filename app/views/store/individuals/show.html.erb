@@ -4,9 +4,8 @@
 
   <div class = "row" >
     <h4 class="text-success"><%= flash[:notice] %></h4>
-    <div class="col mx-auto">
-      <%#= image_tag @individual.get_image(200,200) %>
-      画像がもってこれない！エラー出る！
+    <div class="col text-center mx-auto">
+      <%= image_tag @individual.get_image(300,300) %>
     </div>
     <div class = "col mx-auto">
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @individual.name %>情報詳細</h2>
