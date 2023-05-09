@@ -16,12 +16,12 @@
   <table class="table">
       <thead class="table-dark">
         <tr>
-          <th scope="col">店舗名</th>
           <th scope="col">個体名</th>
           <th scope="col">種類</th>
           <th scope="col">生年月日</th>
           <th scope="col">年齢</th>
           <th scope="col">体重</th>
+          <th scope="col">店舗名</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -30,21 +30,12 @@
         <% @individuals.each do |individual| %>
         <tr>
           <td class="h5">
-            <!--↓店舗名押すと、店舗の日報絞り込み-->
-            <%= link_to each_store_path(individual.store_id) do %>
-              <%= individual.store.name %>
-            <% end %>
-          </td>
-          <td class="h5">
             <%= link_to individual_path(individual.id) do %>
               <%= individual.name %>
             <% end %>
           </td>
           <td class="h5">
-            <%#= link_to each_store_path(individual.id) do %>
-            <!--↑種類絞り込みページに飛ばすよう-->
               <%= individual&.seed&.name %>
-            <%# end %>
           </td>
           <td class="h5">
             <%= individual.birthday %>
@@ -55,6 +46,9 @@
           <td class="h5">
             <%= individual.weight %>
           </div>
+          <td class="h5">
+              <%= individual.store.name %>
+          </td>
           <td>
             <%= link_to "削除", individual_path(individual.id), method: :delete,
               data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
@@ -63,6 +57,6 @@
       <% end %>
       </tbody>
     </table>
-  <%#= paginate @seeds, theme: 'twitter-bootstrap-4' %>
+  <%= paginate @individuals, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

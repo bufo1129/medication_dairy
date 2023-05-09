@@ -3,7 +3,7 @@ class Store::IndividualsController < ApplicationController
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
 
   def index
-    @individuals = Individual.all.order(created_at: :desc)
+    @individuals = Individual.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

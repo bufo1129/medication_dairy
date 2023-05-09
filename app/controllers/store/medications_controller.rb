@@ -1,12 +1,12 @@
 class Store::MedicationsController < ApplicationController
   before_action :authenticate_store!
-  # before_action :set_medication, only: [:show, :edit, :update, :destroy] #リファクタリング用
+  before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:store_id].present?
       @medications = Medication.where(store_id: params[:store_id])
     else
-      @medications = Medication.all.order(created_at: :desc)
+      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
     end
   end
 
@@ -30,15 +30,12 @@ class Store::MedicationsController < ApplicationController
   end
 
   def show
-    @medication = Medication.find(params[:id])
   end
 
   def edit
-    @medication = Medication.find(params[:id])
   end
 
   def update
-    @medication = Medication.find(params[:id])
     if @medication.update(medication_params)
       flash[:notice] = "変更が完了しました"
       redirect_to medication_path(@medication)
@@ -49,9 +46,8 @@ class Store::MedicationsController < ApplicationController
   end
 
   def destroy
-    @medication = Medication.find(params[:id])
     if @medication != current_store
-      flash[:alert] = "自店のみしか削除できません"
+      flash[:alert] = "削除に失敗しました"
       redirect_to request.referer
     else
       @dairy.destroy
@@ -62,10 +58,9 @@ class Store::MedicationsController < ApplicationController
 
   private
 
-  # リファクタリング用
-  # def set_medication
-  #   @medication = Medication.find(params[:id])
-  # end
+  def set_medication
+    @medication = Medication.find(params[:id])
+  end
 
   def medication_params
     params.require(:medication).permit(
@@ -80,7 +75,7 @@ class Store::MedicationsController < ApplicationController
       :give_liquid,
       :several_days,
       :medicine_record_id,
-      :number_of_time_id
+      :number_of_time_id,
       )
   end
 

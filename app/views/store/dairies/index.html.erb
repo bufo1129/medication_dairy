@@ -33,10 +33,9 @@
             <% end %>
           </td>
           <td class="h5">
-            <!--↓店舗名押すと、店舗の日報絞り込み-->
-            <%= link_to each_store_path(dairy.store_id) do %>
+            <%#= link_to dairies_path(store_id: @dairy.store_id) do %>
               <%= dairy.store.name %>
-            <% end %>
+            <%# end %>
           </td>
           <td class="h5">
             <%= dairy.medication_id %>

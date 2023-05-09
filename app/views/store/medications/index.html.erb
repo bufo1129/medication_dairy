@@ -29,16 +29,16 @@
         <tr>
           <td class="h5">
             <%#= link_to each_store_path(each_store.id) do %>
-              <%= medication.name %>
+              <%= medication.store.name %>
             <%# end %>
           </td>
           <td class="h5">
-            <%#= link_to dairy_path(dairy.id) do %>
-              <%#= dairy.title %>
-            <%# end %>
+            <%= link_to medication_path(medication.id) do %>
+              <%= medication.individual.name %>
+            <% end %>
           </td>
           <td class="h5">
-            <%#= dairy.medication_id %>
+            <%#= medication.medicine.name %>
           </td>
           <td class="h5"></div>
           <td class="h5"></div>
@@ -51,6 +51,6 @@
       <% end %>
       </tbody>
     </table>
-  <%#= paginate @seeds, theme: 'twitter-bootstrap-4' %>
+  <%= paginate @medications, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

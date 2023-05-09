@@ -6,7 +6,7 @@ class Store::DairiesController < ApplicationController
     if params[:store_id].present?
       @dairies = Dairy.where(store_id: params[:store_id])
     else
-      @dairies = Dairy.all#.order(created_at: :desc).page(params[:page]).per(10)
+      @dairies = Dairy.all
     end
 
     if params[:latest]
@@ -56,7 +56,7 @@ class Store::DairiesController < ApplicationController
 
   def destroy
     if @dairy != current_store
-      flash[:alert] = "自店のみしか削除できません"
+      flash[:alert] = "ログイン店舗以外は削除できません"
       redirect_to request.referer
     else
       @dairy.destroy
