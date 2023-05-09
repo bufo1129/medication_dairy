@@ -1,0 +1,42 @@
+<% if @model == "store" %>
+<div class="row  justify-content-center">
+  <h2>店舗 一覧</h2>
+</div>
+<div class="row  justify-content-center">
+  <% @datas.each do |datas| %>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>店舗名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= datas.name %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+
+<% elsif @model == "individual" %>
+<div class="row  justify-content-center">
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>個体一覧</th>
+    </tr>
+   </thead>
+    <tbody>
+      <tr>
+        <td>
+            <%= datas.name %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% else %>
+<% end %>

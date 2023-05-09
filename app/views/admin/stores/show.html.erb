@@ -53,11 +53,11 @@
       <table>
         <tr>
           <th style="width: 30%">投薬一覧</th>
-          <td style="width: 40%">リンク張る<%#= link_to "一覧を見る", addresses_path, class: "btn btn-outline-info" %></td>
+          <td style="width: 40%">リンク張る<%#= link_to "一覧を見る", admin_medications_path(medication_id: @store.id) %></td>
         </tr>
         <tr>
           <th style="width: 30%">日報一覧</th>
-          <td style="width: 40%">リンクはる<%#= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-info" %></td>
+          <td style="width: 40%"><%= link_to "一覧を見る", admin_dairies_path(store_id: @store.id) %></td>
         </tr>
       </table>
 
