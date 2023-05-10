@@ -8,5 +8,9 @@ class Dairy < ApplicationRecord
   scope :latest, -> {order(created_date: :desc)}
   scope :old, -> {order(created_date: :asc)}
 
+  validates :weather_id,        presence: true
+  validates :high_temperature,  presence: true
+  validates :low_temperature,   presence: true
+  validates :created_date,      presence: true
 
 end

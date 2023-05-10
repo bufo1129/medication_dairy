@@ -15,7 +15,7 @@
             </tr>
           <% end %>
         </tbody>
-      <% elsif %>
+      <% else %>
         <tbody>
           <% @individuals.each do |individual| %>
             <tr>
@@ -27,20 +27,7 @@
             </tr>
           <% end %>
         </tbody>
-      <% else %>
-        <tbody>
-          <% @medications.each do |medication| %>
-            <tr>
-              <td>
-                <%= link_to medication_path(medication.id) do %>
-                  <%#= medication.medicine.name %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
       <% end %>
-
     </table>
   </div>
 </div>

@@ -29,7 +29,7 @@ class Store::DairiesController < ApplicationController
   def create
     @dairy = Dairy.new(dairy_params)
     @dairy.store_id = current_store.id
-    if @dairy.save!
+    if @dairy.save
       flash[:notice] = "投稿が完了しました"
       redirect_to dairy_path(@dairy)
     else
