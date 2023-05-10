@@ -9,6 +9,12 @@ class Store::MedicationsController < ApplicationController
     else
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
     end
+    
+    if params[:individual_id].present?
+      @individuals = Individual.where(individual_id: params[:individual_id])
+    else
+      @Individuals = Individual.all.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   def new
@@ -21,8 +27,6 @@ class Store::MedicationsController < ApplicationController
     @medication = Medication.new(medication_params)
     @medication.store_id = current_store.id
     if @medication.save!
-      # @medicine_record = MedicineRecord.new(medicine_record_params)
-      # @medicine_record.save!
       flash[:notice] = "投稿が完了しました"
       redirect_to medication_path(@medication)
     else
@@ -78,18 +82,11 @@ class Store::MedicationsController < ApplicationController
       :several_days,
       :medicine_record_id,
       :number_of_time_id,
-      :seed_record_id,
+      # :seed_record_id,
       medicine_records_attributes: [
         :dosage_indicated,
         :medicine_id
       ])
   end
-
-  # def medicine_record_params
-  #   params.require(:medicine_record).permit(
-  #     :dosage_indicated,
-  #     :medicine_id
-  #   )
-  # end
 
 end

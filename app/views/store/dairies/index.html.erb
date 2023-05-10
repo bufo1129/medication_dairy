@@ -33,18 +33,18 @@
             <% end %>
           </td>
           <td class="h5">
-            <%#= link_to dairies_path(store_id: @dairy.store_id) do %>
-              <%= dairy.store.name %>
-            <%# end %>
+            <%= dairy.store.name %>
           </td>
           <td class="h5">
             <%= dairy.medication_id %>
           </td>
           <td class="h5">
             <% if dairy.store == current_store %>
-              <%= link_to "削除", dairy_path(dairy.id), method: :delete,
-                                  data: { confirm: "本当に削除しますか？" },
-                                  class: "btn btn-danger ml-3" %>
+              <%= link_to dairy_path(dairy.id),
+                          class: "btn btn-danger", method: :delete,
+                          data: { confirm: "本当に削除しますか？" } do %>
+                          <i class="fas fa-trash-alt"></i>
+              <% end %>
             <% end %>
           </td>
         </tr>

@@ -50,8 +50,13 @@
               <%= individual.store.name %>
           </td>
           <td>
-            <%= link_to "削除", individual_path(individual.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
+            <% if individual.store == current_store %>
+              <%= link_to individual_path(individual.id),
+                          class: "btn btn-danger", method: :delete,
+                          data: { confirm: "本当に削除しますか？" } do %>
+                          <i class="fas fa-trash-alt"></i>
+              <% end %>
+            <% end %>
           </td>
         </tr>
       <% end %>

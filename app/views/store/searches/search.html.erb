@@ -15,13 +15,25 @@
             </tr>
           <% end %>
         </tbody>
-      <% else %>
+      <% elsif %>
         <tbody>
           <% @individuals.each do |individual| %>
             <tr>
               <td>
                 <%= link_to individual_path(individual.id) do %>
                   <%= individual.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% else %>
+        <tbody>
+          <% @medications.each do |medication| %>
+            <tr>
+              <td>
+                <%= link_to medication_path(medication.id) do %>
+                  <%#= medication.medicine.name %>
                 <% end %>
               </td>
             </tr>

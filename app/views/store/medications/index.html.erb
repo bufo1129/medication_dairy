@@ -47,9 +47,11 @@
           <td class="h5"></div>
           <td>
             <% if medication.store == current_store %>
-              <%= link_to "削除", medication_path(medication.id), method: :delete,
-                                  data: { confirm: "本当に削除しますか？" },
-                                  class: "btn btn-danger ml-3" %>
+              <%= link_to medication_path(medication.id),
+                          class: "btn btn-danger", method: :delete,
+                          data: { confirm: "本当に削除しますか？" } do %>
+                          <i class="fas fa-trash-alt"></i>
+              <% end %>
             <% end %>
           </td>
         </tr>

@@ -2,9 +2,9 @@ class Individual < ApplicationRecord
 
   has_one_attached :image
 
-  belongs_to :store, optional: true
-  belongs_to :seed, optional: true
-  belongs_to :medication, optional: true
+  belongs_to :store,      optional: true
+  belongs_to :seed,       optional: true
+  belongs_to :medication, optional: true, dependent: :destroy
 
   #画像
   def get_image(width, height)
