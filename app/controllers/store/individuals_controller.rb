@@ -3,7 +3,15 @@ class Store::IndividualsController < ApplicationController
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
 
   def index
-    @individuals = Individual.all.order(created_at: :desc).page(params[:page]).per(10)
+    @individuals_all = Individual.all
+    @seeds = Seed.all
+    if params[:seed_id]
+      @seed = Seed.find(params[:seed_id])
+      @individuals = @seed.individuals.page(params[:page]).per(8).reverse_order
+      @individuals_all = @seed.individuals.all
+    else
+      @individuals = Individual.all.page(params[:page]).per(8).reverse_order
+    end
   end
 
   def new

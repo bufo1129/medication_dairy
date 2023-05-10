@@ -1,0 +1,16 @@
+<table class="table table-borderless table-hover text-center">
+  <thead class="table-active table-dark">
+    <tr>
+      <th class="h5 font-weight-bold rounded">薬</th>
+    </tr>
+  </thead>
+  <% medicines.each do |medicine| %>
+  <tr>
+    <td class="rounded">
+      <%= link_to medications_path(medicine_id: medicine.id), class: "text-dark" do %>
+        <%= medicine.name %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
