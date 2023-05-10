@@ -75,13 +75,15 @@ class Store::MedicationsController < ApplicationController
       :give_liquid,
       :several_days,
       :medicine_record_id,
-      :number_of_time_id
+      :number_of_time_id,
+      :seed_record_id,
       )
   end
 
   def medicine_record_params
     params.require(:medicine_record).permit(
-      :dosage_indicated
+      :dosage_indicated,
+      :medicine_id
     )
   end
 

@@ -33,7 +33,7 @@
           </td>
           <td class="h5">
             取得できない/アソシエーションミス？
-            <%#= medication.seed.name %>
+            <%= medication.seed_records.name %>
           </td>
           <td class="h5">
             <%= link_to medication_path(medication.id) do %>
@@ -42,7 +42,7 @@
           </td>
           <td class="h5">
             取得できない・・・
-            <%#= medication.medicine.name %>
+            <%= medication.medicine_records.name %>
           </div>
           <td class="h5"></div>
           <td>
