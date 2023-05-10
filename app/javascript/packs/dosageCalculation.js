@@ -17,8 +17,8 @@ $(document).ready(function() {
       var inputIndicated = $("#dosage_indicated").val();
       if (inputWeight &&  selectMedicine && inputIndicated) {
         var resultDivision = inputWeight*inputIndicated/selectMedicine;
-        $("#number_of_tablets").append(resultDivision.toFixed(1));
-        $("#number_of_tablets_value").val(resultDivision.toFixed(1));
+        $("#number_of_tablets").append(resultDivision.toFixed(2));
+        $("#number_of_tablets_value").val(resultDivision.toFixed(2));
         outputTabletRequirement();
         outputRiquidRequirement();
       }
@@ -42,7 +42,7 @@ $(document).ready(function() {
       var selectTime = $("#dosing_times").val();
       if ( resultDivision && inputDay && selectTime) {
         var resultQuantity = resultDivision*inputDay*selectTime;
-        $("#n_days_tablets").append(resultQuantity.toFixed(1));
+        $("#n_days_tablets").append(resultQuantity.toFixed(2));
       }
     }
     // ここまで
@@ -60,8 +60,8 @@ $(document).ready(function() {
       var inputLiquid = $("#give_liquid").val();
       if ( resultDivision && inputLiquid ) {
         var resultQuantity = resultDivision/inputLiquid;
-        $("#liquid_amount").append(resultQuantity.toFixed(1));
-        $("#liquid_amount_value").append(resultQuantity.toFixed(1));
+        $("#liquid_amount").append(resultQuantity.toFixed(2));
+        $("#liquid_amount_value").append(resultQuantity.toFixed(2));
       }
     }
     // ここまで

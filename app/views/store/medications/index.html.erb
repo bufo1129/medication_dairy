@@ -6,6 +6,7 @@
   <!--</div>-->
 
 <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">投薬記録一覧</h3>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
 
 <div class="text-center mb-5"></div>
   <%= link_to "作成する", new_medication_path, class: "btn btn-success" %>
@@ -28,9 +29,11 @@
         <% @medications.each do |medication| %>
         <tr>
           <td class="h5">
-            <%#= link_to each_store_path(each_store.id) do %>
-              <%= medication.store.name %>
-            <%# end %>
+            <%= medication.store.name %>
+          </td>
+          <td class="h5">
+            取得できない/アソシエーションミス？
+            <%#= medication.seed.name %>
           </td>
           <td class="h5">
             <%= link_to medication_path(medication.id) do %>
@@ -38,14 +41,14 @@
             <% end %>
           </td>
           <td class="h5">
+            取得できない・・・
             <%#= medication.medicine.name %>
-          </td>
-          <td class="h5"></div>
+          </div>
           <td class="h5"></div>
           <td>
-            <%= link_to "編集する", medication_path(medication.id), class: "btn btn-outline-success" %>
+            編集権限の表示したい</br>
             <%= link_to "削除", medication_path(medication.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
+              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
           </td>
         </tr>
       <% end %>

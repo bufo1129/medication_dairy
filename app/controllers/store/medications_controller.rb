@@ -50,7 +50,7 @@ class Store::MedicationsController < ApplicationController
       flash[:alert] = "削除に失敗しました"
       redirect_to request.referer
     else
-      @dairy.destroy
+      @medication.destroy
       flash[:notice] = "削除しました"
       redirect_to medications_path
     end
@@ -75,7 +75,7 @@ class Store::MedicationsController < ApplicationController
       :give_liquid,
       :several_days,
       :medicine_record_id,
-      :number_of_time_id,
+      :number_of_time_id
       )
   end
 

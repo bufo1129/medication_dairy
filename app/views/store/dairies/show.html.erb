@@ -44,9 +44,10 @@
           <td></td>
           <td>
             <% if @dairy.store == current_store %>
-              <%= link_to '編集する', edit_dairy_path, class: "btn btn-success" %>
+              <%= link_to '編集する', edit_dairy_path(@dairy.id), class: "btn btn-success" %>
               <%= link_to "削除", dairy_path(@dairy.id), method: :delete,
               data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
+              <%= link_to '日報一覧へ戻る', dairies_path, class: "btn btn-success" %>
             <% else %>
               <%= link_to '日報一覧へ戻る', dairies_path, class: "btn btn-success" %>
             <% end %>

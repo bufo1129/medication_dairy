@@ -87,10 +87,10 @@
           <label for="body">内容</label>
           <%= f.text_area :body, class: "form-control" %>
         </div>
-        <div class="form-group">
-          <label for="store_name">投薬日誌</label>
-          <%= f.select :medication_id, Medication.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
-        </div>
+        <!--<div class="form-group">-->
+        <!--  <label for="store_name">投薬日誌</label>-->
+          <%#= f.select :medication_id, Medication.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+        <!--</div>-->
         <%= f.submit "更新する", class: "btn btn-primary" %>
       </div>
     </div>

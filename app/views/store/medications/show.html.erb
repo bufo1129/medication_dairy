@@ -4,7 +4,7 @@
 
 <div class = "container" >
   <div class = "row" >
-    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 col-xl-6  px-sm-0 mx-auto">
 
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @medication.individual.name %>の投薬記録詳細</h2>
       <h4 class="text-success"><%= flash[:notice] %></h4>
@@ -37,26 +37,37 @@
             <%= @medication.body %>
           </td>
         </tr>
-        <tr>
-          <td>1回に必要な錠剤の個数：</td>
-          <td><%= @medication.number_of_tablets %></td>
-        </tr>
-        <tr>
-          <td>溶かすための液体量：</td>
-          <td><%= @medication.liquid_amount %></td>
-        </tr>
-        <tr>
-          <td>
-            <% if @medication.store == current_store %>
-              <%= link_to '編集する', edit_medication_path, class: "btn btn-success" %>
-              <%= link_to "削除", medication_path(@medication.id), method: :delete,
-               data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
-            <% else %>
-              <%= link_to '一覧へ戻る', medications_path, class: "btn btn-success" %>
-            <% end %>
-          </td>
-        </tr>
       </table>
+
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1回に必要な錠剤の個数</td>
+            <td><%= @medication.number_of_tablets %> 個</td>
+          </tr>
+          <tr>
+            <td>溶かすための液体量</td>
+            <td><%= @medication.liquid_amount %> ml</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <% if @medication.store == current_store %>
+          <%= link_to '編集する', edit_medication_path, class: "btn btn-success" %>
+          <%= link_to "削除", medication_path(@medication.id), method: :delete,
+          data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
+          <%= link_to '一覧へ戻る', medications_path, class: "btn btn-success" %>
+        <% else %>
+          <%= link_to '一覧へ戻る', medications_path, class: "btn btn-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

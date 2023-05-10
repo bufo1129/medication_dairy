@@ -105,23 +105,34 @@
       </div>
 
       <div class="col-md-6">
-        <h3>必要な錠剤数の結果：</h3>
-        <div>
-          <label>⑤1回に必要な錠剤の個数</label>
-          <div id="number_of_tablets"></div>
-          <%= f.hidden_field :number_of_tablets, id: "number_of_tablets_value" %>
-        </div>
-        <div>
-          <label>⑥ｎ日分に必要な錠剤の個数(整数)：</label>
-          <div id="n_days_tablets"></div>
-        </div>
-        <h3>1錠を溶かす場合：</h3>
-        <div>
-          <label>溶かすための液体量</label>
-          <div id="liquid_amount"></div>
-          <%= f.hidden_field :liquid_amount, id: "liquid_amount_value" %>
-        </div>
-      </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>結果</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1回に必要な錠剤の個数</td>
+              <td>
+                <div id="number_of_tablets"></div>
+                <%= f.hidden_field :number_of_tablets, id: "number_of_tablets_value" %>
+              </td>
+            </tr>
+            <tr>
+              <td>ｎ日分に必要な錠剤の個数(整数)</td>
+              <td><div id="n_days_tablets"></div></td>
+            </tr>
+            <tr>
+              <td>溶かすための液体量</td>
+              <td>
+                <div id="liquid_amount"></div>
+                <%= f.hidden_field :liquid_amount, id: "liquid_amount_value" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       <%= f.submit "保存する", class: "btn btn-primary" %>
      <% end %>
     </div>
