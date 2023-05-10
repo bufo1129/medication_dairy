@@ -3,8 +3,9 @@ class Store::MedicationsController < ApplicationController
   before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:store_id].present?
-      @medications = Medication.where(store_id: params[:store_id])
+    if params[:medicine_id].present?
+      mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
+      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
     else
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
     end
@@ -13,14 +14,15 @@ class Store::MedicationsController < ApplicationController
   def new
     @store = current_store
     @medication = Medication.new
+    @medication.medicine_records.build
   end
 
   def create
     @medication = Medication.new(medication_params)
     @medication.store_id = current_store.id
     if @medication.save!
-      @medicine_record = MedicineRecord.new(medicine_record_params)
-      @medicine_record.save
+      # @medicine_record = MedicineRecord.new(medicine_record_params)
+      # @medicine_record.save!
       flash[:notice] = "投稿が完了しました"
       redirect_to medication_path(@medication)
     else
@@ -46,7 +48,7 @@ class Store::MedicationsController < ApplicationController
   end
 
   def destroy
-    if @medication != current_store
+    if @medication.store != current_store
       flash[:alert] = "削除に失敗しました"
       redirect_to request.referer
     else
@@ -77,14 +79,17 @@ class Store::MedicationsController < ApplicationController
       :medicine_record_id,
       :number_of_time_id,
       :seed_record_id,
-      )
+      medicine_records_attributes: [
+        :dosage_indicated,
+        :medicine_id
+      ])
   end
 
-  def medicine_record_params
-    params.require(:medicine_record).permit(
-      :dosage_indicated,
-      :medicine_id
-    )
-  end
+  # def medicine_record_params
+  #   params.require(:medicine_record).permit(
+  #     :dosage_indicated,
+  #     :medicine_id
+  #   )
+  # end
 
 end

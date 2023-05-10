@@ -41,8 +41,11 @@
             <%= dairy.medication_id %>
           </td>
           <td class="h5">
-            <%= link_to "削除", dairy_path(dairy.id), method: :delete,
-            data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
+            <% if dairy.store == current_store %>
+              <%= link_to "削除", dairy_path(dairy.id), method: :delete,
+                                  data: { confirm: "本当に削除しますか？" },
+                                  class: "btn btn-danger ml-3" %>
+            <% end %>
           </td>
         </tr>
       <% end %>

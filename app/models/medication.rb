@@ -12,6 +12,8 @@ class Medication < ApplicationRecord
   has_many    :seed_records
   has_many    :seeds, through: :seed_record
 
+  accepts_nested_attributes_for :medicine_records
+
 
 
   #投薬のステータス

@@ -32,8 +32,7 @@
             <%= medication.store.name %>
           </td>
           <td class="h5">
-            取得できない/アソシエーションミス？
-            <%= medication.seed_records.name %>
+            <%= medication.individual.seed.name %>
           </td>
           <td class="h5">
             <%= link_to medication_path(medication.id) do %>
@@ -41,14 +40,17 @@
             <% end %>
           </td>
           <td class="h5">
-            取得できない・・・
-            <%= medication.medicine_records.name %>
+            <% medication.medicine_records.each do |mr| %>
+              <%= mr.medicine.name %>
+            <% end %>
           </div>
           <td class="h5"></div>
           <td>
-            編集権限の表示したい</br>
-            <%= link_to "削除", medication_path(medication.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
+            <% if medication.store == current_store %>
+              <%= link_to "削除", medication_path(medication.id), method: :delete,
+                                  data: { confirm: "本当に削除しますか？" },
+                                  class: "btn btn-danger ml-3" %>
+            <% end %>
           </td>
         </tr>
       <% end %>

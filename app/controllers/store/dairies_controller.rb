@@ -55,7 +55,7 @@ class Store::DairiesController < ApplicationController
   end
 
   def destroy
-    if @dairy != current_store
+    if @dairy.store != current_store
       flash[:alert] = "ログイン店舗以外は削除できません"
       redirect_to request.referer
     else

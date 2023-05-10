@@ -70,11 +70,12 @@
     <div class="row">
       <div class="col-md-6">
 
+        <%= f.fields_for :medicine_records do |mr| %>
         <!--薬の種類選択-->
         <div class="form-group">
           <label for="medicine">②　薬の種類</label></br>
           1錠分の成分量(mg/T)登録数値反映されてる
-          <%= f.select :medicine_id, Medicine.all.map{|o| [o.name, o.ingredients_per_tablet]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
+          <%= mr.select :medicine_id, Medicine.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
         </div>
         <div class="form-group">
           <label for="dosing_times">B.　投薬回数：</label>
@@ -82,8 +83,8 @@
         </div>
         <div class="form-group">
           <label for="dosage_indicated" >③　必要量(mg/kg)：</label>
-          <%#= f.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
-          <%= text_field_tag 'medicine_record[dosage_indicated]', nil,placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
+          <%= mr.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
+          <%#= text_field_tag 'medicine_record[dosage_indicated]', nil,placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
         </div>
         <div class="form-group">
           <label for="give_liquid">④　与えたい液体量(ml)：</label>
@@ -94,6 +95,7 @@
           <%= f.text_field :several_days, class: "form-control", id: "several_days" %>
         </div>
       </div>
+      <% end %>
 
       <div class="col-md-6">
         <table class="table table-bordered">

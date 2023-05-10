@@ -61,7 +61,7 @@ $(document).ready(function() {
       if ( resultDivision && inputLiquid ) {
         var resultQuantity = resultDivision/inputLiquid;
         $("#liquid_amount").append(resultQuantity.toFixed(2));
-        $("#liquid_amount_value").append(resultQuantity.toFixed(2));
+        $("#liquid_amount_value").val(resultQuantity.toFixed(2));
       }
     }
     // ここまで
