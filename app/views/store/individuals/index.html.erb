@@ -1,67 +1,39 @@
 
+
 <div class="text-center mb-5"></div>
 
-<div class="container">
-  <!--<div class="row">-->
-  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
-  <!--</div>-->
-<h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">個体一覧</h2>
+
 <h4 class="text-success"><%= flash[:notice] %></h4>
 <h4 class="text-danger"><%= flash[:alert] %></h4>
-<div class="text-center mb-5"></div>
-  <%= link_to '新規個体登録', new_individual_path, class: "btn btn-success" %>
-<div class="text-center mb-5"></div>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'store/homes/seed', seeds: @seeds %>
+    </div>
 
-<div class="table-responsive">
-  <table class="table">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">個体名</th>
-          <th scope="col">種類</th>
-          <th scope="col">生年月日</th>
-          <th scope="col">年齢</th>
-          <th scope="col">体重</th>
-          <th scope="col">店舗名</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
+    <div class="contents-area col-lg-8 col-md-8">
+      <div class="text-center mt-3 mb-5">
+        <% if params[:seed_id] %>
+          <span class="h3 border-bottom border-dark mt-2 mb-2"><strong><%= @seed.name %>一覧</strong></span><span class="h5"> (全<%= @individuals_all.count %>件)</span>
+        <% else %>
+          <span class="h3 border-bottom border-dark mt-2 mb-2"><strong>個体一覧</strong></span><span class="h5"> (全<%= @seeds_all.count %>件)</span>
+        <% end %>
+      <%= link_to '新規個体登録', new_individual_path, class: "btn btn-success" %>
+      </div>
 
-      <tbody class="table table-hover">
+      <div class="individuals-list d-flex flex-wrap">
         <% @individuals.each do |individual| %>
-        <tr>
-          <td class="h5">
-            <%= link_to individual_path(individual.id) do %>
-              <%= individual.name %>
-            <% end %>
-          </td>
-          <td class="h5">
-              <%= individual&.seed&.name %>
-          </td>
-          <td class="h5">
-            <%= individual.birthday %>
-          </td>
-          <td class="h5">
-            <%= individual.age %>
-          </div>
-          <td class="h5">
-            <%= individual.weight %>
-          </div>
-          <td class="h5">
-              <%= individual.store.name %>
-          </td>
-          <td>
-            <% if individual.store == current_store %>
-              <%= link_to individual_path(individual.id),
-                          class: "btn btn-danger", method: :delete,
-                          data: { confirm: "本当に削除しますか？" } do %>
-                          <i class="fas fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-          </td>
-        </tr>
+        <div class="individual col-lg-3 col-md-6 mx-0">
+        <%= link_to individual_path(individual), class: "text-dark" do %>
+          <%= image_tag individual.get_image(200,200),class: "img-fluid" %><br>
+          <p class="m-2">名前：<%= individual.name %></p>
+          <p class="m-2">種類：<%= individual&.seed&.name %></p>
+        <% end %>
+        </div>
       <% end %>
-      </tbody>
-    </table>
-  <%= paginate @individuals, theme: 'twitter-bootstrap-4' %>
+    </div>
+    <div class="pagination justify-content-center mt-3 mb-3">
+    <%= paginate @individuals, theme: 'twitter-bootstrap-4' %>
+    </div>
   </div>
 </div>
