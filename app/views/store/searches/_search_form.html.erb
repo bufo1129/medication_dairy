@@ -3,6 +3,9 @@
     <%= f.text_field :word, class: "form-control me-4" %>
     <%= f.select :range, options_for_select([["店舗",'Store'], ["個体",'Individual']]), class: "form-control" %>
     <%= f.select :search, options_for_select([["部分一致","partial_match"],["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"]]) %>
-    <%= f.submit "検索", class: "btn btn-primary my-1 my-sm-0" %>
+    <%#= f.submit "検索", class: "btn btn-primary my-1 my-sm-0" %>
+    <%= button_tag :type => "submit", :class =>"btn btn-info rounded-end" do %>
+      <i class="fa fa-search"></i>
+    <% end %>
   <% end %>
 <% end %>

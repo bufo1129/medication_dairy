@@ -1,0 +1,44 @@
+<div class="text-center mb-5"></div>
+
+<div class="container">
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">投薬一覧</h3>
+  <table class="table">
+    <thead class="table-dark">
+      <%= link_to '新しい順', admin_medications_path(latest: "true") %>
+     |<%= link_to '古い順', admin_medications_path(old: "true") %>
+      <tr>
+        <th scope="col">個体名</th>
+        <th scope="col">種類名</th>
+        <th scope="col">薬名</th>
+        <th scope="col">投薬開始日</th>
+        <th scope="col">投薬終了予定日</th>
+      </tr>
+    </thead>
+    <tbody class="table table-hover">
+      <% @medications.each do |medication| %>
+      <tr>
+        <td>
+          <%= link_to admin_medication_path(medication.id) do %>
+            <%= medication.individual.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= medication.individual.seed.name %>
+        </td>
+        <td>
+          <% medication.medicine_records.each do |mr| %>
+            <%= mr.medicine.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= medication.dosing_start_date %>
+        </td>
+        <td>
+          <%= medication.dosing_end_date %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+   <%= paginate @medications, theme: 'twitter-bootstrap-4' %>
+</div>

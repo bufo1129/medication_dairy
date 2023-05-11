@@ -1,63 +1,64 @@
 <div class="text-center mb-5"></div>
 
 <div class="container">
-  <!--<div class="row">-->
-  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
-  <!--</div>-->
 
-<h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">投薬記録一覧</h3>
-<h4 class="text-danger"><%= flash[:alert] %></h4>
-
-<div class="text-center mb-5"></div>
-  <%= link_to "作成する", new_medication_path, class: "btn btn-success" %>
-<div class="text-center mb-5"></div>
-
-<div class="table-responsive">
-  <table class="table">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">店舗名</th>
-          <th scope="col">動物種</th>
-          <th scope="col">個体名</th>
-          <th scope="col">薬名</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-
-      <tbody class="table table-hover">
-        <% @medications.each do |medication| %>
-        <tr>
-          <td class="h5">
-            <%= medication.store.name %>
-          </td>
-          <td class="h5">
-            <%= medication.individual.seed.name %>
-          </td>
-          <td class="h5">
-            <%= link_to medication_path(medication.id) do %>
-              <%= medication.individual.name %>
-            <% end %>
-          </td>
-          <td class="h5">
-            <% medication.medicine_records.each do |mr| %>
-              <%= mr.medicine.name %>
-            <% end %>
-          </div>
-          <td class="h5"></div>
-          <td>
-            <% if medication.store == current_store %>
-              <%= link_to medication_path(medication.id),
-                          class: "btn btn-danger", method: :delete,
-                          data: { confirm: "本当に削除しますか？" } do %>
-                          <i class="fas fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <%= paginate @medications, theme: 'twitter-bootstrap-4' %>
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">投薬記録一覧</h3>
+  <h4 class="text-danger"><%= flash[:alert] %></h4>
+    
+  <div class="text-right ">
+    <%= link_to new_medication_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-success border border-2 ", method: :get do %>
+      <i class="fas fa-plus"></i>新規個体登録
+    <% end %>
   </div>
+  
+  <div class="text-center mb-3"></div>
+  
+  <div class="table-responsive">
+    <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">個体名</th>
+            <th scope="col">動物種</th>
+            <th scope="col">薬名</th>
+            <th scope="col">店舗名</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+  
+        <tbody class="table table-hover">
+          <% @medications.each do |medication| %>
+          <tr>
+            <td class="h5">
+              <%= link_to medication_path(medication.id) do %>
+                <%= medication.individual.name %>
+              <% end %>
+            </td>
+            <td class="h5">
+              <%= medication.individual.seed.name %>
+            </td>
+            <td class="h5">
+              <% medication.medicine_records.each do |mr| %>
+                <%= mr.medicine.name %>
+              <% end %>
+            </td>
+            <td class="h5">
+              <%= medication.store.name %>
+            </td>
+            <td class="h5"></div>
+            <td>
+              <% if medication.store == current_store %>
+                <%= link_to medication_path(medication.id),
+                            class: "btn btn-danger", method: :delete,
+                            data: { confirm: "本当に削除しますか？" } do %>
+                            <i class="fas fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <%= paginate @medications, theme: 'twitter-bootstrap-4' %>
+    </div>
 </div>

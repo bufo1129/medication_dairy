@@ -32,12 +32,9 @@
 <div class="mb-5"></div>
 
 <div class="container mt-5">
-  <h3>
-    <span style="background-color: #c0c0c0;">日報の新規投稿</span>
-  </h3>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
+  <h3 class="border-bottom border-dark"><strong>日報の新規投稿</strong></h3>
   <div class="text-center mb-5"></div>
-
   <%= form_with model: @dairy, url: dairies_path, method: :post do |f| %>
     <div class="row">
       <div class="col-md-8 mx-auto">

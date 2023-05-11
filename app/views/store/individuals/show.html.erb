@@ -13,32 +13,42 @@
       <!--↑-->
       <table class="table">
         <tr>
-          <td>店舗名</td>
+          <td><strong>店舗名</strong></td>
           <td>
             <%= @individual.store.name %>
           </td>
         </tr>
         <tr>
-          <td>個体名</td>
+          <td><strong>個体名</strong></td>
           <td><%= @individual.name %></td>
         </tr>
         <tr>
-          <td>年齢</td>
+          <td><strong>年齢</strong></td>
           <td><%= @individual.age %></td>
         </tr>
         <tr>
-          <td>生年月日</td>
+          <td><strong>生年月日</strong></td>
           <td><%= @individual.birthday %></td>
         </tr>
         <tr>
-          <td>体重</td>
+          <td><strong>体重</strong></td>
           <td>
             <%= @individual.weight %>
           </td>
         </tr>
         <tr>
-          <td>種類名</td>
+          <td><strong>種類名</strong></td>
           <td><%= @seed.name %></td>
+        </tr>
+        <tr>
+          <td><strong>投薬ステータス</strong></td>
+          <td>
+            <% if @individual.medication_status == false %>
+              <span class="font-weight-bold text-success">投薬終了</span>
+            <% else %>
+              <span class="font-weight-bold text-danger">投薬中</span>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td></td>
@@ -46,12 +56,11 @@
             <% if @individual.store == current_store %>
               <%= link_to "編集", edit_individual_path, class: "btn btn-success" %>
               <%= link_to "削除", individual_path, method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
-            <% else %>
-              <%= link_to "戻る", individuals_path, class: "btn btn-success" %>
             <% end %>
           </td>
         </tr>
       </table>
+      <div class="text-left"><%= link_to "<<", individuals_path, class: "btn btn-light rounded-circle" %></div>
     </div>
   </div>
 </div>

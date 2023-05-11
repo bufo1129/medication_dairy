@@ -5,6 +5,9 @@ class Individual < ApplicationRecord
   belongs_to :store,      optional: true
   belongs_to :seed,       optional: true
   belongs_to :medication, optional: true, dependent: :destroy
+  
+  #投薬のステータス
+  enum medication_status: { give: true, not_give: false }
 
   #画像
   def get_image(width, height)

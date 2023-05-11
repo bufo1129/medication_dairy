@@ -6,6 +6,13 @@
 
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">店舗情報詳細</h2>
       <h4 class="text-success"><%= flash[:notice] %></h4>
+      <div class="text-right">
+        <% if current_store != @each_store %>
+          <%= link_to edit_each_store_path, class: "btn rounded-circle btn-info" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        <% end %>
+      </div>
       <table class="table">
         <tr>
           <td>店舗名</td>
@@ -32,17 +39,7 @@
           <td>電話番号</td>
           <td><%= @each_store.phone_number %></td>
         </tr>
-        <tr>
-          <td></td>
-          <td>
-            <% if current_store != @each_store %>
-              <%= link_to '戻る', each_stores_path, class: "btn btn-success" %>
-            <% else %>
-              <%= link_to '編集する', edit_each_store_path, class: "btn btn-success" %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
+        <tr class="border-bottom">
           <td>店舗ステータス</td>
           <td>
             <% if @each_store.is_deleted == false %>
@@ -52,10 +49,7 @@
             <% end %>
           </td>
         </tr>
-      </table>
-
-      <table>
-        <tr>
+        <tr class="border-bottom">
           <th style="width: 30%">投薬一覧</th>
           <td style="width: 40%"><%= link_to "一覧を見る", medications_path(medication_id: @each_store.id) %></td>
         </tr>
@@ -64,16 +58,11 @@
           <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @each_store.id) %></td>
         </tr>
       </table>
+
+      <div class="text-center">
+        <%= link_to '<<', each_stores_path, class: "btn btn-light rounded-circle" %>
+      </div>
+
     </div>
   </div>
 </div>
-
-      <!--<h5>日報一覧</h5>-->
-      <!--<table class="table">-->
-      <!--  <%# @each_store.dairies.each do |dairy| %>-->
-      <!--    <tr>-->
-      <!--      <td><%#= dairy.title %></td>-->
-      <!--      <td><%#= dairy.created_at %></td>-->
-      <!--    </tr>-->
-      <!--  <%# end %>-->
-      <!--</table>-->

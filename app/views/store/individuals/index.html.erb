@@ -1,7 +1,5 @@
 
-
 <div class="text-center mb-5"></div>
-
 
 <h4 class="text-success"><%= flash[:notice] %></h4>
 <h4 class="text-danger"><%= flash[:alert] %></h4>
@@ -33,8 +31,16 @@
         <div class="individual col-lg-3 col-md-6 mx-0">
         <%= link_to individual_path(individual), class: "text-dark" do %>
           <%= image_tag individual.get_image(200,200),class: "img-fluid" %><br>
-          <p class="m-2">名前：<%= individual.name %></p>
-          <p class="m-2">種類：<%= individual&.seed&.name %></p>
+          <p class="m-2"><strong>名前：</strong><%= individual.name %></p>
+          <p class="m-2"><strong>種類：</strong><%= individual&.seed&.name %></p>
+          <p class="m-2"><strong>店舗：</strong><%= individual.store.name %></p>
+          <p class="m-2">
+            <% if individual.medication_status == false %>
+              <span class="font-weight-bold text-success">投薬終了</span>
+            <% else %>
+              <span class="font-weight-bold text-danger">投薬中</span>
+            <% end %>
+          </p>
         <% end %>
         </div>
       <% end %>

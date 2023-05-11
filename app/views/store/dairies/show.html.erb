@@ -7,64 +7,64 @@
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報情報詳細</h2>
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <h4 class="text-danger"><%= flash[:alert] %></h4>
+      <div class="text-right">
+        <% if current_store != @each_store %>
+          <%= link_to edit_dairy_path(@dairy.id), class: "btn rounded-circle btn-info" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to  dairy_path(@dairy.id), method: :delete,
+              data: { confirm: "本当に削除しますか？" }, class: "btn rounded-circle btn-danger" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+
       <table class="table">
         <tr>
-          <td>店舗名</td>
+          <td><strong>店舗名</strong></td>
           <td><%= @dairy.store.name %></td>
         </tr>
         <tr>
-          <td>作成日</td>
+          <td><strong>作成日</strong></td>
           <td><%= @dairy.created_date %></td>
         </tr>
         <tr>
-          <td>天気</td>
+          <td><strong>天気</strong></td>
           <td>
             <%= @dairy.weather.name %>
           </td>
         </tr>
         <tr>
-          <td>最高気温</td>
+          <td><strong>最高気温</strong></td>
           <td><%= @dairy.high_temperature %></td>
         </tr>
         <tr>
-          <td>最低気温</td>
+          <td><strong>最低気温</strong></td>
           <td>
             <%= @dairy.low_temperature %>
           </td>
         </tr>
         <tr>
-          <td>タイトル</td>
+          <td><strong>タイトル</strong></td>
           <td><%= @dairy.title %></td>
         </tr>
         <tr>
-          <td>内容</td>
+          <td><strong>内容</strong></td>
           <td><%= @dairy.body %></td>
         </tr>
-        <tr>
-          <td></td>
-          <td>
-            <% if @dairy.store == current_store %>
-              <%= link_to '編集する', edit_dairy_path(@dairy.id), class: "btn btn-success" %>
-              <%= link_to "削除", dairy_path(@dairy.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-3" %>
-              <%= link_to '日報一覧へ戻る', dairies_path, class: "btn btn-success" %>
-            <% else %>
-              <%= link_to '日報一覧へ戻る', dairies_path, class: "btn btn-success" %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-
-      <table>
         <tr>
           <th style="width: 30%"><%= @dairy.store.name %> 投薬一覧</th>
           <td style="width: 40%"><%= link_to "一覧を見る", medications_path(store_id: @dairy.store_id) %></td>
         </tr>
-        <tr>
+        <tr class="border-bottom">
           <th style="width: 30%"><%= @dairy.store.name %> 日報一覧</th>
           <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @dairy.store_id) %></td>
         </tr>
       </table>
+      
+      <div class="text-center">
+        <%= link_to '<<', dairies_path, class: "btn btn-light rounded-circle" %>
+      </div>
 
     </div>
   </div>

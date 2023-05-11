@@ -1,13 +1,13 @@
 <div class="text-center mb-5"></div>
 
 <div class="container mt-5">
-  <h3><span><%= @individual.name %> 情報編集画面</span></h3>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
   <div class="text-center mb-5"></div>
 
-  <%= form_with(model: @individual, url: individual_path(@individual), method: :patch, local: true, class: "edit_individual") do |f| %>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-lg-5 mx-auto">
+        <%= form_with(model: @individual, url: individual_path(@individual), method: :patch, local: true, class: "edit_individual") do |f| %>
+        <h3 class="border-bottom border-dark"><strong><%= @individual.name %> 情報編集画面</strong></h3>
         <div class="form-group">
           <label for="individual_image">画像</label>
             <%= f.file_field :image, accept: "image/*", class: "form-control-file individual_image" %>
@@ -32,8 +32,11 @@
           <label for="customer_phone_number">体重</label>
           <%= f.text_field :weight, class: "form-control" %>
         </div>
-        <%= f.submit "更新する", class: "btn btn-primary" %>
+        <div class="text-right">
+          <%= f.submit "更新する", class: "btn btn-primary" %>
+        </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
