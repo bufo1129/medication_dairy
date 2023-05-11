@@ -24,7 +24,7 @@ class Store::SessionsController < Devise::SessionsController
   def guest_sign_in
     store = Store.guest
     sign_in store
-    redirect_to about_path, notice: 'guestuserでログインしました。'
+    redirect_to root_path, notice: 'guestuserでログインしました。'
   end
 
   protected
