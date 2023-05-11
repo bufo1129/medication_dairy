@@ -10,17 +10,17 @@
 .pagination {
   justify-content: center;
 }
-.pagination>li>a {          
-  border: none;   
+.pagination>li>a {
+  border: none;
   color: #696969;
 }
-.pagination>.active>a {     
-  background: #93c9ff;   
-  border-radius: 15px;   
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
 }
 
-.pagination>li>a:hover {        
-  border-radius: 15px;  
+.pagination>li>a:hover {
+  border-radius: 15px;
 }
 
 //↓管理者トップ アコーディオン
@@ -31,9 +31,9 @@
 .s_01 .accordion_one .accordion_header {
   background-color: #4682b4;
   color: #fff;
-  font-size: 26px;
-  font-weight: bold;
-  padding: 20px 11%;
+  font-size: 20px;
+  // font-weight: bold;
+  padding: 15px 11%;
   text-align: center;
   position: relative;
   z-index: +1;
@@ -126,7 +126,7 @@
   border-bottom: 2px solid #757575;
 }
 .s_01 .accordion_one .accordion_inner .box_one {
-  height: 300px;
+  height: 160px;
 }
 @media screen and (max-width: 1024px) {
   .s_01 .accordion_one .accordion_header {

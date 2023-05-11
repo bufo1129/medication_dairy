@@ -1,58 +1,29 @@
-
-<div class="text-center mb-5"></div>
-
+<div class="mb-5"></div>
 <div class="container">
-  <!--<div class="row">-->
-  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
-  <!--</div>-->
-<h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">個体一覧</h2>
-<h4 class="text-success"><%= flash[:notice] %></h4>
-<h4 class="text-danger"><%= flash[:alert] %></h4>
-<div class="text-center mb-5"></div>
-
-<div class="table-responsive">
-  <table class="table">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">店舗名</th>
-          <th scope="col">個体名</th>
-          <th scope="col">種類</th>
-          <th scope="col">生年月日</th>
-          <th scope="col">年齢</th>
-          <th scope="col">体重</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-
-      <tbody class="table table-hover">
+  <h4 class="text-success"><%= flash[:notice] %></h4>
+  <div class="row">
+    <%= render 'admin/homes/accordion' %>
+    <div class="col-lg-9 col-md-9  d-flex align-items-center justify-content-center">
+      <div class="individuals-list d-flex flex-wrap">
         <% @individuals.each do |individual| %>
-        <tr>
-          <td class="h5">
-            <%= link_to admin_store_path(individual.store_id) do %>
-              <%= individual.store.name %>
-            <% end %>
-          </td>
-          <td class="h5">
-            <%= link_to admin_individual_path(individual.id) do %>
-              <%= individual.name %>
-            <% end %>
-          </td>
-          <td class="h5">
-            <%= individual&.seed&.name %>
-          </td>
-          <td class="h5">
-            <%= individual.birthday %>
-          </td>
-          <td class="h5">
-            <%= individual.age %>
-          </div>
-          <td class="h5">
-            <%= individual.weight %>
-          </div>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <%#= paginate @seeds, theme: 'twitter-bootstrap-4' %>
+          <div class="individual col-lg-3 col-md-6 mx-0">
+              <%= link_to admin_individual_path(individual), class: "text-dark" do %>
+                <%= image_tag individual.get_image(200,200),class: "img-fluid" %><br>
+                <p class="m-2"><strong>名前：</strong><%= individual.name %></p>
+                <p class="m-2"><strong>種類：</strong><%= individual&.seed&.name %></p>
+                <p class="m-2"><strong>店舗：</strong><%= individual.store.name %></p>
+                <p class="m-2">
+                  <% if individual.medication_status == false %>
+                    <span class="font-weight-bold text-success">投薬終了</span>
+                  <% else %>
+                    <span class="font-weight-bold text-danger">投薬中</span>
+                  <% end %>
+                </p>
+                  <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+  <%#= paginate @dairies, theme: 'twitter-bootstrap-4' %>
 </div>
