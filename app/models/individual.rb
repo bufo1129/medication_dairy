@@ -3,8 +3,8 @@ class Individual < ApplicationRecord
   has_one_attached :image
 
   belongs_to :store,      optional: true
-  belongs_to :seed,       optional: true
-  belongs_to :medication, optional: true, dependent: :destroy
+  belongs_to :seed
+  has_many :medications, dependent: :destroy
   
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }

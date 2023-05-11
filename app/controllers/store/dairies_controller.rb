@@ -4,17 +4,21 @@ class Store::DairiesController < ApplicationController
 
   def index
     if params[:store_id].present?
-      @dairies = Dairy.where(store_id: params[:store_id])
+      dairies = Dairy.where(store_id: params[:store_id])
     else
-      @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(10)
+      dairies = Dairy.all
     end
 
-    if params[:latest]
-      @dairies = @dairies.latest.page(params[:page]).per(10)
-    elsif params[:old]
-      @dairies = @dairies.old.page(params[:page]).per(10)
+    if params[:latest] == "true"
+      
+      @dairies = dairies.latest.page(params[:page]).per(10)
+     
+    elsif params[:old] == "true"
+     
+      @dairies = dairies.old.page(params[:page]).per(10)
+     
     else
-      @dairies = @dairies.all.order(created_at: :desc).page(params[:page]).per(10)
+      @dairies = dairies.all.order(created_at: :desc).page(params[:page]).per(10)
     end
   end
 

@@ -14,5 +14,9 @@ class Medication < ApplicationRecord
   enum medication_status: { give: true, not_give: false }
 
   validates :individual_id,       presence: true
+  
+  # ↓日報の登録日順の並べ替え
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
 
 end

@@ -4,7 +4,7 @@ class Admin::MedicinesController < ApplicationController
   
   def index
     @medicine = Medicine.new
-    @medicines = Medicine.all
+    @medicines = Medicine.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def create

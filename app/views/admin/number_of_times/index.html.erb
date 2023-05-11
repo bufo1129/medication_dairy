@@ -1,55 +1,48 @@
 <div class="text-center mb-5"></div>
-
 <div class="container">
-  <!--<div class="row">-->
-  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
-  <!--</div>-->
-
-  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">回数の登録</h3>
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
 
   <div class="text-center mb-5"></div>
     <div class="row">
-    <%= form_with model: @number_of_time, url: admin_number_of_times_path, method: :post, local: true do |f| %>
-    <div class="form-group">
-      <label for="times_name">登録名:</label>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <label for="dosing_times">回数:</label>
-      <%= f.text_field :dosing_times, class: "form-control" %>
-    </div>
-      <%= f.submit "新規登録", class: "btn btn-success" %>
-    <% end %>
-  </div>
-</div>
-
-<div class="text-center mb-5"></div>
-
-<div class="container">
-  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">回数登録一覧</h3>
-  <table class="table">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">登録名</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody class="table table-hover">
-      <% @number_of_times.each do |number_of_time| %>
-      <tr>
-        <td class="h5"><%= number_of_time.name %></td>
-        <td class="h5"><%= number_of_time.dosing_times %></td>
-        <td class="h5">
-          <%= link_to "編集する", edit_admin_number_of_time_path(number_of_time.id), class: "btn btn-outline-success" %>
-          <%= link_to "削除", admin_number_of_time_path(number_of_time.id), method: :delete,
-            data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-3" %>
-        </td>
-      </tr>
+      <div class="col-lg-3 col-md-4">
+        <%= form_with model: @number_of_time, url: admin_number_of_times_path, method: :post, local: true do |f| %>
+         <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">回数の登録</h3>
+      <div class="form-group">
+        <label for="times_name"><strong>登録名:</strong></label>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="dosing_times"><strong>回数:</strong></label>
+        <%= f.text_field :dosing_times, class: "form-control" %>
+      </div>
+        <%= f.submit "新規登録", class: "btn btn-success" %>
       <% end %>
-    </tbody>
-  </table>
-  <%#= paginate @medications, theme: 'twitter-bootstrap-4' %>
+    </div>
+    <div class="col">
+      <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">回数登録一覧</h3>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">登録名</th>
+            <th scope="col">回数</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody class="table table-hover">
+          <% @number_of_times.each do |number_of_time| %>
+          <tr>
+            <td class="h5"><%= number_of_time.name %></td>
+            <td class="h5"><%= number_of_time.dosing_times %>回</td>
+            <td class="h5">
+              <%= link_to edit_admin_number_of_time_path(number_of_time.id), class: "btn rounded btn-info" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
