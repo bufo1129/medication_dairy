@@ -6,34 +6,30 @@
   font-family: 'Kiwi Maru', serif;
 }
 
+// ↓ページネーション
 .pagination {
   justify-content: center;
 }
-
 .pagination>li>a {          
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
+  border: none;   
+  color: #696969;
 }
-
-/* 表示しているページ番号のデザイン */
 .pagination>.active>a {     
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
+  background: #93c9ff;   
+  border-radius: 15px;   
 }
 
-/*ホバー時のデザイン*/
 .pagination>li>a:hover {        
-  border-radius: 15px;    /*角を丸くする*/
+  border-radius: 15px;  
 }
 
 //↓管理者トップ アコーディオン
-
 .s_01 .accordion_one {
   max-width: 1024px;
   margin: 0 auto;
 }
 .s_01 .accordion_one .accordion_header {
-  background-color: #db0f2f;
+  background-color: #4682b4;
   color: #fff;
   font-size: 26px;
   font-weight: bold;
@@ -45,10 +41,10 @@
   transition-duration: 0.2s;
 }
 .s_01 .accordion_one:nth-of-type(2) .accordion_header {
-    background-color: #ff9a05;
+    background-color: #4682b4;
 }
 .s_01 .accordion_one:nth-of-type(3) .accordion_header {
-    background-color: #1c85d8;
+    background-color: #4682b4;
 }
 .s_01 .accordion_one .accordion_header:hover {
   opacity: .8;
@@ -114,26 +110,23 @@
 .s_01 .accordion_one .accordion_inner {
   display: none;
   padding: 30px 30px;
-  border-left: 2px solid #db0f2f;
-  border-right: 2px solid #db0f2f;
-  border-bottom: 2px solid #db0f2f;
+  border-left: 2px solid #757575;
+  border-right: 2px solid #757575;
+  border-bottom: 2px solid #757575;
   box-sizing: border-box;
 }
 .s_01 .accordion_one:nth-of-type(2) .accordion_inner {
-  border-left: 2px solid #ff9a05;
-  border-right: 2px solid #ff9a05;
-  border-bottom: 2px solid #ff9a05;
+  border-left: 2px solid #757575;
+  border-right: 2px solid #757575;
+  border-bottom: 2px solid #757575;
 }
 .s_01 .accordion_one:nth-of-type(3) .accordion_inner {
-  border-left: 2px solid #1c85d8;
-  border-right: 2px solid #1c85d8;
-  border-bottom: 2px solid #1c85d8;
+  border-left: 2px solid #757575;
+  border-right: 2px solid #757575;
+  border-bottom: 2px solid #757575;
 }
 .s_01 .accordion_one .accordion_inner .box_one {
   height: 300px;
-}
-.s_01 .accordion_one .accordion_inner p.txt_a_ac {
-  margin: 0;
 }
 @media screen and (max-width: 1024px) {
   .s_01 .accordion_one .accordion_header {
@@ -152,4 +145,3 @@
     padding: 15px 60px 15px 15px;
   }
 }
-

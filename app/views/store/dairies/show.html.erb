@@ -8,6 +8,7 @@
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <h4 class="text-danger"><%= flash[:alert] %></h4>
       <div class="text-right">
+        <!--ゲストユーザー編集拒否-->
         <% if current_store != @each_store %>
           <%= link_to edit_dairy_path(@dairy.id), class: "btn rounded-circle btn-info" do %>
             <i class="fas fa-edit"></i>
@@ -61,7 +62,7 @@
           <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @dairy.store_id) %></td>
         </tr>
       </table>
-      
+
       <div class="text-center">
         <%= link_to '<<', dairies_path, class: "btn btn-light rounded-circle" %>
       </div>

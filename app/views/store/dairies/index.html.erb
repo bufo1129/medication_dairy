@@ -1,64 +1,90 @@
+
+
+
+
 <div class="text-center mb-5"></div>
 
-<div class="container">
-  <!--<div class="row">-->
-  <!--  <%#= render 'layouts/errors', obj: @genre %>-->
-  <!--</div>-->
-
-<h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報一覧</h3>
+<h4 class="text-success"><%= flash[:notice] %></h4>
 <h4 class="text-danger"><%= flash[:alert] %></h4>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%#= render 'store/homes/store', stores: @stores %>
+    </div>
 
-<div class="text-center mb-5"></div>
-<div class="text-center mb-5"></div>
-<div class="text-right ">
-    <%= link_to new_individual_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-success border border-2 ", method: :get do %>
-      <i class="fas fa-plus"></i>日報作成
-    <% end %>
-  </div>
-<div class="table-responsive">
-  <table class="table table-hover">
-      <thead class="table-dark">
-        <%= link_to '新しい順', dairies_path(latest: "true") %>
-       |<%= link_to '古い順', dairies_path(old: "true") %>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">日付</th>
-          <th scope="col">店舗名</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
+    <div class="contents-area col-lg-8 col-md-8">
+      <div class="text-center mt-3 mb-5">
+        <% if params[:store_id] %>
+          <span class="h2 mt-2 mb-2"><strong><%= @store.name %>一覧</strong></span><span class="h5"> (全<%#= @dairies_all.count %>件)</span>
+        <% else %>
+          <span class="h2 mt-2 mb-2"><strong>日報一覧</strong></span><span class="h5"> (全<%#= @dairies_all.count %>件)</span>
+        <% end %>
+      </div>
 
-      <tbody class="table">
-        <% @dairies.each do |dairy| %>
-        <tr>
-          <td class="h5">
-            <%= link_to dairy_path(dairy.id),class: "btn btn-primary " do %>
-              <i class="fas fa-file-alt"></i>
-            <% end %>
-          </td>
-          <td class="h5">
-            <%= dairy.created_date %>
-          </td>
-          <td class="h5">
-            <%= dairy.store.name %>
-          </td>
-          <td class="h5">
-            <%= dairy.medication_id %>
-          </td>
-          <td class="h5">
-            <% if dairy.store == current_store %>
-              <%= link_to dairy_path(dairy.id),
-                          class: "btn btn-danger", method: :delete,
-                          data: { confirm: "本当に削除しますか？" } do %>
-                          <i class="fas fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <%= paginate @dairies, theme: 'twitter-bootstrap-4' %>
+      <div class="text-right ">
+        <%= link_to new_dairy_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-success border border-2 ", method: :get do %>
+          <i class="fas fa-plus"></i>日報作成
+        <% end %>
+      </div>
+
+      <div class="text-center mb-3"></div>
+
+    <!--  <div class="individuals-list d-flex flex-wrap">-->
+    <!--    <% @dairies.each do |dairy| %>-->
+    <!--    <div class="individual col-lg-3 col-md-6 mx-0">-->
+    <!--    <%= link_to dairy_path(dairy), class: "text-dark" do %>-->
+
+    <!--      <p class="m-2"><strong>名前：</strong><%= dairy.store.name %></p>-->
+    <!--    <% end %>-->
+    <!--    </div>-->
+    <!--  <% end %>-->
+    <!--</div>-->
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="table-dark">
+            <%= link_to '新しい順', dairies_path(latest: "true") %>
+           |<%= link_to '古い順', dairies_path(old: "true") %>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">日付</th>
+              <th scope="col">店舗名</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+    
+          <tbody class="table">
+            <% @dairies.each do |dairy| %>
+            <tr>
+              <td class="h5">
+                <%= link_to dairy_path(dairy.id),class: "btn btn-primary " do %>
+                  <i class="fas fa-file-alt"></i>
+                <% end %>
+              </td>
+              <td class="h5">
+                <%= dairy.created_date %>
+              </td>
+              <td class="h5">
+                <%= dairy.store.name %>
+              </td>
+              <td class="h5">
+                <%= dairy.medication_id %>
+              </td>
+              <td class="h5">
+                <% if dairy.store == current_store %>
+                  <%= link_to dairy_path(dairy.id),
+                              class: "btn btn-danger", method: :delete,
+                              data: { confirm: "本当に削除しますか？" } do %>
+                              <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <%= paginate @dairies, theme: 'twitter-bootstrap-4' %>
+    </div>
   </div>
+</div>
 </div>

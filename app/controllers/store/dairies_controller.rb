@@ -9,14 +9,18 @@ class Store::DairiesController < ApplicationController
       dairies = Dairy.all
     end
 
+    # if params[:store_id]
+    #   @store = Store.find(params[:store_id])
+    #   @dairies = @Store.dairies
+    #   @dairies_all = @store.individuals.all
+    # else
+    #   @dairies = Dairy.all
+    # end
+
     if params[:latest] == "true"
-      
       @dairies = dairies.latest.page(params[:page]).per(10)
-     
     elsif params[:old] == "true"
-     
       @dairies = dairies.old.page(params[:page]).per(10)
-     
     else
       @dairies = dairies.all.order(created_at: :desc).page(params[:page]).per(10)
     end
