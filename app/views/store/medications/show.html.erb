@@ -8,7 +8,7 @@
 
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @medication.individual.name %>の投薬記録詳細</h2>
       <h4 class="text-success"><%= flash[:notice] %></h4>
-      
+
       <div class="text-right">
         <% if current_store != @each_store %>
           <%= link_to edit_medication_path, class: "btn rounded-circle btn-info" do %>
@@ -20,7 +20,7 @@
           <% end %>
         <% end %>
       </div>
-      
+
       <table class="table">
         <tr>
           <th><strong>個体名：</strong></th>
@@ -28,6 +28,12 @@
             <%= link_to individual_path(@medication.individual_id) do %>
               <%= @medication.individual.name %>
             <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th><strong>動物種：</strong></th>
+          <td>
+            <%= @medication.individual.seed.name %>
           </td>
         </tr>
         <tr>

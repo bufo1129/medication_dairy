@@ -27,6 +27,7 @@ class Store::DairiesController < ApplicationController
   end
 
   def new
+    byebug
     @store = current_store
     @dairy = Dairy.new
     pp @store

@@ -1,16 +1,19 @@
-<table class="table table-borderless table-hover text-center">
-  <thead class="table-active table-dark">
+<div class="col-lg-3">
+  <table class="table table-borderless table-hover text-center">
+    <thead class="table-active table-dark">
+      <tr>
+        <th class="h5 font-weight-bold rounded">店舗</th>
+      </tr>
+    </thead>
     <tr>
-      <th class="h5 font-weight-bold rounded">動物種</th>
+      <td class="rounded">
+        <%#= link_to each_stores_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-success border border-2 ", method: :get do %>
+          <i class="fas fa-plus"></i>各店舗each
+        <%# end %>
+        <%#= link_to each_stores_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-success border border-2 ", method: :get do %>
+          <i class="fas fa-plus"></i>各店舗each
+        <%# end %>
+      </td>
     </tr>
-  </thead>
-  <% stores.each do |store| %>
-  <tr>
-    <td class="rounded">
-      <%= link_to stores_path(store_id: store.id), class: "text-dark" do %>
-        <%= store.name %>
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+  </table>
+</div>
