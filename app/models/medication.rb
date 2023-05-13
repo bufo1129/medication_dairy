@@ -14,13 +14,13 @@ class Medication < ApplicationRecord
   enum medication_status: { give: true, not_give: false }
 
 
-  # ↓二つ投稿のバリデーションがうまく動作しない
-  # validates :medicine_id,         presence: true
-  validates :medicine_record_id,  presence: true
+  validates :dosing_start_date,       presence: true
+  validates :dosing_end_date,       presence: true
+  validates :medication_status,       presence: true
+  validates :liquid_amount,       presence: true
+  validates :number_of_tablets,       presence: true
   validates :individual_id,       presence: true
   validates :weight,              presence: true
-  validates :number_of_time_id,   presence: true
-  validates :give_liquid,         presence: true
   validates :several_days,        presence: true
 
 

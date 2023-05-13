@@ -2,6 +2,8 @@
 <div class="mb-5"></div>
 
 <div class="container my-4">
+  <h4 class="text-success"><%= flash[:notice] %></h4>
+  <h4 class="text-danger"><%= flash[:alert] %></h4>
   <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
   <%= form_with model: @medication, url: medication_path(@medication), method: :patch, local: true do |f| %>
   <div class="row">
