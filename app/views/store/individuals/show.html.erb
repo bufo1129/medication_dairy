@@ -1,0 +1,66 @@
+<div class="text-center mb-5"></div>
+
+<div class = "container" >
+
+  <div class = "row" >
+    <h4 class="text-success"><%= flash[:notice] %></h4>
+    <div class="col text-center mx-auto">
+      <%= image_tag @individual.get_image(300,300) %>
+    </div>
+    <div class = "col mx-auto">
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @individual.name %>情報詳細</h2>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <!--↑-->
+      <table class="table">
+        <tr>
+          <td><strong>店舗名</strong></td>
+          <td>
+            <%= @individual.store.name %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>個体名</strong></td>
+          <td><%= @individual.name %></td>
+        </tr>
+        <tr>
+          <td><strong>年齢</strong></td>
+          <td><%= @individual.age %></td>
+        </tr>
+        <tr>
+          <td><strong>生年月日</strong></td>
+          <td><%= @individual.birthday %></td>
+        </tr>
+        <tr>
+          <td><strong>体重</strong></td>
+          <td>
+            <%= @individual.weight %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>種類名</strong></td>
+          <td><%= @seed.name %></td>
+        </tr>
+        <tr>
+          <td><strong>投薬ステータス</strong></td>
+          <td>
+            <% if @individual.medication_status == false %>
+              <span class="font-weight-bold text-success">投薬終了</span>
+            <% else %>
+              <span class="font-weight-bold text-danger">投薬中</span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <% if @individual.store == current_store %>
+              <%= link_to "編集", edit_individual_path, class: "btn btn-success" %>
+              <%= link_to "削除", individual_path, method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="text-left"><%= link_to "<<", individuals_path, class: "btn btn-light rounded-circle" %></div>
+    </div>
+  </div>
+</div>

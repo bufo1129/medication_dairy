@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <div class="container text-right">
+    <h1>welcome to <i class="fas fa-paw"></i></h1>
+    <h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong></h1>
+    <%#= image_tag 'top.jpg', class: "img-fluid" %>
+    <p><i class="fas fa-notes-medical"></i><strong>管理者ページ</strong>では, </p>
+    <p>店舗側で必要なジャンルの登録ができたり、</br>
+    登録された記録を確認することができます<i class="fas fa-paw"></i></p>
+  </div>
+</div>
+
+<div class="mb-5"></div>
+<div class="container">
+  <h4 class="text-success"><%= flash[:notice] %></h4>
+  <div class="row">
+  <%= render 'admin/homes/accordion' %>
+  <div class='mx-auto text-responsive'>
+    <!--アコーディオン-->
+
+    <!--<h1>welcome to </h1>-->
+    <!--<h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong> </h1>-->
+    <!--<p><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </p>-->
+    <!--<p>動物の日誌や投薬計算とをすることができるアプリです<i class="fas fa-paw"></i></p>-->
+
+  </div>
+</div>
+  
+</div>

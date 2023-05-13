@@ -1,0 +1,85 @@
+
+
+<div class="text-center mb-5"></div>
+
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-sm-12 col-md-8 col-lg-6 px-5 col-xl-6  px-sm-0 mx-auto">
+
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @medication.individual.name %>の投薬記録詳細</h2>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+
+      <div class="text-right">
+        <% if current_store != @each_store %>
+          <%= link_to edit_medication_path, class: "btn rounded-circle btn-info" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to  medication_path(@medication.id), method: :delete,
+              data: { confirm: "本当に削除しますか？" }, class: "btn rounded-circle btn-danger" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <table class="table">
+        <tr>
+          <th><strong>個体名：</strong></th>
+          <td>
+            <%= link_to individual_path(@medication.individual_id) do %>
+              <%= @medication.individual.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th><strong>動物種：</strong></th>
+          <td>
+            <%= @medication.individual.seed.name %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>投薬開始日：</strong><%= @medication.dosing_start_date %></td>
+          <td><strong>投薬終了予定日：</strong><%= @medication.dosing_end_date %></td>
+        </tr>
+        <tr>
+          <td><strong>投薬ステータス：</strong></td>
+          <td>
+            <% if @medication.medication_status == false %>
+              <span class="font-weight-bold text-success">投薬終了</span>
+            <% else %>
+              <span class="font-weight-bold text-danger">投薬中</span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>備考：</strong></td>
+          <td>
+            <%= @medication.body %>
+          </td>
+        </tr>
+      </table>
+
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1回に必要な錠剤の個数：</strong></td>
+            <td><%= @medication.number_of_tablets %> 個</td>
+          </tr>
+          <tr>
+            <td><strong>溶かすための液体量：</strong></td>
+            <td><%= @medication.liquid_amount %> ml</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= link_to '<<', medications_path, class: "btn btn-light rounded-circle" %>
+      </div>
+    </div>
+  </div>
+</div>

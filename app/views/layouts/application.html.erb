@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MedicationDairy</title>
+    <title>AnimalMedicationDairy</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--天気API-->
+    <script>
+      let OWM_API_KEY="<%= ENV['OWM_API_KEY'] %>"
+    </script>
+
+    <%= favicon_link_tag('favicon.ico') %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.34/jquery.jpostal.min.js"></script>
+
+    <style type="text/css">
+      .jumbotron {
+        background:url(<%= asset_path 'top.jpg' %>) center no-repeat;
+        background-size: cover;
+      }
+    </style>
   </head>
+
+  </head>
+
+  <!--header-->
+  <%= render 'layouts/header' %>
 
   <body>
     <%= yield %>
   </body>
+
+  <!--fooder-->
+  <fooder>
+    <%= render 'layouts/fooder' %>
+  </fooder>
+
+
 </html>

@@ -1,0 +1,2 @@
+module Admin::IndividualsHelper
+end

@@ -1,0 +1,143 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!--ヘッダーロゴリンク-->
+      <% if admin_signed_in? %>
+        <%= link_to admin_root_path,class: 'nav-link text-light' do %>
+          <i class="fas fa-notes-medical"></i>AnimalMedicationDairy
+        <% end %>
+      <% else %>
+        <%= link_to root_path,class: 'nav-link text-light' do %>
+          <i class="fas fa-notes-medical"></i>AnimalMedicationDairy
+        <% end %>
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+          <% if request.fullpath.include? "/admin" %>
+            <h4 class="navbar text-light d-flex align-items-center mr-5"><strong>管理人ページ</strong></h4>
+            <li>
+              <%= link_to admin_root_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-list-alt"></i> 項目一覧
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to admin_stores_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-store"></i> 店舗
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to admin_medicines_path ,class: 'nav-link text-light' do %>
+                <i class="fas fa-pills"></i> 薬
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to admin_seeds_path ,class: 'nav-link text-light' do %>
+                <i class="fas fa-paw"></i> 動物種
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_number_of_times_path, class: "nav-link text-light" do %>
+                <i class="fas fa-stopwatch-20"></i> 回数登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-out-alt"></i> Log out
+              <% end %>
+            </li>
+            <li class="nav-item mx-auto">
+              <%= render 'admin/searches/search_form' %>
+            </li>
+          <% else %>
+            <h4 class="navbar text-light d-flex align-items-center mr-5">ようこそ <strong>ゲスト</strong> さん！</h4>
+            <li>
+              <%= link_to root_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-home"></i> Home
+              <% end %>
+            </li>
+            <li>
+              <%= link_to about_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-link"></i> About
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-user-plus"></i> Sign up
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_store_session_path ,class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-in-alt"></i> Log in
+              <% end %>
+            </li>
+          <% end %>
+
+        <% elsif store_signed_in? %>
+          <h4 class="navbar text-light d-flex align-items-center mr-5"><strong><%= current_store.name %></strong></h4>
+          <li>
+              <%= link_to about_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-link"></i> 使い方
+              <% end %>
+            </li>
+          <li>
+            <%=  link_to each_stores_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-store"></i> 店舗
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to dairies_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> 日報
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to medications_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-pills"></i> 投薬記録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to individuals_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-paw"></i> 動物
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_store_session_path, method: :delete, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </li>
+          <li class="nav-item mx-auto">
+              <%= render 'store/searches/search_form' %>
+          </li>
+
+        <% else %>
+          <li>
+            <%= link_to root_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-link"></i> About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> Sign up
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_store_session_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> Log in
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,7 @@
+ja:
+  enums:
+    medication:
+      dosing_times:
+        sid: "SID(1日1回)"
+        bid: "BID(1日2回)"
+        tid: "TID(1日3回)"

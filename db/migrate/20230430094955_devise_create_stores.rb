@@ -4,8 +4,19 @@ class DeviseCreateStores < ActiveRecord::Migration[6.1]
   def change
     create_table :stores do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string  :email,               null: false, default: ""
+      t.string  :encrypted_password,  null: false, default: ""
+      t.string  :name,                null: false
+      t.string  :postal_code
+      t.string  :phone_number
+      t.boolean :is_deleted,          null: false, default: false
+
+      #天気用に店舗情報カラム追加
+      t.integer :prefecture_code
+      t.string  :address_city
+      t.string  :address_street
+      t.string  :address_building
+
 
       ## Recoverable
       t.string   :reset_password_token

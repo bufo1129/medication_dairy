@@ -1,0 +1,66 @@
+
+
+<div class="text-center mb-5"></div>
+
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 col-xl-6  px-sm-0 mx-auto">
+
+      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @medication.individual.name %>の投薬記録詳細</h2>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <table class="table">
+        <tr>
+          <td>個体名：</td>
+          <td>
+            <%= link_to individual_path(@medication.individual_id) do %>
+              <%= @medication.individual.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>投薬開始日：<%= @medication.dosing_start_date %></td>
+          <td>投薬終了予定日：<%= @medication.dosing_end_date %></td>
+        </tr>
+        <tr>
+          <td>投薬ステータス：</td>
+          <td>
+            <% if @medication.medication_status == false %>
+              <span class="font-weight-bold text-success">投薬終了</span>
+            <% else %>
+              <span class="font-weight-bold text-danger">投薬中</span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>備考：</td>
+          <td>
+            <%= @medication.body %>
+          </td>
+        </tr>
+      </table>
+
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1回に必要な錠剤の個数</td>
+            <td><%= @medication.number_of_tablets %> 個</td>
+          </tr>
+          <tr>
+            <td>溶かすための液体量</td>
+            <td><%= @medication.liquid_amount %> ml</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <%= link_to '一覧へ戻る', admin_medications_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,29 +1,60 @@
-<h2>Sign up</h2>
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "store/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="card col-sm-5 mx-auto mt-5">
+  <div class=="card-body">
+    <h3 class="mt-1 mb-3">新規登録</h3>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "store/shared/error_messages", resource: resource %>
+    <div class="form-group">
+      <label for="store_name">店舗名</label>
+        <%= f.text_field :name, class: "form-control",  autofocus: true,  placeholder: "店舗名" %>
+    </div>
+    <div class="form-group">
+        <label for="store_email">メールアドレス</label>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="store_postal_code">郵便番号</label>
+        <%= f.text_field :postal_code, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="store_prefecture_code">都道府県</label>
+        <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all,
+          :code, :name,  { prompt: '選択してください' }, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label for="store_address_city">市町村</label>
+        <%= f.text_field :address_city, autocomplete: "address_city", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="store_street">番地</label>
+        <%= f.text_field :address_street, autocomplete: "address_street", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="store_address_building">建物名</label>
+        <%= f.text_field :address_building, autocomplete: "address_building", class: "form-control" %>
+      </div>
+      <div class="form-group">
+          <label for="customer_phone_number">電話番号</label>
+          <%= f.text_field :phone_number, class: "form-control" %>
+      </div>
+      <div class="form-group">
+          <label for="customer_phone_number">パスワード</label>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="form-group">
+          <label for="customer_phone_number">パスワード</label>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-dark btn-lg btn-block" %>
+      </div>
+    <% end %>
+    <%#= render "store/shared/links" %>
+    <div class="small text-muted text-center mt-3"></div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "store/shared/links" %>
+</div>
