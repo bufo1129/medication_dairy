@@ -1,13 +1,32 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+       <!--ヘッダーロゴリンク SP-->
+      <% if admin_signed_in? %>
+        <%= link_to admin_root_path,class: 'nav-link text-light w-100 media_sp' do %>
+          <%= image_tag("logo.png", class: 'mx-auto d-block') %>
+        <% end %>
+      <% elsif store_signed_in? %>
+        <%= link_to root_path,class: 'nav-link text-light w-100 media_sp' do %>
+          <%= image_tag("logo.png", class: 'mx-auto d-block') %>
+        <% end %>
+      <% else %>
+        <%= link_to root_path,class: 'nav-link text-light w-100 media_sp' do %>
+          <%= image_tag("logo.png", class: 'mx-auto d-block') %>
+        <% end %>
+      <% end %>
+      <!--ヘッダーロゴリンク SP end -->
+    <div class="container-fluid top-navi">
       <!--ヘッダーロゴリンク-->
       <% if admin_signed_in? %>
-        <%= link_to admin_root_path,class: 'nav-link text-light' do %>
+        <%= link_to admin_root_path,class: 'nav-link text-light media_pc' do %>
+          <%= image_tag("logo.png") %>
+        <% end %>
+      <% elsif store_signed_in? %>
+        <%= link_to root_path,class: 'nav-link text-light media_pc' do %>
           <%= image_tag("logo.png") %>
         <% end %>
       <% else %>
-        <%= link_to root_path,class: 'nav-link text-light' do %>
+        <%= link_to root_path,class: 'nav-link text-ligh media_pc' do %>
           <%= image_tag("logo.png") %>
         <% end %>
       <% end %>
@@ -58,22 +77,22 @@
             <h4 class="navbar text-light d-flex align-items-center mr-5">ようこそ <strong>ゲスト</strong> さん！</h4>
             <li>
               <%= link_to root_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-home"></i> Home
+                <i class="fas fa-home"></i> トップ
               <% end %>
             </li>
             <li>
               <%= link_to about_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-link"></i> About
+                <i class="fas fa-link"></i> 使い方
               <% end %>
             </li>
             <li>
               <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-user-plus"></i> Sign up
+                <i class="fas fa-user-plus"></i> 新規登録
               <% end %>
             </li>
             <li>
               <%= link_to new_store_session_path ,class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-in-alt"></i> Log in
+                <i class="fas fa-sign-in-alt"></i> ログイン
               <% end %>
             </li>
           <% end %>
@@ -117,22 +136,22 @@
         <% else %>
           <li>
             <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+              <i class="fas fa-home"></i> トップ
             <% end %>
           </li>
           <li>
             <%= link_to about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> About
+              <i class="fas fa-link"></i> 使い方
             <% end %>
           </li>
           <li>
             <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> Sign up
+              <i class="fas fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li>
             <%= link_to new_store_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> Log in
+              <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>
         <% end %>

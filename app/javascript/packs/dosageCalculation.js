@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    if ($('#medicine-edit').length) {
+      outputWeightRequirement();
+      outputTabletRequirement();
+      outputRiquidRequirement();
+    }
+
     // ここから:１回に必要な錠剤の個数
     $("#dosage_indicated").on('change',function() {
       outputWeightRequirement();
@@ -13,7 +19,8 @@ $(document).ready(function() {
     function outputWeightRequirement() {
       $("#number_of_tablets").empty();
       var inputWeight = $("#weight").val();
-      var selectMedicine = $("#medicine").val();
+      //var selectMedicine = $("#medicine").val();
+      var selectMedicine = Number($('#medicine').children("option:selected")?.text()?.split(' ')[1]);
       var inputIndicated = $("#dosage_indicated").val();
       if (inputWeight &&  selectMedicine && inputIndicated) {
         var resultDivision = inputWeight*inputIndicated/selectMedicine;
@@ -39,7 +46,8 @@ $(document).ready(function() {
       $("#n_days_tablets").empty();
       var resultDivision = $("#number_of_tablets").text();
       var inputDay = $("#several_days").val();
-      var selectTime = $("#dosing_times").val();
+      var selectTime =  Number($("#dosing_times").children("option:selected")?.text()?.split(' ')[1]);
+      // var selectMedicine = Number($('#medicine').children("option:selected")?.text()?.split(' ')[1]);
       if ( resultDivision && inputDay && selectTime) {
         var resultQuantity = resultDivision*inputDay*selectTime;
         $("#n_days_tablets").append(resultQuantity.toFixed(2));
@@ -59,7 +67,7 @@ $(document).ready(function() {
       var resultDivision = $("#number_of_tablets").text();
       var inputLiquid = $("#give_liquid").val();
       if ( resultDivision && inputLiquid ) {
-        var resultQuantity = resultDivision/inputLiquid;
+        var resultQuantity = inputLiquid/resultDivision;
         $("#liquid_amount").append(resultQuantity.toFixed(2));
         $("#liquid_amount_value").val(resultQuantity.toFixed(2));
       }

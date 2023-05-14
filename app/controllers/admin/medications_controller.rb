@@ -2,6 +2,13 @@ class Admin::MedicationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
+    if params[:medicine_id].present?
+      mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
+      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
+    else
+      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
+    end
+    
     if params[:latest]
       @medications = Medication.latest.page(params[:page]).per(10)
     elsif params[:old]
@@ -16,12 +23,33 @@ class Admin::MedicationsController < ApplicationController
   end
 
   private
-
-  def dairy_params
-    params.require(:dairy).permit(
-      :give_medicine, :medication_id,
-      :store_id, :weather, :high_temperature,
-      :low_temperature, :title, :body, :created_date
-      )
+  
+  def medication_params
+    params.require(:medication).permit(
+      :individual_id,
+      :number_of_tablets,
+      :liquid_amount,
+      :dosing_start_date,
+      :dosing_end_date,
+      :medication_status,
+      :body,
+      :store_id,
+      :give_liquid,
+      :several_days,
+      :medicine_record_id,
+      :number_of_time_id,
+      :weight,
+      medicine_records_attributes: [
+        :dosage_indicated,
+        :medicine_id
+      ])
   end
+
+  # def dairy_params
+  #   params.require(:dairy).permit(
+  #     :give_medicine, :medication_id,
+  #     :store_id, :weather, :high_temperature,
+  #     :low_temperature, :title, :body, :created_date
+  #     )
+  # end
 end

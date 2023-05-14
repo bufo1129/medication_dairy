@@ -128,6 +128,10 @@
 .s_01 .accordion_one .accordion_inner .box_one {
   height: 160px;
 }
+
+.media_pc { display: block; }
+.media_sp { display: none; }
+
 @media screen and (max-width: 1024px) {
   .s_01 .accordion_one .accordion_header {
     font-size: 18px;
@@ -138,6 +142,19 @@
     margin-top: -15px;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .media_pc { display: none; }
+  .media_sp { display: block; }
+
+  .top-navi {
+    flex-direction: row-reverse;
+    position: absolute;
+    top: 72px;
+    right: 20px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .s_01 .accordion_one .accordion_header {
     font-size: 16px;

@@ -1,0 +1,74 @@
+<table class="table table-borderless table-hover text-center">
+  <thead class="table-active table-dark">
+    <tr>
+      <th class="h5 font-weight-bold rounded">一覧リンク</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to admin_stores_path, class: "text-dark" do %>
+          <i class="fas fa-store"></i> 店舗一覧
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to dairies_path, class: "btn btn-outline-info btn-sm btn-block mb-3" do %>
+          <i class="fas fa-book-open"></i> 日報一覧
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to admin_medications_path, class: "btn btn-outline-info btn-sm btn-block mb-3" do %>
+          <i class="fas fa-book-open"></i> 投薬一覧
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to individuals_path, class: "btn btn-outline-info btn-sm btn-block mb-3" do %>
+          <i class="fas fa-paw"></i> 動物一覧
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-borderless table-hover text-center">
+  <thead class="table-active table-dark">
+    <tr>
+      <th class="h5 font-weight-bold rounded">登録リスト</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%=  link_to admin_medicines_path ,class: "btn btn-outline-info btn-sm btn-block mb-3" do %>
+          <i class="fas fa-pills"></i> 薬登録
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%=  link_to admin_seeds_path ,class: "btn btn-outline-info btn-sm btn-block mb-3" do %>
+          <i class="fas fa-paw"></i> 動物種登録
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to admin_number_of_times_path, class: "btn btn-outline-info btn-sm btn-block mb-3" do %>
+          <i class="fas fa-stopwatch-20"></i> 回数登録
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to admin_weathers_path, class: "btn btn-outline-info btn-sm btn-block mb-3" do %>
+          <i class="fas fa-cloud-sun"></i> 天気登録
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

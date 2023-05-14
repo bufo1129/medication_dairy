@@ -29,9 +29,9 @@
             <%= medication.individual.seed.name %>
           </td>
           <td>
-            <% medication.medicine_records.each do |mr| %>
-              <%= mr.medicine.name %>
-            <% end %>
+            <%# medication.medicine_records.each do |mr| %>
+              <%= medication.medicine_record_ids %>
+            <%# end %>
           </td>
           <td>
             <%= medication.dosing_start_date %>

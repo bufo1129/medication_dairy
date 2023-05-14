@@ -1,7 +1,9 @@
 <!--スペース用-->
 <div class="mb-5"></div>
 
-<div class="container my-4">
+
+
+<div class="container my-4" id="medicine-edit">
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
   <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
@@ -61,23 +63,27 @@
       <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
       <div class="form-group">
         <div class=" my-3 form-check">
+          <%= f.fields_for :medicine_records do |m| %>
           <table>
-            <tr>
-              <th><%= f.label :medicine_id, "薬の種類" %></th>
-              <td class="pl-5">
-                <%= f.select :medicine_id, Medicine.all.map{|o| [o.name, o.ingredients_per_tablet]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
-              </td>
-            </tr>
+              <tr>
+                <th><%= m.label :medicine_id, "薬の種類" %></th>
+                <td class="pl-5">
+                  <%= m.select :medicine_id, Medicine.all.map{|o| ["#{o.name} #{o.ingredients_per_tablet}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= m.label :dosage_indicated, "必要量(mg/kg)" %></th>
+                <td class="pl-5">
+                  <%= m.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
+                </td>
+              </tr>
+            </table>
+          <% end %>
+          <table>
             <tr>
               <th><%= f.label :number_of_time_id, "投薬回数" %></th>
               <td class="pl-5">
-                <%= f.select :number_of_time_id, NumberOfTime.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :medicine_record_id, "必要量(mg/kg)" %></th>
-              <td class="pl-5">
-                <%= text_field_tag 'medicine_record[dosage_indicated]', nil,placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
+                <%= f.select :number_of_time_id, NumberOfTime.all.map{|o| ["#{o.name} #{o.dosing_times}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
               </td>
             </tr>
             <tr>
@@ -87,7 +93,7 @@
               </td>
             </tr>
             <tr>
-              <th><%= f.label :several_days, "薬の種類" %></th>
+              <th><%= f.label :several_days, "日数" %></th>
               <td class="pl-5">
                 <%= f.text_field :several_days, class: "form-control", id: "several_days" %>
               </td>

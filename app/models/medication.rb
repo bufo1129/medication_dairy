@@ -7,7 +7,7 @@ class Medication < ApplicationRecord
   has_many    :dairies, dependent: :destroy
 
   has_many    :medicine_records
-  has_many    :medicines, through: :medicine_record
+  has_many    :medicines, through: :medicine_records
 
   accepts_nested_attributes_for :medicine_records
   #投薬のステータス

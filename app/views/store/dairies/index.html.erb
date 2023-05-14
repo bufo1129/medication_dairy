@@ -6,10 +6,10 @@
     <%= render 'store/homes/accordion' %>
     <div class="col-lg-8">
       <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報一覧</h3>
+       <%= link_to '新しい順', dairies_path(latest: "true") %>
+      |<%= link_to '古い順', dairies_path(old: "true") %>
       <table class="table table-hover">
-        <thead class="table-dark">
-          <%= link_to '新しい順', dairies_path(latest: "true") %>
-         |<%= link_to '古い順', dairies_path(old: "true") %>
+        <thead class="bg-dark text-light">
           <tr>
             <th scope="col"></th>
             <th scope="col">日付</th>
