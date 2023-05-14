@@ -4,11 +4,11 @@
       <!--ヘッダーロゴリンク-->
       <% if admin_signed_in? %>
         <%= link_to admin_root_path,class: 'nav-link text-light' do %>
-          <%= link_to image_tag("logo.png") %>
+          <%= image_tag("logo.png") %>
         <% end %>
       <% else %>
         <%= link_to root_path,class: 'nav-link text-light' do %>
-          <%= link_to image_tag("logo.png") %>
+          <%= image_tag("logo.png") %>
         <% end %>
       <% end %>
 
