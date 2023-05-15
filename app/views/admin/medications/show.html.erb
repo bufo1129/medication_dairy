@@ -46,6 +46,10 @@
             </td>
           </tr>
           <tr>
+            <td><strong>症状：</strong><%= @medication.condition %></td>
+            <td><strong>体重：</strong><%= @medication.weight %>　kg</td>
+          </tr>
+          <tr>
             <th>備考：</th>
             <td>
               <%= @medication.body %>
@@ -53,14 +57,12 @@
           </tr>
         </table>
 
-
         <table class="table table-bordered">
           <thead>
             <tr>
               <th>薬名</th>
               <th>投薬回数</th>
               <th>指示量</th>
-              <th>体重</th>
               <th>投薬日数</th>
             </tr>
           </thead>
@@ -74,7 +76,6 @@
                 <%= medicine_record.number_of_time.name %>
               </td>
               <td><%= medicine_record.dosage_indicated %></td>
-              <td><%= @medication.weight %>　kg</td>
               <td><%= @medication.several_days %>　日間</td>
             </tr>
             <% end %>
@@ -82,7 +83,7 @@
         </table>
 
         <!--コメント機能-->
-        
+
       </div>
 
   </div>
