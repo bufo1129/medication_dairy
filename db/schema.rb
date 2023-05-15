@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2023_05_08_053723) do
     t.decimal "give_liquid"
     t.integer "several_days"
     t.decimal "weight"
+    t.string "condition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

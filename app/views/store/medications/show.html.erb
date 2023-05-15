@@ -51,6 +51,12 @@
           </td>
         </tr>
         <tr>
+          <td><strong>症状：</strong></td>
+          <td>
+            <%= @medication.condition %>
+          </td>
+        </tr>
+        <tr>
           <td><strong>備考：</strong></td>
           <td>
             <%= @medication.body %>
@@ -66,6 +72,8 @@
             <th>指示量</th>
             <th>体重</th>
             <th>投薬日数</th>
+            <th>１回に必要な錠剤の個数</th>
+            <th>溶かす液量</th>
           </tr>
         </thead>
         <tbody>
@@ -80,30 +88,12 @@
               <td><%= medicine_record.dosage_indicated %></td>
               <td><%= @medication.weight %>　kg</td>
               <td><%= @medication.several_days %>　日間</td>
+              <td><%= @medication.number_of_tablets %> 個</td>
+              <td><%= @medication.liquid_amount %> ml</td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>項目</th>
-            <th>結果</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>1回に必要な錠剤の個数：</strong></td>
-            <td><%= @medication.number_of_tablets %> 個</td>
-          </tr>
-          <tr>
-            <td><strong>溶かすための液体量：</strong></td>
-            <td><%= @medication.liquid_amount %> ml</td>
-          </tr>
-        </tbody>
-      </table>
-
 
       <div class="text-center">
         <%= link_to '<<', medications_path, class: "btn btn-light rounded-circle" %>

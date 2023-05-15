@@ -13,6 +13,8 @@ class Medication < ApplicationRecord
   has_many    :number_of_times, through: :medicine_records
 
   accepts_nested_attributes_for :medicine_records
+  accepts_nested_attributes_for :medicine_records, allow_destroy: true
+
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }
 
@@ -25,6 +27,7 @@ class Medication < ApplicationRecord
   validates :individual_id,       presence: true
   validates :weight,              presence: true
   validates :several_days,        presence: true
+  validates :condition,        presence: true
 
 
 

@@ -82,10 +82,12 @@ class Store::MedicationsController < ApplicationController
       :several_days,
       :medicine_record_id,
       :weight,
+      :condition,
       medicine_records_attributes: [
         :dosage_indicated,
         :medicine_id,
-        :number_of_time_id
+        :number_of_time_id,
+        :_destroy
       ])
   end
 

@@ -65,26 +65,24 @@
             </tr>
           </thead>
           <tbody>
+            <% @medication.medicine_records.each do |medicine_record| %>
             <tr>
               <td>
-                <% @medication.medicine_records.each do |mr| %>
-                  <%= mr.medicine.name %>
-                <% end %>
+                <%= medicine_record.medicine.name %>
               </td>
-              <td>※投薬回数取得
-                <%# @medication.medicine_records.each do |mr| %>
-                  <%#= mr.medicine.number_of_time %>
-                <%# end %>
-                <%#= @medication.number_of_time_id.name %>
+              <td>
+                <%= medicine_record.number_of_time.name %>
               </td>
-              <td>※指示量取得<%#= @medication.medication_recore.dosage_indicated %></td>
+              <td><%= medicine_record.dosage_indicated %></td>
               <td><%= @medication.weight %>　kg</td>
               <td><%= @medication.several_days %>　日間</td>
             </tr>
+            <% end %>
           </tbody>
         </table>
 
         <!--コメント機能-->
+        
       </div>
 
   </div>

@@ -52,8 +52,10 @@
       </div>
     </div>
     <div class="col-xs-12 col-lg-6">
+      <strong><%= f.label :condition, "症状" %></strong>
+      <%= f.text_field :condition, class: "form-control" %>
       <strong><%= f.label :body, "備考" %></strong>
-      <%= f.text_area :body, class: "form-control", size: "40x8" %>
+      <%= f.text_area :body, class: "form-control", size: "40x6" %>
     </div>
   </div>
 

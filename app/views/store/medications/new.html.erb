@@ -6,7 +6,7 @@
   <h4 class="text-danger"><%= flash[:alert] %></h4>
   <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
   <%= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
-  <div class="row">
+    <div class="row">
     <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>基本情報</strong></h3>
       <div class="form-group">
@@ -50,19 +50,21 @@
       </div>
     </div>
     <div class="col-xs-12 col-lg-6">
+      <strong><%= f.label :condition, "症状" %></strong>
+      <%= f.text_field :condition, class: "form-control" %>
       <strong><%= f.label :body, "備考" %></strong>
-      <%= f.text_area :body, class: "form-control", size: "40x8" %>
+      <%= f.text_area :body, class: "form-control", size: "40x6" %>
     </div>
   </div>
 
 
-  <div class="row">
+    <div class="row">
     <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
       <div class="form-group">
         <div class=" my-3 form-check">
           <%= f.fields_for :medicine_records do |m| %>
-          <table>
+            <table>
               <tr>
                 <th><%= m.label :medicine_id, "薬の種類" %></th>
                 <td class="pl-5">
@@ -131,6 +133,7 @@
           </tr>
         </tbody>
       </table>
+
       <div class="text-right">
         <%= f.submit "保存する", class: "btn btn-primary" %>
       </div>
@@ -139,3 +142,28 @@
   </div>
   <% end %>
 </div>
+
+<!--<div class="recipe-post">-->
+  <%#= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
+
+<!--    <div class="recipe-ingredients">-->
+<!--      <div class="mx-auto">-->
+        <%#= f.fields_for :medicine_records do |m| %>
+          <%#= render "store/medications/medicine_record_fields", f: m %>
+        <%# end %>
+<!--      </div>-->
+
+<!--      <div id="detail-association-insertion-point"></div>-->
+
+<!--      <div class="col-10 mx-auto mt-2">-->
+        <%#= link_to_add_association "+フォームを追加", f, :medicine_records,
+        class: "btn btn-secondary btn-block",
+        data: {
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after'
+        }%>
+<!--      </div>-->
+<!--    </div>-->
+
+  <%# end %>
+<!--</div>-->

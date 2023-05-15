@@ -23,3 +23,7 @@ import './accordion.js'
 Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
+
+
+//= require jquery
+//= require cocoon

@@ -14,6 +14,7 @@ class CreateMedications < ActiveRecord::Migration[6.1]
       t.decimal   :give_liquid
       t.integer   :several_days
       t.decimal   :weight
+      t.string    :condition
 
       t.timestamps
     end
