@@ -20,6 +20,12 @@ class Admin::MedicationsController < ApplicationController
 
   def show
     @medication = Medication.find(params[:id])
+    if params[:medicine_id].present?
+      mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
+      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
+    else
+      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   private
@@ -45,11 +51,4 @@ class Admin::MedicationsController < ApplicationController
       ])
   end
 
-  # def dairy_params
-  #   params.require(:dairy).permit(
-  #     :give_medicine, :medication_id,
-  #     :store_id, :weather, :high_temperature,
-  #     :low_temperature, :title, :body, :created_date
-  #     )
-  # end
 end

@@ -4,7 +4,7 @@ class Admin::WeathersController < ApplicationController
 
   def index
     @weather = Weather.new
-    @weathers = Weather.all
+    @weathers = Weather.all.page(params[:page]).per(8)
   end
 
   def create

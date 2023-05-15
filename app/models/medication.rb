@@ -9,6 +9,9 @@ class Medication < ApplicationRecord
   has_many    :medicine_records
   has_many    :medicines, through: :medicine_records
 
+  has_many    :medicine_records
+  has_many    :number_of_times, through: :medicine_records
+
   accepts_nested_attributes_for :medicine_records
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }

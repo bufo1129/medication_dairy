@@ -58,6 +58,32 @@
         </tr>
       </table>
 
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>薬名</th>
+            <th>投薬回数</th>
+            <th>指示量</th>
+            <th>体重</th>
+            <th>投薬日数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @medication.medicine_records.each do |medicine_record| %>
+            <tr>
+              <td>
+                <%= medicine_record.medicine.name %>
+              </td>
+              <td>
+                <%= medicine_record.number_of_time.name %>
+              </td>
+              <td><%= medicine_record.dosage_indicated %></td>
+              <td><%= @medication.weight %>　kg</td>
+              <td><%= @medication.several_days %>　日間</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
       <table class="table table-bordered">
         <thead>
@@ -77,6 +103,8 @@
           </tr>
         </tbody>
       </table>
+
+
       <div class="text-center">
         <%= link_to '<<', medications_path, class: "btn btn-light rounded-circle" %>
       </div>

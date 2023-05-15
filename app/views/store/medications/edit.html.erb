@@ -63,7 +63,7 @@
       <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
       <div class="form-group">
         <div class=" my-3 form-check">
-          <%= f.fields_for :medicine_records do |m| %>
+          <%= f.fields_for :medicine_records, method: :patch, local: true do |m| %>
           <table>
               <tr>
                 <th><%= m.label :medicine_id, "薬の種類" %></th>
@@ -77,15 +77,15 @@
                   <%= m.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
                 </td>
               </tr>
+              <tr>
+                <th><%= m.label :number_of_time_id, "投薬回数" %></th>
+                <td class="pl-5">
+                  <%= m.select :number_of_time_id, NumberOfTime.all.map{|o| ["#{o.name} #{o.dosing_times}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
+                </td>
+              </tr>
             </table>
           <% end %>
           <table>
-            <tr>
-              <th><%= f.label :number_of_time_id, "投薬回数" %></th>
-              <td class="pl-5">
-                <%= f.select :number_of_time_id, NumberOfTime.all.map{|o| ["#{o.name} #{o.dosing_times}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
-              </td>
-            </tr>
             <tr>
               <th><%= f.label :give_liquid, "与えたい液体量(ml)" %></th>
               <td class="pl-5">

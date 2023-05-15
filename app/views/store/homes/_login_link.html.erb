@@ -1,0 +1,53 @@
+<div class="row">
+  <div class='mx-auto text-responsive'>
+    <h1>welcome to </h1>
+    <h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong> </h1>
+    <p><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </p>
+    <p>動物の日誌や投薬計算と記録をすることができるアプリです<i class="fas fa-paw"></i></p>
+    <p>日々の日報記録に加えて、投薬記録も作ることができます。</p>
+    <p>また、計算が苦手な方でも数字を入力するだけで、必要量を自動計算+保存してくれる機能も付いています。</p>
+
+    <div class="btn-wrapper col-xl-12 col-lg-8 mx-auto">
+      <div class="row">
+
+        <div class="col">
+          <%#= link_to 'ゲストログイン（閲覧用）', store_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          <div class="card text-center text-white bg-dark" style="width: 18rem;">
+            <%= link_to store_guest_sign_in_path, method: :post, class: "text-light" do %>
+              <div class="card-body">
+                <h5>ゲストログイン</h5>
+                <p>(閲覧専用)</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center text-white bg-info" style="width: 18rem;">
+            <%= link_to new_store_session_path, class: "text-light" do %>
+              <div class="card-body">
+                <h5>ログイン</h5>
+                <p></p>
+              </div>
+            <% end %>
+          </div>
+
+          <%#= link_to '店舗ログインページ', new_store_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+
+        <div class="col">
+          <div class="card text-center text-white bg-success" style="width: 18rem;">
+            <%= link_to new_store_registration_path, class: "text-light" do %>
+              <div class="card-body">
+                <h5>新規登録</h5>
+                <p></p>
+              </div>
+            <% end %>
+          </div>
+          <%#= link_to '店舗新規登録ページ', new_store_registration_path, class: "btn btn-success btn-block mb-3 sign_up" %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

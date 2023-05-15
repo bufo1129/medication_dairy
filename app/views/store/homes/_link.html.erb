@@ -1,0 +1,37 @@
+<table class="table table-borderless table-hover text-center">
+  <thead class="bg-dark text-light">
+    <tr>
+      <th class="h5 font-weight-bold rounded">リンク一覧</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to each_stores_path, class: "text-info admin-link" do %>
+          <i class="fas fa-store"></i> 店舗一覧
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to dairies_path, class: "text-info" do %>
+          <i class="fas fa-book-open"></i> 日報一覧
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to medications_path, class: "text-info" do %>
+          <i class="fas fa-notes-medical"></i> 投薬一覧
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to individuals_path, class: "text-info" do %>
+          <i class="fas fa-paw"></i> 動物一覧
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

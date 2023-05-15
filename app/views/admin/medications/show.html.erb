@@ -17,7 +17,7 @@
       <div class="col-xl-10 col-lg-12 col-md-12">
 
         <div class="col-lg-8 col-xs-12 col-lg-12">
-          <h2 class="mb-4 border-bottom border-dark"><strong><%= @medication.individual.name %>の投薬記録詳細細</strong></h2>
+          <h2 class="mb-4 border-bottom border-dark"><strong><%= @medication.individual.name %>投薬記録詳細</strong></h2>
         </div>
 
         <table class="table">
@@ -66,8 +66,17 @@
           </thead>
           <tbody>
             <tr>
-              <td>※薬名取得<%#= @medication.medication_recore.medicine.name %></td>
-              <td>※投薬回数取得<%#=medication.number_of_tablets %></td>
+              <td>
+                <% @medication.medicine_records.each do |mr| %>
+                  <%= mr.medicine.name %>
+                <% end %>
+              </td>
+              <td>※投薬回数取得
+                <%# @medication.medicine_records.each do |mr| %>
+                  <%#= mr.medicine.number_of_time %>
+                <%# end %>
+                <%#= @medication.number_of_time_id.name %>
+              </td>
               <td>※指示量取得<%#= @medication.medication_recore.dosage_indicated %></td>
               <td><%= @medication.weight %>　kg</td>
               <td><%= @medication.several_days %>　日間</td>

@@ -1,50 +1,67 @@
 <div class="text-center mb-5"></div>
 
-<div class="container">
-  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">店舗一覧</h3>
-  <h4 class="text-success"><%= flash[:notice] %></h4>
-  <table class="table  table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">店舗名</th>
-        <th scope="col">メールアドレス</th>
-        <th scope="col">電話番号</th>
-        <th scope="col">住所</th>
-        <th scope="col">店舗ステータス</th>
-      </tr>
-    </thead>
-    <tbody class="table">
-      <% @stores.each do |store| %>
-      <tr>
-        <td>
-          <strong>
-            <%= link_to each_store_path(store.id) do %>
-              <%= store.name %>
-            <% end %>
-          </strong>
-        </td>
-        <td>
-          <%= store.email %>
-        </td>
-        <td>
-          <%= store.phone_number %>
-        </td>
-        <td>
-          <%= store.prefecture_name %>
-          <%= store.address_city %>
-          <%= store.address_street %>
-          <%= store.address_building %>
-        </td>
-        <td>
-          <% if store.is_deleted == false %>
-            <span class="font-weight-bold text-success">有効</span>
-          <% else %>
-            <span class="font-weight-bold text-danger">無効</span>
+<h4 class="text-success"><%= flash[:notice] %></h4>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'store/homes/link' %>
+    </div>
+
+    <div class="contents-area col-lg-8 col-md-8">
+
+      <div class="text-center mb-3"></div>
+
+      <div class="col-xs-12 col-lg-6">
+        <h2 class="mb-4 border-bottom border-dark"><strong>日報一覧</strong></h2>
+      </div>
+
+      <table class="table  table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">店舗名</th>
+            <th scope="col">メールアドレス</th>
+            <th scope="col">電話番号</th>
+            <th scope="col">住所</th>
+            <th scope="col">店舗ステータス</th>
+          </tr>
+        </thead>
+        <tbody class="table">
+          <% @stores.each do |store| %>
+          <tr>
+            <td>
+              <strong>
+                <%= link_to each_store_path(store.id) do %>
+                  <%= store.name %>
+                <% end %>
+              </strong>
+            </td>
+            <td>
+              <%= store.email %>
+            </td>
+            <td>
+              <%= store.phone_number %>
+            </td>
+            <td>
+              <%= store.prefecture_name %>
+              <%= store.address_city %>
+              <%= store.address_street %>
+              <%= store.address_building %>
+            </td>
+            <td>
+              <% if store.is_deleted == false %>
+                <span class="font-weight-bold text-success">有効</span>
+              <% else %>
+                <span class="font-weight-bold text-danger">無効</span>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= paginate @stores, theme: 'twitter-bootstrap-4' %>
+        </tbody>
+      </table>
+
+    <div class="pagination justify-content-center mt-3 mb-3">
+    <%= paginate @stores, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
 </div>

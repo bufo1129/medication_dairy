@@ -26,7 +26,7 @@ class Store::MedicationsController < ApplicationController
   def create
     @medication = Medication.new(medication_params)
     @medication.store_id = current_store.id
-    if @medication.save
+    if @medication.save!
       flash[:notice] = "投稿が完了しました"
       redirect_to medication_path(@medication)
     else
@@ -81,11 +81,11 @@ class Store::MedicationsController < ApplicationController
       :give_liquid,
       :several_days,
       :medicine_record_id,
-      :number_of_time_id,
       :weight,
       medicine_records_attributes: [
         :dosage_indicated,
-        :medicine_id
+        :medicine_id,
+        :number_of_time_id
       ])
   end
 

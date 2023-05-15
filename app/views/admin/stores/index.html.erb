@@ -19,6 +19,7 @@
       <table class="table table-hover">
         <thead class="bg-dark text-light">
           <tr>
+            <th scope="col"></th>
             <th scope="col">店舗名</th>
             <th scope="col">メールアドレス</th>
             <th scope="col">電話番号</th>
@@ -30,9 +31,12 @@
           <% @stores.each do |store| %>
           <tr>
             <td>
-              <%= link_to admin_store_path(store.id) do %>
-                <%= store.name %>
+              <%= link_to admin_store_path(store.id), class: "text-info" do %>
+                <i class="fas fa-store"></i>
               <% end %>
+            </td>
+            <td>
+              <%= store.name %>
             </td>
             <td>
               <%= store.email %>

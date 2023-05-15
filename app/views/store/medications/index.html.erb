@@ -1,21 +1,19 @@
-
 <div class="text-center mb-5"></div>
 
 <h4 class="text-success"><%= flash[:notice] %></h4>
 <h4 class="text-danger"><%= flash[:alert] %></h4>
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
-    <!--<div class="col-lg-2">-->
-      <%= render 'store/homes/accordion' %>
-    <!--</div>-->
+    <div class="col-lg-2">
+      <%= render 'admin/homes/link' %>
+    </div>
 
     <div class="contents-area col-lg-8 col-md-8">
-      <div class="text-center mt-3 mb-5">
-        <%# if params[:seed_id] %>
-          <span class="h2 mt-2 mb-2"><strong><%#= @seed.name %>一覧</strong></span><span class="h5"> (全<%#= @individuals_all.count %>件)</span>
-        <%# else %>
-          <span class="h2 mt-2 mb-2"><strong>投薬記録一覧</strong></span><span class="h5"> (全<%#= @individuals_all.count %>件)</span>
-        <%# end %>
+
+      <div class="text-center mb-3"></div>
+
+      <div class="col-xs-12 col-lg-6">
+        <h2 class="mb-4 border-bottom border-dark"><strong>投薬一覧</strong></h2>
       </div>
 
       <div class="text-right ">
@@ -24,32 +22,47 @@
         <% end %>
       </div>
 
-      <div class="text-center mb-3"></div>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">個体名</th>
+            <th scope="col">種類名</th>
+            <th scope="col">薬名</th>
+            <th scope="col">投薬開始日</th>
+            <th scope="col">投薬終了予定日</th>
+          </tr>
+        </thead>
+        <tbody class="table table-hover">
+          <% @medications.each do |medication| %>
+          <tr>
+            <td>
+              <%= link_to medication_path(medication.id) do %>
+                <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded-circle" %>
+              <% end %>
+            </td>
+            <td>
+              <%= medication.individual.name %>
+            </td>
+            <td>
+              <%= medication.individual.seed.name %>
+            </td>
+            <td>
+              <% medication.medicine_records.each do |mr| %>
+                <%= mr.medicine.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= medication.dosing_start_date %>
+            </td>
+            <td>
+              <%= medication.dosing_end_date %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-      <div class="individuals-list d-flex flex-wrap">
-        <% @medications.each do |medication| %>
-        <div class="individual col-lg-3 col-md-6 mx-0">
-        <%= link_to medication_path(medication), class: "text-dark" do %>
-          <%= image_tag medication.individual.get_image(200,200),class: "img-fluid" %><br>
-          <p class="m-2"><strong>名前：</strong><%= medication.individual.name %></p>
-          <p class="m-2"><strong>種類：</strong><%= medication.individual&.seed&.name %></p>
-          <p class="m-2"><strong>店舗：</strong><%= medication.individual.store.name %></p>
-          <p class="m-2">
-            <% if medication.medication_status == false %>
-              <span class="font-weight-bold text-success">投薬終了</span>
-            <% else %>
-              <span class="font-weight-bold text-danger">投薬中</span>
-            <% end %>
-          </p>
-          <p class="m-2"><strong>投与中の薬：</strong>
-            <% medication.medicine_records.each do |mr| %>
-              <%= mr.medicine.name %>
-            <% end %>
-          </p>
-        <% end %>
-        </div>
-      <% end %>
-    </div>
     <div class="pagination justify-content-center mt-3 mb-3">
     <%= paginate @medications, theme: 'twitter-bootstrap-4' %>
     </div>

@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2023_05_08_053723) do
     t.text "body"
     t.decimal "give_liquid"
     t.integer "several_days"
-    t.integer "number_of_time_id"
     t.decimal "weight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -98,6 +97,7 @@ ActiveRecord::Schema.define(version: 2023_05_08_053723) do
   create_table "medicine_records", force: :cascade do |t|
     t.integer "medication_id", null: false
     t.integer "medicine_id", null: false
+    t.integer "number_of_time_id", null: false
     t.decimal "dosage_indicated", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

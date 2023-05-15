@@ -1,7 +1,7 @@
 class Admin::MedicinesController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_medicine, only: [:edit, :update, :destroy]
-  
+
   def index
     @medicine = Medicine.new
     @medicines = Medicine.all.order(created_at: :desc).page(params[:page]).per(10)
@@ -38,11 +38,11 @@ class Admin::MedicinesController < ApplicationController
   end
 
   private
-  
+
   def set_medicine
     @medicine = Medicine.find(params[:id])
   end
-  
+
 
   def medicine_params
     params.require(:medicine).permit(:name, :ingredients_per_tablet)
