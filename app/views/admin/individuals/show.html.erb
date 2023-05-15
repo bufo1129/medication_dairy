@@ -1,60 +1,80 @@
 <div class="text-center mb-5"></div>
 
-<div class = "container" >
+<h4 class="text-success"><%= flash[:notice] %></h4>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
 
-  <div class = "row" >
-    <h4 class="text-success"><%= flash[:notice] %></h4>
-    <%= render 'admin/homes/accordion' %>
-    <div class="col text-center mx-auto">
-      <%= image_tag @individual.get_image(300,300) %>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    
+    <div class="col-lg-2">
+      <%= render 'admin/homes/link' %>
     </div>
-    <div class = "col mx-auto">
-      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @individual.name %>情報詳細</h2>
-      <h4 class="text-success"><%= flash[:notice] %></h4>
-      <!--↑-->
-      <table class="table">
-        <tr>
-          <td><strong>店舗名</strong></td>
-          <td>
-            <%= @individual.store.name %>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>個体名</strong></td>
-          <td><%= @individual.name %></td>
-        </tr>
-        <tr>
-          <td><strong>年齢</strong></td>
-          <td><%= @individual.age %></td>
-        </tr>
-        <tr>
-          <td><strong>生年月日</strong></td>
-          <td><%= @individual.birthday %></td>
-        </tr>
-        <tr>
-          <td><strong>体重</strong></td>
-          <td>
-            <%= @individual.weight %>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>種類名</strong></td>
-          <td><%= @individual.seed.name %></td>
-        </tr>
-        <tr>
-          <td><strong>投薬ステータス</strong></td>
-          <td>
-            <% if @individual.medication_status == false %>
-              <span class="font-weight-bold text-success">投薬終了</span>
-            <% else %>
-              <%#= link_to admin_medication_path(@medication) do %>
-                <span class="font-weight-bold text-danger">投薬中</span>
-              <%# end %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-      <div class="text-left"><%= link_to "<<", admin_individuals_path, class: "btn btn-light rounded-circle" %></div>
+    
+    <div class="contents-area col-lg-8 col-md-8">
+
+      <div class="text-center mb-3"></div>
+
+      <div class="col-xl-10 col-lg-12 col-md-12 mx-auto">
+
+        <div class="col-lg-8 col-xs-12 col-lg-12">
+          <h2 class="mb-4 border-bottom border-dark"><strong><%= @individual.name %>情報詳細</strong></h2>
+        </div>
+      
+        <div class="col text-center mx-auto">
+          <%= image_tag @individual.get_image(300,300),class: "img-fluid" %>
+        </div>
+      
+        <div class = "col mx-auto">
+          <h4 class="text-success"><%= flash[:notice] %></h4>
+
+          <table class="table">
+            <tr>
+              <td><strong>店舗名</strong></td>
+              <td>
+                <%= @individual.store.name %>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>個体名</strong></td>
+              <td><%= @individual.name %></td>
+            </tr>
+            <tr>
+              <td><strong>年齢</strong></td>
+              <td><%= @individual.age %></td>
+            </tr>
+            <tr>
+              <td><strong>生年月日</strong></td>
+              <td><%= @individual.birthday %></td>
+            </tr>
+            <tr>
+              <td><strong>体重</strong></td>
+              <td>
+                <%= @individual.weight %>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>種類名</strong></td>
+              <td><%= @individual.seed.name %></td>
+            </tr>
+            <tr>
+              <td><strong>投薬ステータス</strong></td>
+              <td>
+                <% if @individual.medication_status == false %>
+                  <span class="font-weight-bold text-success">投薬終了</span>
+                <% else %>
+                  <%#= link_to admin_medication_path(@medication) do %>
+                    <span class="font-weight-bold text-danger">投薬中</span>
+                  <%# end %>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+        
+      </div>
+        
     </div>
+
   </div>
 </div>

@@ -1,66 +1,82 @@
-
-
 <div class="text-center mb-5"></div>
 
-<div class = "container" >
-  <div class = "row" >
-    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 col-xl-6  px-sm-0 mx-auto">
-
-      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @medication.individual.name %>の投薬記録詳細</h2>
-      <h4 class="text-success"><%= flash[:notice] %></h4>
-      <table class="table">
-        <tr>
-          <td>個体名：</td>
-          <td>
-            <%= link_to individual_path(@medication.individual_id) do %>
-              <%= @medication.individual.name %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>投薬開始日：<%= @medication.dosing_start_date %></td>
-          <td>投薬終了予定日：<%= @medication.dosing_end_date %></td>
-        </tr>
-        <tr>
-          <td>投薬ステータス：</td>
-          <td>
-            <% if @medication.medication_status == false %>
-              <span class="font-weight-bold text-success">投薬終了</span>
-            <% else %>
-              <span class="font-weight-bold text-danger">投薬中</span>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>備考：</td>
-          <td>
-            <%= @medication.body %>
-          </td>
-        </tr>
-      </table>
-
-
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>項目</th>
-            <th>結果</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1回に必要な錠剤の個数</td>
-            <td><%= @medication.number_of_tablets %> 個</td>
-          </tr>
-          <tr>
-            <td>溶かすための液体量</td>
-            <td><%= @medication.liquid_amount %> ml</td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <%= link_to '一覧へ戻る', admin_medications_path, class: "btn btn-success" %>
-      </div>
+<h4 class="text-success"><%= flash[:notice] %></h4>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'admin/homes/link' %>
     </div>
+
+    <div class="contents-area col-lg-8 col-md-8">
+
+      <div class="text-center mb-3"></div>
+
+
+
+      <div class="col-xl-10 col-lg-12 col-md-12">
+
+        <div class="col-lg-8 col-xs-12 col-lg-12">
+          <h2 class="mb-4 border-bottom border-dark"><strong><%= @medication.individual.name %>の投薬記録詳細細</strong></h2>
+        </div>
+
+        <table class="table">
+          <tr>
+            <td>
+              <strong>個体名：</strong>
+              <%= @medication.individual.name %>
+            </td>
+            <td>
+              <strong>動物種：</strong>
+              <%= @medication.individual.seed.name %>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>投薬開始日：</strong><%= @medication.dosing_start_date %></td>
+            <td><strong>投薬終了予定日：</strong><%= @medication.dosing_end_date %></td>
+          </tr>
+          <tr>
+            <th>投薬ステータス：</th>
+            <td>
+              <% if @medication.medication_status == false %>
+                <span class="font-weight-bold text-success">投薬終了</span>
+              <% else %>
+                <span class="font-weight-bold text-danger">投薬中</span>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>備考：</th>
+            <td>
+              <%= @medication.body %>
+            </td>
+          </tr>
+        </table>
+
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>薬名</th>
+              <th>投薬回数</th>
+              <th>指示量</th>
+              <th>体重</th>
+              <th>投薬日数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>※薬名取得<%#= @medication.medication_recore.medicine.name %></td>
+              <td>※投薬回数取得<%#=medication.number_of_tablets %></td>
+              <td>※指示量取得<%#= @medication.medication_recore.dosage_indicated %></td>
+              <td><%= @medication.weight %>　kg</td>
+              <td><%= @medication.several_days %>　日間</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--コメント機能-->
+      </div>
+
   </div>
 </div>

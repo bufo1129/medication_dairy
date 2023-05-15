@@ -1,64 +1,64 @@
 <div class="text-center mb-5"></div>
 
-<div class = "container" >
-  <div class = "row" >
-    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-
-      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @dairy.store.name %>の日報情報詳細</h2>
-      <h4 class="text-success"><%= flash[:notice] %></h4>
-      <h4 class="text-danger"><%= flash[:alert] %></h4>
-      <table class="table">
-        <tr>
-          <td>店舗名</td>
-          <td><%= @dairy.store.name %></td>
-        </tr>
-        <tr>
-          <td>作成日</td>
-          <td><%= @dairy.created_date %></td>
-        </tr>
-        <tr>
-          <td>天気</td>
-          <td>
-            <%= @dairy.weather.name %>
-          </td>
-        </tr>
-        <tr>
-          <td>最高気温</td>
-          <td><%= @dairy.high_temperature %></td>
-        </tr>
-        <tr>
-          <td>最低気温</td>
-          <td>
-            <%= @dairy.low_temperature %>
-          </td>
-        </tr>
-        <tr>
-          <td>タイトル</td>
-          <td><%= @dairy.title %></td>
-        </tr>
-        <tr>
-          <td>内容</td>
-          <td><%= @dairy.body %></td>
-        </tr>
-        <tr>
-          <td>
-            <%= link_to '日報一覧へ戻る', admin_dairies_path, class: "btn btn-success" %>
-          </td>
-        </tr>
-      </table>
-
-      <table>
-        <tr>
-          <th style="width: 30%"><%= @dairy.store.name %> 投薬一覧</th>
-          <td style="width: 40%"><%= link_to "一覧を見る", medications_path(medication_id: @each_store) %></td>
-        </tr>
-        <tr>
-          <th style="width: 30%"><%= @dairy.store.name %> 日報一覧</th>
-          <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(dairy_id: @each_store) %></td>
-          <!--↑店舗の日報一覧に絞り込み-->
-        </tr>
-      </table>
-
+<h4 class="text-success"><%= flash[:notice] %></h4>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'admin/homes/link' %>
     </div>
+
+    <div class="contents-area col-lg-8 col-md-8">
+
+      <div class="text-center mb-3"></div>
+
+
+
+      <div class="col-xl-10 col-lg-12 col-md-12">
+
+        <div class="col-lg-8 col-xs-12 col-lg-12">
+        <h2 class="mb-4 border-bottom border-dark"><strong><%= @dairy.store.name %> 日報情報詳細</strong></h2>
+      </div>
+
+        <div class="col-xl-12 col-xs-12 col-lg-12">
+          <table class="table">
+            <tr>
+              <th>店舗名</th>
+              <td><%= @dairy.store.name %></td>
+            </tr>
+            <tr>
+              <th>作成日</th>
+              <td><%= @dairy.created_date %></td>
+            </tr>
+            <tr>
+              <th>天気</th>
+              <td>
+                <%= @dairy.weather.name %>
+              </td>
+            </tr>
+            <tr>
+              <th>最高気温</th>
+              <td><%= @dairy.high_temperature %></td>
+            </tr>
+            <tr>
+              <th>最低気温</th>
+              <td>
+                <%= @dairy.low_temperature %>
+              </td>
+            </tr>
+            <tr>
+              <th>タイトル</th>
+              <td><%= @dairy.title %></td>
+            </tr>
+            <tr>
+              <th>内容</th>
+              <td><%= @dairy.body %></td>
+            </tr>
+          </table>
+        </div>
+
+
+      </div>
+
   </div>
 </div>

@@ -1,41 +1,56 @@
-<div class="mb-5"></div>
-<div class="container">
-  <h4 class="text-success"><%= flash[:notice] %></h4>
-  <div class="row">
-    <%= render 'admin/homes/accordion' %>
-    <div class="col-lg-8">
-    <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報一覧</h3>
-    <table class="table">
-      <thead class="table-dark">
-        <%= link_to '新しい順', admin_dairies_path(latest: "true") %>
-       |<%= link_to '古い順', admin_dairies_path(old: "true") %>
-        <tr>
-          <th scope="col">日付</th>
-          <th scope="col">店舗名</th>
-          <th scope="col">タイトル</th>
-        </tr>
-      </thead>
-      <tbody class="table table-hover">
-        <% @dairies.each do |dairy| %>
-        <tr>
-          <td>
-            <%= link_to admin_dairy_path(dairy.id) do %>
+<div class="text-center mb-5"></div>
+
+<h4 class="text-success"><%= flash[:notice] %></h4>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'admin/homes/link' %>
+    </div>
+
+    <div class="contents-area col-lg-8 col-md-8">
+
+      <div class="text-center mb-3"></div>
+
+      <div class="col-xs-12 col-lg-6">
+        <h2 class="mb-4 border-bottom border-dark"><strong>日報一覧</strong></h2>
+      </div>
+
+      <table class="table table-hover">
+        <thead class="bg-dark text-light">
+          <%= link_to '新しい順', admin_dairies_path(latest: "true"),class: "text-info" %>
+         |<%= link_to '古い順', admin_dairies_path(old: "true"),class: "text-info" %>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">日付</th>
+            <th scope="col">店舗名</th>
+            <th scope="col">タイトル</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @dairies.each do |dairy| %>
+          <tr>
+            <td class="h5">
+              <%= link_to admin_dairy_path(dairy.id), class: "text-info" do %>
+                <i class="fas fa-file-alt"></i>
+              <% end %>
+            </td>
+            <td>
               <%= dairy.created_date %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to admin_store_path(dairy.store.id) do %>
+            </td>
+            <td>
               <%= dairy.store.name %>
-            <% end %>
-          </td>
-          <td>
-            <%= dairy.title %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+            </td>
+            <td>
+              <%= dairy.title %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <div class="pagination justify-content-center mt-3 mb-3">
+    <%= paginate @dairies, theme: 'twitter-bootstrap-4' %>
+    </div>
   </div>
-  </div>
-  <%= paginate @dairies, theme: 'twitter-bootstrap-4' %>
 </div>

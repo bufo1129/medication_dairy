@@ -7,7 +7,7 @@
       <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">店舗情報詳細</h2>
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <div class="text-right">
-        <% if current_store != @each_store %>
+        <% if current_store = @each_store %>
           <%= link_to edit_each_store_path, class: "btn rounded-circle btn-info" do %>
             <i class="fas fa-edit"></i>
           <% end %>

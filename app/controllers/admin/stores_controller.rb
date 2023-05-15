@@ -3,7 +3,7 @@ class Admin::StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update]
 
   def index
-    @stores = Store.all
+    @stores = Store.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
