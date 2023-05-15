@@ -8,14 +8,14 @@ class Admin::MedicationsController < ApplicationController
     else
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
     end
-    
+
     if params[:latest]
       @medications = Medication.latest.page(params[:page]).per(10)
     elsif params[:old]
       @medications = Medication.old.page(params[:page]).per(10)
     else
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
-   end
+    end
   end
 
   def show
@@ -29,7 +29,7 @@ class Admin::MedicationsController < ApplicationController
   end
 
   private
-  
+
   def medication_params
     params.require(:medication).permit(
       :individual_id,

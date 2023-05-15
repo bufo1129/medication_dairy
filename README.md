@@ -39,3 +39,4 @@
 
 ## 使用素材
 - favicon素材：https://icons8.jp/icons/set/favicon
+- 写真素材：https://o-dan.net/ja/

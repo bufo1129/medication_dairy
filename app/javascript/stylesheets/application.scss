@@ -151,8 +151,7 @@
   height: 160px;
 }
 
-.media_pc { display: block; }
-.media_sp { display: none; }
+
 
 @media screen and (max-width: 1024px) {
   .s_01 .accordion_one .accordion_header {
@@ -165,6 +164,19 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .s_01 .accordion_one .accordion_header {
+    font-size: 16px;
+    text-align: left;
+    padding: 15px 60px 15px 15px;
+  }
+}
+
+
+// ヘッダーロゴ用
+.media_pc { display: block; }
+.media_sp { display: none; }
+
 @media screen and (max-width: 992px) {
   .media_pc { display: none; }
   .media_sp { display: block; }
@@ -174,13 +186,5 @@
     position: absolute;
     top: 72px;
     right: 20px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .s_01 .accordion_one .accordion_header {
-    font-size: 16px;
-    text-align: left;
-    padding: 15px 60px 15px 15px;
   }
 }
