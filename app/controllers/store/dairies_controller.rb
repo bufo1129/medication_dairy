@@ -3,6 +3,7 @@ class Store::DairiesController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   def index
+    
     if params[:store_id].present?
       dairies = Dairy.where(store_id: params[:store_id])
     else
@@ -47,6 +48,7 @@ class Store::DairiesController < ApplicationController
   end
 
   def show
+    @each_store = current_store
     @store = current_store
   end
 

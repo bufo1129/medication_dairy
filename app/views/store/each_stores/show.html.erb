@@ -19,13 +19,14 @@
         </div>
 
         <div class="text-right">
-          <%# if current_store = @store %>
+
+          <% if current_store.id == @each_store.id %>
             <%= link_to edit_each_store_path, class: "btn rounded-circle btn-info" do %>
               <i class="fas fa-edit"></i>
             <% end %>
-          <%# end %>
+          <% end %>
         </div>
-        
+
         <table class="table">
           <tr>
             <td>店舗名</td>

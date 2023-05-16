@@ -13,7 +13,6 @@ class Medication < ApplicationRecord
   has_many    :medicine_records
   has_many    :number_of_times, through: :medicine_records
 
-  accepts_nested_attributes_for :medicine_records
   accepts_nested_attributes_for :medicine_records, allow_destroy: true
 
   #投薬のステータス

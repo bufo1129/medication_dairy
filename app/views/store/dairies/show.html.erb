@@ -19,7 +19,7 @@
         </div>
 
         <div class="text-right">
-          <% if current_store != @each_store %>
+          <% if current_store.id == @each_store.id %>
             <%= link_to edit_dairy_path(@dairy.id), class: "btn rounded-circle btn-info" do %>
               <i class="fas fa-edit"></i>
             <% end %>

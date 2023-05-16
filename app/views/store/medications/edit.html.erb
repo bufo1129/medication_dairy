@@ -1,3 +1,5 @@
+<!--動作うまくいかず方針変更-->
+
 <!--スペース用-->
 <div class="mb-5"></div>
 
@@ -7,7 +9,7 @@
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
   <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
-  <%= form_with model: @medication, url: medication_path(@medication), method: :patch, local: true do |f| %>
+  <%= form_with model: @medication, url: medication_path(@medication), method: :patch do |f| %>
   <div class="row">
     <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>基本情報</strong></h3>
@@ -65,12 +67,13 @@
       <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
       <div class="form-group">
         <div class=" my-3 form-check">
-          <%= f.fields_for :medicine_records, method: :patch, local: true do |m| %>
+          <%= f.fields_for :medicine_records do |m| %>
             <table>
               <tr>
                 <th><%= m.label :medicine_id, "薬の種類" %></th>
                 <td class="pl-5">
                   <%= m.select :medicine_id, Medicine.all.map{|o| ["#{o.name} #{o.ingredients_per_tablet}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
+                  <%= m.hidden_field :medicine_id, value: nil %>
                 </td>
               </tr>
               <tr>

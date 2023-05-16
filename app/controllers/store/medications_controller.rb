@@ -12,7 +12,7 @@ class Store::MedicationsController < ApplicationController
     # else
     #   @medications = Medication.all.page(params[:page]).per(8).reverse_order
     # end
-    
+
     if params[:medicine_id].present?
       mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
       @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
@@ -55,7 +55,7 @@ class Store::MedicationsController < ApplicationController
   end
 
   def update
-    if @medication.update(medication_params)
+    if @medication.update!(medication_params)
       flash[:notice] = "変更が完了しました"
       redirect_to medication_path(@medication)
     else
@@ -99,7 +99,9 @@ class Store::MedicationsController < ApplicationController
       medicine_records_attributes: [
         :dosage_indicated,
         :medicine_id,
+        # :medication_id,
         :number_of_time_id,
+        :id,
         :_destroy
       ])
   end
