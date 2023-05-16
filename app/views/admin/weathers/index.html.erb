@@ -1,8 +1,7 @@
 <div class="text-center mb-5"></div>
 
-<h4 class="text-success"><%= flash[:notice] %></h4>
-<h4 class="text-danger"><%= flash[:alert] %></h4>
 <div class="container-fluid">
+  
   <div class="row d-flex justify-content-center mx-auto">
     <div class="col-lg-2">
       <%= render 'admin/homes/link' %>
@@ -15,6 +14,8 @@
 
 
       <div class="col-xl-10 col-lg-12 col-md-12">
+        <h4 class="text-success"><%= flash[:notice] %></h4>
+        <h4 class="text-danger"><%= flash[:alert] %></h4>
 
         <div class="col-lg-8 col-xs-12 col-lg-12">
           <h2 class="mb-4 border-bottom border-dark"><strong>天気の登録</strong></h2>
@@ -55,7 +56,7 @@
             </tbody>
           </table>
         </div>
-        <%= paginate @weathers, theme: 'twitter-bootstrap-4' %>
+        <%#= paginate @weathers, theme: 'twitter-bootstrap-4' %>
       </div>
 
   </div>

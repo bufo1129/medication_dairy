@@ -10,7 +10,7 @@
         <tr>
           <th scope="col">個体名</th>
           <th scope="col">種類名</th>
-          <th scope="col">薬名</th>
+          <th scope="col">店舗名</th>
           <th scope="col">投薬開始日</th>
           <th scope="col">投薬終了予定日</th>
         </tr>
@@ -27,9 +27,10 @@
             <%= medication.individual.seed.name %>
           </td>
           <td>
-            <% medication.medicine_records.each do |mr| %>
-              <%= mr.medicine.name %>
-            <% end %>
+            <%= medication.store.name %>
+            <%# medication.medicine_records.each do |mr| %>
+              <%#= mr.medicine.name %>
+            <%# end %>
           </td>
           <td>
             <%= medication.dosing_start_date %>

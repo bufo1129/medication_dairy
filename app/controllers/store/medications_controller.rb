@@ -3,6 +3,16 @@ class Store::MedicationsController < ApplicationController
   before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
   def index
+    # 薬名でしぼりこみ
+    # @medicines = Medicine.all
+    # if params[:medicine_id]
+    #   @medicines = Medicine.find(params[:medicine_id])
+    #   @medications = @Medicine.medications.page(params[:page]).per(8).reverse_order
+    #   @medications_all = @Medicine.medications.all
+    # else
+    #   @medications = Medication.all.page(params[:page]).per(8).reverse_order
+    # end
+    
     if params[:medicine_id].present?
       mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
       @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
@@ -26,17 +36,19 @@ class Store::MedicationsController < ApplicationController
   def create
     @medication = Medication.new(medication_params)
     @medication.store_id = current_store.id
-    if @medication.save!
+    if @medication.save
       flash[:notice] = "投稿が完了しました"
       redirect_to medication_path(@medication)
     else
       flash[:alert] = "投稿に失敗しました"
-      render :new
+      redirect_to new_medication_path
     end
   end
 
   def show
     @store = current_store
+    @comments = @medication.comments
+    @comment = current_store.comments.new
   end
 
   def edit

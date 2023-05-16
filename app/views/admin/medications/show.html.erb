@@ -17,18 +17,18 @@
       <div class="col-xl-10 col-lg-12 col-md-12">
 
         <div class="col-lg-8 col-xs-12 col-lg-12">
-          <h2 class="mb-4 border-bottom border-dark"><strong><%= @medication.individual.name %>投薬記録詳細</strong></h2>
+          <h2 class="mb-4 border-bottom border-dark"><strong><%#= @medication.individual.name %>投薬記録詳細</strong></h2>
         </div>
 
         <table class="table">
           <tr>
             <td>
               <strong>個体名：</strong>
-              <%= @medication.individual.name %>
+              <%#= @medication.individual.name %>
             </td>
             <td>
               <strong>動物種：</strong>
-              <%= @medication.individual.seed.name %>
+              <%#= @medication.individual.seed.name %>
             </td>
           </tr>
           <tr>
@@ -58,7 +58,7 @@
         </table>
 
         <table class="table table-bordered">
-          <thead>　
+          <thead>
             <tr>
               <th>薬名</th>
               <th>投薬回数</th>
@@ -81,8 +81,6 @@
             <% end %>
           </tbody>
         </table>
-
-        <!--コメント機能-->
 
       </div>
 

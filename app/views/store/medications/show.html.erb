@@ -21,7 +21,7 @@
         </div>
 
         <div class="text-right">
-          <!--編集権限うまくいかない-->
+          ※編集権限うまくいかない
           <% if current_store.id = @medication.id  %>
             <%= link_to edit_medication_path, class: "btn rounded-circle btn-info" do %>
               <i class="fas fa-edit"></i>
@@ -57,11 +57,7 @@
           <tr>
             <th>投薬ステータス：</th>
             <td>
-              <% if @medication.medication_status == false %>
-                <span class="font-weight-bold text-success">投薬終了</span>
-              <% else %>
-                <span class="font-weight-bold text-danger">投薬中</span>
-              <% end %>
+              <%= @medication.medication_status_i18n %>
             </td>
           </tr>
           <tr>
@@ -108,6 +104,29 @@
       </table>
 
         <!--コメント機能-->
+        <table>
+          <tbody>
+            <% @comments.each do |comment| %>
+            <tr>
+              <td><%#= image_tag comment.user.get_profile_image,size: "20x20" %></td>
+              <td><%= comment.store.name %></td>
+              <td><%= comment.comment %></td>
+              <td>
+                <% if comment.store == comment.id %>
+                <%= link_to "削除", medication_comment_path(comment.medication,comment), method: :delete, class: "btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;" %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <%= form_with model:[@medication,@comment] do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントをここに" %>
+          <%= f.hidden_field :medication_id, value: @medication.id %>
+          <%= f.submit "送信" %>
+        <% end %>
+
 
       </div>
 

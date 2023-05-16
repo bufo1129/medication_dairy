@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :seeds, only: [:index, :edit, :create, :update, :destroy] #種類
     resources :number_of_times, only: [:index, :create, :edit, :update, :destroy] #回数
     resources :dairies, only: [:index, :show] #日報
-    resources :medications, only: [:index, :show] #投薬
+
+    resources :medications, only: [:index, :show, :create]
+
     resources :individuals, only: [:index, :show] #個体
     resources :weathers, only: [:index, :edit, :create, :update, :destroy] #天気
   end
@@ -19,7 +21,11 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     resources :each_stores, only: [:index, :show, :edit, :update] #店舗
     resources :dairies    #日報
-    resources :medications #投薬記録
+
+    resources :medications do
+      resources :comments, only: [:create, :destroy]
+    end
+
     resources :individuals #個体
     resources :medicines, only: [:show]#保留
   end

@@ -42,7 +42,7 @@ class Store::DairiesController < ApplicationController
       redirect_to dairy_path(@dairy)
     else
       flash[:alert] = "投稿に失敗しました"
-      render :new
+      redirect_to new_dairy_path
     end
   end
 

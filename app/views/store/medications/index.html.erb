@@ -6,6 +6,8 @@
   <div class="row d-flex justify-content-center mx-auto">
     <div class="col-lg-2">
       <%= render 'store/homes/link' %>
+      薬名で投薬リストの絞り込みをしたい
+      <%#= render 'medicine', medicines: @medicines %>
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
@@ -28,7 +30,7 @@
             <th scope="col"></th>
             <th scope="col">個体名</th>
             <th scope="col">種類名</th>
-            <th scope="col">薬名</th>
+            <th scope="col">投薬ステータス</th>
             <th scope="col">投薬開始日</th>
             <th scope="col">投薬終了予定日</th>
           </tr>
@@ -48,9 +50,13 @@
               <%= medication.individual.seed.name %>
             </td>
             <td>
-              <% medication.medicine_records.each do |mr| %>
-                <%= mr.medicine.name %>
-              <% end %>
+              <%= medication.medication_status_i18n %>
+
+              <%# if medication.medication_status != true %>
+              <!--  投薬中-->
+              <%# else  %>
+              <!--  投薬なし-->
+              <%# end %>
             </td>
             <td>
               <%= medication.dosing_start_date %>
@@ -60,6 +66,8 @@
             </td>
           </tr>
           <% end %>
+
+
         </tbody>
       </table>
 
@@ -68,3 +76,7 @@
     </div>
   </div>
 </div>
+
+<%# medication.medicine_records.each do |mr| %>
+  <%#= mr.medicine.name %>
+<%# end %>

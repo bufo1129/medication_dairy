@@ -15,7 +15,7 @@ class CreateMedications < ActiveRecord::Migration[6.1]
       t.integer   :several_days
       t.decimal   :weight
       t.string    :condition
-
+      
       t.timestamps
     end
   end
