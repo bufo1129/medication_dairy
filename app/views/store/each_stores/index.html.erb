@@ -13,28 +13,30 @@
       <div class="text-center mb-3"></div>
 
       <div class="col-xs-12 col-lg-6">
-        <h2 class="mb-4 border-bottom border-dark"><strong>日報一覧</strong></h2>
+        <h2 class="mb-4 border-bottom border-dark"><strong>店舗一覧</strong></h2>
       </div>
 
-      <table class="table  table-hover">
-        <thead class="table-dark">
+      <table class="table table-hover">
+        <thead class="bg-dark text-light">
           <tr>
+            <th scope="col"></th>
             <th scope="col">店舗名</th>
             <th scope="col">メールアドレス</th>
             <th scope="col">電話番号</th>
             <th scope="col">住所</th>
-            <th scope="col">店舗ステータス</th>
+            <td scope="col">店舗</br>ステータス</td>
           </tr>
         </thead>
-        <tbody class="table">
+        <tbody>
           <% @stores.each do |store| %>
           <tr>
             <td>
-              <strong>
-                <%= link_to each_store_path(store.id) do %>
-                  <%= store.name %>
-                <% end %>
-              </strong>
+              <%= link_to each_store_path(store.id), class: "text-info" do %>
+                <i class="fas fa-store"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= store.name %>
             </td>
             <td>
               <%= store.email %>

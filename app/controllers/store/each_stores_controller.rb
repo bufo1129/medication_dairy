@@ -1,5 +1,6 @@
 class Store::EachStoresController < ApplicationController
   before_action :authenticate_store!
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
     @stores = Store.all.page(params[:page]).per(10)
@@ -39,6 +40,13 @@ class Store::EachStoresController < ApplicationController
       :phone_number,
       :is_deleted,
       :prefecture_code)
+  end
+
+  def ensure_guest_user
+    @store = Store.find(params[:id])
+    if @store.name == "guestuser"
+      redirect_to each_store_path(current_store) , notice: 'ゲストユーザーは編集画面へ遷移できません。'
+    end
   end
 
 end

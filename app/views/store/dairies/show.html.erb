@@ -1,72 +1,83 @@
 <div class="text-center mb-5"></div>
 
-<div class = "container" >
-  <div class = "row" >
-    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-
-      <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">日報情報詳細</h2>
-      <h4 class="text-success"><%= flash[:notice] %></h4>
-      <h4 class="text-danger"><%= flash[:alert] %></h4>
-      <div class="text-right">
-        <!--ゲストユーザー編集拒否-->
-        <% if current_store != @each_store %>
-          <%= link_to edit_dairy_path(@dairy.id), class: "btn rounded-circle btn-info" do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
-          <%= link_to  dairy_path(@dairy.id), method: :delete,
-              data: { confirm: "本当に削除しますか？" }, class: "btn rounded-circle btn-danger" do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-        <% end %>
-      </div>
-
-      <table class="table">
-        <tr>
-          <td><strong>店舗名</strong></td>
-          <td><%= @dairy.store.name %></td>
-        </tr>
-        <tr>
-          <td><strong>作成日</strong></td>
-          <td><%= @dairy.created_date %></td>
-        </tr>
-        <tr>
-          <td><strong>天気</strong></td>
-          <td>
-            <%= @dairy.weather.name %>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>最高気温</strong></td>
-          <td><%= @dairy.high_temperature %></td>
-        </tr>
-        <tr>
-          <td><strong>最低気温</strong></td>
-          <td>
-            <%= @dairy.low_temperature %>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>タイトル</strong></td>
-          <td><%= @dairy.title %></td>
-        </tr>
-        <tr>
-          <td><strong>内容</strong></td>
-          <td><%= @dairy.body %></td>
-        </tr>
-        <tr>
-          <th style="width: 30%"><%= @dairy.store.name %> 投薬一覧</th>
-          <td style="width: 40%"><%= link_to "一覧を見る", medications_path(store_id: @dairy.store_id) %></td>
-        </tr>
-        <tr class="border-bottom">
-          <th style="width: 30%"><%= @dairy.store.name %> 日報一覧</th>
-          <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @dairy.store_id) %></td>
-        </tr>
-      </table>
-
-      <div class="text-center">
-        <%= link_to '<<', dairies_path, class: "btn btn-light rounded-circle" %>
-      </div>
-
+<h4 class="text-success"><%= flash[:notice] %></h4>
+<h4 class="text-danger"><%= flash[:alert] %></h4>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'store/homes/link' %>
     </div>
+
+    <div class="contents-area col-lg-8 col-md-8">
+
+      <div class="text-center mb-3"></div>
+
+      <div class="col-xl-10 col-lg-12 col-md-12">
+
+        <div class="col-lg-8 col-xs-12 col-lg-12">
+          <h2 class="mb-4 border-bottom border-dark"><strong><%= @store.name %> 日報情報詳細</strong></h2>
+        </div>
+
+        <div class="text-right">
+          <% if current_store != @each_store %>
+            <%= link_to edit_dairy_path(@dairy.id), class: "btn rounded-circle btn-info" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to  dairy_path(@dairy.id), method: :delete,
+                data: { confirm: "本当に削除しますか？" }, class: "btn rounded-circle btn-danger" do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </div>
+
+        <table class="table">
+          <tr>
+            <td><strong>店舗名</strong></td>
+            <td><%= @dairy.store.name %></td>
+          </tr>
+          <tr>
+            <td><strong>作成日</strong></td>
+            <td><%= @dairy.created_date %></td>
+          </tr>
+          <tr>
+            <td><strong>天気</strong></td>
+            <td>
+              <%= @dairy.weather.name %>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>最高気温</strong></td>
+            <td><%= @dairy.high_temperature %></td>
+          </tr>
+          <tr>
+            <td><strong>最低気温</strong></td>
+            <td>
+              <%= @dairy.low_temperature %>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>タイトル</strong></td>
+            <td><%= @dairy.title %></td>
+          </tr>
+          <tr>
+            <td><strong>内容</strong></td>
+            <td><%= @dairy.body %></td>
+          </tr>
+          <tr>
+            <th style="width: 30%"><%= @dairy.store.name %> 投薬一覧</th>
+            <td style="width: 40%"><%= link_to "一覧を見る", medications_path(store_id: @dairy.store_id) %></td>
+          </tr>
+          <tr class="border-bottom">
+            <th style="width: 30%"><%= @dairy.store.name %> 日報一覧</th>
+            <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @dairy.store_id) %></td>
+          </tr>
+        </table>
+
+        <div class="text-center">
+          <%= link_to '<<', each_stores_path, class: "btn btn-light rounded-circle" %>
+        </div>
+
+      </div>
+
   </div>
 </div>

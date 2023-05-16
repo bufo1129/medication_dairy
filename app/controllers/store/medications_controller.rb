@@ -36,6 +36,7 @@ class Store::MedicationsController < ApplicationController
   end
 
   def show
+    @store = current_store
   end
 
   def edit

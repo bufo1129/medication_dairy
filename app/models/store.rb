@@ -30,7 +30,7 @@ class Store < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |store|
       store.password = SecureRandom.urlsafe_base64
       store.name = "guestuser"
-      store.postal_code = '222222'
+      store.postal_code = '2310000'
       store.prefecture_code = '神奈川県'
     end
   end
