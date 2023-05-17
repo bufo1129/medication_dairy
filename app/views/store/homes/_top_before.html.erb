@@ -1,5 +1,5 @@
 <div class="container-fluid">
-   <h4 class="text-success"><%= flash[:notice] %></h4>
+
   <div class="row d-flex justify-content-center">
 
 
@@ -7,11 +7,13 @@
       <div class=" mt-4">
             <!--スペース用-->
         <div class="mb-5"></div>
+        <h4 class="text-success"><%= flash[:notice] %></h4>
 
           <%= render 'store/homes/login_link' %>
 
         <div class="mb-5"></div>
-        <div class="mb-5">
+
+        <div class="mb-5 text-center">
           <h2 class="mb-4 border-bottom border-dark"><strong>計算してみる</strong></h2>
         </div>
 

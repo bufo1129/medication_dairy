@@ -1,5 +1,5 @@
 <div class="container-fluid">
-   <h4 class="text-success"><%= flash[:notice] %></h4>
+   
   <div class="row offset-1 mt-4">
 
   <div class="col-2 mr-3">
@@ -12,6 +12,7 @@
       <div class=" mt-4">
             <!--スペース用-->
         <div class="mb-5"></div>
+        <h4 class="text-success"><%= flash[:notice] %></h4>
 
         <%= render 'store/homes/top_new', medications: @medications %>
 
@@ -108,12 +109,6 @@
               </table>
             </div>
           </div>
-          <% end %>
-        </div>
-
-        <div class="mt-2 mb-3 text-center">
-          <%= link_to medications_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-info border border-2 ", method: :get do %>
-            投薬記録一覧へ
           <% end %>
         </div>
 

@@ -51,7 +51,6 @@
             </td>
             <td>
               <%= medication.medication_status_i18n %>
-
               <%# if medication.medication_status != true %>
               <!--  投薬中-->
               <%# else  %>
@@ -66,14 +65,13 @@
             </td>
           </tr>
           <% end %>
-
-
         </tbody>
       </table>
+      
+      <div class="pagination justify-content-center mt-3 mb-3">
+        <%= paginate @medications, theme: 'twitter-bootstrap-4' %>
+      </div>
 
-    <div class="pagination justify-content-center mt-3 mb-3">
-    <%= paginate @medications, theme: 'twitter-bootstrap-4' %>
-    </div>
   </div>
 </div>
 

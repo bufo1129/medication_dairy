@@ -16,6 +16,8 @@
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <h4 class="text-danger"><%= flash[:alert] %></h4>
 
       <div class="text-center mb-3"></div>
 
@@ -61,6 +63,12 @@
           <% end %>
         </tbody>
       </table>
+
+      <div class="mt-2 mb-3 text-center">
+        <%= link_to new_store_registration_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-info border border-2 ", method: :get do %>
+          投薬一覧へ <i class="fas fa-hand-point-up"></i>
+        <% end %>
+      </div>
 
   </div>
 </div>

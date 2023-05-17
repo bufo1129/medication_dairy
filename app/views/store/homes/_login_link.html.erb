@@ -1,44 +1,21 @@
 <div class="row">
   <div class='mx-auto text-responsive'>
-    <!--<h1>welcome to </h1>-->
-    <!--<h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong> </h1>-->
-    <!--<p><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </p>-->
-    <!--<p>動物の日誌や投薬計算と記録をすることができるアプリです<i class="fas fa-paw"></i></p>-->
-    <!--<p>日々の日報記録に加えて、投薬記録も作ることができます。</p>-->
-    <!--<p>また、計算が苦手な方でも数字を入力するだけで、必要量を自動計算+保存してくれる機能も付いています。</p>-->
 
-    <div class="card bg-dark text-dark">
-      <%= image_tag("nasu.jpg", class: 'mx-auto d-block img-fluid') %>
-      <div class="card-img-overlay">
-        
-        <h1 class="card-title">
-          welcome to </br>
-          <h1 class="responsive"><i class="fas fa-notes-medical"></i> <strong>Animal Medication Dairy</strong>
-        </h1>
-        <p class="card-text"><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, 
-          動物の日誌や投薬計算と記録をすることができるアプリです<i class="fas fa-paw"></i></br>
-          日々の日報記録に加えて、投薬記録や計算できます。</br>
-        </p>
-        
-        <div class="row">
+    <h4><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </h4>
+    <p>動物の日誌や投薬計算と記録をすることができるアプリです<i class="fas fa-paw"></i></p>
+    <p>日々の日報記録に加えて、投薬記録も作ることができます。</p>
+    <p>また、計算が苦手な方でも数字を入力するだけで、必要量を自動計算+保存してくれる機能も付いています。</p>
 
-          <div class="col">
-            <%= link_to 'ゲストログイン（閲覧用）', store_guest_sign_in_path, class: "btn btn-secondary btn-block mb-3 sign_in", method: :post %>
-          </div>
-          <div class="col">
-            <%= link_to '店舗ログイン', new_store_session_path, class: "btn btn-info btn-block mb-3 sign_in" %>
-          </div>
-  
-          <div class="col">
-            <%= link_to '店舗新規登録', new_store_registration_path, class: "btn btn-success btn-block mb-3 sign_up" %>
-          </div>
-
-        </div>
-        
-      </div>
-      
+    <div class="col">
+      <%= link_to 'ゲストログイン（閲覧用）', store_guest_sign_in_path, class: "btn btn-secondary btn-block mb-3 sign_in", method: :post %>
+    </div>
+    <div class="col">
+      <%= link_to '店舗ログイン', new_store_session_path, class: "btn btn-info btn-block mb-3 sign_in" %>
     </div>
 
+    <div class="col">
+      <%= link_to '店舗新規登録', new_store_registration_path, class: "btn btn-success btn-block mb-3 sign_up" %>
     </div>
+
   </div>
 </div>

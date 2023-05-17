@@ -16,8 +16,9 @@ class Store::CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
-    params.require(:comment).permit(:comment, :medication_id)  #formにてpost_idパラメータを送信して、コメントへpost_idを格納するようにする必要がある。
+    params.require(:comment).permit(:comment, :medication_id)
   end
 
 end

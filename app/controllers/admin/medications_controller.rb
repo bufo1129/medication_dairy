@@ -4,17 +4,23 @@ class Admin::MedicationsController < ApplicationController
   def index
     if params[:medicine_id].present?
       mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
-      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
+      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(8)
     else
-      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
+      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
     end
 
     if params[:latest]
-      @medications = Medication.latest.page(params[:page]).per(10)
+      @medications = Medication.latest.page(params[:page]).per(8)
     elsif params[:old]
-      @medications = Medication.old.page(params[:page]).per(10)
+      @medications = Medication.old.page(params[:page]).per(8)
     else
-      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
+      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
+    end
+
+    if params[:individual_id].present?
+      medications = Dairy.where(individual_id: params[:individual_id])
+    else
+      medications = Dairy.all
     end
   end
 
@@ -22,10 +28,13 @@ class Admin::MedicationsController < ApplicationController
     @medication = Medication.find(params[:id])
     if params[:medicine_id].present?
       mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
-      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
+      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(8)
     else
-      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
+      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
     end
+
+    @comment = Comment.new
+    @comments = @medication.comments.includes(:store)
 
   end
 

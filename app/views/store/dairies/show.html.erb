@@ -63,10 +63,10 @@
             <td><strong>内容</strong></td>
             <td><%= @dairy.body %></td>
           </tr>
-          <tr>
-            <th style="width: 30%"><%= @dairy.store.name %> 投薬一覧</th>
-            <td style="width: 40%"><%= link_to "一覧を見る", medications_path(store_id: @dairy.store_id) %></td>
-          </tr>
+          <!--<tr>-->
+          <!--  <th style="width: 30%"><%#= @dairy.store.name %> 投薬一覧</th>-->
+            <td style="width: 40%"><%#= link_to "一覧を見る", medications_path(store_id: @dairy.store_id) %></td>
+          <!--</tr>-->
           <tr class="border-bottom">
             <th style="width: 30%"><%= @dairy.store.name %> 日報一覧</th>
             <td style="width: 40%"><%= link_to "一覧を見る", dairies_path(store_id: @dairy.store_id) %></td>

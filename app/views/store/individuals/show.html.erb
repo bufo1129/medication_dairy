@@ -75,6 +75,12 @@
                 <% end %>
               </td>
             </tr>
+            <tr>
+              <td><strong><%= @individual.name %>投薬記録一覧</strong></td>
+              <td>
+                <%#= link_to "一覧を見る", medications_path(individual_id: @medication.individual_id) %>
+              </td>
+            </tr>
           </table>
 
           <div class="text-center"><%= link_to "<<", individuals_path, class: "btn btn-light rounded-circle" %></div>
