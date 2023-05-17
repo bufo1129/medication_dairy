@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <tbody>
+    <% comments.each do |comment| %>
+    <tr>
+      <td><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      <td><%#= comment.store.name %></td>
+      <td><%= comment.comment %></td>
+      <td>
+        <% if comment.store == current_store %>
+          <%= link_to medication_comment_path(comment.medication,comment), method: :delete, class: "text-danger" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,14 +1,12 @@
-<!--スペース用-->
-<div class="mb-5"></div>
-
-<div class="container my-4">
+<!--動作うまくいかず方針変更-->
+<div class="container my-4" id="medicine-edit">
   <%= render 'layouts/errors', obj: @medication %>
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
-  
+
   <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
-  <%= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
-    <div class="row">
+  <%= form_with model: @medication, url: medication_path(@medication), method: :patch do |f| %>
+  <div class="row">
     <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>基本情報</strong></h3>
       <div class="form-group">
@@ -31,7 +29,7 @@
               <td class="pl-5">
                 <%= f.label :medication_status_give, '投薬あり' %>
                 <%= f.radio_button :medication_status, :give %>
-                <%= f.label :medication_status_, '投薬なし' %>
+                <%= f.label :medication_status_not_give, '投薬なし' %>
                 <%= f.radio_button :medication_status, :not_give %>
               </td>
             </tr>
@@ -60,7 +58,7 @@
   </div>
 
 
-    <div class="row">
+  <div class="row">
     <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
       <div class="form-group">
@@ -71,6 +69,7 @@
                 <th><%= m.label :medicine_id, "薬の種類" %></th>
                 <td class="pl-5">
                   <%= m.select :medicine_id, Medicine.all.map{|o| ["#{o.name} #{o.ingredients_per_tablet}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
+                  <%= m.hidden_field :medicine_id, value: nil %>
                 </td>
               </tr>
               <tr>
@@ -80,7 +79,7 @@
                 </td>
               </tr>
               <tr>
-              <th><%= m.label :number_of_time_id, "投薬回数" %></th>
+                <th><%= m.label :number_of_time_id, "投薬回数" %></th>
                 <td class="pl-5">
                   <%= m.select :number_of_time_id, NumberOfTime.all.map{|o| ["#{o.name} #{o.dosing_times}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
                 </td>
@@ -95,7 +94,7 @@
               </td>
             </tr>
             <tr>
-              <th><%= f.label :several_days, "投薬日数" %></th>
+              <th><%= f.label :several_days, "日数" %></th>
               <td class="pl-5">
                 <%= f.text_field :several_days, class: "form-control", id: "several_days" %>
               </td>
@@ -135,7 +134,6 @@
           </tr>
         </tbody>
       </table>
-
       <div class="text-right">
         <%= f.submit "保存する", class: "btn btn-info" %>
       </div>
@@ -144,28 +142,3 @@
   </div>
   <% end %>
 </div>
-
-<!--<div class="recipe-post">-->
-  <%#= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
-
-<!--    <div class="recipe-ingredients">-->
-<!--      <div class="mx-auto">-->
-        <%#= f.fields_for :medicine_records do |m| %>
-          <%#= render "store/medications/medicine_record_fields", f: m %>
-        <%# end %>
-<!--      </div>-->
-
-<!--      <div id="detail-association-insertion-point"></div>-->
-
-<!--      <div class="col-10 mx-auto mt-2">-->
-        <%#= link_to_add_association "+フォームを追加", f, :medicine_records,
-        class: "btn btn-secondary btn-block",
-        data: {
-        association_insertion_node: '#detail-association-insertion-point',
-        association_insertion_method: 'after'
-        }%>
-<!--      </div>-->
-<!--    </div>-->
-
-  <%# end %>
-<!--</div>-->

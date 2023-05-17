@@ -4,7 +4,7 @@ class Admin::SeedsController < ApplicationController
 
   def index
     @seed = Seed.new
-    @seeds = Seed.all.page(params[:page]).per(10)
+    @seeds = Seed.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def create

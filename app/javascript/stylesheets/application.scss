@@ -44,19 +44,3 @@
 .pagination>li>a:hover {
   border-radius: 15px;
 }
-
-// ヘッダーロゴ用
-.media_pc { display: block; }
-.media_sp { display: none; }
-
-@media screen and (max-width: 992px) {
-  .media_pc { display: none; }
-  .media_sp { display: block; }
-
-  .top-navi {
-    flex-direction: row-reverse;
-    position: absolute;
-    top: 72px;
-    right: 20px;
-  }
-}

@@ -7,14 +7,14 @@
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
+      
+      <%= render 'layouts/errors', obj: @seed %>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <h4 class="text-danger"><%= flash[:alert] %></h4>
 
       <div class="text-center mb-3"></div>
 
-
-
       <div class="col-xl-10 col-lg-12 col-md-12">
-        <h4 class="text-success"><%= flash[:notice] %></h4>
-        <h4 class="text-danger"><%= flash[:alert] %></h4>
 
         <div class="col-lg-8 col-xs-12 col-lg-12">
           <h2 class="mb-4 border-bottom border-dark"><strong>動物種の登録</strong></h2>
@@ -55,7 +55,7 @@
             </tbody>
           </table>
         </div>
-        <%= paginate @seeds, theme: 'twitter-bootstrap-4' %>
+        <%#= paginate @seeds, theme: 'twitter-bootstrap-4' %>
       </div>
 
   </div>

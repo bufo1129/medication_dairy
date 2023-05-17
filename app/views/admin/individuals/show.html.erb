@@ -5,11 +5,11 @@
 
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
-    
+
     <div class="col-lg-2">
       <%= render 'admin/homes/link' %>
     </div>
-    
+
     <div class="contents-area col-lg-8 col-md-8">
 
       <div class="text-center mb-3"></div>
@@ -19,11 +19,11 @@
         <div class="col-lg-8 col-xs-12 col-lg-12">
           <h2 class="mb-4 border-bottom border-dark"><strong><%= @individual.name %>情報詳細</strong></h2>
         </div>
-      
+
         <div class="col text-center mx-auto">
           <%= image_tag @individual.get_image(300,300),class: "img-fluid" %>
         </div>
-      
+
         <div class = "col mx-auto">
           <h4 class="text-success"><%= flash[:notice] %></h4>
 
@@ -57,23 +57,18 @@
               <td><%= @individual.seed.name %></td>
             </tr>
             <tr>
-              <td><strong>投薬ステータス</strong></td>
+              <td><strong><%= @individual.name %>投薬記録一覧</strong></td>
               <td>
-                <% if @individual.medication_status == false %>
-                  <span class="font-weight-bold text-success">投薬終了</span>
-                <% else %>
-                  <%#= link_to admin_medication_path(@medication) do %>
-                    <span class="font-weight-bold text-danger">投薬中</span>
-                  <%# end %>
-                <% end %>
+                絞り込み
+                <%= link_to "一覧を見る", medications_path %>
               </td>
             </tr>
           </table>
 
         </div>
-        
+
       </div>
-        
+
     </div>
 
   </div>

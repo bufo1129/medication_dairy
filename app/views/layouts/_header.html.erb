@@ -1,20 +1,6 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <!--ヘッダーロゴリンク SP-->
-      <% if admin_signed_in? %>
-        <%= link_to admin_root_path,class: 'nav-link text-light w-100 media_sp' do %>
-          <%= image_tag("logo.png", class: 'mx-auto d-block') %>
-        <% end %>
-      <% elsif store_signed_in? %>
-        <%= link_to root_path,class: 'nav-link text-light w-100 media_sp' do %>
-          <%= image_tag("logo.png", class: 'mx-auto d-block') %>
-        <% end %>
-      <% else %>
-        <%= link_to root_path,class: 'nav-link text-light w-100 media_sp' do %>
-          <%= image_tag("logo.png", class: 'mx-auto d-block') %>
-        <% end %>
-      <% end %>
-      <!--ヘッダーロゴリンク SP end -->
+    
     <div class="container-fluid top-navi">
       <!--ヘッダーロゴリンク-->
       <% if admin_signed_in? %>
@@ -67,7 +53,7 @@
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-out-alt"></i>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
             <li class="nav-item mx-auto">
@@ -98,11 +84,11 @@
 
         <% elsif store_signed_in? %>
           <h4 class="navbar text-light d-flex align-items-center mr-5"><strong><%= current_store.name %></strong></h4>
-          <li>
-              <%= link_to about_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-link"></i> 使い方
-              <% end %>
-            </li>
+          <!--<li>-->
+          <!--  <%#= link_to about_path,class: 'nav-link text-light' do %>-->
+          <!--    <i class="fas fa-link"></i> 使い方-->
+          <!--  <%# end %>-->
+          <!--</li>-->
           <li>
             <%=  link_to each_stores_path,class: 'nav-link text-light' do %>
               <i class="fas fa-store"></i> 店舗
@@ -125,7 +111,7 @@
           </li>
           <li>
             <%= link_to destroy_store_session_path, method: :delete, class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>
           </li>
           <li class="nav-item mx-auto">
@@ -138,11 +124,11 @@
               <i class="fas fa-home"></i> トップ
             <% end %>
           </li>
-          <li>
-            <%= link_to about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> 使い方
-            <% end %>
-          </li>
+          <!--<li>-->
+          <!--  <%#= link_to about_path,class: 'nav-link text-light' do %>-->
+          <!--    <i class="fas fa-link"></i> 使い方-->
+          <!--  <%# end %>-->
+          <!--</li>-->
           <li>
             <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
               <i class="fas fa-user-plus"></i> 新規登録

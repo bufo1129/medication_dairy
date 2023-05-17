@@ -10,14 +10,6 @@ class Store::DairiesController < ApplicationController
       dairies = Dairy.all
     end
 
-    # if params[:store_id]
-    #   @store = Store.find(params[:store_id])
-    #   @dairies = @Store.dairies
-    #   @dairies_all = @store.individuals.all
-    # else
-    #   @dairies = Dairy.all
-    # end
-
     if params[:latest] == "true"
       @dairies = dairies.latest.page(params[:page]).per(10)
     elsif params[:old] == "true"
@@ -43,7 +35,7 @@ class Store::DairiesController < ApplicationController
       redirect_to dairy_path(@dairy)
     else
       flash[:alert] = "投稿に失敗しました"
-      redirect_to new_dairy_path
+      render :new
     end
   end
 

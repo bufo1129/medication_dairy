@@ -17,11 +17,11 @@ class Admin::MedicationsController < ApplicationController
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
     end
 
-    if params[:individual_id].present?
-      medications = Dairy.where(individual_id: params[:individual_id])
-    else
-      medications = Dairy.all
-    end
+    # if params[:individual_id].present?
+    #   medications = Dairy.where(individual_id: params[:individual_id])
+    # else
+    #   medications = Dairy.all.order(created_at: :desc).page(params[:page]).per(8)
+    # end
   end
 
   def show

@@ -2,6 +2,7 @@
 <div class="mb-5"></div>
 
 <div class="container my-4" id="medicine-edit">
+  <%= render 'layouts/errors', obj: @individual %>
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
   <h2 class="mb-4 border-bottom border-dark"><strong>新規個体登録</strong></h2>

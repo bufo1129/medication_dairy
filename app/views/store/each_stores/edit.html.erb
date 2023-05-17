@@ -1,7 +1,5 @@
 <div class="text-center mb-5"></div>
 
-<h4 class="text-success"><%= flash[:notice] %></h4>
-<h4 class="text-danger"><%= flash[:alert] %></h4>
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
 
@@ -14,6 +12,9 @@
       <div class="text-center mb-3"></div>
 
       <div class="col-xl-10 col-lg-12 col-md-12">
+        <%= render 'layouts/errors', obj: @each_store %>
+        <h4 class="text-success"><%= flash[:notice] %></h4>
+        <h4 class="text-danger"><%= flash[:alert] %></h4>
 
         <div class="col-lg-8 col-xs-12 col-lg-12">
           <h2 class="mb-4 border-bottom border-dark"><strong><%= @each_store.name %> 情報編集</strong></h2>
@@ -58,7 +59,7 @@
                   <%= f.text_field :phone_number, class: "form-control" %>
                 </div>
                 <div class="text-right">
-                  <%= f.submit "更新する", class: "btn btn-primary" %>
+                  <%= f.submit "更新する", class: "btn btn-info" %>
                 </div>
 
               </div>

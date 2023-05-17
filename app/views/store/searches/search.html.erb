@@ -2,33 +2,85 @@
   <div class="row">
     <h2>検索結果</h2>
 
-    <table class="table table-hover table-inverse">
-      <% if @range == "Store" %>
+    <% if @range == "Store" %>
+      <table class="table table-hover">
+        <thead class="bg-dark text-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">店舗名</th>
+            <th scope="col">メールアドレス</th>
+            <th scope="col">電話番号</th>
+            <th scope="col">住所</th>
+            <td scope="col">店舗</br>ステータス</td>
+          </tr>
+        </thead>
         <tbody>
           <% @store.each do |store| %>
-            <tr>
-              <td>
-                <%= link_to each_store_path(store.id) do %>
-                  <%= store.name %>
-                <% end %>
-              </td>
-            </tr>
+          <tr>
+            <td>
+              <%= link_to each_store_path(store.id), class: "text-info" do %>
+                <i class="fas fa-store"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= store.name %>
+            </td>
+            <td>
+              <%= store.email %>
+            </td>
+            <td>
+              <%= store.phone_number %>
+            </td>
+            <td>
+              <%= store.prefecture_name %>
+              <%= store.address_city %>
+              <%= store.address_street %>
+              <%= store.address_building %>
+            </td>
+            <td>
+              <% if store.is_deleted == false %>
+                <span class="font-weight-bold text-success">有効</span>
+              <% else %>
+                <span class="font-weight-bold text-danger">無効</span>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
         </tbody>
-      <% else %>
-        <tbody>
+      </table>
+
+    <% else %>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">個体名</th>
+            <th scope="col">種類名</th>
+            <th scope="col">生年月日</th>
+          </tr>
+        </thead>
+        <tbody class="table table-hover">
           <% @individuals.each do |individual| %>
             <tr>
               <td>
                 <%= link_to individual_path(individual.id) do %>
-                  <%= individual.name %>
+                  <%= image_tag individual.get_image(60,60),class: "img-fluid rounded-circle" %>
                 <% end %>
+              </td>
+              <td>
+                <%= individual.name %>
+              </td>
+              <td>
+                <%= individual.seed.name %>
+              </td>
+              <td>
+                <%= individual.birthday %>
               </td>
             </tr>
           <% end %>
         </tbody>
-      <% end %>
-    </table>
+      </table>
+    <% end %>
   </div>
 </div>
 

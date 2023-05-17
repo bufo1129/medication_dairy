@@ -1,14 +1,37 @@
 <div class="text-center mb-5"></div>
 
-<div class="container">
-  <div class="row">
-    <%= form_with model: @weather, url: admin_weather_path(@weather), method: :patch do |f| %>
-    <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">天気の登録名編集</h3>
-    <div class="form-group">
-      <label for="medication_name">登録名:</label>
-      <%= f.text_field :name, class: "form-control" %>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'admin/homes/link' %>
     </div>
-      <%= f.submit "変更する", class: "btn btn-success" %>
-    <% end %>
+
+    <div class="contents-area col-lg-8 col-md-8">
+      
+      <%= render 'layouts/errors', obj: @weather %>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <h4 class="text-danger"><%= flash[:alert] %></h4>
+
+      <div class="text-center mb-3"></div>
+
+      <div class="col-xl-10 col-lg-12 col-md-12">
+
+        <div class="col-lg-8 col-xs-12 col-lg-12">
+          <h2 class="mb-4 border-bottom border-dark"><strong>天気の登録名編集</strong></h2>
+        </div>
+
+        <%= form_with model: @weather, url: admin_weather_path(@weather), method: :patch do |f| %>
+          <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">薬の編集</h3>
+          <div class="form-group">
+            <label for="medication_name">登録名:</label>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "変更する", class: "btn btn-success" %>
+          </div>
+        <% end %>
+
+      </div>
+
   </div>
 </div>

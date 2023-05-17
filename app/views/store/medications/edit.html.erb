@@ -1,32 +1,42 @@
-<!--動作うまくいかず方針変更-->
+<div class="text-center mb-5"></div>
 
-<!--スペース用-->
-<div class="mb-5"></div>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mx-auto">
+    <div class="col-lg-2">
+      <%= render 'store/homes/link' %>
+    </div>
 
+    <div class="contents-area col-lg-8 col-md-8">
 
+      <div class="text-center mb-3"></div>
 
-<div class="container my-4" id="medicine-edit">
-  <h4 class="text-success"><%= flash[:notice] %></h4>
-  <h4 class="text-danger"><%= flash[:alert] %></h4>
-  <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
-  <%= form_with model: @medication, url: medication_path(@medication), method: :patch do |f| %>
-  <div class="row">
-    <div class="col-xs-12 col-lg-6">
-      <h3 class="mb-4"><strong>基本情報</strong></h3>
-      <div class="form-group">
-        <div class=" my-3 form-check">
-          <table>
+      <div class="row">
+
+        <%= form_with model: @medication, url: medication_path(@medication), method: :patch do |f| %>
+          <table class="table">
             <tr>
-              <th><%= f.label :dosing_start_date, "投薬開始日" %></th>
-              <td class="pl-5">
-                <%= f.date_field :dosing_start_date, class: "form-control" %>
+              <td>
+                <strong>投薬記録作成店舗：</strong>
+                <%= @medication.store.name %>
+              </td>
+              <td>
+                <strong>所属店舗：</strong>
+                <%= @medication.individual.store.name %>
               </td>
             </tr>
             <tr>
-              <th><%= f.label :dosing_end_date, "投薬終了予定日" %></th>
-              <td class="pl-5">
-                <%= f.date_field :dosing_end_date, class: "form-control" %>
+              <td>
+                <strong>個体名：</strong>
+                <%= @medication.individual.name %>
               </td>
+              <td>
+                <strong>動物種：</strong>
+                <%= @medication.individual.seed.name %>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>投薬開始日：</strong><%= @medication.dosing_start_date %></td>
+              <td><strong>投薬終了予定日：</strong><%= @medication.dosing_end_date %></td>
             </tr>
             <tr>
               <th><%= f.label :medication_status, "投薬ステータス" %></th>
@@ -38,111 +48,62 @@
               </td>
             </tr>
             <tr>
-              <th><%= f.label :individual_id, "個体" %></th>
-              <td class="pl-5">
-                <%= f.select :individual_id, Individual.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+              <th>投薬ステータス：</th>
+              <td>
+                <%= @medication.medication_status_i18n %>
               </td>
             </tr>
             <tr>
-              <th><%= f.label :weight, "体重" %></th>
-              <td class="pl-5">
-                <%= f.text_field :weight, placeholder: "小数点第１位まで「0.1」)", class: "form-control", id: "weight" %>
+              <td><strong>症状：</strong><%= @medication.condition %></td>
+              <td><strong>体重：</strong><%= @medication.weight %>　kg</td>
+            </tr>
+            <tr>
+              <th>備考：</th>
+              <td>
+                <%= @medication.body %>
               </td>
             </tr>
           </table>
-        </div><p></p>
-      </div>
-    </div>
-    <div class="col-xs-12 col-lg-6">
-      <strong><%= f.label :condition, "症状" %></strong>
-      <%= f.text_field :condition, class: "form-control" %>
-      <strong><%= f.label :body, "備考" %></strong>
-      <%= f.text_area :body, class: "form-control", size: "40x6" %>
-    </div>
-  </div>
 
-
-  <div class="row">
-    <div class="col-xs-12 col-lg-6">
-      <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
-      <div class="form-group">
-        <div class=" my-3 form-check">
-          <%= f.fields_for :medicine_records do |m| %>
-            <table>
+          <table class="table table-bordered">
+            <thead>
               <tr>
-                <th><%= m.label :medicine_id, "薬の種類" %></th>
-                <td class="pl-5">
-                  <%= m.select :medicine_id, Medicine.all.map{|o| ["#{o.name} #{o.ingredients_per_tablet}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
-                  <%= m.hidden_field :medicine_id, value: nil %>
-                </td>
+                <th>薬名</th>
+                <th>投薬回数</th>
+                <th>指示量</th>
+                <th>体重</th>
+                <th>投薬日数</th>
+                <th>１回に必要な錠剤の個数</th>
+                <th>溶かす液量</th>
               </tr>
-              <tr>
-                <th><%= m.label :dosage_indicated, "必要量(mg/kg)" %></th>
-                <td class="pl-5">
-                  <%= m.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
-                </td>
-              </tr>
-              <tr>
-                <th><%= m.label :number_of_time_id, "投薬回数" %></th>
-                <td class="pl-5">
-                  <%= m.select :number_of_time_id, NumberOfTime.all.map{|o| ["#{o.name} #{o.dosing_times}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
-                </td>
-              </tr>
-            </table>
-          <% end %>
-          <table>
-            <tr>
-              <th><%= f.label :give_liquid, "与えたい液体量(ml)" %></th>
-              <td class="pl-5">
-                <%= f.text_field :give_liquid, placeholder: "例）1、0.5など",class: "form-control", id: "give_liquid" %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :several_days, "日数" %></th>
-              <td class="pl-5">
-                <%= f.text_field :several_days, class: "form-control", id: "several_days" %>
-              </td>
-            </tr>
+            </thead>
+            <tbody>
+              <% @medication.medicine_records.each do |medicine_record| %>
+                <tr>
+                  <td>
+                    <%= medicine_record.medicine.name %>
+                  </td>
+                  <td>
+                    <%= medicine_record.number_of_time.name %>
+                  </td>
+                  <td><%= medicine_record.dosage_indicated %></td>
+                  <td><%= @medication.weight %>　kg</td>
+                  <td><%= @medication.several_days %>　日間</td>
+                  <td><%= @medication.number_of_tablets %> 個</td>
+                  <td><%= @medication.liquid_amount %> ml</td>
+                </tr>
+              <% end %>
+            </tbody>
           </table>
-        </div><p></p>
-      </div>
-    </div>
 
-    <div class="col-xs-12 col-lg-6">
-      <h3 class="mb-4"><strong>計算結果</strong></h3>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>項目</th>
-            <th>結果</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1回に必要な錠剤の個数</td>
-            <td>
-              <div id="number_of_tablets"></div>
-              <%= f.hidden_field :number_of_tablets, id: "number_of_tablets_value" %>
-            </td>
-          </tr>
-          <tr>
-            <td>ｎ日分に必要な錠剤の個数(整数)</td>
-            <td><div id="n_days_tablets"></div></td>
-          </tr>
-          <tr>
-            <td>溶かすための液体量</td>
-            <td>
-              <div id="liquid_amount"></div>
-              <%= f.hidden_field :liquid_amount, id: "liquid_amount_value" %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-right">
-        <%= f.submit "保存する", class: "btn btn-primary" %>
+          <div class="text-right">
+          <%= f.submit "保存する", class: "btn btn-info" %>
+        </div>
+        <% end %>
+
       </div>
+
     </div>
 
   </div>
-  <% end %>
 </div>

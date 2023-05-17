@@ -7,7 +7,7 @@ class Admin::DairiesController < ApplicationController
     elsif params[:old]
       @dairies = Dairy.old.page(params[:page]).per(10)
     else
-      @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(12)
+      @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(10)
    end
   end
 

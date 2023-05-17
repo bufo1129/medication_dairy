@@ -5,7 +5,12 @@ class Individual < ApplicationRecord
   belongs_to :store,      optional: true
   belongs_to :seed
   has_many :medications, dependent: :destroy
-  
+
+  validates :name,  presence: true
+  validates :birthday,   presence: true
+  validates :age,      presence: true
+  validates :weight,  presence: true
+
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }
 

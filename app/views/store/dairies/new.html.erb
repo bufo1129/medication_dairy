@@ -32,7 +32,10 @@
 <div class="mb-5"></div>
 
 <div class="container mt-5">
+  <%= render 'layouts/errors', obj: @dairy %>
+  <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
+  
   <h3 class="border-bottom border-dark"><strong>日報の新規投稿</strong></h3>
   <div class="text-center mb-5"></div>
   <%= form_with model: @dairy, url: dairies_path, method: :post do |f| %>
@@ -91,7 +94,7 @@
         <!--  <label for="store_name">投薬日誌</label>-->
           <%#= f.select :medication_id, Medication.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
         <!--</div>-->
-        <%= f.submit "作成する", class: "btn btn-primary" %>
+        <%= f.submit "作成する", class: "btn btn-info" %>
       </div>
     </div>
   <% end %>

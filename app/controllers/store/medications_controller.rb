@@ -3,28 +3,31 @@ class Store::MedicationsController < ApplicationController
   before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
   def index
-    # 薬名でしぼりこみ
-    # @medicines = Medicine.all
-    # if params[:medicine_id]
-    #   @medicines = Medicine.find(params[:medicine_id])
-    #   @medications = @Medicine.medications.page(params[:page]).per(8).reverse_order
-    #   @medications_all = @Medicine.medications.all
-    # else
-    #   @medications = Medication.all.page(params[:page]).per(8).reverse_order
-    # end
-
+    @medicines = Medicine.all
     if params[:medicine_id].present?
       mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
-      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(10)
+      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(8)
     else
-      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(10)
+      @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
+    end
+    
+    if params[:store_id].present?
+      medications = Medication.where(store_id:params[:store_id])
+    else
+      medications = Medication.all
     end
 
-    if params[:individual_id].present?
-      @individuals = Individual.where(individual_id: params[:individual_id])
-    else
-      @Individuals = Individual.all.order(created_at: :desc).page(params[:page]).per(10)
-    end
+    # if params[:individual_id].present?
+    #   @individuals = Individual.where(individual_id: params[:individual_id])
+    # else
+    #   @Individuals = Individual.all.order(created_at: :desc).page(params[:page]).per(8)
+    # end
+    
+    # if params[:individual_id].present?
+    #   medications = Dairy.where(individual_id: params[:individual_id])
+    # else
+    #   medications = Dairy.all.order(created_at: :desc).page(params[:page]).per(8)
+    # end
   end
 
   def new
@@ -41,7 +44,7 @@ class Store::MedicationsController < ApplicationController
       redirect_to medication_path(@medication)
     else
       flash[:alert] = "投稿に失敗しました"
-      redirect_to new_medication_path
+      render :new
     end
   end
 
