@@ -65,22 +65,10 @@
               <td><strong>種類名</strong></td>
               <td><%= @individual.seed.name %></td>
             </tr>
-            <!--<tr>-->
-            <!--  <td><strong>投薬ステータス</strong></td>-->
-            <!--  <td>-->
-            <!--    ※投薬ステータス出せない-->
-                <%#= @individual.medication_status %>
-                <%# if medication.medication_status != true %>
-                <!--  投薬中-->
-                <%# else  %>
-                <!--  投薬なし-->
-                <%# end %>
-            <!--  </td>-->
-            <!--</tr>-->
             <tr>
               <td><strong><%= @individual.name %>投薬記録一覧</strong></td>
               <td>
-                <%= link_to "一覧を見る", medications_path %>
+                <%= link_to "一覧を見る", medications_path(individual_id: @individual.id) %>
               </td>
             </tr>
           </table>

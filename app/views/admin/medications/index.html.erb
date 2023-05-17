@@ -43,13 +43,12 @@
             <td>
               <%= medication.individual.seed.name %>
             </td>
-            <td>色変えたい
-              <%= medication.medication_status_i18n %>
-              <%# if medication.medication_status != true %>
-              <!--  投薬中-->
-              <%# else  %>
-              <!--  投薬なし-->
-              <%# end %>
+            <td>
+              <% if medication.medication_status == "give" %>
+                <span class="text-danger"><strong><%= medication.medication_status_i18n %></strong></span>
+              <% else %>
+                <span class="text-success"><strong><%= medication.medication_status_i18n %></strong></span>
+              <% end %>
             </td>
             <td>
               <%= medication.dosing_start_date %>

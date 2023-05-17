@@ -2,13 +2,15 @@ class Admin::MedicationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    if params[:medicine_id].present?
-      mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
-      @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(8)
+    
+    #個体詳細ページからその投薬一覧へ
+    if params[:individual_id].present?
+      @medications = Medication.where(individual_id: params[:individual_id]).order(created_at: :desc).page(params[:page]).per(8)
     else
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
     end
 
+    # 並べ替え
     if params[:latest]
       @medications = Medication.latest.page(params[:page]).per(8)
     elsif params[:old]
@@ -17,11 +19,6 @@ class Admin::MedicationsController < ApplicationController
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
     end
 
-    # if params[:individual_id].present?
-    #   medications = Dairy.where(individual_id: params[:individual_id])
-    # else
-    #   medications = Dairy.all.order(created_at: :desc).page(params[:page]).per(8)
-    # end
   end
 
   def show

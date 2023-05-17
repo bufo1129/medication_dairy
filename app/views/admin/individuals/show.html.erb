@@ -60,7 +60,7 @@
               <td><strong><%= @individual.name %>投薬記録一覧</strong></td>
               <td>
                 絞り込み
-                <%= link_to "一覧を見る", medications_path %>
+                <%= link_to "一覧を見る", admin_medications_path(individual_id: @individual.id) %>
               </td>
             </tr>
           </table>

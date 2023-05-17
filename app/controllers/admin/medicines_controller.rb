@@ -14,7 +14,7 @@ class Admin::MedicinesController < ApplicationController
       redirect_to admin_medicines_path
     else
       flash[:alert] = "登録に失敗しました"
-      @medicines = Medicine.all
+      @medicines = Medicine.all.page(params[:page]).per(10)
       render :index
     end
   end

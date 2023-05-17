@@ -7,5 +7,6 @@ class Seed < ApplicationRecord
   # has_many    :medications, through: :seed_record
 
   validates :name, presence: true
+  validates :name, uniqueness: true
 
 end

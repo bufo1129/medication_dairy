@@ -7,27 +7,20 @@ class Store::MedicationsController < ApplicationController
     if params[:medicine_id].present?
       mid = MedicineRecord.where(medicine_id: params[:medicine_id]).pluck(:medication_id)
       @medications = Medication.where(id: mid).order(created_at: :desc).page(params[:page]).per(8)
+    elsif params[:each_store_id].present?
+      @medications = Medication.where(store_id: params[:each_store_id]).order(created_at: :desc).page(params[:page]).per(8)
+    elsif params[:individual_id].present?
+      @medications = Medication.where(individual_id: params[:individual_id]).order(created_at: :desc).page(params[:page]).per(8)
     else
       @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
     end
-    
+
     if params[:store_id].present?
       medications = Medication.where(store_id:params[:store_id])
     else
       medications = Medication.all
     end
 
-    # if params[:individual_id].present?
-    #   @individuals = Individual.where(individual_id: params[:individual_id])
-    # else
-    #   @Individuals = Individual.all.order(created_at: :desc).page(params[:page]).per(8)
-    # end
-    
-    # if params[:individual_id].present?
-    #   medications = Dairy.where(individual_id: params[:individual_id])
-    # else
-    #   medications = Dairy.all.order(created_at: :desc).page(params[:page]).per(8)
-    # end
   end
 
   def new

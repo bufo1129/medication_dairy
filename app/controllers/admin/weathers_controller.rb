@@ -14,7 +14,7 @@ class Admin::WeathersController < ApplicationController
       redirect_to admin_weathers_path
     else
       flash[:alert] = "失敗しました"
-      @weathers = Weather.all
+      @weathers = Weather.all.page(params[:page]).per(10)
       render :index
     end
   end

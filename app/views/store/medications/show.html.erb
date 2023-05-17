@@ -21,13 +21,10 @@
         </div>
 
         <div class="text-right">
-          <!--更新うまくされないため、計算の編集機能なし-->
-          <% if current_store.id = @medication.id  %>
+          <% if current_store.id == @medication.store.id %>
             <%= link_to edit_medication_path, class: "btn rounded-circle btn-info" do %>
               <i class="fas fa-edit"></i>
             <% end %>
-          <% end %>
-          <% if current_store.id == @medication.store.id %>
             <%= link_to  medication_path(@medication.id), method: :delete,
                 data: { confirm: "本当に削除しますか？" }, class: "btn rounded-circle btn-danger" do %>
               <i class="fas fa-trash-alt"></i>
@@ -63,7 +60,11 @@
           <tr>
             <th>投薬ステータス：</th>
             <td>
-              <%= @medication.medication_status_i18n %>
+              <% if @medication.medication_status == "give" %>
+                <span class="text-danger"><strong><%= @medication.medication_status_i18n %></strong></span>
+              <% else %>
+                <span class="text-success"><strong><%= @medication.medication_status_i18n %></strong></span>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -111,11 +112,11 @@
 
         <!--コメント機能-->
         <div class="mb-5"></div>
-      
+
         <div class="col-lg-8 col-xs-12 col-lg-12">
           <h4 class="mb-4 border-bottom border-dark"><strong>コメント</strong></h4>
         </div>
-        
+
         <%= render 'store/comments/comment', comments: @comments%>
 
         <%= form_with model:[@medication,@comment] do |f| %>

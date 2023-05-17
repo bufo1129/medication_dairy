@@ -14,7 +14,7 @@ class Admin::SeedsController < ApplicationController
       redirect_to admin_seeds_path
     else
       flash[:alert] = "失敗しました"
-      @seeds = Seed.all
+      @seeds = Seed.all.page(params[:page]).per(10)
       render :index
     end
   end

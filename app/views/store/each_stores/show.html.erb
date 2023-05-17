@@ -64,7 +64,13 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 40%"><%= link_to "日報一覧を見る", dairies_path(store_id: @each_store.id), class: "btn btn-info" %></td>
+            <td style="width: 40%">
+              <%= link_to "投薬一覧を見る", medications_path(each_store_id: @each_store.id), class: "btn btn-info" %>
+            </td>
+          <tr class="border-bottom">
+            <td style="width: 40%">
+              <%= link_to "日報一覧を見る", dairies_path(store_id: @each_store.id), class: "btn btn-info" %>
+            </td>
           </tr>
         </table>
 

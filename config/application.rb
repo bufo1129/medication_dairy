@@ -21,5 +21,6 @@ module MedicationDairy
     config.i18n.default_locale = :ja
     #複数のロケールファイルを通す↓
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.time_zone = 'Tokyo'
   end
 end

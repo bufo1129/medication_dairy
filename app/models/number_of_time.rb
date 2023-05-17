@@ -5,5 +5,6 @@ class NumberOfTime < ApplicationRecord
 
   validates :name,          presence: true
   validates :dosing_times,  presence: true
+  validates :name,          uniqueness: true
 
 end

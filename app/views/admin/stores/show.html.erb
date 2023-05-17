@@ -60,6 +60,15 @@
               <% end %>
             </td>
           </tr>
+          <tr class="border-bottom">
+            <td style="width: 40%">
+              <%= link_to "投薬一覧を見る", admin_medications_path(each_store_id: @store.id), class: "btn btn-info" %>
+            </td>
+          <tr class="border-bottom">
+            <td style="width: 40%">
+              <%= link_to "日報一覧を見る", admin_dairies_path(store_id: @store.id), class: "btn btn-info" %>
+            </td>
+          </tr>
         </table>
       </div>
 

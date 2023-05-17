@@ -5,5 +5,6 @@ class Medicine < ApplicationRecord
 
   validates :name,                    presence: true
   validates :ingredients_per_tablet,  presence: true
+  validates :name,                    uniqueness: true
 
 end

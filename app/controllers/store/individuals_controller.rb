@@ -33,12 +33,6 @@ class Store::IndividualsController < ApplicationController
   def show
     #動物種のidを文字で表儒するため
     @seed = Seed.find_by(id: @individual.seed_id)
-    
-    # if params[:individual_id].present?
-    #   medications = Medication.where(medication_id: params[:individual_id])
-    # else
-    #   medications = Medication.all
-    # end
   end
 
   def edit
