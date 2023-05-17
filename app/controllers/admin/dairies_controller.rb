@@ -2,21 +2,27 @@ class Admin::DairiesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    # 店舗詳細から店舗の日報へ行く
+
+    #店舗詳細からその店舗の日報一覧へ+並べ替え
     if params[:store_id].present?
-      @dairies = Dairy.where(store_id: params[:store_id])
+      if params[:latest]
+        @dairies = Dairy.where(store_id: params[:store_id]).latest.page(params[:page]).per(10)
+      elsif params[:old]
+        @dairies = Dairy.where(store_id: params[:store_id]).old.page(params[:page]).per(10)
+      else
+        @dairies = Dairy.where(store_id: params[:store_id]).page(params[:page]).per(10)
+      end
     else
-      @dairies = Dairy.all.page(params[:page]).per(10)
+      #日報一覧並べ替え
+      if params[:latest]
+        @dairies = Dairy.all.latest.page(params[:page]).per(10)
+      elsif params[:old]
+        @dairies = Dairy.all.old.page(params[:page]).per(10)
+      else
+        @dairies = Dairy.all.page(params[:page]).per(10)
+      end
     end
-    
-    # 順番入れ替え
-    if params[:latest]
-      @dairies = Dairy.latest.page(params[:page]).per(10)
-    elsif params[:old]
-      @dairies = Dairy.old.page(params[:page]).per(10)
-    else
-      @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(10)
-    end
+
   end
 
   def show
