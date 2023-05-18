@@ -144,28 +144,3 @@
   </div>
   <% end %>
 </div>
-
-<!--<div class="recipe-post">-->
-  <%#= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
-
-<!--    <div class="recipe-ingredients">-->
-<!--      <div class="mx-auto">-->
-        <%#= f.fields_for :medicine_records do |m| %>
-          <%#= render "store/medications/medicine_record_fields", f: m %>
-        <%# end %>
-<!--      </div>-->
-
-<!--      <div id="detail-association-insertion-point"></div>-->
-
-<!--      <div class="col-10 mx-auto mt-2">-->
-        <%#= link_to_add_association "+フォームを追加", f, :medicine_records,
-        class: "btn btn-secondary btn-block",
-        data: {
-        association_insertion_node: '#detail-association-insertion-point',
-        association_insertion_method: 'after'
-        }%>
-<!--      </div>-->
-<!--    </div>-->
-
-  <%# end %>
-<!--</div>-->
