@@ -15,10 +15,10 @@
 
       <div class="col-xs-12 col-lg-6">
         <h2 class="mb-4 border-bottom border-dark"><strong>動物一覧</strong></h2>
-        <!--<p>-->
-          <%#= link_to '名前順', admin_individuals_path(latest: "true"),class: "text-info" %>
-         <%#= link_to '古い順', admin_individuals_path(old: "true"),class: "text-info" %>
-        <!--</p>-->
+        <p>
+          <%= link_to '新しい順', individuals_path(latest: "true"),class: "text-info" %>
+          |<%= link_to '古い順', individuals_path(old: "true"),class: "text-info" %>
+        </p>
       </div>
 
       <div class="text-right ">
@@ -43,6 +43,6 @@
       <div class="pagination justify-content-center mt-3 mb-3">
         <%= paginate @individuals, theme: 'twitter-bootstrap-4' %>
       </div>
-    
+
   </div>
 </div>

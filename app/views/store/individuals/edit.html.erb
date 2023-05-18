@@ -32,6 +32,10 @@
           <%= f.select :seed_id, Seed.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
         </div>
         <div class="form-group">
+          <label for="seed_id">所属店舗</label>
+          <%= f.select :store_id, Store.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+        </div>
+        <div class="form-group">
           <label for="customer_post_code">生年月日</label>
           <%= f.date_field :birthday, class: "form-control" %>
         </div>
