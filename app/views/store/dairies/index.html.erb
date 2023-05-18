@@ -23,8 +23,8 @@
       </div>
 
       <table class="table table-hover">
-        <%= link_to '新しい順', dairies_path(latest: "true"),class: "text-info" %>
-         |<%= link_to '古い順', dairies_path(old: "true"),class: "text-info" %>
+        <%= link_to '新しい順', dairies_path(latest: "true", store_id: params[:store_id]),class: "text-info" %>
+         |<%= link_to '古い順', dairies_path(old: "true", store_id: params[:store_id]),class: "text-info" %>
         <thead class="bg-dark text-light">
           <tr>
             <th scope="col"></th>

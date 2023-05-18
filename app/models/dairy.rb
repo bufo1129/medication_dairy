@@ -13,5 +13,4 @@ class Dairy < ApplicationRecord
   validates :low_temperature,   presence: true
   validates :created_date,      presence: true
 
-
 end

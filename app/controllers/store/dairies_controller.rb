@@ -3,20 +3,27 @@ class Store::DairiesController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   def index
-    
+
+    #店舗詳細からその店舗の日報一覧へ+並べ替え
     if params[:store_id].present?
-      dairies = Dairy.where(store_id: params[:store_id])
+      if params[:latest]
+        @dairies = Dairy.where(store_id: params[:store_id]).latest.page(params[:page]).per(10)
+      elsif params[:old]
+        @dairies = Dairy.where(store_id: params[:store_id]).old.page(params[:page]).per(10)
+      else
+        @dairies = Dairy.where(store_id: params[:store_id]).page(params[:page]).per(10)
+      end
     else
-      dairies = Dairy.all
+      #日報一覧並べ替え
+      if params[:latest]
+        @dairies = Dairy.all.latest.page(params[:page]).per(10)
+      elsif params[:old]
+        @dairies = Dairy.all.old.page(params[:page]).per(10)
+      else
+        @dairies = Dairy.all.page(params[:page]).per(10)
+      end
     end
 
-    if params[:latest] == "true"
-      @dairies = dairies.latest.page(params[:page]).per(10)
-    elsif params[:old] == "true"
-      @dairies = dairies.old.page(params[:page]).per(10)
-    else
-      @dairies = dairies.all.order(created_at: :desc).page(params[:page]).per(10)
-    end
   end
 
   def new

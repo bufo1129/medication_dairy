@@ -2,7 +2,7 @@ class Admin::MedicationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    
+
       #個体の詳細からその個体の投薬一覧へ+並べ替え
     if params[:individual_id].present?
       if params[:latest]
@@ -31,7 +31,6 @@ class Admin::MedicationsController < ApplicationController
          @medications = Medication.all.page(params[:page]).per(8)
       end
     end
-
 
   end
 

@@ -26,6 +26,8 @@
 
       <table class="table">
         <thead class="table-dark">
+          <%= link_to '新しい順', medications_path(latest: "true",individual_id: params[:individual_id], each_store_id: params[:each_store_id]),class: "text-info" %>
+         |<%= link_to '古い順', medications_path(old: "true",individual_id: params[:individual_id], each_store_id: params[:each_store_id]),class: "text-info" %>
           <tr>
             <th scope="col"></th>
             <th scope="col">個体名</th>
@@ -77,7 +79,3 @@
 
   </div>
 </div>
-
-<%# medication.medicine_records.each do |mr| %>
-  <%#= mr.medicine.name %>
-<%# end %>

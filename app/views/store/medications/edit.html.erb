@@ -39,8 +39,12 @@
               <td><strong>投薬終了予定日：</strong><%= @medication.dosing_end_date %></td>
             </tr>
             <tr>
-              <th><%= f.label :medication_status, "投薬ステータス" %></th>
-              <td class="pl-5">
+              <td>
+                <strong><%= f.label :condition, "症状" %></strong>
+                <%= f.text_field :condition, class: "form-control" %>
+              </td>
+              <td>
+                <strong><%= f.label :medication_status, "投薬ステータス:" %></strong>
                 <%= f.label :medication_status_give, '投薬あり' %>
                 <%= f.radio_button :medication_status, :give %>
                 <%= f.label :medication_status_not_give, '投薬なし' %>
@@ -48,19 +52,9 @@
               </td>
             </tr>
             <tr>
-              <th>投薬ステータス：</th>
               <td>
-                <%= @medication.medication_status_i18n %>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>症状：</strong><%= @medication.condition %></td>
-              <td><strong>体重：</strong><%= @medication.weight %>　kg</td>
-            </tr>
-            <tr>
-              <th>備考：</th>
-              <td>
-                <%= @medication.body %>
+                <strong><%= f.label :body, "備考" %></strong>
+                <%= f.text_area :body, class: "form-control", size: "40x6" %>
               </td>
             </tr>
           </table>

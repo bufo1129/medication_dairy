@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2023_05_16_071814) do
 
   create_table "number_of_times", force: :cascade do |t|
     t.string "name"
-    t.integer "dosing_times"
+    t.decimal "dosing_times"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
