@@ -1,4 +1,14 @@
+
+＜EC2移動＞
 ssh -i ~/.ssh/practice-aws.pem ec2-user@xx.xx.xx.xx
+
+＜エラーログ＞
+sudo tail -f /var/log/nginx/error.log
+
+＜本番データベースリセット＞
+RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:drop
+rails db:create RAILS_ENV=production
+rails db:migrate RAILS_ENV=production
 
 
 ＜店舗＞
