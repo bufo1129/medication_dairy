@@ -155,6 +155,7 @@ Weather.create!(
 @individual.image.attach(io: File.open(Rails.root.join('app/assets/images/capybara.jpg')),filename: 'my_image.jpg')
 
 @individual = Individual.create!(
+      store_id: 1,
       seed_id: 2,
       name: "フラッシュ",
       birthday: Date.new(2020, 1, 1),
