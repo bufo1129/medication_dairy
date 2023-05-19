@@ -50,7 +50,16 @@
       </table>
 
     <div class="pagination justify-content-center mt-3 mb-3">
-      <%#= paginate @dairies, theme: 'twitter-bootstrap-4' %>
+      <%= paginate @dairies, theme: 'twitter-bootstrap-4' %>
     </div>
+    
+    <div class="text-center">
+      <span id="top-btn">
+        <a href="#">
+          <i class="fas fa-chevron-up"></i>
+        </a>
+      </span>
+    </div>
+    
   </div>
 </div>
