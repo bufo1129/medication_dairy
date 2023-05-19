@@ -1,6 +1,6 @@
 
 ＜EC2移動＞
-ssh -i ~/.ssh/practice-aws.pem ec2-user@xx.xx.xx.xx
+ssh -i ~/.ssh/practice-aws.pem ec2-user@13.112.35.72
 
 ＜エラーログ＞
 sudo tail -f /var/log/nginx/error.log

@@ -18,7 +18,6 @@ class Medication < ApplicationRecord
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }
 
-
   validates :dosing_start_date,       presence: true
   validates :dosing_end_date,       presence: true
   validates :medication_status,       presence: true
