@@ -128,7 +128,7 @@ Weather.create!(
       medication_id: nil,
       medication_status: nil)
 
-# @individual.image.attach(io: File.open(Rails.root.join('app/assets/images/no_image.jpg')),filename: 'my_image.jpg')
+@individual.image.attach(io: File.open(Rails.root.join('app/assets/images/tonki.jpg')),filename: 'my_image.jpg')
 
 @individual = Individual.create!(
       store_id: 2,
