@@ -117,20 +117,8 @@
           <h4 class="mb-4 border-bottom border-dark"><strong>コメント</strong></h4>
         </div>
 
-        <%= render 'store/comments/comment', comments: @comments%>
-
-        <%= form_with model:[@medication,@comment] do |f| %>
-          <%= f.hidden_field :medication_id, value: @medication.id %>
-          <div class="form-group", style="width:100%;">
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに（最大140字まで）", class: "form-control comment_textarea" %>
-          </div>
-          <div class="text-right">
-            <%= button_tag :type => "submit", :class =>"btn btn-info" do %>
-              <i class="fas fa-paper-plane"></i>
-            <% end %>
-          </div>
-        <% end %>
-
+        <%= render 'store/comments/medication_comment', comments: @comments%>
+        <%= render 'store/comments/comment_form', medication: @medication, comment: @comment%>
 
       </div>
 

@@ -13,7 +13,7 @@
       <td><%= comment.comment %></td>
       <td>
         <% if comment.store == current_store %>
-          <%= link_to admin_medication_comment_path(comment.medication,comment), method: :delete, class: "text-danger" do %>
+          <%= link_to admin_medication_comment_path(comment.medication,comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "text-danger" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>

@@ -4,8 +4,10 @@ class Store::CommentsController < ApplicationController
   def create
     @comment = current_store.comments.new(comment_params)
     if @comment.save
+      flash[:notice] = "コメント投稿が完了しました"
       redirect_back(fallback_location: root_path)
     else
+      flash[:alert] = "コメント投稿に失敗しました"
       redirect_back(fallback_location: root_path)
     end
   end
