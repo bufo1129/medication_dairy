@@ -1,10 +1,10 @@
-<table class="table table-borderless table-hover text-center">
-  <thead class="bg-dark text-light">
+<table class="table table-borderless table-hover text-center accordion-container">
+  <thead class="bg-dark text-light accordion-title js-accordion-title">
     <tr>
       <th class="h5 font-weight-bold rounded">リンク一覧</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="accordion-content">
     <tr>
       <td>
         <%= link_to each_stores_path, class: "text-info admin-link" do %>

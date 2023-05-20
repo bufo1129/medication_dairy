@@ -1,16 +1,18 @@
-<table class="table table-borderless table-hover text-center">
-  <thead class="table-active bg-dark text-light">
+<table class="table table-borderless table-hover text-center accordion-container">
+  <thead class="table-active bg-dark text-light accordion-title js-accordion-title">
     <tr>
       <th class="h5 font-weight-bold rounded">動物種</th>
     </tr>
   </thead>
-  <% seeds.each do |seed| %>
-  <tr>
-    <td class="rounded">
-      <%= link_to individuals_path(seed_id: seed.id), class: "text-dark" do %>
-        <%= seed.name %>
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
+  <tbody class="accordion-content">
+    <% seeds.each do |seed| %>
+      <tr>
+        <td>
+          <%= link_to individuals_path(seed_id: seed.id), class: "text-dark" do %>
+            <%= seed.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
