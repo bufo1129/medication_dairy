@@ -11,7 +11,7 @@
     <script>
       let OWM_API_KEY="<%= ENV['OWM_API_KEY'] %>"
     </script>
-
+    <!--favicon-->
     <%= favicon_link_tag('favicon.ico') %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -25,11 +25,12 @@
     </style>
   </head>
 
-  </head>
 
   <!--header-->
-  <%= render 'layouts/header' %>
-
+  <header class="sticky-top">
+    <%= render 'layouts/header' %>
+  </header>
+  
   <body>
     <%= yield %>
   </body>
@@ -41,3 +42,5 @@
 
 
 </html>
+
+

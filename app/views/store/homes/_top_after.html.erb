@@ -1,5 +1,5 @@
 <div class="container-fluid">
-   
+
   <div class="row offset-1 mt-4">
 
   <div class="col-lg-2 mr-3">
@@ -14,7 +14,70 @@
         <div class="mb-5"></div>
         <h4 class="text-success"><%= flash[:notice] %></h4>
 
-        <%= render 'store/homes/top_new', medications: @medications %>
+        <div class="row my-4 d-flex justify-content-center">
+
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="mb-4 border-bottom border-dark"><strong>投薬記録　新着</strong></h2>
+        </div>
+
+        <div class="col-xs-12 col-lg-12">
+
+          <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">個体名</th>
+                <th scope="col">種類名</th>
+                <th scope="col">症状</th>
+                <th scope="col">投薬開始日</th>
+                <th scope="col">投薬終了予定日</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="table table-hover">
+              <% @comments.each do |comment| %>
+              <tr>
+                <td>
+                  <%= link_to medication_path(comment.medication.id) do %>
+                    <%= image_tag comment.medication.individual.get_image(60,60),class: "img-fluid rounded-circle" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= comment.medication.individual.name %>
+                </td>
+                <td>
+                  <%= comment.medication.individual.seed.name %>
+                </td>
+                <td>
+                  <%= comment.medication.condition %>
+                </td>
+                <td>
+                  <%= comment.medication.dosing_start_date %>
+                </td>
+                <td>
+                  <%= comment.medication.dosing_end_date %>
+                </td>
+                <td>
+                  <% if comment.medication.medication_status == "give" %>
+                    <span class="text-danger"><strong><%= comment.medication.medication_status_i18n %></strong></span>
+                  <% else %>
+                    <span class="text-success"><strong><%= comment.medication.medication_status_i18n %></strong></span>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <div class="mt-2 mb-3 text-center">
+            <%= link_to medications_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-info border border-2 ", method: :get do %>
+              投薬記録一覧へ
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
 
 
         <div class="mb-5"></div>
