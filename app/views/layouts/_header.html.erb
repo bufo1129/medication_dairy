@@ -51,6 +51,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to admin_weathers_path, class: "nav-link text-light" do %>
+              <i class="fas fa-stopwatch-20"></i> 天気登録
+            <% end %>
+          </li>
+          <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>

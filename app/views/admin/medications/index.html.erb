@@ -24,6 +24,7 @@
           <th scope="col"></th>
           <th scope="col">個体名</th>
           <th scope="col">種類名</th>
+          <th scope="col">所属店舗</th>
           <th scope="col">薬名</th>
           <th scope="col">投薬開始日</th>
           <th scope="col">投薬終了予定日</th>
@@ -39,10 +40,12 @@
           </td>
           <td>
             <%= medication.individual.name %>
-            <%= medication.store.name %>
           </td>
           <td>
             <%= medication.individual.seed.name %>
+          </td>
+          <td>
+            <%= medication.store.name %>
           </td>
           <td>
             <% if medication.medication_status == "give" %>

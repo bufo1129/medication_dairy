@@ -1,10 +1,10 @@
-<table class="table table-borderless table-hover text-center">
-  <thead class="bg-dark text-light">
+<table class="table table-borderless table-hover text-center accordion-container">
+  <thead class="bg-dark text-light accordion-title js-accordion-title">
     <tr>
       <th class="h5 font-weight-bold rounded">一覧リンク</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="accordion-content" style="text-align: -webkit-center;">
     <tr>
       <td>
         <%= link_to admin_stores_path, class: "text-info admin-link" do %>
@@ -35,13 +35,14 @@
     </tr>
   </tbody>
 </table>
-<table class="table table-borderless table-hover text-center">
-  <thead class="bg-dark text-light">
+
+<table class="table table-borderless table-hover text-center accordion-container">
+  <thead class="bg-dark text-light accordion-title js-accordion-title">
     <tr>
       <th class="h5 font-weight-bold rounded">登録リスト</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="accordion-content" style="text-align: -webkit-center;">
     <tr>
       <td>
         <%=  link_to admin_medicines_path , class: "text-info" do %>

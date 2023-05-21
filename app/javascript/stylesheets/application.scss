@@ -2,22 +2,12 @@
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
 
-// @import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
-
 
 * {
   font-family: 'Kiwi Maru', serif;
-  // font-family: 'Klee One', cursive;
 }
 
-// individualのhover
-// .img_wrap{
-//   border: 1px solid #ddd;
-//   width: 300px;
-//   height: 226px;
-//   margin: 20px auto 0;
-//   transition-duration: 0.5s;
-// }
+
 .img_wrap img{
   width: 100%;
   cursor: pointer;

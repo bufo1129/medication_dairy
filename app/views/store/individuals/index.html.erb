@@ -16,13 +16,9 @@
 
       <div class="col-xs-12 col-lg-6">
         <h2 class="mb-4 border-bottom border-dark"><strong>動物一覧</strong></h2>
-        <p>
-          <%= link_to '新しい順', individuals_path(latest: "true"),class: "text-info" %>
-          |<%= link_to '古い順', individuals_path(old: "true"),class: "text-info" %>
-        </p>
       </div>
 
-      <div class="text-right ">
+      <div class="text-left ">
         <%= link_to new_individual_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-success border border-2 ", method: :get do %>
           <i class="fas fa-plus"></i>新規登録
         <% end %>

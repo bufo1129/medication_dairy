@@ -39,6 +39,10 @@
               <td><%= @individual.name %></td>
             </tr>
             <tr>
+              <td><strong>種類名</strong></td>
+              <td><%= @individual.seed.name %></td>
+            </tr>
+            <tr>
               <td><strong>年齢</strong></td>
               <td><%= @individual.age %></td>
             </tr>
@@ -53,14 +57,9 @@
               </td>
             </tr>
             <tr>
-              <td><strong>種類名</strong></td>
-              <td><%= @individual.seed.name %></td>
-            </tr>
-            <tr>
               <td><strong><%= @individual.name %>投薬記録一覧</strong></td>
               <td>
-                絞り込み
-                <%= link_to "一覧を見る", admin_medications_path(individual_id: @individual.id) %>
+                <%= link_to "一覧を見る", admin_medications_path(individual_id: @individual.id), class: "btn btn-info" %>
               </td>
             </tr>
           </table>
