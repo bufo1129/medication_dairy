@@ -38,7 +38,7 @@
             <tr>
               <th><%= f.label :individual_id, "個体" %></th>
               <td class="pl-5">
-                <%= f.select :individual_id, Individual.all.map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+                <%= f.select :individual_id, Individual.where(store_id: current_store.id).map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
               </td>
             </tr>
             <tr>
