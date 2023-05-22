@@ -1,8 +1,5 @@
 <div class="text-center mb-5"></div>
 
-<h4 class="text-success"><%= flash[:notice] %></h4>
-<h4 class="text-danger"><%= flash[:alert] %></h4>
-
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
 
@@ -16,8 +13,17 @@
 
       <div class="col-xl-10 col-lg-12 col-md-12 mx-auto">
 
+        <h4 class="text-success"><%= flash[:notice] %></h4>
+        <h4 class="text-danger"><%= flash[:alert] %></h4>
+
         <div class="col-lg-8 col-xs-12 col-lg-12">
           <h2 class="mb-4 border-bottom border-dark"><strong><%= @individual.name %>情報詳細</strong></h2>
+        </div>
+
+        <div class="text-right">
+          <%= link_to edit_admin_individual_path, class: "btn rounded-circle btn-info" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         </div>
 
         <div class="col text-center mx-auto">
@@ -25,7 +31,6 @@
         </div>
 
         <div class = "col mx-auto">
-          <h4 class="text-success"><%= flash[:notice] %></h4>
 
           <table class="table">
             <tr>

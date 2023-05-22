@@ -87,7 +87,8 @@ Seed.create!(
     { name: "イングリッシュコッカー" },
     { name: "ポメラニアン" },
     { name: "ブリティッシュショートヘア" },
-    { name: "アメリカンショートヘア" }
+    { name: "アメリカンショートヘア" },
+    { name: "該当なし" },
   ]
 )
 
@@ -201,87 +202,6 @@ Weather.create!(
       medication_status: nil)
 
 @individual.image.attach(io: File.open(Rails.root.join('app/assets/images/macaw.jpg')),filename: 'my_image.jpg')
-
-
-# Individual.create!(
-#   [
-#     { store_id: 2,
-#       seed_id: 11,
-#       name: "リク",
-#       birthday: Date.new(2020, 1, 1),
-#       age: 0.3e1,
-#       weight: 0.3e1,
-#       medication_id: nil,
-#       medication_status: nil,
-#       image: File.open('./app/assets/images/no_image.jpg')
-#       # image: ActiveStorage::Individual.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/no_image.jpeg")))
-#     },
-
-#     { store_id: 2,
-#       seed_id: 5,
-#       name: "なすび",
-#       birthday: Date.new(2015, 1, 1),
-#       age: 0.8e1,
-#       weight: 0.4e-1,
-#       medication_id: nil,
-#       medication_status: nil,
-#       # image: File.open('./app/assets/images/nasu.jpg')
-#     },
-
-#     { store_id: 2,
-#       seed_id: 1,
-#       name: "パピコ",
-#       birthday: Date.new(2018, 1, 1),
-#       age: 0.5e1,
-#       weight: 0.4e2,
-#       medication_id: nil,
-#       medication_status: nil,
-#       # image: File.open('./app/assets/images/capybara.jpg')
-#     },
-
-#     { store_id: 1,
-#       seed_id: 2,
-#       name: "フラッシュ",
-#       birthday: Date.new(2020, 1, 1),
-#       age: 0.3e1,
-#       weight: 0.8e1,
-#       medication_id: nil,
-#       medication_status: nil,
-#       # image: File.open('./app/assets/images/sloth.jpg')
-#     },
-
-#     { store_id: 3,
-#       seed_id: 7,
-#       name: "すけさん",
-#       birthday: Date.new(2017, 1, 1),
-#       age: 0.6e1,
-#       weight: 0.4e0,
-#       medication_id: nil,
-#       medication_status: nil,
-#       # image: File.open('./app/assets/images/owl.jpg')
-#     },
-
-#     { store_id: 3,
-#       seed_id: 17,
-#       name: "よこづな",
-#       birthday: Date.new(2019, 1, 1),
-#       age: 0.4e1,
-#       weight: 0.0,
-#       medication_id: nil,
-#       medication_status: nil
-#     },
-
-#     { store_id: 3,
-#       seed_id: 4,
-#       name: "ライリー",
-#       birthday: Date.new(2016, 1, 1),
-#       age: 0.7e1,
-#       weight: 0.1e1,
-#       medication_id: nil,
-#       medication_status: nil
-#     }
-#   ]
-# )
 
 #日報
 Dairy.create!(

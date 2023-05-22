@@ -5,8 +5,8 @@
   <%= render 'layouts/errors', obj: @medication %>
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
-  
-  <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
+
+  <h2 class="mb-4 border-bottom border-dark"><strong>投薬記録新規作成</strong></h2>
   <%= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
     <div class="row">
     <div class="col-xs-12 col-lg-6">
@@ -44,7 +44,7 @@
             <tr>
               <th><%= f.label :weight, "体重" %></th>
               <td class="pl-5">
-                <%= f.text_field :weight, placeholder: "小数点第１位まで「0.1」)", class: "form-control", id: "weight" %>
+                <%= f.text_field :weight, placeholder: "数字を入力してください", class: "form-control", id: "weight" %>
               </td>
             </tr>
           </table>
@@ -53,9 +53,9 @@
     </div>
     <div class="col-xs-12 col-lg-6">
       <strong><%= f.label :condition, "症状" %></strong>
-      <%= f.text_field :condition, class: "form-control" %>
+      <%= f.text_field :condition, placeholder: "テキストを入力してください", class: "form-control" %>
       <strong><%= f.label :body, "備考" %></strong>
-      <%= f.text_area :body, class: "form-control", size: "40x6" %>
+      <%= f.text_area :body, placeholder: "テキストを入力してください", class: "form-control", size: "40x6" %>
     </div>
   </div>
 
@@ -76,7 +76,7 @@
               <tr>
                 <th><%= m.label :dosage_indicated, "必要量(mg/kg)" %></th>
                 <td class="pl-5">
-                  <%= m.text_field :dosage_indicated, placeholder: "先生からの指示量を入力してください", class: "form-control", id: "dosage_indicated" %>
+                  <%= m.text_field :dosage_indicated, placeholder: "数字を入力してください", class: "form-control", id: "dosage_indicated" %>
                 </td>
               </tr>
               <tr>
@@ -91,13 +91,13 @@
             <tr>
               <th><%= f.label :give_liquid, "与えたい液体量(ml)" %></th>
               <td class="pl-5">
-                <%= f.text_field :give_liquid, placeholder: "例）1、0.5など",class: "form-control", id: "give_liquid" %>
+                <%= f.text_field :give_liquid, placeholder: "数字を入力してください",class: "form-control", id: "give_liquid" %>
               </td>
             </tr>
             <tr>
               <th><%= f.label :several_days, "投薬日数" %></th>
               <td class="pl-5">
-                <%= f.text_field :several_days, class: "form-control", id: "several_days" %>
+                <%= f.text_field :several_days, placeholder: "数字を入力してください", class: "form-control", id: "several_days" %>
               </td>
             </tr>
           </table>

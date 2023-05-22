@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :individuals, only: [:index, :show] #個体
+    resources :individuals, only: [:index, :show, :edit, :update] #個体
     resources :weathers, only: [:index, :edit, :create, :update, :destroy] #天気
   end
 

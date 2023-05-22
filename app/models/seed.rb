@@ -6,7 +6,6 @@ class Seed < ApplicationRecord
   # has_many    :seed_records
   # has_many    :medications, through: :seed_record
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
-
+  validates :name, presence: true, uniqueness: true, length:{maximum:30}
+  
 end

@@ -12,5 +12,6 @@ class Dairy < ApplicationRecord
   validates :high_temperature,  presence: true
   validates :low_temperature,   presence: true
   validates :created_date,      presence: true
+  validates :title, presence: true, length:{maximum:30}
 
 end

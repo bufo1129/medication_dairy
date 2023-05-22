@@ -23,7 +23,7 @@ class Store::IndividualsController < ApplicationController
     @individual.store = current_store
     if @individual.save
       flash[:notice] = "登録が完了しました"
-      redirect_to individuals_path
+      redirect_to individual_path(@individual)
     else
       flash[:alert] = "必須項目が選択または入力されていません"
       render :new
@@ -41,7 +41,7 @@ class Store::IndividualsController < ApplicationController
   def update
     if @individual.update(individual_params)
       flash[:notice] = "更新が完了しました"
-      redirect_to individuals_path
+      redirect_to individual_path(@individual)
     else
       flash[:alert] = "更新に失敗しました"
       render :edit

@@ -6,7 +6,7 @@ class Individual < ApplicationRecord
   belongs_to :seed
   has_many :medications, dependent: :destroy
 
-  validates :name,  presence: true
+  validates :name,  presence: true, length:{maximum:30}
   validates :birthday,   presence: true
   validates :age,      presence: true
   validates :weight,  presence: true

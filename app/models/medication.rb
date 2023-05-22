@@ -26,7 +26,7 @@ class Medication < ApplicationRecord
   validates :individual_id,       presence: true
   validates :weight,              presence: true
   validates :several_days,        presence: true
-  validates :condition,        presence: true
+  validates :condition,        presence: true, length:{maximum:30}
 
 
 

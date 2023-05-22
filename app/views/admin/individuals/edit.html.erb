@@ -4,7 +4,7 @@
   <div class="row d-flex justify-content-center mx-auto">
 
     <div class="col-lg-2">
-      <%= render 'store/homes/link' %>
+      <%= render 'admin/homes/link' %>
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
@@ -12,12 +12,12 @@
       <div class="text-center mb-3"></div>
 
       <div class="col-md-12 mx-auto">
-        <%= render 'layouts/errors', obj: @individual %>
+        <%#= render 'layouts/errors', obj: @individual %>
         <h4 class="text-success"><%= flash[:notice] %></h4>
         <h4 class="text-danger"><%= flash[:alert] %></h4>
 
         <div class="col-lg-5 mx-auto">
-          <%= form_with(model: @individual, url: individual_path(@individual), method: :patch, local: true, class: "edit_individual") do |f| %>
+          <%= form_with(model: @individual, url: admin_individual_path(@individual), method: :patch, local: true, class: "edit_individual") do |f| %>
             <h3 class="border-bottom border-dark"><strong><%= @individual.name %> 情報編集画面</strong></h3>
             <div class="form-group">
               <label for="individual_image">画像</label>
@@ -48,7 +48,7 @@
               <%= f.text_field :weight, class: "form-control" %>
             </div>
             <div class="text-right">
-              <%= f.submit "更新する", data: { confirm: "「所属店舗」を変更した場合、編集ができなくなります。変更しますか？"}, class: "btn btn-info" %>
+              <%= f.submit "更新する", class: "btn btn-info" %>
             </div>
           <% end %>
         </div>

@@ -35,7 +35,7 @@
   <%= render 'layouts/errors', obj: @dairy %>
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
-  
+
   <h3 class="border-bottom border-dark"><strong>日報の新規投稿</strong></h3>
   <div class="text-center mb-5"></div>
   <%= form_with model: @dairy, url: dairies_path, method: :post do |f| %>
@@ -76,19 +76,19 @@
         </div>
         <div class="form-group">
           <label for="high_temperature">最高気温</label>
-          <%= f.text_field :high_temperature, class: "form-control" %>
+          <%= f.text_field :high_temperature, placeholder: "数字を入力してください", class: "form-control" %>
         </div>
         <div class="form-group">
           <label for="low_temperature">最低気温</label>
-          <%= f.text_field :low_temperature, class: "form-control" %>
+          <%= f.text_field :low_temperature, placeholder: "数字を入力してください", class: "form-control" %>
         </div>
         <div class="form-group">
           <label for="title">タイトル</label>
-          <%= f.text_field :title, class: "form-control" %>
+          <%= f.text_field :title, placeholder: "テキストを入力してください", class: "form-control" %>
         </div>
         <div class="form-group">
           <label for="body">内容</label>
-          <%= f.text_area :body, class: "form-control" %>
+          <%= f.text_area :body, placeholder: "テキストを入力してください", class: "form-control" %>
         </div>
         <!--<div class="form-group">-->
         <!--  <label for="store_name">投薬日誌</label>-->
