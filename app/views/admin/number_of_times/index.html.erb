@@ -7,7 +7,7 @@
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
-      
+
       <%= render 'layouts/errors', obj: @number_of_time %>
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <h4 class="text-danger"><%= flash[:alert] %></h4>
@@ -43,6 +43,7 @@
               <tr>
                 <th scope="col"></th>
                 <th scope="col">登録名</th>
+                <th scope="col">回数</th>
               </tr>
             </thead>
             <tbody>
@@ -54,6 +55,7 @@
                   <% end %>
                 </td>
                 <td class="h5"><%= number_of_time.name %></td>
+                <td class="h5"><%= number_of_time.dosing_times %></td>
               </tr>
               <% end %>
             </tbody>
