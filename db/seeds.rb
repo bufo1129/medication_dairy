@@ -56,14 +56,14 @@ stores = Store.create!(
 #薬登録
 Medicine.create!(
   [
-    { name: "エンロクリア錠 15", ingredients_per_tablet: 0.15e2 },
-    { name: "エンロクリア錠 50", ingredients_per_tablet: 0.5e2 },
-    { name: "エンロクリア錠 100", ingredients_per_tablet: 0.1e3 },
-    { name: "イトラコナゾール 50", ingredients_per_tablet: 0.5e2 },
-    { name: "イトラコナゾール 100", ingredients_per_tablet: 0.1e3 },
-    { name: "モサプリドクエン酸塩 5", ingredients_per_tablet: 0.5e1 },
-    { name: "プレドニゾロン錠 1", ingredients_per_tablet: 0.1e1 },
-    { name: "プレドニゾロン錠 5", ingredients_per_tablet: 0.5e1 }
+    { name: "エンロクリア錠 15", ingredients_per_tablet: 15.0 },
+    { name: "エンロクリア錠 50", ingredients_per_tablet: 50.0 },
+    { name: "エンロクリア錠 100", ingredients_per_tablet: 100.0 },
+    { name: "イトラコナゾール 50", ingredients_per_tablet: 50.0 },
+    { name: "イトラコナゾール 100", ingredients_per_tablet: 100.0 },
+    { name: "モサプリドクエン酸塩 5", ingredients_per_tablet: 5.0 },
+    { name: "プレドニゾロン錠 1", ingredients_per_tablet: 1.0 },
+    { name: "プレドニゾロン錠 5", ingredients_per_tablet: 5.0 }
   ]
 )
 
