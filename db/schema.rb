@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 2023_05_16_071814) do
     t.integer "seed_id", null: false
     t.string "name", null: false
     t.date "birthday", null: false
-    t.decimal "age"
-    t.decimal "weight"
+    t.decimal "age", precision: 5, scale: 3
+    t.decimal "weight", precision: 5, scale: 3
     t.integer "medication_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -89,15 +89,15 @@ ActiveRecord::Schema.define(version: 2023_05_16_071814) do
     t.integer "individual_id", null: false
     t.integer "seed_id"
     t.integer "store_id"
-    t.decimal "number_of_tablets"
-    t.decimal "liquid_amount"
+    t.decimal "number_of_tablets", precision: 5, scale: 3
+    t.decimal "liquid_amount", precision: 5, scale: 3
     t.date "dosing_start_date"
     t.date "dosing_end_date"
     t.boolean "medication_status"
     t.text "body"
-    t.decimal "give_liquid"
+    t.decimal "give_liquid", precision: 5, scale: 3
     t.integer "several_days"
-    t.decimal "weight"
+    t.decimal "weight", precision: 5, scale: 3
     t.string "condition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -107,21 +107,21 @@ ActiveRecord::Schema.define(version: 2023_05_16_071814) do
     t.integer "medication_id", null: false
     t.integer "medicine_id", null: false
     t.integer "number_of_time_id", null: false
-    t.decimal "dosage_indicated", null: false
+    t.decimal "dosage_indicated", precision: 5, scale: 3, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "medicines", force: :cascade do |t|
     t.string "name", null: false
-    t.decimal "ingredients_per_tablet", null: false
+    t.decimal "ingredients_per_tablet", precision: 5, scale: 3, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "number_of_times", force: :cascade do |t|
     t.string "name"
-    t.decimal "dosing_times"
+    t.decimal "dosing_times", precision: 5, scale: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
