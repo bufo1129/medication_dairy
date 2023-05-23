@@ -24,49 +24,48 @@
               <%= form_with(model: @store, url: admin_store_path(@store), method: :patch, local: true, class: "edit_store") do |f| %>
 
                 <div class="form-group">
-                  <label for="store_id">店舗ID</label>
+                  <label for="store_id"><strong>店舗ID：</strong></label>
                   <%= @store.id %>
                 </div>
                 <div class="form-group">
-                  <label for="store_name">店舗名</label>
+                  <label for="store_name"><strong>店舗名：</strong></label>
                   <%= @store.name %>
                 </div>
                 <div class="form-group">
-                  <label for="store_email">メールアドレス</label>
+                  <label for="store_email"><strong>メールアドレス：</strong></label>
                   <%= @store.email %>
                 </div>
                 <div class="form-group">
-                  <label for="store_post_code">郵便番号</label>
-                  <%= f.text_field :postal_code, class: "form-control" %>
+                  <label for="store_post_code"><strong>郵便番号：</strong></label>
+                  <%= @store.postal_code %>
                 </div>
                 <div class="form-group">
-                  <label for="store_prefecture_code">都道府県</label>
-                  <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all,
-                  :code, :name,  { prompt: '選択してください' }, class: 'form-control' %>
+                  <label for="store_prefecture_code"><strong>都道府県：</strong></label>
+                  <%= @store.prefecture_name %>
                 </div>
                 <div class="form-group">
-                  <label for="store_address_city">市町村</label>
-                  <%= f.text_field :address_city, class: "form-control" %>
+                  <label for="store_address_city"><strong>市町村：</strong></label>
+                  <%= @store.address_city %>
                 </div>
                 <div class="form-group">
-                  <label for="store_address_street">番地</label>
-                  <%= f.text_field :address_street, class: "form-control" %>
+                  <label for="store_address_street"><strong>番地：</strong></label>
+                  <%= @store.address_street %>
                 </div>
                 <div class="form-group">
-                  <label for="store_address_building">建物名</label>
-                  <%= f.text_field :address_building, class: "form-control" %>
+                  <label for="store_address_building"><strong>建物名：</strong></label>
+                  <%= @store.address_building %>
                 </div>
                 <div class="form-group">
-                  <label for="store_phone_number">電話番号</label>
-                  <%= f.text_field :phone_number, class: "form-control" %>
+                  <label for="store_phone_number"><strong>電話番号：</strong></label>
+                  <%= @store.phone_number %>
                 </div>
 
                 <% if @store.name == 'guestuser'%>
-                <label for="store_is_deleted">店舗ステータス</label>
+                <label for="store_is_deleted"><strong>店舗ステータス：</strong></label>
                   <span class="font-weight-bold text-success">有効</span>
                 <% else %>
                   <div class="form-group">
-                    <label for="store_is_deleted">店舗ステータス</label>
+                    <label for="store_is_deleted"><strong>店舗ステータス：</strong></label>
                     <%= f.select :is_deleted, [['有効', false], ['無効', true]], {selected: @store.is_deleted}, {class: "form-control"} %>
                   </div>
                 <% end %>
