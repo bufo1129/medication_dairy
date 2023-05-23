@@ -24,7 +24,7 @@ stores = Store.create!(
       prefecture_code: 13,
       address_city: "新宿区",
       address_street: "111",
-      address_building: "カラスビル"
+      address_building: "ユリカモメビル"
     },
 
     { password: "222222",
@@ -36,7 +36,7 @@ stores = Store.create!(
       prefecture_code: 27,
       address_city: "大阪市中央区",
       address_street: "111",
-      address_building: "吉本ビル"
+      address_building: "百舌鳥モール"
     },
 
     { password: "333333",
@@ -48,7 +48,7 @@ stores = Store.create!(
       prefecture_code: 47,
       address_city: "那覇市",
       address_street: "111",
-      address_building: "なんくるないさービル"
+      address_building: "ヤンバルクイナビルディング"
     }
   ]
 )
@@ -203,6 +203,18 @@ Weather.create!(
 
 @individual.image.attach(io: File.open(Rails.root.join('app/assets/images/macaw.jpg')),filename: 'my_image.jpg')
 
+@individual = Individual.create!(
+      store_id: 1,
+      seed_id: 5,
+      name: "もぐ",
+      birthday: Date.new(2021, 10, 1),
+      age: 0.15e1,
+      weight: 0.45e-1,
+      medication_id: nil,
+      medication_status: nil)
+
+@individual.image.attach(io: File.open(Rails.root.join('app/assets/images/mog.jpg')),filename: 'my_image.jpg')
+
 #日報
 Dairy.create!(
   [
@@ -297,6 +309,29 @@ MedicineRecord.create!(
       medicine_id: 1,
       number_of_time_id: 1,
       dosage_indicated: 0.15e2
+    }
+  ]
+)
+
+#コメント
+Comment.create!(
+  [
+    { store_id: 1,
+      medication_id: 1,
+      comment: "本日で投薬終了します。ふけもなく、毛もしっかり生えてきました。",
+      created_at: Date.new(2023, 5, 23)
+    },
+
+    { store_id: nil,
+      medication_id: 1,
+      comment: "投薬終了し、様子を見てください、異常が出た際はまたご相談ください。",
+      created_at: Date.new(2023, 5, 23)
+    },
+
+    { store_id: 1,
+      medication_id: 1,
+      comment: "承知いたしました。",
+      created_at: Date.new(2023, 5, 23)
     }
   ]
 )
