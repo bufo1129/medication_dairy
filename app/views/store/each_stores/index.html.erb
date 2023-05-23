@@ -25,6 +25,7 @@
             <th scope="col">メールアドレス</th>
             <th scope="col">電話番号</th>
             <th scope="col">住所</th>
+            <th scope="col"></th>
             <td scope="col">店舗</br>ステータス</td>
           </tr>
         </thead>
@@ -44,6 +45,9 @@
             </td>
             <td>
               <%= store.phone_number %>
+            </td>
+            <td>
+              〒<%= store.postal_code %>
             </td>
             <td>
               <%= store.prefecture_name %>

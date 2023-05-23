@@ -32,7 +32,7 @@ class Store < ApplicationRecord
       store.password = SecureRandom.urlsafe_base64
       store.name = "guestuser"
       store.postal_code = '2310000'
-      store.prefecture_code = '神奈川県'
+      store.prefecture_code = '14'
     end
   end
 

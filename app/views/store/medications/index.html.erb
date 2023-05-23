@@ -33,7 +33,6 @@
             <th scope="col"></th>
             <th scope="col">個体名</th>
             <th scope="col">種類名</th>
-            <th scope="col">薬名</th>
             <th scope="col">投薬ステータス</th>
             <th scope="col">投薬開始日</th>
             <th scope="col">投薬終了予定日</th>
@@ -68,7 +67,7 @@
               <%= medication.dosing_end_date %>
             </td>
             <td>
-              <%= medication.store.name %>
+              <%= medication.individual.store.name %>
             </td>
           </tr>
           <% end %>

@@ -20,20 +20,20 @@
               <h2 class="mb-4 border-bottom border-dark"><strong><%= @store.name %> 情報編集</strong></h2>
             </div>
             <div class="col-xl-12 col-xs-12 col-lg-12">
-            
+
               <%= form_with(model: @store, url: admin_store_path(@store), method: :patch, local: true, class: "edit_store") do |f| %>
-                  
+
                 <div class="form-group">
                   <label for="store_id">店舗ID</label>
-                  <input type="text" class="form-control" id="store_id" value="<%= @store.id %>" readonly>
+                  <%= @store.id %>
                 </div>
                 <div class="form-group">
                   <label for="store_name">店舗名</label>
-                  <%= f.text_field :name, class: "form-control", placeholder: "店舗名" %>
+                  <%= @store.name %>
                 </div>
                 <div class="form-group">
                   <label for="store_email">メールアドレス</label>
-                  <%= f.text_field :email, class: "form-control" %>
+                  <%= @store.email %>
                 </div>
                 <div class="form-group">
                   <label for="store_post_code">郵便番号</label>
@@ -60,15 +60,20 @@
                   <label for="store_phone_number">電話番号</label>
                   <%= f.text_field :phone_number, class: "form-control" %>
                 </div>
-        
-                <div class="form-group">
-                  <label for="store_is_deleted">会員ステータス</label>
-                  <%= f.select :is_deleted, [['有効', false], ['無効', true]], {selected: @store.is_deleted}, {class: "form-control"} %>
-                </div>
+
+                <% if @store.name == 'guestuser'%>
+                <label for="store_is_deleted">店舗ステータス</label>
+                  <span class="font-weight-bold text-success">有効</span>
+                <% else %>
+                  <div class="form-group">
+                    <label for="store_is_deleted">店舗ステータス</label>
+                    <%= f.select :is_deleted, [['有効', false], ['無効', true]], {selected: @store.is_deleted}, {class: "form-control"} %>
+                  </div>
+                <% end %>
                 <div class="text-right">
                   <%= f.submit "更新する", class: "btn btn-info" %>
                 </div>
-                   
+
               <% end %>
 
             </div>
