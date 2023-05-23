@@ -3,7 +3,7 @@ class CreateNumberOfTimes < ActiveRecord::Migration[6.1]
     create_table :number_of_times do |t|
 
       t.string  :name
-      t.decimal :dosing_times, precision: 5, scale: 3
+      t.decimal :dosing_times, precision: 7, scale: 5
 
       t.timestamps
     end

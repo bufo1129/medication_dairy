@@ -54,18 +54,18 @@ stores = Store.create!(
 )
 
 #薬登録
-# Medicine.create!(
-#   [
-#     { name: "エンロクリア錠 15", ingredients_per_tablet: 0.15e2 },
-#     { name: "エンロクリア錠 50", ingredients_per_tablet: 0.5e2 },
-#     { name: "エンロクリア錠 100", ingredients_per_tablet: 0.1e3 },
-#     { name: "イトラコナゾール 50", ingredients_per_tablet: 0.5e2 },
-#     { name: "イトラコナゾール 100", ingredients_per_tablet: 0.1e3 },
-#     { name: "モサプリドクエン酸塩 5", ingredients_per_tablet: 0.5e1 },
-#     { name: "プレドニゾロン錠 1", ingredients_per_tablet: 0.1e1 },
-#     { name: "プレドニゾロン錠 5", ingredients_per_tablet: 0.5e1 }
-#   ]
-# )
+Medicine.create!(
+  [
+    { name: "エンロクリア錠 15", ingredients_per_tablet: 0.15e2 },
+    { name: "エンロクリア錠 50", ingredients_per_tablet: 0.5e2 },
+    { name: "エンロクリア錠 100", ingredients_per_tablet: 0.1e3 },
+    { name: "イトラコナゾール 50", ingredients_per_tablet: 0.5e2 },
+    { name: "イトラコナゾール 100", ingredients_per_tablet: 0.1e3 },
+    { name: "モサプリドクエン酸塩 5", ingredients_per_tablet: 0.5e1 },
+    { name: "プレドニゾロン錠 1", ingredients_per_tablet: 0.1e1 },
+    { name: "プレドニゾロン錠 5", ingredients_per_tablet: 0.5e1 }
+  ]
+)
 
 #動物種登録
 Seed.create!(
@@ -260,78 +260,78 @@ Dairy.create!(
 )
 
 #投薬記録
-# Medication.create!(
-#   [
+Medication.create!(
+  [
 
-#     { individual_id: 3,
-#       seed_id: nil,
-#       store_id: 1,
-#       number_of_tablets: 0.4e1,
-#       liquid_amount: 0.13e0,
-#       dosing_start_date: Date.new(2023, 5, 1),
-#       dosing_end_date: Date.new(2023, 5, 7),
-#       medication_status: "give",
-#       body: "真菌疑い",
-#       give_liquid: 0.5e0,
-#       several_days: 7,
-#       weight: 0.4e2,
-#       condition: "ふけ、ハゲ"
-#     },
+    { individual_id: 3,
+      seed_id: nil,
+      store_id: 1,
+      number_of_tablets: 0.4e1,
+      liquid_amount: 0.13e0,
+      dosing_start_date: Date.new(2023, 5, 1),
+      dosing_end_date: Date.new(2023, 5, 7),
+      medication_status: "give",
+      body: "真菌疑い",
+      give_liquid: 0.5e0,
+      several_days: 7,
+      weight: 0.4e2,
+      condition: "ふけ、ハゲ"
+    },
 
-#     { individual_id: 5,
-#       seed_id: nil,
-#       store_id: 2,
-#       number_of_tablets: 0.4e0,
-#       liquid_amount: 0.13e0,
-#       dosing_start_date: Date.new(2023, 5, 18),
-#       dosing_end_date: Date.new(2023, 5, 24),
-#       medication_status: "give",
-#       body: "口内炎疑い、食欲あり",
-#       give_liquid: 0.5e-1,
-#       several_days: 7,
-#       weight: 0.4e0,
-#       condition: "口内赤み"
-#     }
+    { individual_id: 5,
+      seed_id: nil,
+      store_id: 2,
+      number_of_tablets: 0.4e0,
+      liquid_amount: 0.13e0,
+      dosing_start_date: Date.new(2023, 5, 18),
+      dosing_end_date: Date.new(2023, 5, 24),
+      medication_status: "give",
+      body: "口内炎疑い、食欲あり",
+      give_liquid: 0.5e-1,
+      several_days: 7,
+      weight: 0.4e0,
+      condition: "口内赤み"
+    }
 
-#   ]
-# )
+  ]
+)
 
 #中間モデル
-# MedicineRecord.create!(
-#   [
-#     { medication_id: 1,
-#       medicine_id: 4,
-#       number_of_time_id: 1,
-#       dosage_indicated: 0.5e1
-#     },
+MedicineRecord.create!(
+  [
+    { medication_id: 1,
+      medicine_id: 4,
+      number_of_time_id: 1,
+      dosage_indicated: 0.5e1
+    },
 
-#     { medication_id: 2,
-#       medicine_id: 1,
-#       number_of_time_id: 1,
-#       dosage_indicated: 0.15e2
-#     }
-#   ]
-# )
+    { medication_id: 2,
+      medicine_id: 1,
+      number_of_time_id: 1,
+      dosage_indicated: 0.15e2
+    }
+  ]
+)
 
 #コメント
-# Comment.create!(
-#   [
-#     { store_id: 1,
-#       medication_id: 1,
-#       comment: "本日で投薬終了します。ふけもなく、毛もしっかり生えてきました。",
-#       created_at: Date.new(2023, 5, 23)
-#     },
+Comment.create!(
+  [
+    { store_id: 1,
+      medication_id: 1,
+      comment: "本日で投薬終了します。ふけもなく、毛もしっかり生えてきました。",
+      created_at: Date.new(2023, 5, 23)
+    },
 
-#     { store_id: nil,
-#       medication_id: 1,
-#       comment: "投薬終了し、様子を見てください、異常が出た際はまたご相談ください。",
-#       created_at: Date.new(2023, 5, 23)
-#     },
+    { store_id: nil,
+      medication_id: 1,
+      comment: "投薬終了し、様子を見てください、異常が出た際はまたご相談ください。",
+      created_at: Date.new(2023, 5, 23)
+    },
 
-#     { store_id: 1,
-#       medication_id: 1,
-#       comment: "承知いたしました。",
-#       created_at: Date.new(2023, 5, 23)
-#     }
-#   ]
-# )
+    { store_id: 1,
+      medication_id: 1,
+      comment: "承知いたしました。",
+      created_at: Date.new(2023, 5, 23)
+    }
+  ]
+)
