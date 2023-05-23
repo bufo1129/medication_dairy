@@ -4,7 +4,7 @@ class Admin::NumberOfTimesController < ApplicationController
 
   def index
     @number_of_time = NumberOfTime.new
-    @number_of_times = NumberOfTime.all.page(params[:page]).per(10)
+    @number_of_times = NumberOfTime.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def create
