@@ -14,7 +14,7 @@ class Admin::NumberOfTimesController < ApplicationController
       redirect_to admin_number_of_times_path
     else
       flash[:alert] = "失敗しました"
-      @number_of_times = NumberOfTime.all.page(params[:page]).per(10)
+      @number_of_times = NumberOfTime.all.order(created_at: :desc).page(params[:page]).per(10)
       render :index
     end
   end

@@ -4,7 +4,7 @@ class Admin::WeathersController < ApplicationController
 
   def index
     @weather = Weather.new
-    @weathers = Weather.all.page(params[:page]).per(8)
+    @weathers = Weather.all.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def create
@@ -14,7 +14,7 @@ class Admin::WeathersController < ApplicationController
       redirect_to admin_weathers_path
     else
       flash[:alert] = "失敗しました"
-      @weathers = Weather.all.page(params[:page]).per(10)
+      @weathers = Weather.all.order(created_at: :desc).page(params[:page]).per(10)
       render :index
     end
   end
