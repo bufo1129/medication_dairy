@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   scope module: :store do
     root to: 'homes#top'
-    get '/about' => 'homes#about'
     get "search" => "searches#search"
     resources :each_stores, only: [:index, :show, :edit, :update] #店舗
     resources :dairies    #日報

@@ -63,27 +63,56 @@
           <li class="nav-item mx-auto">
             <%= render 'admin/searches/search_form' %>
           </li>
+          
         <% else %>
-          <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> トップ
-            <% end %>
-          </li>
-          <li>
-            <%= link_to about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> 使い方
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> 新規登録
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_store_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-            <% end %>
-          </li>
+          <% if store_signed_in? %>
+            <h4 class="navbar text-light d-flex align-items-center mr-5"><strong><%= current_store.name %></strong></h4>
+            <li>
+              <%=  link_to each_stores_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-store"></i> 店舗
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to dairies_path ,class: 'nav-link text-light' do %>
+                <i class="fas fa-book-open"></i> 日報
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to medications_path ,class: 'nav-link text-light' do %>
+                <i class="fas fa-pills"></i> 投薬記録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to individuals_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-paw"></i> 動物
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_store_session_path, method: :delete, class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+            <li class="nav-item mx-auto">
+                <%= render 'store/searches/search_form' %>
+            </li>
+
+          <% else %>
+            <li>
+              <%= link_to root_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-home"></i> トップ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-user-plus"></i> 新規登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+          <% end %>
         <% end %>
 
       <% elsif store_signed_in? %>
