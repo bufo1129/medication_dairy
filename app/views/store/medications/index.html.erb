@@ -37,52 +37,43 @@
             <th scope="col">投薬開始日</th>
             <th scope="col">投薬終了予定日</th>
             <th scope="col">所属店舗</th>
-            <th scope="col">お気に入り</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody class="table table-hover">
           <% @medications.each do |medication| %>
-          <tr>
-            <td>
-              <%= link_to medication_path(medication.id) do %>
-                <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded-circle" %>
-              <% end %>
-            </td>
-            <td>
-              <%= medication.individual.name %>
-            </td>
-            <td>
-              <%= medication.individual.seed.name %>
-            </td>
-            <td>
-              <% if medication.medication_status == "give" %>
-                <span class="text-danger"><strong><%= medication.medication_status_i18n %></strong></span>
-              <% else %>
-                <span class="text-success"><strong><%= medication.medication_status_i18n %></strong></span>
-              <% end %>
-            </td>
-            <td>
-              <%= medication.dosing_start_date %>
-            </td>
-            <td>
-              <%= medication.dosing_end_date %>
-            </td>
-            <td>
-              <%= medication.individual.store.name %>
-            </td>
-            <td>
-
-              <%# if @medication.favorite?(current_store) %>
-                <%#= link_to medication_favorites_path(@medication.id), method: :delete do %>
-                    <!--<span style="color:red;">❤︎</span>-->
-                <%# end %>
-                <%#= link_to medication_favorites_path(@medication.id), method: :post do %>
-                    <!--<span>❤︎</span>-->
-                <%# end %>
-              <%# end %>
-
-            </td>
-          </tr>
+            <tr>
+              <td>
+                <%= link_to medication_path(medication.id) do %>
+                  <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded-circle" %>
+                <% end %>
+              </td>
+              <td>
+                <%= medication.individual.name %>
+              </td>
+              <td>
+                <%= medication.individual.seed.name %>
+              </td>
+              <td>
+                <% if medication.medication_status == "give" %>
+                  <span class="text-danger"><strong><%= medication.medication_status_i18n %></strong></span>
+                <% else %>
+                  <span class="text-success"><strong><%= medication.medication_status_i18n %></strong></span>
+                <% end %>
+              </td>
+              <td>
+                <%= medication.dosing_start_date %>
+              </td>
+              <td>
+                <%= medication.dosing_end_date %>
+              </td>
+              <td>
+                <%= medication.individual.store.name %>
+              </td>
+              <td>
+                <%= render 'store/favorites/favorite_btn', medication: medication %>
+              </td>
+            </tr>
           <% end %>
         </tbody>
       </table>

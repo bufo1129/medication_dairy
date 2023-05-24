@@ -35,8 +35,8 @@ class Medication < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
 
   #お気に入り
-  def favorited?(store)
-     favorites.where(store_id: store.id).exists?
+  def favorited_by?(store)
+     favorites.exists?(store_id: store.id)
   end
 
 end

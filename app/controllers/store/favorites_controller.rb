@@ -2,17 +2,17 @@ class Store::FavoritesController < ApplicationController
   before_action :authenticate_store!
 
   def create
-    # @medicines = Medicine.all
-    @medication_favorite = Favorite.new(store_id: current_store.id, medication_id: params[:medication_id])
-    @medication_favorite.save
-    redirect_to medications_path(params[:medication_id])
+    @medication = Medication.find(params[:medication_id])
+    favorite = current_store.favorites.new(medication_id: @medication.id)
+    favorite.save
+    redirect_to medications_path
   end
 
   def destroy
-    # @medicines = Medicine.all
-    @medication_favorite = Favorite.find_by(store_id: current_store.id, medication_id: params[:medication_id])
-    @medication_favorite.destroy
-    redirect_to medications_path(params[:medication_id])
+    @medication = Medication.find(params[:medication_id])
+    favorite = current_store.favorites.find_by(medication_id: @medication.id)
+    favorite.destroy
+    redirect_to medications_path
   end
 
 end

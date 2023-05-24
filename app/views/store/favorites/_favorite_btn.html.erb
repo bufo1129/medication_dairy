@@ -1,9 +1,13 @@
-<% if medication.favorite?(current_store) %>
-  <%= link_to medication_favorite_path(medication.id), method: :delete do %>
-      <span style="color:red;">❤︎</span>
-  <% end %>
-<% else %>
-  <%= link_to medication_favorite_path(medication.id), method: :post do %>
-      <span>❤︎</span>
-  <% end %>
+<% if medication.favorited_by?(current_store) %>
+  <p>
+    <%= link_to medication_favorites_path(medication), class: "text-warning", method: :delete do %>
+      <i class="fas fa-star fa-2x"></i>
+    <% end %>
+  </p>
+  <% else %>
+  <p>
+    <%= link_to medication_favorites_path(medication), class: "text-warning", method: :post do %>
+      <i class="far fa-star fa-2x"></i>
+    <% end %>
+  </p>
 <% end %>
