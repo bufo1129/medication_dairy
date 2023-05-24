@@ -1,3 +1,4 @@
+<!--スペース用-->
 <div class="text-center mb-5"></div>
 
 <div class="container-fluid">
@@ -5,14 +6,13 @@
 
     <div class="col-lg-2">
       <%= render 'store/homes/link' %>
-      <%#= render 'store/homes/medicine', medicines: @medicines %>
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
 
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <h4 class="text-danger"><%= flash[:alert] %></h4>
-
+      <!--スペース用-->
       <div class="text-center mb-3"></div>
 
       <div class="col-xs-12 col-lg-6">
@@ -37,6 +37,7 @@
             <th scope="col">投薬開始日</th>
             <th scope="col">投薬終了予定日</th>
             <th scope="col">所属店舗</th>
+            <th scope="col">お気に入り</th>
           </tr>
         </thead>
         <tbody class="table table-hover">
@@ -68,6 +69,18 @@
             </td>
             <td>
               <%= medication.individual.store.name %>
+            </td>
+            <td>
+
+              <%# if @medication.favorite?(current_store) %>
+                <%#= link_to medication_favorites_path(@medication.id), method: :delete do %>
+                    <!--<span style="color:red;">❤︎</span>-->
+                <%# end %>
+                <%#= link_to medication_favorites_path(@medication.id), method: :post do %>
+                    <!--<span>❤︎</span>-->
+                <%# end %>
+              <%# end %>
+
             </td>
           </tr>
           <% end %>

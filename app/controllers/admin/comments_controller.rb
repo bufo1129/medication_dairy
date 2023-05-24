@@ -23,6 +23,4 @@ class Admin::CommentsController < ApplicationController
     params.require(:comment).permit(:comment, :medication_id)
   end
 
-
-
 end

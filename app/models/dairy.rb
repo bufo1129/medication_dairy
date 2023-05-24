@@ -8,10 +8,11 @@ class Dairy < ApplicationRecord
   scope :latest, -> {order(created_date: :desc)}
   scope :old, -> {order(created_date: :asc)}
 
+  #バリデーション
   validates :weather_id,        presence: true
   validates :high_temperature,  presence: true
   validates :low_temperature,   presence: true
   validates :created_date,      presence: true
-  validates :title, presence: true, length:{maximum:30}
+  validates :title,             presence: true, length:{maximum:30}
 
 end

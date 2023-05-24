@@ -2,7 +2,6 @@ class Admin::DairiesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-
     #店舗詳細からその店舗の日報一覧へ+並べ替え
     if params[:store_id].present?
       if params[:latest]
@@ -22,7 +21,6 @@ class Admin::DairiesController < ApplicationController
         @dairies = Dairy.all.page(params[:page]).per(10)
       end
     end
-
   end
 
   def show
@@ -33,9 +31,15 @@ class Admin::DairiesController < ApplicationController
 
   def dairy_params
     params.require(:dairy).permit(
-      :give_medicine, :medication_id,
-      :store_id, :weather, :high_temperature,
-      :low_temperature, :title, :body, :created_date
+      :give_medicine,
+      :medication_id,
+      :store_id,
+      :weather,
+      :high_temperature,
+      :low_temperature,
+      :title,
+      :body,
+      :created_date
       )
   end
 

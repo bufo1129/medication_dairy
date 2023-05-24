@@ -16,12 +16,13 @@
       <% end %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--  <span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
+
       <% if admin_signed_in? %>
         <% if request.fullpath.include? "/admin" %>
           <h4 class="navbar text-light d-flex align-items-center mr-5"><strong>管理人ページ</strong></h4>
@@ -63,7 +64,7 @@
           <li class="nav-item mx-auto">
             <%= render 'admin/searches/search_form' %>
           </li>
-          
+
         <% else %>
           <% if store_signed_in? %>
             <h4 class="navbar text-light d-flex align-items-center mr-5"><strong><%= current_store.name %></strong></h4>
@@ -153,6 +154,11 @@
           <% end %>
         </li>
         <li>
+          <%= link_to about_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-link"></i> アバウト
+          <% end %>
+        </li>
+        <li>
           <%= link_to new_store_registration_path,class: 'nav-link text-light' do %>
             <i class="fas fa-user-plus"></i> 新規登録
           <% end %>
@@ -163,6 +169,7 @@
           <% end %>
         </li>
       <% end %>
+
       </ul>
     </div>
   </div>

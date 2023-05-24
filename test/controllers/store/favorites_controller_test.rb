@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SeedRecordTest < ActiveSupport::TestCase
+class Store::FavoritesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -1,3 +1,4 @@
+<!--スペース用-->
 <div class="text-center mb-5"></div>
 
 <div class="container-fluid">
@@ -11,7 +12,7 @@
     <div class="contents-area col-lg-8 col-md-8">
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <h4 class="text-danger"><%= flash[:alert] %></h4>
-
+      <!--スペース用-->
       <div class="text-center mb-3"></div>
 
       <div class="col-xs-12 col-lg-6">
@@ -26,14 +27,14 @@
 
       <div class="individuals-list d-flex flex-wrap">
         <% @individuals.each do |individual| %>
-        <div class="img_wrap col-lg-3 col-md-6 mx-0 rounded">
-          <%= link_to individual_path(individual), class: "text-dark" do %>
-            <%= image_tag individual.get_image(200,200),class: "img-fluid rounded" %><br>
-            <p class="m-2"><strong>名前：</strong><%= individual.name %></p>
-            <p class="m-2"><strong>種類：</strong><%= individual.seed.name %></p>
-            <p class="m-2"><strong>所属：</strong><%= individual.store.name %></p>
-          <% end %>
-        </div>
+          <div class="img_wrap col-lg-3 col-md-6 mx-0 rounded">
+            <%= link_to individual_path(individual), class: "text-dark" do %>
+              <%= image_tag individual.get_image(200,200),class: "img-fluid rounded" %><br>
+              <p class="m-2"><strong>名前：</strong><%= individual.name %></p>
+              <p class="m-2"><strong>種類：</strong><%= individual.seed.name %></p>
+              <p class="m-2"><strong>所属：</strong><%= individual.store.name %></p>
+            <% end %>
+          </div>
         <% end %>
       </div>
 

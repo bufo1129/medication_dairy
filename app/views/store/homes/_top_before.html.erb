@@ -1,137 +1,125 @@
+<div class="container">
+  <div class="jumbotron mt-4">
+    <h1 class="display-4">
+      welcome to <i class="fas fa-paw"></i><br>
+      <i class="fas fa-notes-medical"></i> <strong>Animal medication dairy</strong>
+    </h1>
+    <hr class="my-4">
+    <h4>計算が苦手でも効率よく作業し、記録ができます<i class="fas fa-paw"></i></h4>
+    <%= link_to about_path, class: "btn btn-info btn-lg ", method: :get do %>
+      使ってみる <i class="fas fa-hand-point-up"></i>
+    <% end %>
+  </div>
+</div><!-- /.container -->
+
 <div class="container-fluid">
-
   <div class="row d-flex justify-content-center">
+    <div class="contents-area col-8 rounded px-5 mb-4">
 
-
-  <div class="contents-area col-8 rounded px-5 mb-4">
       <div class=" mt-4">
-            <!--スペース用-->
-        <div class="mb-5"></div>
         <h4 class="text-success"><%= flash[:notice] %></h4>
-
-        <div class="row">
-          <div class='mx-auto text-responsive'>
-
-            <h4><i class="fas fa-notes-medical"></i><strong>Animal Medication Dairy</strong>は, </h4>
-            <p>動物の日誌や投薬計算と記録をすることができるアプリです<i class="fas fa-paw"></i></p>
-            <p>日々の日報記録に加えて、投薬記録も作ることができます。</p>
-            <p>また、計算が苦手な方でも数字を入力するだけで、必要量を自動計算+保存してくれる機能も付いています。</p>
-
-            <div class="col">
-              <%= link_to 'ゲストログイン（閲覧用）', store_guest_sign_in_path, class: "btn btn-secondary btn-block mb-3 sign_in", method: :post %>
-            </div>
-            <div class="col">
-              <%= link_to '店舗ログイン', new_store_session_path, class: "btn btn-info btn-block mb-3 sign_in" %>
-            </div>
-
-            <div class="col">
-              <%= link_to '店舗新規登録', new_store_registration_path, class: "btn btn-success btn-block mb-3 sign_up" %>
-            </div>
-
-          </div>
-        </div>
-
+        <!--スペース用-->
         <div class="mb-5"></div>
 
         <div class="mb-5 text-center">
-          <h2 class="mb-4 border-bottom border-dark"><strong>計算してみる</strong></h2>
+          <h2 class="mb-4 border-bottom border-dark"><strong>とりあえず、計算してみる</strong></h2>
         </div>
 
         <div class="row my-4 d-flex justify-content-center">
 
           <%= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
+            <div class="row">
 
-          <div class="row">
-            <div class="col-xs-12 col-lg-6 col-xl-6">
-              <h3 class="mb-4"><strong>基本情報</strong></h3>
-              <div class="form-group">
+              <div class="col-xs-12 col-lg-6 col-xl-6">
+                <h3 class="mb-4"><strong>基本情報</strong></h3>
+
+                <div class="form-group">
                 <div class=" my-3 form-check">
-                
+
                   <%= f.fields_for :medicine_records do |m| %>
                     <table>
-                        <tr>
-                          <th><%= m.label :medicine_id, "薬の種類" %></th>
-                          <td class="pl-5">
-                            <%= m.select :medicine_id, Medicine.all.map{|o| ["#{o.name} #{o.ingredients_per_tablet}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th><%= m.label :dosage_indicated, "必要量(mg/kg)" %></th>
-                          <td class="pl-5">
-                            <%= m.text_field :dosage_indicated, placeholder: "数字を入力してください", class: "form-control", id: "dosage_indicated" %>
-                          </td>
-                        </tr>
-                      </table>
-                    <% end %>
-                    <table>
                       <tr>
-                        <th><%= f.label :weight, "体重" %></th>
+                        <th><%= m.label :medicine_id, "薬の種類" %></th>
                         <td class="pl-5">
-                          <%= f.text_field :weight, placeholder: "数字を入力してください", class: "form-control", id: "weight" %>
+                          <%= m.select :medicine_id, Medicine.all.map{|o| ["#{o.name} #{o.ingredients_per_tablet}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "medicine" %>
                         </td>
                       </tr>
                       <tr>
-                        <th><%= f.label :number_of_time_id, "投薬回数" %></th>
+                        <th><%= m.label :dosage_indicated, "必要量(mg/kg)" %></th>
                         <td class="pl-5">
-                          <%= f.select :number_of_time_id, NumberOfTime.all.map{|o| ["#{o.name} #{o.dosing_times}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th><%= f.label :give_liquid, "与えたい液体量(ml)" %></th>
-                        <td class="pl-5">
-                          <%= f.text_field :give_liquid, placeholder: "数字を入力してください",class: "form-control", id: "give_liquid" %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th><%= f.label :several_days, "投薬日数" %></th>
-                        <td class="pl-5">
-                          <%= f.text_field :several_days, placeholder: "数字を入力してください", class: "form-control", id: "several_days" %>
+                          <%= m.text_field :dosage_indicated, placeholder: "数字を入力してください", class: "form-control", id: "dosage_indicated" %>
                         </td>
                       </tr>
                     </table>
+                  <% end %>
+                  <table>
+                    <tr>
+                      <th><%= f.label :weight, "体重" %></th>
+                      <td class="pl-5">
+                        <%= f.text_field :weight, placeholder: "数字を入力してください", class: "form-control", id: "weight" %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><%= f.label :number_of_time_id, "投薬回数" %></th>
+                      <td class="pl-5">
+                        <%= f.select :number_of_time_id, NumberOfTime.all.map{|o| ["#{o.name} #{o.dosing_times}", o.id]}, { include_blank: "--選択してください--" }, class: "form-control", id: "dosing_times" %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><%= f.label :give_liquid, "与えたい液体量(ml)" %></th>
+                      <td class="pl-5">
+                        <%= f.text_field :give_liquid, placeholder: "数字を入力してください",class: "form-control", id: "give_liquid" %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><%= f.label :several_days, "投薬日数" %></th>
+                      <td class="pl-5">
+                        <%= f.text_field :several_days, placeholder: "数字を入力してください", class: "form-control", id: "several_days" %>
+                      </td>
+                    </tr>
+                  </table>
 
                 </div><p></p>
               </div>
-            </div>
 
-            <div class="col-xs-12 col-lg-6 col-xl-6">
-              <h3 class="mb-4"><strong>＝計算結果＝</strong></h3>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th class="col-xs-3 col-ms-3 col-md-2 col-lg-2">項目</th>
-                    <th class="col-xs-3 col-ms-3 col-md-2 col-lg-2">結果</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1回に必要な錠剤の個数</td>
-                    <td>
-                      <div id="number_of_tablets">個</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>ｎ日分に必要な錠剤の個数(整数)</td>
-                    <td><div id="n_days_tablets"></div>個</td>
-                  </tr>
-                  <tr>
-                    <td>溶かすための液体量</td>
-                    <td>
-                      <div id="liquid_amount">ml</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              </div>
+
+              <div class="col-xs-12 col-lg-6 col-xl-6">
+                <h3 class="mb-4"><strong>＝計算結果＝</strong></h3>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="col-xs-3 col-ms-3 col-md-2 col-lg-2">項目</th>
+                      <th class="col-xs-3 col-ms-3 col-md-2 col-lg-2">結果</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1回に必要な錠剤の個数</td>
+                      <td>
+                        <div id="number_of_tablets">個</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ｎ日分に必要な錠剤の個数(整数)</td>
+                      <td><div id="n_days_tablets"></div>個</td>
+                    </tr>
+                    <tr>
+                      <td>溶かすための液体量</td>
+                      <td>
+                        <div id="liquid_amount">ml</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
             </div>
-          </div>
           <% end %>
+
         </div>
 
-        <div class="mt-2 mb-3 text-center">
-          <%= link_to new_store_registration_path, class: "btn btn-{themecolor}.rounded-circle.p-0 btn-info border border-2 ", method: :get do %>
-            投薬記録してみる <i class="fas fa-hand-point-up"></i>
-          <% end %>
-        </div>
+      </div>
 
     </div>
   </div>

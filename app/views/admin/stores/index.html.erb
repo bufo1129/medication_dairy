@@ -2,78 +2,80 @@
 
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
+
     <div class="col-lg-2">
-      <%= render 'admin/homes/link' %>
-    </div>
+        <%= render 'admin/homes/link' %>
+      </div>
 
     <div class="contents-area col-lg-8 col-md-8">
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <h4 class="text-danger"><%= flash[:alert] %></h4>
 
+      <!--スペース用-->
       <div class="text-center mb-3"></div>
 
       <div class="col-xs-12 col-lg-6">
-        <h2 class="mb-4 border-bottom border-dark"><strong>店舗一覧</strong></h2>
-      </div>
+          <h2 class="mb-4 border-bottom border-dark"><strong>店舗一覧</strong></h2>
+        </div>
 
       <table class="table table-hover">
-        <thead class="bg-dark text-light">
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">店舗名</th>
-            <th scope="col">メールアドレス</th>
-            <th scope="col">電話番号</th>
-            <th scope="col">住所</th>
-            <td scope="col">店舗</br>ステータス</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @stores.each do |store| %>
-          <tr>
-            <td>
-              <%= link_to admin_store_path(store.id), class: "text-info" do %>
-                <i class="fas fa-store"></i>
-              <% end %>
-            </td>
-            <td>
-              <%= store.name %>
-            </td>
-            <td>
-              <%= store.email %>
-            </td>
-            <td>
-              <%= store.phone_number %>
-            </td>
-            <td>
-              <%= store.prefecture_name %>
-              <%= store.address_city %>
-              <%= store.address_street %>
-              <%= store.address_building %>
-            </td>
-            <td>
-              <% if store.is_deleted == false %>
-                <span class="font-weight-bold text-success">有効</span>
-              <% else %>
-                <span class="font-weight-bold text-danger">無効</span>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+          <thead class="bg-dark text-light">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">店舗名</th>
+              <th scope="col">メールアドレス</th>
+              <th scope="col">電話番号</th>
+              <th scope="col">住所</th>
+              <td scope="col">店舗</br>ステータス</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @stores.each do |store| %>
+            <tr>
+              <td>
+                <%= link_to admin_store_path(store.id), class: "text-info" do %>
+                  <i class="fas fa-store"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= store.name %>
+              </td>
+              <td>
+                <%= store.email %>
+              </td>
+              <td>
+                <%= store.phone_number %>
+              </td>
+              <td>
+                <%= store.prefecture_name %>
+                <%= store.address_city %>
+                <%= store.address_street %>
+                <%= store.address_building %>
+              </td>
+              <td>
+                <% if store.is_deleted == false %>
+                  <span class="font-weight-bold text-success">有効</span>
+                <% else %>
+                  <span class="font-weight-bold text-danger">無効</span>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-    <div class="pagination justify-content-center mt-3 mb-3">
-    <%= paginate @stores, theme: 'twitter-bootstrap-4' %>
+      <div class="pagination justify-content-center mt-3 mb-3">
+        <%= paginate @stores, theme: 'twitter-bootstrap-4' %>
+      </div>
+
+      <div class="text-center">
+        <span id="top-btn">
+          <a href="#">
+            <i class="fas fa-chevron-up"></i>
+          </a>
+        </span>
+      </div>
     </div>
-
-    <div class="text-center">
-      <span id="top-btn">
-        <a href="#">
-          <i class="fas fa-chevron-up"></i>
-        </a>
-      </span>
-    </div>
-
 
   </div>
 </div>

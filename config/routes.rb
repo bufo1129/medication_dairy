@@ -3,32 +3,31 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     get 'searches/search'
-    resources :stores, only: [:index, :show, :edit, :update] #店舗
-    resources :medicines, only: [:index, :edit, :create, :update, :destroy] #薬
-    resources :seeds, only: [:index, :edit, :create, :update, :destroy] #種類
-    resources :number_of_times, only: [:index, :create, :edit, :update, :destroy] #回数
-    resources :dairies, only: [:index, :show] #日報
+    resources :stores, only: [:index, :show, :edit, :update]
+    resources :medicines, only: [:index, :edit, :create, :update, :destroy]
+    resources :seeds, only: [:index, :edit, :create, :update, :destroy]
+    resources :number_of_times, only: [:index, :create, :edit, :update, :destroy]
+    resources :dairies, only: [:index, :show]
+    resources :individuals, only: [:index, :show, :edit, :update]
+    resources :weathers, only: [:index, :edit, :create, :update, :destroy]
 
     resources :medications, only: [:index, :show, :create] do
       resources :comments, only: [:create, :destroy]
     end
-
-    resources :individuals, only: [:index, :show, :edit, :update] #個体
-    resources :weathers, only: [:index, :edit, :create, :update, :destroy] #天気
   end
 
   scope module: :store do
     root to: 'homes#top'
+    get "home/about" => "homes#about", as: "about"
     get "search" => "searches#search"
-    resources :each_stores, only: [:index, :show, :edit, :update] #店舗
-    resources :dairies    #日報
+    resources :each_stores, only: [:index, :show, :edit, :update]
+    resources :dairies
+    resources :individuals
 
     resources :medications do
       resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
-
-    resources :individuals #個体
-    resources :medicines, only: [:show]#保留
   end
 
   # ゲストログイン

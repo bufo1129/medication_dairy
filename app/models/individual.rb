@@ -1,20 +1,19 @@
 class Individual < ApplicationRecord
 
-  has_one_attached :image
-
   belongs_to :store
   belongs_to :seed
   has_many :medications, dependent: :destroy
 
-  validates :name,  presence: true, length:{maximum:30}
-  validates :birthday,   presence: true
-  validates :age,      presence: true
+  validates :name,    presence: true, length:{maximum:30}
+  validates :birthday,presence: true
+  validates :age,     presence: true
   validates :weight,  presence: true
 
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }
 
   #画像
+  has_one_attached :image
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

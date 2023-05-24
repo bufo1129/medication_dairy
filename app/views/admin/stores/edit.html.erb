@@ -2,83 +2,84 @@
 <div class="mb-5"></div>
 
 <div class="container-fluid">
-
   <div class="row d-flex justify-content-center">
 
-      <div class="col-xl-2 col-lg-3 col-md-8 mr-3">
-          <%= render 'admin/homes/link' %>
-      </div>
+    <div class="col-xl-2 col-lg-3 col-md-8 mr-3">
+        <%= render 'admin/homes/link' %>
+    </div>
 
-      <div class="contents-area col-lg-7 rounded px-5 mb-4">
-        <%= render 'layouts/errors', obj: @store %>
-        <h4 class="text-success"><%= flash[:notice] %></h4>
-        <h4 class="text-danger"><%= flash[:alert] %></h4>
+    <div class="contents-area col-lg-7 rounded px-5 mb-4">
 
-        <div class="row my-4 d-flex justify-content-center">
-          <div class="row ">
-            <div class="col-xs-12">
-              <h2 class="mb-4 border-bottom border-dark"><strong><%= @store.name %> 情報編集</strong></h2>
-            </div>
-            <div class="col-xl-12 col-xs-12 col-lg-12">
+      <%= render 'layouts/errors', obj: @store %>
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <h4 class="text-danger"><%= flash[:alert] %></h4>
 
-              <%= form_with(model: @store, url: admin_store_path(@store), method: :patch, local: true, class: "edit_store") do |f| %>
+      <div class="row my-4 d-flex justify-content-center">
+        <div class="row ">
 
-                <div class="form-group">
-                  <label for="store_id"><strong>店舗ID：</strong></label>
-                  <%= @store.id %>
-                </div>
-                <div class="form-group">
-                  <label for="store_name"><strong>店舗名：</strong></label>
-                  <%= @store.name %>
-                </div>
-                <div class="form-group">
-                  <label for="store_email"><strong>メールアドレス：</strong></label>
-                  <%= @store.email %>
-                </div>
-                <div class="form-group">
-                  <label for="store_post_code"><strong>郵便番号：</strong></label>
-                  <%= @store.postal_code %>
-                </div>
-                <div class="form-group">
-                  <label for="store_prefecture_code"><strong>都道府県：</strong></label>
-                  <%= @store.prefecture_name %>
-                </div>
-                <div class="form-group">
-                  <label for="store_address_city"><strong>市町村：</strong></label>
-                  <%= @store.address_city %>
-                </div>
-                <div class="form-group">
-                  <label for="store_address_street"><strong>番地：</strong></label>
-                  <%= @store.address_street %>
-                </div>
-                <div class="form-group">
-                  <label for="store_address_building"><strong>建物名：</strong></label>
-                  <%= @store.address_building %>
-                </div>
-                <div class="form-group">
-                  <label for="store_phone_number"><strong>電話番号：</strong></label>
-                  <%= @store.phone_number %>
-                </div>
+          <div class="col-xs-12">
+            <h2 class="mb-4 border-bottom border-dark"><strong><%= @store.name %> 情報編集</strong></h2>
+          </div>
 
-                <% if @store.name == 'guestuser'%>
+          <div class="col-xl-12 col-xs-12 col-lg-12">
+            <%= form_with(model: @store, url: admin_store_path(@store), method: :patch, local: true, class: "edit_store") do |f| %>
+              <div class="form-group">
+                <label for="store_id"><strong>店舗ID：</strong></label>
+                <%= @store.id %>
+              </div>
+              <div class="form-group">
+                <label for="store_name"><strong>店舗名：</strong></label>
+                <%= @store.name %>
+              </div>
+              <div class="form-group">
+                <label for="store_email"><strong>メールアドレス：</strong></label>
+                <%= @store.email %>
+              </div>
+              <div class="form-group">
+                <label for="store_post_code"><strong>郵便番号：</strong></label>
+                <%= @store.postal_code %>
+              </div>
+              <div class="form-group">
+                <label for="store_prefecture_code"><strong>都道府県：</strong></label>
+                <%= @store.prefecture_name %>
+              </div>
+              <div class="form-group">
+                <label for="store_address_city"><strong>市町村：</strong></label>
+                <%= @store.address_city %>
+              </div>
+              <div class="form-group">
+                <label for="store_address_street"><strong>番地：</strong></label>
+                <%= @store.address_street %>
+              </div>
+              <div class="form-group">
+                <label for="store_address_building"><strong>建物名：</strong></label>
+                <%= @store.address_building %>
+              </div>
+              <div class="form-group">
+                <label for="store_phone_number"><strong>電話番号：</strong></label>
+                <%= @store.phone_number %>
+              </div>
+
+              <% if @store.name == 'guestuser'%>
                 <label for="store_is_deleted"><strong>店舗ステータス：</strong></label>
-                  <span class="font-weight-bold text-success">有効</span>
-                <% else %>
-                  <div class="form-group">
-                    <label for="store_is_deleted"><strong>店舗ステータス：</strong></label>
-                    <%= f.select :is_deleted, [['有効', false], ['無効', true]], {selected: @store.is_deleted}, {class: "form-control"} %>
-                  </div>
-                <% end %>
-                <div class="text-right">
-                  <%= f.submit "更新する", class: "btn btn-info" %>
+                <span class="font-weight-bold text-success">有効</span>
+              <% else %>
+                <div class="form-group">
+                  <label for="store_is_deleted"><strong>店舗ステータス：</strong></label>
+                  <%= f.select :is_deleted, [['有効', false], ['無効', true]], {selected: @store.is_deleted}, {class: "form-control"} %>
                 </div>
-
               <% end %>
 
-            </div>
+              <div class="text-right">
+                <%= f.submit "更新する", class: "btn btn-info" %>
+              </div>
+            <% end %>
           </div>
-        </div>
 
+        </div>
       </div>
+
+    </div>
+
   </div>
 </div>

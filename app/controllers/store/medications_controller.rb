@@ -3,10 +3,9 @@ class Store::MedicationsController < ApplicationController
   before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
   def index
-
-      #薬ジャンル検索
+    #薬ジャンル検索
     @medicines = Medicine.all
-     #個体の詳細からその個体の投薬一覧へ+並べ替え
+      #個体の詳細からその個体の投薬一覧へ+並べ替え
     if params[:individual_id].present?
       if params[:latest]
         @medications = Medication.where(individual_id: params[:individual_id]).latest.page(params[:page]).per(8)

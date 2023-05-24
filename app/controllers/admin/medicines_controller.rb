@@ -43,7 +43,6 @@ class Admin::MedicinesController < ApplicationController
     @medicine = Medicine.find(params[:id])
   end
 
-
   def medicine_params
     params.require(:medicine).permit(:name, :ingredients_per_tablet)
   end

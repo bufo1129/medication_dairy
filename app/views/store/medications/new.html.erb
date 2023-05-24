@@ -2,6 +2,7 @@
 <div class="mb-5"></div>
 
 <div class="container my-4">
+  
   <%= render 'layouts/errors', obj: @medication %>
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
@@ -9,59 +10,59 @@
   <h2 class="mb-4 border-bottom border-dark"><strong>投薬記録新規作成</strong></h2>
   <%= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
     <div class="row">
-    <div class="col-xs-12 col-lg-6">
-      <h3 class="mb-4"><strong>基本情報</strong></h3>
-      <div class="form-group">
-        <div class=" my-3 form-check">
-          <table>
-            <tr>
-              <th><%= f.label :dosing_start_date, "投薬開始日" %></th>
-              <td class="pl-5">
-                <%= f.date_field :dosing_start_date, class: "form-control" %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :dosing_end_date, "投薬終了予定日" %></th>
-              <td class="pl-5">
-                <%= f.date_field :dosing_end_date, class: "form-control" %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :medication_status, "投薬ステータス" %></th>
-              <td class="pl-5">
-                <%= f.label :medication_status_give, '投薬あり' %>
-                <%= f.radio_button :medication_status, :give %>
-                <%= f.label :medication_status_, '投薬なし' %>
-                <%= f.radio_button :medication_status, :not_give %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :individual_id, "所有個体" %></th>
-              <td class="pl-5">
-                <%= f.select :individual_id, Individual.where(store_id: current_store.id).map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :weight, "体重" %></th>
-              <td class="pl-5">
-                <%= f.text_field :weight, placeholder: "数字を入力してください", class: "form-control", id: "weight" %>
-              </td>
-            </tr>
-          </table>
-        </div><p></p>
+      <div class="col-xs-12 col-lg-6">
+        <h3 class="mb-4"><strong>基本情報</strong></h3>
+        <div class="form-group">
+          <div class=" my-3 form-check">
+            <table>
+              <tr>
+                <th><%= f.label :dosing_start_date, "投薬開始日" %></th>
+                <td class="pl-5">
+                  <%= f.date_field :dosing_start_date, class: "form-control" %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label :dosing_end_date, "投薬終了予定日" %></th>
+                <td class="pl-5">
+                  <%= f.date_field :dosing_end_date, class: "form-control" %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label :medication_status, "投薬ステータス" %></th>
+                <td class="pl-5">
+                  <%= f.label :medication_status_give, '投薬あり' %>
+                  <%= f.radio_button :medication_status, :give %>
+                  <%= f.label :medication_status_, '投薬なし' %>
+                  <%= f.radio_button :medication_status, :not_give %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label :individual_id, "所有個体" %></th>
+                <td class="pl-5">
+                  <%= f.select :individual_id, Individual.where(store_id: current_store.id).map{|o| [o.name, o.id]}, { include_blank: "--選択してください--" }, class: "form-control" %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label :weight, "体重" %></th>
+                <td class="pl-5">
+                  <%= f.text_field :weight, placeholder: "数字を入力してください", class: "form-control", id: "weight" %>
+                </td>
+              </tr>
+            </table>
+          </div><p></p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-6">
+        <strong><%= f.label :condition, "症状" %></strong>
+        <%= f.text_field :condition, placeholder: "テキストを入力してください", class: "form-control" %>
+        <strong><%= f.label :body, "備考" %></strong>
+        <%= f.text_area :body, placeholder: "テキストを入力してください", class: "form-control", size: "40x6" %>
       </div>
     </div>
-    <div class="col-xs-12 col-lg-6">
-      <strong><%= f.label :condition, "症状" %></strong>
-      <%= f.text_field :condition, placeholder: "テキストを入力してください", class: "form-control" %>
-      <strong><%= f.label :body, "備考" %></strong>
-      <%= f.text_area :body, placeholder: "テキストを入力してください", class: "form-control", size: "40x6" %>
-    </div>
-  </div>
-
 
     <div class="row">
-    <div class="col-xs-12 col-lg-6">
+      
+      <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
       <div class="form-group">
         <div class=" my-3 form-check">
@@ -105,7 +106,8 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-lg-6">
+      <div class="col-xs-12 col-lg-6">
+      
       <h3 class="mb-4"><strong>計算結果</strong></h3>
       <table class="table table-bordered">
         <thead>
@@ -139,8 +141,10 @@
       <div class="text-right">
         <%= f.submit "保存する", class: "btn btn-info" %>
       </div>
+      
     </div>
 
-  </div>
+    </div>
   <% end %>
+  
 </div>

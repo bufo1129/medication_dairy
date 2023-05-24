@@ -26,6 +26,7 @@
   });
 </script>
 
+<!--スペース用-->
 <div class="text-center mb-5"></div>
 
 <div class="container-fluid">
@@ -43,14 +44,16 @@
       <h4 class="text-danger"><%= flash[:alert] %></h4>
 
       <div class="col-lg-8 col-xs-12 col-lg-12">
-      <h2 class="mb-4 border-bottom border-dark"><strong>日報編集</strong></h2>
-    </div>
+        <h2 class="mb-4 border-bottom border-dark"><strong>日報編集</strong></h2>
+      </div>
 
-    <div class="text-center mb-5"></div>
+    <!--スペース用-->
+      <div class="text-center mb-5"></div>
 
       <%= form_with model: @dairy, url: dairy_path(@dairy), method: :patch, local: true, class: "edit_dairy" do |f| %>
         <div class="row">
           <div class="col-md-8 mx-auto">
+
             <div class="form-group">
               <label for="customer_email">今日の天気</label>
               <div class="card">
@@ -107,14 +110,12 @@
           </div>
         </div>
       <% end %>
-    </div>
 
+    </div>
 
   </div>
 
-
-
-    </div>
+</div>
 
 
 

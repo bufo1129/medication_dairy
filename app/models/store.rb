@@ -10,11 +10,12 @@ class Store < ApplicationRecord
   has_many :dairies,      dependent: :destroy
   has_many :medications,  dependent: :destroy
   has_many :comments,     dependent: :destroy
+  has_many :favorites,    dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #↓住所自動入力
+  #住所自動入力
   include JpPrefecture
   jp_prefecture :prefecture_code
 

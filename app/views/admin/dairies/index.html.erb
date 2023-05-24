@@ -1,15 +1,18 @@
+<!--スペース用-->
 <div class="text-center mb-5"></div>
 
-<h4 class="text-success"><%= flash[:notice] %></h4>
-<h4 class="text-danger"><%= flash[:alert] %></h4>
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
+    
     <div class="col-lg-2">
       <%= render 'admin/homes/link' %>
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
+      <h4 class="text-success"><%= flash[:notice] %></h4>
+      <h4 class="text-danger"><%= flash[:alert] %></h4>
 
+      <!--スペース用-->
       <div class="text-center mb-3"></div>
 
       <div class="col-xs-12 col-lg-6">
@@ -48,11 +51,12 @@
           <% end %>
         </tbody>
       </table>
-
+    
     <div class="pagination justify-content-center mt-3 mb-3">
       <%= paginate @dairies, theme: 'twitter-bootstrap-4' %>
     </div>
     
+    <!--ページ上部へ-->
     <div class="text-center">
       <span id="top-btn">
         <a href="#">

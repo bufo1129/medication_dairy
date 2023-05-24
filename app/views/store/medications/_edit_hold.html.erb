@@ -1,12 +1,13 @@
-<!--動作うまくいかず方針変更-->
 <div class="container my-4" id="medicine-edit">
+  
   <%= render 'layouts/errors', obj: @medication %>
   <h4 class="text-success"><%= flash[:notice] %></h4>
   <h4 class="text-danger"><%= flash[:alert] %></h4>
 
   <h2 class="mb-4 border-bottom border-dark"><strong>情報入力</strong></h2>
   <%= form_with model: @medication, url: medication_path(@medication), method: :patch do |f| %>
-  <div class="row">
+    <div class="row">
+    
     <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>基本情報</strong></h3>
       <div class="form-group">
@@ -49,16 +50,19 @@
         </div><p></p>
       </div>
     </div>
+    
     <div class="col-xs-12 col-lg-6">
       <strong><%= f.label :condition, "症状" %></strong>
       <%= f.text_field :condition, class: "form-control" %>
       <strong><%= f.label :body, "備考" %></strong>
       <%= f.text_area :body, class: "form-control", size: "40x6" %>
     </div>
+    
   </div>
 
 
-  <div class="row">
+    <div class="row">
+    
     <div class="col-xs-12 col-lg-6">
       <h3 class="mb-4"><strong>投薬情報入力</strong></h3>
       <div class="form-group">
@@ -105,6 +109,7 @@
     </div>
 
     <div class="col-xs-12 col-lg-6">
+      
       <h3 class="mb-4"><strong>計算結果</strong></h3>
       <table class="table table-bordered">
         <thead>
@@ -134,9 +139,11 @@
           </tr>
         </tbody>
       </table>
+      
       <div class="text-right">
         <%= f.submit "保存する", class: "btn btn-info" %>
       </div>
+      
     </div>
 
   </div>

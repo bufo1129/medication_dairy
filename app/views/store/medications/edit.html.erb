@@ -1,17 +1,19 @@
+<!--スペース用-->
 <div class="text-center mb-5"></div>
 
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
+    
     <div class="col-lg-2">
       <%= render 'store/homes/link' %>
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
-
+      <!--スペース用-->
       <div class="text-center mb-3"></div>
       <h2 class="mb-4 border-bottom border-dark"><strong>投薬記録編集</strong></h2>
+      
       <div class="row">
-
         <%= form_with model: @medication, url: medication_path(@medication), method: :patch do |f| %>
           <table class="table">
             <tr>
@@ -91,10 +93,9 @@
           </table>
 
           <div class="text-right">
-          <%= f.submit "保存する", class: "btn btn-info" %>
-        </div>
+            <%= f.submit "保存する", class: "btn btn-info" %>
+          </div>
         <% end %>
-
       </div>
 
     </div>

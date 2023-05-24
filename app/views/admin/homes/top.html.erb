@@ -11,6 +11,7 @@
 
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
+    
     <div class="col-lg-2">
       <%= render 'admin/homes/link' %>
     </div>
@@ -19,6 +20,7 @@
       <h4 class="text-success"><%= flash[:notice] %></h4>
       <h4 class="text-danger"><%= flash[:alert] %></h4>
 
+      <!--スペース用-->
       <div class="text-center mb-3"></div>
 
       <div class="col-xs-12 col-lg-6">
@@ -29,6 +31,7 @@
         <thead class="table-dark">
           <tr>
             <th scope="col"></th>
+            <th scope="col">コメント</th>
             <th scope="col">個体名</th>
             <th scope="col">種類名</th>
             <th scope="col">症状</th>
@@ -44,6 +47,9 @@
               <%= link_to admin_medication_path(comment.medication.id) do %>
                 <%= image_tag comment.medication.individual.get_image(60,60),class: "img-fluid rounded-circle" %>
               <% end %>
+            </td>
+            <td>
+              <%= comment.comment %>
             </td>
             <td>
               <%= comment.medication.individual.name %>

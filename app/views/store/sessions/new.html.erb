@@ -1,5 +1,6 @@
 <div class="card col-sm-5 mx-auto mt-5">
   <h4 class="text-danger"><%= flash[:alert] %></h4>
+  
   <div class=="card-body">
     <h3 class="mt-1 mb-3">店舗Log in</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,7 +16,8 @@
         <%= f.submit "Log in", :class => "btn btn-dark btn-lg btn-block" %>
       </div>
     <% end %>
+    <!--スペース用-->
     <div class="small text-muted text-center mt-3"></div>
-    </div>
   </div>
+  
 </div>
