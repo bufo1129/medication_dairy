@@ -5,19 +5,19 @@ class Store::SeesController < ApplicationController
   def create
     see = current_store.sees.new(comment_id: @comment.id)
     see.save
-    redirect_to medications_path
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    see = current_store.favorites.find_by(comment_id: @comment.id)
+    see = current_store.sees.find_by(comment_id: @comment.id)
     see.destroy
-    redirect_to medications_path
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
   end
 
 end

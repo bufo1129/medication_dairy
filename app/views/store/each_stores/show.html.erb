@@ -6,6 +6,7 @@
 
     <div class="col-lg-2">
       <%= render 'store/homes/link' %>
+      <%= render 'store/favorites/favorite_list', favorite_list: @favorite_list %>
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
@@ -76,65 +77,6 @@
         </table>
       </div>
 
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="mb-4 border-bottom border-dark"><strong>ブックマーク投薬記録一覧</strong></h2>
-      </div>
-
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">個体名</th>
-            <th scope="col">種類名</th>
-            <th scope="col">投薬ステータス</th>
-            <th scope="col">投薬開始日</th>
-            <th scope="col">投薬終了予定日</th>
-            <th scope="col">所属店舗</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody class="table table-hover">
-          <% if @favorite_list.present? %>
-            <% @favorite_list.each do |medication| %>
-              <tr>
-                <td>
-                  <%= link_to medication_path(medication.id) do %>
-                    <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded-circle" %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= medication.individual.name %>
-                </td>
-                <td>
-                  <%= medication.individual.seed.name %>
-                </td>
-                <td>
-                  <% if medication.medication_status == "give" %>
-                    <span class="text-danger"><strong><%= medication.medication_status_i18n %></strong></span>
-                  <% else %>
-                    <span class="text-success"><strong><%= medication.medication_status_i18n %></strong></span>
-                  <% end %>
-                </td>
-                <td>
-                  <%= medication.dosing_start_date %>
-                </td>
-                <td>
-                  <%= medication.dosing_end_date %>
-                </td>
-                <td>
-                  <%= medication.individual.store.name %>
-                </td>
-                <td>
-                  <%= render 'store/favorites/favorite_btn', medication: medication %>
-                </td>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
     </div>
 
   </div>
