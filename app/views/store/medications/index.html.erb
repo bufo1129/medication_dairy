@@ -6,6 +6,7 @@
 
     <div class="col-lg-2">
       <%= render 'store/homes/link' %>
+      <%= render 'store/favorites/favorite_list', favorite_list: @favorite_list %>
     </div>
 
     <div class="contents-area col-lg-8 col-md-8">
@@ -70,7 +71,7 @@
               <td>
                 <%= medication.individual.store.name %>
               </td>
-              <td>
+              <td id="favorite_btn_<%= medication.id %>">
                 <%= render 'store/favorites/favorite_btn', medication: medication %>
               </td>
             </tr>

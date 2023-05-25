@@ -4,6 +4,8 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :admin_sees, dependent: :destroy
+
   #検索機能
   def self.looks(search, word)
     if search == "perfect_match"
