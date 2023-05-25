@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :weathers, only: [:index, :edit, :create, :update, :destroy]
 
     resources :medications, only: [:index, :show, :create] do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy] do
+        resources :sees, only: [:create, :destroy]
+      end
     end
   end
 
@@ -31,9 +33,9 @@ Rails.application.routes.draw do
       member do
         resource :favorites, only: [:create, :destroy]
       end
-      
+
     end
-    
+
   end
 
   # ゲストログイン

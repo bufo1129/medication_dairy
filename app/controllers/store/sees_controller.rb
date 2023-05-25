@@ -5,13 +5,13 @@ class Store::SeesController < ApplicationController
   def create
     see = current_store.sees.new(comment_id: @comment.id)
     see.save
-    redirect_back(fallback_location: root_path)
+    redirect_to medication_path(@comment.medication)
   end
 
   def destroy
     see = current_store.sees.find_by(comment_id: @comment.id)
     see.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to medication_path(@comment.medication)
   end
 
   private

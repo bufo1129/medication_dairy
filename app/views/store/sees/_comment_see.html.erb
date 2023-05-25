@@ -1,13 +1,13 @@
 <% if comment.comment_saw?(current_store) %>
   <p>
     <%= link_to medication_comment_see_path(medication,comment), class: "text-warning", method: :delete do %>
-      <i class="fas fa-thumbs-up fa-lg"></i>
+      <i class="fas fa-lightbulb fa-lg"></i>
     <% end %>
   </p>
   <% else %>
   <p>
     <%= link_to medication_comment_sees_path(medication,comment), class: "text-warning", method: :post do %>
-      <i class="far fa-thumbs-up fa-lg"></i>
+      <i class="far fa-lightbulb fa-lg"></i>
     <% end %>
   </p>
 <% end %>

@@ -1,12 +1,12 @@
 <% if medication.favorited_by?(current_store) %>
   <p>
-    <%= link_to favorites_path(medication), class: "text-warning", method: :delete do %>
+    <%= link_to favorites_path(medication), class: "text-warning", method: :delete, remote: true do %>
       <i class="fas fa-star fa-lg"></i>
     <% end %>
   </p>
   <% else %>
   <p>
-    <%= link_to favorites_path(medication), class: "text-warning", method: :post do %>
+    <%= link_to favorites_path(medication), class: "text-warning", method: :post, remote: true do %>
       <i class="far fa-star fa-lg"></i>
     <% end %>
   </p>
