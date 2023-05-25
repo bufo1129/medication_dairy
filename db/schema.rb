@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_24_015652) do
+ActiveRecord::Schema.define(version: 2023_05_25_081638) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -141,6 +141,15 @@ ActiveRecord::Schema.define(version: 2023_05_24_015652) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sees", force: :cascade do |t|
+    t.integer "comment_id", null: false
+    t.integer "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_sees_on_comment_id"
+    t.index ["store_id"], name: "index_sees_on_store_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -171,4 +180,6 @@ ActiveRecord::Schema.define(version: 2023_05_24_015652) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "medications"
   add_foreign_key "favorites", "stores"
+  add_foreign_key "sees", "comments"
+  add_foreign_key "sees", "stores"
 end

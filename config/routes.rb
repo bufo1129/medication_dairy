@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :individuals
 
     resources :medications do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy] do
+        resources :sees, only: [:create, :destroy]
+      end
       member do
         resource :favorites, only: [:create, :destroy]
       end

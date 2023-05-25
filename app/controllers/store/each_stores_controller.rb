@@ -7,6 +7,10 @@ class Store::EachStoresController < ApplicationController
 
   def show
     @each_store = Store.find(params[:id])
+    
+    @medications = @each_store.medications
+    favorites = Favorite.where(store_id: current_store.id).pluck(:medication_id)
+    @favorite_list = Medication.find(favorites)
   end
 
   def edit
