@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
 
   validates :comment,     presence: true, length:{maximum:140}
 
-  #見ました機能(see)
+  #確認機能(see)
   def comment_saw?(store)
      sees.exists?(store_id: store.id)
   end
