@@ -44,11 +44,23 @@ stores = Store.create!(
       name: "沖縄店",
       postal_code: "9000000",
       phone_number: "333-3333-3333",
-      is_deleted: true,
+      is_deleted: false,
       prefecture_code: 47,
       address_city: "那覇市",
       address_street: "111",
       address_building: "ヤンバルクイナビルディング"
+    },
+
+    { password: "aaaaaa",
+      email: "veterinarian@example.com",
+      name: "獣医",
+      postal_code: "1050011",
+      phone_number: "000-0000-0000",
+      is_deleted: false,
+      prefecture_code: 47,
+      address_city: "港区芝公園",
+      address_street: "111",
+      address_building: "Animal Hospital"
     }
   ]
 )
@@ -291,6 +303,21 @@ Medication.create!(
       several_days: 7,
       weight: 0.4e0,
       condition: "口内赤み"
+    },
+
+    { individual_id: 7,
+      seed_id: nil,
+      store_id: 3,
+      number_of_tablets: 0.6e0,
+      liquid_amount: 0.8e-1,
+      dosing_start_date: Date.new(2023, 5, 26),
+      dosing_end_date: Date.new(2023, 6, 1),
+      medication_status: "give",
+      body: "口内炎疑い、食欲減退",
+      give_liquid: 0.5e-1,
+      several_days: 7,
+      weight: 0.4e0,
+      condition: "口内赤み"
     }
 
   ]
@@ -309,6 +336,12 @@ MedicineRecord.create!(
       medicine_id: 1,
       number_of_time_id: 1,
       dosage_indicated: 0.15e2
+    },
+
+    { medication_id: 1,
+      medicine_id: 1,
+      number_of_time_id: 1,
+      dosage_indicated: 0.1e2
     }
   ]
 )
@@ -322,16 +355,29 @@ Comment.create!(
       created_at: Date.new(2023, 5, 23)
     },
 
-    { store_id: nil,
+    { store_id: 4,
       medication_id: 1,
-      comment: "投薬終了し、様子を見てください、異常が出た際はまたご相談ください。",
-      created_at: Date.new(2023, 5, 23)
+      comment: "投薬終了し、様子を見てください。異常が出ましたらまたご相談ください",
+      created_at: Date.new(2023, 5, 29)
     },
 
-    { store_id: 1,
-      medication_id: 1,
-      comment: "承知いたしました。",
-      created_at: Date.new(2023, 5, 23)
+    { store_id: 3,
+      medication_id: 3,
+      comment: "本日で投薬終了となります。赤みは少し減りましたが、残っています。食欲も徐々に回復しています。",
+      created_at: Date.new(2023, 5, 26)
+    },
+
+    { store_id: 4,
+      medication_id: 3,
+      comment: "赤みがあるとのことなので、追加1週間の投薬をしてください。",
+      created_at: Date.new(2023, 5, 27)
+    },
+
+    { store_id: 3,
+      medication_id: 3,
+      comment: "承知しました。",
+      created_at: Date.new(2023, 5, 28)
     }
+
   ]
 )
