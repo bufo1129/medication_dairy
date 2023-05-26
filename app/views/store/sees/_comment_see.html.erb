@@ -2,12 +2,14 @@
   <p>
     <%= link_to medication_comment_see_path(medication,comment), class: "text-warning", method: :delete do %>
       <i class="fas fa-lightbulb fa-lg"></i>
+      <%= comment.sees.count %>
     <% end %>
   </p>
   <% else %>
   <p>
     <%= link_to medication_comment_sees_path(medication,comment), class: "text-warning", method: :post do %>
       <i class="far fa-lightbulb fa-lg"></i>
+      <%= comment.sees.count %>
     <% end %>
   </p>
 <% end %>
