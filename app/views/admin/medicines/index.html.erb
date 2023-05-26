@@ -30,7 +30,7 @@
               <%= f.text_field :name, placeholder: "薬剤名を入力してください", class: "form-control" %>
             </div>
             <div class="form-group">
-              <label for="times_name"><strong>成分量:</strong></label>
+              <label for="times_name"><strong>成分量(mg):</strong></label>
               <%= f.text_field :ingredients_per_tablet, placeholder: "数字を入力してください", class: "form-control" %>
             </div>
             <div class="form-group">
@@ -57,7 +57,7 @@
                   <% end %>
                 </td>
                 <td class="h5"><%= medicine.name %></td>
-                <td class="h5"><%= medicine.ingredients_per_tablet %></td>
+                <td class="h5"><%= medicine.ingredients_per_tablet %>mg</td>
               </tr>
               <% end %>
             </tbody>
