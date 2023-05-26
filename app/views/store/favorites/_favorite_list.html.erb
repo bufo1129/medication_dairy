@@ -1,5 +1,4 @@
-<% if favorite_list.present? %>
-  <% favorite_list.each do |medication| %>
+
     <table class="table table-borderless table-hover text-center accordion-container">
       <thead class="table-active bg-dark text-light accordion-title js-accordion-title">
         <tr>
@@ -7,20 +6,22 @@
         </tr>
       </thead>
       <tbody class="accordion-content" style="text-align: -webkit-center;">
-        <tr>
-          <td>
-            <%= link_to medication_path(medication.id) do %>
-              <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded" %>
-            <% end %>
-          </td>
-          <td>
-            <%= medication.individual.name %>
-          </td>
-          <td>
-            <%= render 'store/favorites/favorite_btn', medication: medication %>
-          </td>
-        </tr>
+        <% if favorite_list.present? %>
+          <% favorite_list.each do |medication| %>
+            <tr>
+              <td>
+                <%= link_to medication_path(medication.id) do %>
+                  <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded" %>
+                <% end %>
+              </td>
+              <td>
+                <%= medication.individual.name %>
+              </td>
+              <td>
+                <%= render 'store/favorites/favorite_btn', medication: medication %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
       </tbody>
     </table>
-  <% end %>
-<% end %>
