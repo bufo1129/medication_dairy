@@ -10,11 +10,12 @@
   <div class="row d-flex justify-content-center">
 
     <div class="col-lg-2 mr-3">
-      <%= render 'store/homes/link' %>
+      <%#= render 'store/homes/link' %>
+      <%= render 'store/favorites/favorite_list', favorite_list: @favorite_list %>
       <%= render 'seed', seeds: @seeds %>
       <h3 class="mb-4 text-center"><strong>【計算する】</strong></h3>
       <%= form_with model: @medication, url: medications_path, method: :post, local: true do |f| %>
-      
+
         <%= f.fields_for :medicine_records do |m| %>
           <table>
             <tr>
@@ -31,7 +32,7 @@
             </tr>
           </table>
         <% end %>
-        
+
         <table>
           <tr>
             <th><%= f.label :weight, "体重" %></th>
@@ -58,7 +59,7 @@
             </td>
           </tr>
         </table>
-        
+
       <% end %>
 
       <h3 class="mb-4 text-center"><strong>=計算結果=</strong></h3>
@@ -88,7 +89,7 @@
           </tr>
         </tbody>
       </table>
-      
+
     </div>
 
     <div class="contents-area col-lg-8 col-md-12 rounded px-5 mb-4">

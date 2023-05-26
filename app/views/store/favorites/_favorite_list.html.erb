@@ -1,27 +1,30 @@
-
-    <table class="table table-borderless table-hover text-center accordion-container">
-      <thead class="table-active bg-dark text-light accordion-title js-accordion-title">
+<table class="table table-borderless table-hover text-center accordion-container">
+  <thead class="table-active bg-dark text-light accordion-title js-accordion-title">
+    <tr>
+      <th class="h6 font-weight-bold rounded">ブックマーク<br>投薬記録一覧</th>
+    </tr>
+  </thead>
+  <tbody class="accordion-content" style="text-align: -webkit-center;">
+    <% if favorite_list.present? %>
+      <% favorite_list.each do |medication| %>
         <tr>
-          <th class="h6 font-weight-bold rounded">ブックマーク<br>投薬記録一覧</th>
+          <td>
+            <%= link_to medication_path(medication.id) do %>
+              <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded" %>
+            <% end %>
+          </td>
+          <td>
+            <%= medication.individual.name %>
+          </td>
+          <td>
+            <% if medication.medication_status == "give" %>
+              <span class="text-danger"><strong><%= medication.medication_status_i18n %></strong></span>
+            <% else %>
+              <span class="text-success"><strong><%= medication.medication_status_i18n %></strong></span>
+            <% end %>
+          </td>
         </tr>
-      </thead>
-      <tbody class="accordion-content" style="text-align: -webkit-center;">
-        <% if favorite_list.present? %>
-          <% favorite_list.each do |medication| %>
-            <tr>
-              <td>
-                <%= link_to medication_path(medication.id) do %>
-                  <%= image_tag medication.individual.get_image(60,60),class: "img-fluid rounded" %>
-                <% end %>
-              </td>
-              <td>
-                <%= medication.individual.name %>
-              </td>
-              <td>
-                <%= render 'store/favorites/favorite_btn', medication: medication %>
-              </td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
