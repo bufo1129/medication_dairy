@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
   <div class="row d-flex justify-content-center mx-auto">
-    
+
     <div class="col-lg-2">
       <%= render 'store/homes/link' %>
     </div>
@@ -12,7 +12,7 @@
       <!--スペース用-->
       <div class="text-center mb-3"></div>
       <h2 class="mb-4 border-bottom border-dark"><strong>投薬記録編集</strong></h2>
-      
+
       <div class="row">
         <%= form_with model: @medication, url: medication_path(@medication), method: :patch do |f| %>
           <table class="table">
@@ -37,8 +37,16 @@
               </td>
             </tr>
             <tr>
-              <td><strong>投薬開始日：</strong><%= @medication.dosing_start_date %></td>
-              <td><strong>投薬終了予定日：</strong><%= @medication.dosing_end_date %></td>
+              <th><%= f.label :dosing_start_date, "投薬開始日" %></th>
+              <td class="pl-5">
+                <%= f.date_field :dosing_start_date, class: "form-control" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :dosing_end_date, "投薬終了予定日" %></th>
+              <td class="pl-5">
+                <%= f.date_field :dosing_end_date, class: "form-control" %>
+              </td>
             </tr>
             <tr>
               <td>
