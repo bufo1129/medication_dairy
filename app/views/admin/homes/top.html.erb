@@ -33,10 +33,7 @@
             <th scope="col"></th>
             <th scope="col">コメント</th>
             <th scope="col">個体名</th>
-            <th scope="col">種類名</th>
-            <th scope="col">症状</th>
-            <th scope="col">投薬開始日</th>
-            <th scope="col">投薬終了予定日</th>
+            <th scope="col">投薬終了<br>予定日</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -53,15 +50,6 @@
             </td>
             <td>
               <%= comment.medication.individual.name %>
-            </td>
-            <td>
-              <%= comment.medication.individual.seed.name %>
-            </td>
-            <td>
-              <%= comment.medication.condition %>
-            </td>
-            <td>
-              <%= comment.medication.dosing_start_date %>
             </td>
             <td>
               <%= comment.medication.dosing_end_date %>
