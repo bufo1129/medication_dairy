@@ -33,9 +33,9 @@ class Store::MedicationsController < ApplicationController
          @medications = Medication.all.page(params[:page]).per(8)
       end
     end
-    #お気に入り一覧表示
-    favorites = Favorite.where(store_id: current_store.id).pluck(:medication_id)
-    @favorite_list = Medication.find(favorites)
+    #お気に入り一覧表示/リロードしないと表示されないため修正必要
+    # favorites = Favorite.where(store_id: current_store.id).pluck(:medication_id)
+    # @favorite_list = Medication.find(favorites)
 
   end
 
