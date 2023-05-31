@@ -12,7 +12,7 @@ class Store::MedicationsController < ApplicationController
       elsif params[:old]
         @medications = Medication.where(individual_id: params[:individual_id]).old.page(params[:page]).per(8)
       else
-         @medications = Medication.where(individual_id: params[:individual_id]).page(params[:page]).per(8)
+         @medications = Medication.where(individual_id: params[:individual_id]).order(created_at: :desc).page(params[:page]).per(8)
       end
       #店舗の詳細からその店舗の投薬一覧へ+並べ替え
     elsif params[:each_store_id].present?
@@ -21,7 +21,7 @@ class Store::MedicationsController < ApplicationController
       elsif params[:old]
         @medications = Medication.where(store_id: params[:each_store_id]).old.page(params[:page]).per(8)
       else
-         @medications = Medication.where(store_id: params[:each_store_id]).page(params[:page]).per(8)
+         @medications = Medication.where(store_id: params[:each_store_id]).order(created_at: :desc).page(params[:page]).per(8)
       end
     else
       #投薬一覧並べ替え
@@ -30,7 +30,7 @@ class Store::MedicationsController < ApplicationController
       elsif params[:old]
         @medications = Medication.all.old.page(params[:page]).per(8)
       else
-         @medications = Medication.all.page(params[:page]).per(8)
+         @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
       end
     end
     #お気に入り一覧表示/リロードしないと表示されないため修正必要
