@@ -30,11 +30,11 @@ class Medication < ApplicationRecord
   #投薬のステータス
   enum medication_status: { give: true, not_give: false }
 
-  # 日報の登録日順の並べ替え
+  #日報の登録日順の並べ替え
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
 
-  #お気に入り
+  #投薬記録お気に入り
   def favorited_by?(store)
      favorites.exists?(store_id: store.id)
   end
