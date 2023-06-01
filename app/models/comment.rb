@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to  :medication,  optional: true
   has_many    :sees,        dependent: :destroy
   belongs_to  :admin,       optional: true
-  has_many    :admin_sees,  dependent: :destroy　#管理者コメントいいね機能
+  has_many    :admin_sees,  dependent: :destroy
 
   validates :comment,     presence: true, length:{maximum:140}
 
