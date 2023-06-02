@@ -120,6 +120,13 @@
         <%= render 'store/comments/medication_comment', comments: @comments, medication: @medication %>
         <%= render 'store/comments/comment_form', medication: @medication, comment: @comment%>
 
+        <div class="text-center">
+          <%= link_to "<<", medications_path, class: "btn btn-outline-secondary rounded" %>
+        </div>
+        
+        <!--スペース用-->
+        <div class="mb-4"></div>
+
       </div>
 
     </div>
