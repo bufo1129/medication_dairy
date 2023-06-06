@@ -4,15 +4,15 @@
     <!--ヘッダーロゴリンク-->
     <% if admin_signed_in? %>
       <%= link_to admin_root_path,class: 'nav-link text-light media_pc' do %>
-        <%= image_tag("/assets/images/logo.png") %>
+        <%= image_tag("logo.png") %>
       <% end %>
     <% elsif store_signed_in? %>
       <%= link_to root_path,class: 'nav-link text-light media_pc' do %>
-        <%= image_tag("/assets/images/logo.png") %>
+        <%= image_tag("logo.png") %>
       <% end %>
     <% else %>
       <%= link_to root_path,class: 'nav-link text-ligh media_pc' do %>
-        <%= image_tag("/assets/images/logo.png") %>
+        <%= image_tag("logo.png") %>
       <% end %>
     <% end %>
 
