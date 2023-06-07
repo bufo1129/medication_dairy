@@ -65,7 +65,7 @@
           </tr>
           <tr>
             <td><strong>内容</strong></td>
-            <td><%= @dairy.body %></td>
+            <td><%= simple_format(@dairy.body) %></td>
           </tr>
             <td style="width: 40%">
               <%= link_to "日報一覧を見る", dairies_path(store_id: @dairy.store_id), class: "btn btn-info" %>

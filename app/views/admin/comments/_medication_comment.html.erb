@@ -10,7 +10,7 @@
           管理者
         <% end %>
       </td>
-      <td><%= comment.comment %></td>
+      <td><%= simple_format(comment.comment) %></td>
       <td>
         <%= render 'admin/sees/comment_see', comment: comment %>
       </td>
