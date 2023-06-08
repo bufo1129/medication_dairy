@@ -33,7 +33,7 @@
           <% end %>
         </div>
 
-        <table class="table">
+        <table class="table comment-table">
           <tr>
             <td>
               <strong>投薬記録作成店舗：</strong>
@@ -74,8 +74,8 @@
           </tr>
           <tr>
             <th>備考：</th>
-            <td>
-              <%= @medication.body %>
+            <td class="comment-class">
+              <%= simple_format(@medication.body) %>
             </td>
           </tr>
         </table>

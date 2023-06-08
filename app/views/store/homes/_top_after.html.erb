@@ -124,7 +124,7 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= comment.comment %>
+                    <%= truncate(comment.comment, length: 10) %>
                   </td>
                   <td>
                     <%= comment.medication.individual.name %>

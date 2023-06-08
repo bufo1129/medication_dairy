@@ -1,20 +1,20 @@
-<table class="table table-hover">
+<table class="table table-hover comment-table">
   <tbody>
     <% comments.each do |comment| %>
     <tr>
-      <td><%= comment.created_at.to_s(:datetime_jp) %></td>
-      <td>
+      <td class="col-2"><%= comment.created_at.to_s(:datetime_jp) %></td>
+      <td class="col-2">
         <% if comment.store_id != nil %>
           <%= comment.store.name %>
         <% else %>
           管理者
         <% end %>
       </td>
-      <td><%= comment.comment %></td>
-      <td>
+      <td class="comment-class" class="col-2"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></td>
+      <td class="col-1">
         <%= render 'admin/sees/comment_see', comment: comment %>
       </td>
-      <td>
+      <td class="col-1">
         <% if comment.store == current_store %>
           <%= link_to admin_medication_comment_path(comment.medication,comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "text-danger" do %>
             <i class="fas fa-trash-alt"></i>
