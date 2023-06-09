@@ -90,6 +90,15 @@
         <%= render 'admin/comments/medication_comment', comments: @comments%>
         <%= render 'admin/comments/comment_form', medication: @medication, comment: @comment%>
 
+        <div class="text-center">
+          <%= link_to "<<", admin_medications_path, class: "btn btn-outline-secondary rounded" %>
+        </div>
+
+        <!--スペース用-->
+        <div class="mb-4"></div>
+
+        </div>
+
       </div>
 
     </div>
