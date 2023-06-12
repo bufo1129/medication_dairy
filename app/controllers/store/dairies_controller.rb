@@ -92,7 +92,9 @@ class Store::DairiesController < ApplicationController
       :low_temperature,
       :title,
       :body,
-      :created_date
+      :created_date,
+      dairy_items_attributes:
+        [:id, :title, :body, :_destroy]
       )
   end
 

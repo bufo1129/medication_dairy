@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_25_105151) do
+ActiveRecord::Schema.define(version: 2023_06_12_025845) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 2023_05_25_105151) do
     t.date "created_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dairy_items", force: :cascade do |t|
+    t.integer "dairy_id"
+    t.string "title", null: false
+    t.string "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dairy_id"], name: "index_dairy_items_on_dairy_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -189,6 +198,7 @@ ActiveRecord::Schema.define(version: 2023_05_25_105151) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admin_sees", "admins"
   add_foreign_key "admin_sees", "comments"
+  add_foreign_key "dairy_items", "dairies"
   add_foreign_key "favorites", "medications"
   add_foreign_key "favorites", "stores"
   add_foreign_key "sees", "comments"
