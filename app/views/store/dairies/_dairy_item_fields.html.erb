@@ -1,0 +1,18 @@
+<%# 以下の.nested-fieldsは、必須です。 %>
+<div class="nested-fields">
+  <div class="field">
+    <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
+    <div class="form-group">
+      <label for="title">タイトル</label>
+      <%= dairy_item.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="body">内容</label>
+      <%= dairy_item.text_area :body, class: "form-control" %>
+    </div>
+  </div>
+  <div class="field text-right">
+    <%= link_to_remove_association raw('<i class="fas fa-minus"></i> 項目の削除'), dairy_item, class: 'btn btn-sm btn-outline-danger' %>
+  </div>
+  <hr>
+</div>

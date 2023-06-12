@@ -75,3 +75,6 @@ gem "net-imap"
 
 #ページ上部へ行く用
 gem 'jquery-rails'
+
+# cocoon
+gem "cocoon"

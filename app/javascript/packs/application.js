@@ -19,6 +19,11 @@ import './dosageCalculation'
 // import 'jquery-3.6.4.min.js'
 import './accordion.js'
 
+// ここから追加
+// require("jquery")
+require("@nathanvda/cocoon")
+// こまで追加
+
 
 Rails.start()
 // Turbolinks.start()

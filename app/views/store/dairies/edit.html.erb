@@ -103,9 +103,19 @@
               <label for="body">内容</label>
               <%= f.text_area :body, class: "form-control" %>
             </div>
-            <div class="text-right">
+            
+            <%# フォーム部分 %>
+            <%= form_with model: @dairy do |dairy| %>
+              <%# フォームのテンプレート %>
+              <% render 'form', dairy: dairy %>
+            <% end %>
+            
+            <div class="text-left">
               <%= f.submit "更新する", class: "btn btn-info" %>
             </div>
+            
+            <!--スペース用-->
+            <div class="mb-4"></div>
 
           </div>
         </div>

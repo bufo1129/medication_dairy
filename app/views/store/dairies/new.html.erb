@@ -93,7 +93,20 @@
           <label for="body">内容</label>
           <%= f.text_area :body, placeholder: "テキストを入力してください", class: "form-control" %>
         </div>
-        <%= f.submit "作成する", class: "btn btn-info" %>
+        
+        <%# フォーム部分 %>
+        <%= form_with model: @dairy do |dairy| %>
+          <%# フォームのテンプレート %>
+          <% render 'form', dairy: dairy %>
+        <% end %>
+        
+        <div class="text-left">
+          <%= f.submit "作成する", class: "btn btn-info" %>
+        </div>
+        
+        <!--スペース用-->
+        <div class="mb-4"></div>
+
       </div>
     </div>
   <% end %>
