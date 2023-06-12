@@ -60,13 +60,30 @@
             </td>
           </tr>
           <tr>
-            <td><strong>タイトル</strong></td>
-            <td><%= @dairy.title %></td>
+            <td><strong>項目タイトル 0</strong></td>
+            <td>
+              <%= @dairy.title %>
+            </td>
           </tr>
           <tr>
             <td><strong>内容</strong></td>
-            <td><%= simple_format(@dairy.body) %></td>
+            <td>
+              <%= @dairy.body %>
+            </td>
           </tr>
+
+          <% @dairy.dairy_items.each do |item| %>
+            <tr>
+              <td><strong>項目タイトル <%= "#{@dairy.dairy_items.count}" %></strong></td>
+              <td><%= item.title %></td>
+            </tr>
+            <tr>
+              <td><strong>内容</strong></td>
+              <td><%= simple_format(item.body) %></td>
+            </tr>
+          <% end %>
+          
+          <tr>
             <td style="width: 40%">
               <%= link_to "日報一覧を見る", dairies_path(store_id: @dairy.store_id), class: "btn btn-info" %>
             </td>

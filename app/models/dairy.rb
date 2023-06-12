@@ -8,10 +8,15 @@ class Dairy < ApplicationRecord
   scope :latest, -> {order(created_date: :desc)}
   scope :old, -> {order(created_date: :asc)}
 
+  # cocoon
+  has_many :dairy_items, dependent: :destroy
+  accepts_nested_attributes_for :dairy_items, reject_if: :all_blank, allow_destroy: true
+
   validates :weather_id,        presence: true
   validates :high_temperature,  presence: true
   validates :low_temperature,   presence: true
   validates :created_date,      presence: true
   validates :title,             presence: true, length:{maximum:30}
+  validates :body,              presence: true
 
 end
