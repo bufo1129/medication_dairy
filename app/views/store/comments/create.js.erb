@@ -1,0 +1,24 @@
+$("#medicationComments").append(`
+    <tr id="commentRow<%= @comment.id %>">
+      <td class="col-2"><%= @comment.created_at.to_s(:datetime_jp) %></td>
+      <td class="col-2">
+        <% if @comment.store_id != nil %>
+          <%= @comment.store.name %>
+        <% else %>
+          管理者
+        <% end %>
+      </td>
+      <td class="comment-class" class="col-2"><%= safe_join(@comment.comment.split("\n"),tag(:br)) %></td>
+      <td class="col-1">
+        <%= render 'store/sees/comment_see', comment: @comment, medication: @medication %>
+      </td>
+      <td class="col-1">
+        <% if @comment.store_id == current_store.id %>
+          <%= link_to medication_comment_path(@comment.medication,@comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "text-danger", remote: true do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+`)
+$("#comment_comment").val('')
