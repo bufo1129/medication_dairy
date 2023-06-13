@@ -1,7 +1,7 @@
 <table class="table table-hover comment-table">
-  <tbody>
+  <tbody id="medicationComments">
     <% comments.each do |comment| %>
-    <tr>
+    <tr id="commentRow<%= comment.id %>">
       <td class="col-2"><%= comment.created_at.to_s(:datetime_jp) %></td>
       <td class="col-2">
         <% if comment.store_id != nil %>
@@ -16,7 +16,7 @@
       </td>
       <td class="col-1">
         <% if comment.store_id == current_store.id %>
-          <%= link_to medication_comment_path(comment.medication,comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "text-danger" do %>
+          <%= link_to medication_comment_path(comment.medication,comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "text-danger", remote: true do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
