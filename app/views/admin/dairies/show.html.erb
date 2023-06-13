@@ -40,22 +40,45 @@
             </tr>
             <tr>
               <th>最高気温</th>
-              <td><%= @dairy.high_temperature %></td>
+              <td>
+                <%= @dairy.high_temperature %>　℃
+              </td>
             </tr>
             <tr>
               <th>最低気温</th>
               <td>
-                <%= @dairy.low_temperature %>
+                <%= @dairy.low_temperature %>　℃
               </td>
             </tr>
             <tr>
-              <th>タイトル</th>
-              <td><%= @dairy.title %></td>
+              <td><strong>湿度</strong></td>
+              <td>
+                <%= @dairy.humidity %>　％
+              </td>
             </tr>
             <tr>
-              <th>内容</th>
-              <td><%= simple_format(@dairy.body) %></td>
+              <td><strong>項目タイトル 0</strong></td>
+              <td>
+                <%= @dairy.title %>
+              </td>
             </tr>
+            <tr>
+              <td><strong>内容</strong></td>
+              <td>
+                <%= @dairy.body %>
+              </td>
+            </tr>
+
+            <% @dairy.dairy_items.each do |item| %>
+              <tr>
+                <td><strong>項目タイトル <%= "#{@dairy.dairy_items.count}" %></strong></td>
+                <td><%= item.title %></td>
+              </tr>
+              <tr>
+                <td><strong>内容</strong></td>
+                <td><%= simple_format(item.body) %></td>
+              </tr>
+            <% end %>
           </table>
 
           <div class="text-center">

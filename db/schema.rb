@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2023_06_12_025845) do
     t.integer "low_temperature"
     t.string "body"
     t.date "created_date", null: false
+    t.integer "humidity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

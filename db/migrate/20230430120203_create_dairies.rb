@@ -9,6 +9,7 @@ class CreateDairies < ActiveRecord::Migration[6.1]
       t.integer   :low_temperature
       t.string    :body
       t.date      :created_date,      null: false
+      t.integer   :humidity
 
       t.timestamps
     end
