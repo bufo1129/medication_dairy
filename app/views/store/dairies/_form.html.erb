@@ -1,5 +1,15 @@
 
 <div class="details">
+  
+
+  <%# フォームを追加する場所。%>
+  <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
+  <div id="dairy_item-forms">
+    <%= dairy.fields_for :dairy_items do |dairy_item| %>
+      <% render 'dairy_item_fields', dairy_item: dairy_item %>
+    <% end %>
+  </div>
+  
   <%# トラックの追加フォームをするボタン %>
   <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
   <%= link_to_add_association raw('<i class="fas fa-plus"></i> 項目の追加'),
@@ -29,14 +39,7 @@
   %>
 
   <hr>
-
-  <%# フォームを追加する場所。%>
-  <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
-  <div id="dairy_item-forms">
-    <%= dairy.fields_for :dairy_items do |dairy_item| %>
-      <% render 'dairy_item_fields', dairy_item: dairy_item %>
-    <% end %>
-  </div>
+  
 
 </div>
 <!--<div class="field">-->
