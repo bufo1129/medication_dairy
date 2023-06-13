@@ -356,10 +356,10 @@ MedicineRecord.create!(
       dosage_indicated: 0.15e2
     },
 
-    { medication_id: 1,
+    { medication_id: 3,
       medicine_id: 1,
       number_of_time_id: 1,
-      dosage_indicated: 0.1e2
+      dosage_indicated: 0.1
     }
   ]
 )
