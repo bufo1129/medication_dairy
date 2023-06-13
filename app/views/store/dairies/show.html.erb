@@ -27,6 +27,9 @@
             <%= link_to edit_dairy_path(@dairy.id), class: "btn rounded-circle btn-info" do %>
               <i class="fas fa-edit"></i>
             <% end %>
+            <%= link_to dairy_copy_path(@dairy.id), data: { confirm: '日報を複製しますか？' }, class: "btn rounded-circle btn-info" do %>
+              <i class="far fa-copy"></i>
+            <% end %>
             <%= link_to  dairy_path(@dairy.id), method: :delete,
                 data: { confirm: "本当に削除しますか？" }, class: "btn rounded-circle btn-danger" do %>
               <i class="fas fa-trash-alt"></i>

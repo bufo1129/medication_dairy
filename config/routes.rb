@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about", as: "about"
     get "search" => "searches#search"
     resources :each_stores, only: [:index, :show, :edit, :update]
-    resources :dairies
+    resources :dairies do
+      get 'copy'
+    end
     resources :individuals
 
     resources :medications do

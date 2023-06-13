@@ -11,7 +11,7 @@ class Store::DairiesController < ApplicationController
       elsif params[:old]
         @dairies = Dairy.where(store_id: params[:store_id]).old.page(params[:page]).per(10)
       else
-        @dairies = Dairy.where(store_id: params[:store_id]).page(params[:page]).per(10)
+        @dairies = Dairy.where(store_id: params[:store_id]).order(created_at: :desc).page(params[:page]).per(10)
       end
     else
       #日報一覧並べ替え
@@ -20,7 +20,7 @@ class Store::DairiesController < ApplicationController
       elsif params[:old]
         @dairies = Dairy.all.old.page(params[:page]).per(10)
       else
-        @dairies = Dairy.all.page(params[:page]).per(10)
+        @dairies = Dairy.all.order(created_at: :desc).page(params[:page]).per(10)
       end
     end
 
@@ -74,6 +74,14 @@ class Store::DairiesController < ApplicationController
       flash[:notice] = "削除しました"
       redirect_to dairies_path
     end
+  end
+  
+  # 日報の複製
+  def copy
+    @old_dairy = Dairy.find_by(id: params[:dairy_id])
+    @dairy = @old_dairy.deep_clone
+    @dairy.save
+    redirect_to edit_dairy_path(@dairy.id), notice: 'コピーしました。'
   end
 
   private
