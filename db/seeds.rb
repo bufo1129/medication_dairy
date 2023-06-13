@@ -245,6 +245,7 @@ Dairy.create!(
       store_id: 1, weather_id: "1",
       high_temperature: 32,
       low_temperature: 27,
+      humidity: 70,
       body: "空っとした暑さで、屋外に出る人が多かったせいか、来客が少なかった。\r\nSC自体も来客が少ない様子。",
       created_date: Date.new(2023, 5, 1)
     },
@@ -255,6 +256,7 @@ Dairy.create!(
       weather_id: "6",
       high_temperature: 21,
       low_temperature: 15,
+      humidity: 30,
       body: "寒暖差が激しい",
       created_date: Date.new(2023, 3, 1)
     },
@@ -265,8 +267,24 @@ Dairy.create!(
       weather_id: "2",
       high_temperature: 25,
       low_temperature: 25,
+      humidity: 93,
       body: "一日の温度差ないけど、湿度93％！！",
       created_date: Date.new(2023, 6, 1)
+    }
+  ]
+)
+
+#日報録中間モデル
+DairyItem.create!(
+  [
+    { dairy_id: 2,
+      title: "イベント",
+      body: "ヤギのみるくあげ体験開始(～〇/〇まで)",
+    },
+
+    { dairy_id: 2,
+      title: "爬虫類",
+      body: "○○投薬あり",
     }
   ]
 )
@@ -323,7 +341,7 @@ Medication.create!(
   ]
 )
 
-#中間モデル
+#投薬記録中間モデル
 MedicineRecord.create!(
   [
     { medication_id: 1,
