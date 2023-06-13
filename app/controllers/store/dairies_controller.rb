@@ -93,6 +93,7 @@ class Store::DairiesController < ApplicationController
       :title,
       :body,
       :created_date,
+      :humidity,
       dairy_items_attributes:
         [:id, :title, :body, :_destroy]
       )
