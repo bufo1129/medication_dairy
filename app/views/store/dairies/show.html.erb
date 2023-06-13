@@ -51,12 +51,20 @@
           </tr>
           <tr>
             <td><strong>最高気温</strong></td>
-            <td><%= @dairy.high_temperature %></td>
+            <td>
+              <%= @dairy.high_temperature %>　℃
+            </td>
           </tr>
           <tr>
             <td><strong>最低気温</strong></td>
             <td>
-              <%= @dairy.low_temperature %>
+              <%= @dairy.low_temperature %>　℃
+            </td>
+          </tr>
+          <tr>
+            <td><strong>湿度</strong></td>
+            <td>
+              <%= @dairy.humidity %>　％
             </td>
           </tr>
           <tr>
@@ -82,7 +90,7 @@
               <td><%= simple_format(item.body) %></td>
             </tr>
           <% end %>
-          
+
           <tr>
             <td style="width: 40%">
               <%= link_to "日報一覧を見る", dairies_path(store_id: @dairy.store_id), class: "btn btn-info" %>

@@ -39,7 +39,8 @@ class Admin::DairiesController < ApplicationController
       :low_temperature,
       :title,
       :body,
-      :created_date
+      :created_date,
+      :humidity
       )
   end
 
