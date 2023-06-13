@@ -78,3 +78,6 @@ gem 'jquery-rails'
 
 # cocoon
 gem "cocoon"
+
+#レコードの複製
+gem 'deep_cloneable'
