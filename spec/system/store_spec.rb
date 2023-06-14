@@ -17,36 +17,56 @@ describe '[店舗] 店舗ログイン前のテスト' do
       it 'nameフォームが表示される' do
         expect(page).to have_field 'store[name]'
       end
-      # it 'emailフォームが表示される' do
-      #   expect(page).to have_field 'user[email]'
-      # end
-      # it 'passwordフォームが表示される' do
-      #   expect(page).to have_field 'user[password]'
-      # end
-      # it 'password_confirmationフォームが表示される' do
-      #   expect(page).to have_field 'user[password_confirmation]'
-      # end
-      # it 'Sign upボタンが表示される' do
-      #   expect(page).to have_button 'Sign up'
-      # end
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'store[email]'
+      end
+      it 'postal_codeフォームが表示される' do
+        expect(page).to have_field 'store[postal_code]'
+      end
+      it 'prefecture_codeフォームが表示される' do
+        expect(page).to have_field 'store[prefecture_code]'
+      end
+      it 'address_cityフォームが表示される' do
+        expect(page).to have_field 'store[address_city]'
+      end
+      it 'address_streetフォームが表示される' do
+        expect(page).to have_field 'store[address_street]'
+      end
+      it 'address_buildingフォームが表示される' do
+        expect(page).to have_field 'store[address_building]'
+      end
+      it 'phone_numberフォームが表示される' do
+        expect(page).to have_field 'store[phone_number]'
+      end
+      it 'passwordフォームが表示される' do
+        expect(page).to have_field 'store[password]'
+      end
+      it 'password_confirmationフォームが表示される' do
+        expect(page).to have_field 'store[password_confirmation]'
+      end
+      it 'Sign upボタンが表示される' do
+        expect(page).to have_button 'Sign up'
+      end
     end
 
-    # context '新規登録成功のテスト' do
-    #   before do
-    #     fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
-    #     fill_in 'user[email]', with: Faker::Internet.email
-    #     fill_in 'user[password]', with: 'password'
-    #     fill_in 'user[password_confirmation]', with: 'password'
-    #   end
+    context '新規登録成功のテスト' do
+      before do
+        fill_in 'store[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'store[email]', with: Faker::Internet.email
+        fill_in 'store[postal_code]', with: Faker::Address.postcode
+        select '東京都', from: 'store[prefecture_code]'
+        fill_in 'store[password]', with: 'password'
+        fill_in 'store[password_confirmation]', with: 'password'
+      end
 
-    #   it '正しく新規登録される' do
-    #     expect { click_button 'Sign up' }.to change(User.all, :count).by(1)
-    #   end
-    #   it '新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている' do
-    #     click_button 'Sign up'
-    #     expect(current_path).to eq '/users/' + User.last.id.to_s
-    #   end
-    # end
+      it '正しく新規登録される' do
+        expect { click_button 'Sign up' }.to change(Store.all, :count).by(1)
+      end
+      it '新規登録後のリダイレクト先が、新規登録できた店舗のトップ画面になっている' do
+        click_button 'Sign up'
+        expect(current_path).to eq '/'
+      end
+    end
   end
 
   # describe 'ユーザログイン' do

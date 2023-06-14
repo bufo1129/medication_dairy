@@ -66,7 +66,7 @@ gem "enum_help"
 gem 'kaminari','~> 1.2.1'
 gem 'bootstrap4-kaminari-views'
 gem 'httpclient' #API天気取得表示用
-gem 'jp_prefecture'#住所自動入力
+gem 'jp_prefecture'#県の取得
 gem 'rails-i18n'
 
 # デプロイ用
