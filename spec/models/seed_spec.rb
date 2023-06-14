@@ -33,4 +33,3 @@ RSpec.describe Seed, "モデルに関するテスト", type: :model do
   end
 
 end
-

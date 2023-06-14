@@ -1,4 +1,7 @@
 <div class="card col-sm-5 mx-auto mt-5">
+  <%= render 'layouts/errors', obj: @admin %>
+  <h4 class="text-success"><%= flash[:notice] %></h4>
+  <h4 class="text-danger"><%= flash[:alert] %></h4>
   <div class=="card-body">
     <h3 class="mt-1 mb-3">管理者Log in</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
