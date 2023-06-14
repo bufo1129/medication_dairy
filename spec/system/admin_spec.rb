@@ -1,4 +1,4 @@
-describe '[STEP1] 管理者ログイン前のテスト' do
+describe '[管理者] 管理者ログイン前のテスト' do
 
   describe 'トップ画面のテスト' do
     before do
