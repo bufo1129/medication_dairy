@@ -6,6 +6,8 @@ class Admin < ApplicationRecord
 
   has_many :admin_sees, dependent: :destroy
 
+  validates :email, presence: true
+
   #検索機能
   def self.looks(search, word)
     if search == "perfect_match"
