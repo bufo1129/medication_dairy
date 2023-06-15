@@ -156,27 +156,27 @@ describe '[店舗] 店舗ログイン前のテスト' do
     end
   end
 
-  # describe 'ユーザログアウトのテスト' do
-  #   let(:user) { create(:user) }
+  describe 'ユーザログアウトのテスト' do
+    let(:store) { create(:store) }
 
-  #   before do
-  #     visit new_user_session_path
-  #     fill_in 'user[name]', with: user.name
-  #     fill_in 'user[password]', with: user.password
-  #     click_button 'Log in'
-  #     logout_link = find_all('a')[4].native.inner_text
-  #     logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-  #     click_link logout_link
-  #   end
+    before do
+      visit store_session_path
+      fill_in 'store[email]', with: store.email
+      fill_in 'store[password]', with: store.password
+      click_button 'Log in'
+      logout_link = find_all('a')[5].native.inner_text
+      logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link logout_link
+    end
 
-  #   context 'ログアウト機能のテスト' do
-  #     it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する' do
-  #       expect(page).to have_link '', href: '/home/about'
-  #     end
-  #     it 'ログアウト後のリダイレクト先が、トップになっている' do
-  #       expect(current_path).to eq '/'
-  #     end
-  #   end
-  # end
+    context 'ログアウト機能のテスト' do
+      it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面(「使ってみる」)へのリンクが存在する' do
+        expect(page).to have_link '', href: '/home/about'
+      end
+      it 'ログアウト後のリダイレクト先が、トップになっている' do
+        expect(current_path).to eq '/'
+      end
+    end
+  end
 
 end
