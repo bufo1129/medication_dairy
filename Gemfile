@@ -46,10 +46,16 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  # gem 'capybara', '>= 3.26'
+  # gem 'selenium-webdriver', '>= 4.0.0.rc1'
+  # # Easy installation and use of web drivers to run system tests with browsers
+  # gem 'webdrivers'
+
+  # Rspec用書きかえ
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -60,7 +66,7 @@ gem "enum_help"
 gem 'kaminari','~> 1.2.1'
 gem 'bootstrap4-kaminari-views'
 gem 'httpclient' #API天気取得表示用
-gem 'jp_prefecture'#住所自動入力
+gem 'jp_prefecture'#県の取得
 gem 'rails-i18n'
 
 # デプロイ用
@@ -81,3 +87,6 @@ gem "cocoon"
 
 #レコードの複製
 gem 'deep_cloneable'
+
+#Rspec用
+gem 'net-smtp'
