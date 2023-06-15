@@ -69,92 +69,92 @@ describe '[店舗] 店舗ログイン前のテスト' do
     end
   end
 
-  # describe 'ユーザログイン' do
-  #   let(:user) { create(:user) }
+  describe '店舗ログイン' do
+    let(:store) { create(:store) }
 
-  #   before do
-  #     visit new_user_session_path
-  #   end
+    before do
+      visit store_session_path
+    end
 
-  #   context '表示内容の確認' do
-  #     it 'URLが正しい' do
-  #       expect(current_path).to eq '/users/sign_in'
-  #     end
-  #     it '「Log in」と表示される' do
-  #       expect(page).to have_content 'Log in'
-  #     end
-  #     it 'nameフォームが表示される' do
-  #       expect(page).to have_field 'user[name]'
-  #     end
-  #     it 'passwordフォームが表示される' do
-  #       expect(page).to have_field 'user[password]'
-  #     end
-  #     it 'Log inボタンが表示される' do
-  #       expect(page).to have_button 'Log in'
-  #     end
-  #     it 'emailフォームは表示されない' do
-  #       expect(page).not_to have_field 'user[email]'
-  #     end
-  #   end
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/stores/sign_in'
+      end
+      it '「Log in」と表示される' do
+        expect(page).to have_content 'Log in'
+      end
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'store[email]'
+      end
+      it 'passwordフォームが表示される' do
+        expect(page).to have_field 'store[password]'
+      end
+      it 'Log inボタンが表示される' do
+        expect(page).to have_button 'Log in'
+      end
+    end
 
-  #   context 'ログイン成功のテスト' do
-  #     before do
-  #       fill_in 'user[name]', with: user.name
-  #       fill_in 'user[password]', with: user.password
-  #       click_button 'Log in'
-  #     end
+    context 'ログイン成功のテスト' do
+      before do
+        fill_in 'store[email]', with: store.email
+        fill_in 'store[password]', with: store.password
+        click_button 'Log in'
+      end
 
-  #     it 'ログイン後のリダイレクト先が、ログインしたユーザの詳細画面になっている' do
-  #       expect(current_path).to eq '/users/' + user.id.to_s
-  #     end
-  #   end
+      it 'ログイン後のリダイレクト先が、ログインした店舗のトップ画面になっている' do
+        expect(current_path).to eq '/'
+      end
+      it 'ヘッダーに店舗名が表示されている' do
+        expect(page).to have_content(store.name)
+      end
+    end
 
-  #   context 'ログイン失敗のテスト' do
-  #     before do
-  #       fill_in 'user[name]', with: ''
-  #       fill_in 'user[password]', with: ''
-  #       click_button 'Log in'
-  #     end
+    context 'ログイン失敗のテスト' do
+      before do
+        fill_in 'store[email]', with: ''
+        fill_in 'store[password]', with: ''
+        click_button 'Log in'
+      end
 
-  #     it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
-  #       expect(current_path).to eq '/users/sign_in'
-  #     end
-  #   end
-  # end
+      it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
+        expect(current_path).to eq '/stores/sign_in'
+      end
+    end
+  end
 
-  # describe 'ヘッダーのテスト: ログインしている場合' do
-  #   let(:user) { create(:user) }
+  describe 'ヘッダーのテスト: ログインしている場合' do
+    let(:store) { create(:store) }
 
-  #   before do
-  #     visit new_user_session_path
-  #     fill_in 'user[name]', with: user.name
-  #     fill_in 'user[password]', with: user.password
-  #     click_button 'Log in'
-  #   end
+    before do
+      visit store_session_path
+      fill_in 'store[email]', with: store.email
+      fill_in 'store[password]', with: store.password
+      click_button 'Log in'
+    end
 
-  #   context 'ヘッダーの表示を確認' do
-  #     it 'Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である' do
-  #       home_link = find_all('a')[0].native.inner_text
-  #       expect(home_link).to match(/Bookers/)
-  #     end
-  #     it 'Homeリンクが表示される: 左上から2番目のリンクが「Home」である' do
-  #       home_link = find_all('a')[1].native.inner_text
-  #       expect(home_link).to match(/Home/)
-  #     end
-  #     it 'Usersリンクが表示される: 左上から3番目のリンクが「Users」である' do
-  #       users_link = find_all('a')[2].native.inner_text
-  #       expect(users_link).to match(/Users/)
-  #     end
-  #     it 'Booksリンクが表示される: 左上から4番目のリンクが「Books」である' do
-  #       books_link = find_all('a')[3].native.inner_text
-  #       expect(books_link).to match(/Books/)
-  #     end
-  #     it 'Log outリンクが表示される: 左上から5番目のリンクが「Log out」である' do
-  #       logout_link = find_all('a')[4].native.inner_text
-  #       expect(logout_link).to match(/Log out/)
-  #     end
-  #   end
-  # end
+    context 'ヘッダーの表示を確認' do
+      it '店舗リンクが表示される: 左上から2番目のリンクが「店舗」である' do
+        home_link = find_all('a')[1].native.inner_text
+        expect(home_link).to match(/店舗/)
+      end
+      it '日報リンクが表示される: 左上から3番目のリンクが「日報」である' do
+        users_link = find_all('a')[2].native.inner_text
+        expect(users_link).to match(/日報/)
+      end
+      it '投薬記録リンクが表示される: 左上から4番目のリンクが「投薬記録」である' do
+        books_link = find_all('a')[3].native.inner_text
+        expect(books_link).to match(/投薬記録/)
+      end
+      it '動物リンクが表示される: 左上から5番目のリンクが「動物」である' do
+        books_link = find_all('a')[4].native.inner_text
+        expect(books_link).to match(/動物/)
+      end
+      it 'ログアウトリンクが表示される: 左上から5番目のリンクが「ログアウト」である' do
+        logout_link = find_all('a')[5].native.inner_text
+        expect(logout_link).to match(/ログアウト/)
+      end
+    end
+  end
 
   # describe 'ユーザログアウトのテスト' do
   #   let(:user) { create(:user) }
