@@ -21,10 +21,11 @@ class Medication < ApplicationRecord
   validates :dosing_end_date,     presence: true
   validates :medication_status,   presence: true
   validates :liquid_amount,       presence: true
-  validates :number_of_tablets,   presence: true
+  validates :number_of_tablets,   presence: true, numericality: true
   validates :individual_id,       presence: true
-  validates :weight,              presence: true
-  validates :several_days,        presence: true
+  validates :give_liquid,         presence: true, numericality: true
+  validates :weight,              presence: true, numericality: true
+  validates :several_days,        presence: true, numericality: true
   validates :condition,           presence: true, length:{maximum:30}
 
   #投薬のステータス

@@ -1,5 +1,6 @@
 class Store::IndividualsController < ApplicationController
   before_action :authenticate_store!
+  before_action :is_matching_login_store, only: [:edit, :update]
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -60,6 +61,13 @@ class Store::IndividualsController < ApplicationController
   end
 
   private
+
+  def is_matching_login_store
+    individual = Individual.find(params[:id])
+    unless individual.store_id == current_store.id
+      redirect_to individuals_path
+    end
+  end
 
   def set_individual
     @individual = Individual.find(params[:id])

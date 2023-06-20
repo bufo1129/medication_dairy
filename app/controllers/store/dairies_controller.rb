@@ -1,5 +1,6 @@
 class Store::DairiesController < ApplicationController
   before_action :authenticate_store!
+  before_action :is_matching_login_store, only: [:edit, :update]
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -85,6 +86,13 @@ class Store::DairiesController < ApplicationController
   end
 
   private
+  
+  def is_matching_login_store
+    dairy = Dairy.find(params[:id])
+    unless dairy.store_id == current_store.id
+      redirect_to dairies_path
+    end
+  end
 
   def set_store
     @dairy = Dairy.find(params[:id])
