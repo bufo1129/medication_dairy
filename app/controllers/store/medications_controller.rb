@@ -1,5 +1,6 @@
 class Store::MedicationsController < ApplicationController
   before_action :authenticate_store!
+  before_action :is_matching_login_store, only: [:edit, :update]
   before_action :set_medication, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -88,6 +89,13 @@ class Store::MedicationsController < ApplicationController
   end
 
   private
+  
+  def is_matching_login_store
+    medication = Medication.find(params[:id])
+    unless medication.store_id == current_store.id
+      redirect_to medications_path
+    end
+  end
 
   def set_medication
     @medication = Medication.find(params[:id])
