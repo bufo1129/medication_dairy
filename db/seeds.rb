@@ -228,6 +228,9 @@ Weather.create!(
 @individual.image.attach(io: File.open(Rails.root.join('app/assets/images/mog.jpg')),filename: 'my_image.jpg')
 
 #日報
+
+store = Store
+
 Dairy.create!(
   [
     { title: "混雑",
@@ -236,6 +239,7 @@ Dairy.create!(
       weather_id: "1",
       high_temperature: 25,
       low_temperature: 21,
+      humidity: 50,
       body: "平日だが、来客が多かった。\r\n気温が高く屋外より屋内施設の利用者が増えたと考えられる。\r\nSCも混雑していた。",
       created_date: Date.new(2023, 5, 18)
     },
@@ -365,37 +369,52 @@ MedicineRecord.create!(
 )
 
 #コメント
+store = Store.find(1)
+
 Comment.create!(
   [
-    { store_id: 1,
+    { store_id: store.id,
       medication_id: 1,
       comment: "本日で投薬終了します。ふけもなく、毛もしっかり生えてきました。",
       created_at: Date.new(2023, 5, 23)
-    },
+    }
+  ]
+)
 
-    { store_id: 4,
-      medication_id: 1,
-      comment: "投薬終了し、様子を見てください。異常が出ましたらまたご相談ください",
-      created_at: Date.new(2023, 5, 29)
-    },
+store = Store.find(3)
+Comment.create!(
+  [
 
-    { store_id: 3,
+    { store_id: store.id,
       medication_id: 3,
       comment: "本日で投薬終了となります。赤みは少し減りましたが、残っています。食欲も徐々に回復しています。",
       created_at: Date.new(2023, 5, 26)
     },
 
-    { store_id: 4,
-      medication_id: 3,
-      comment: "赤みがあるとのことなので、追加1週間の投薬をしてください。",
-      created_at: Date.new(2023, 5, 27)
-    },
-
-    { store_id: 3,
+    { store_id: store.id,
       medication_id: 3,
       comment: "承知しました。",
       created_at: Date.new(2023, 5, 28)
     }
+
+  ]
+)
+
+store = Store.find(4)
+Comment.create!(
+  [
+
+    { store_id: store.id,
+      medication_id: 1,
+      comment: "投薬終了し、様子を見てください。異常が出ましたらまたご相談ください",
+      created_at: Date.new(2023, 5, 29)
+    },
+
+    { store_id: store.id,
+      medication_id: 3,
+      comment: "赤みがあるとのことなので、追加1週間の投薬をしてください。",
+      created_at: Date.new(2023, 5, 27)
+    },
 
   ]
 )
