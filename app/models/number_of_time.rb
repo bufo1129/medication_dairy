@@ -4,6 +4,6 @@ class NumberOfTime < ApplicationRecord
   has_many :medications, through: :medicine_record
 
   validates :name,          presence: true, uniqueness: true,  length:{maximum:30}
-  validates :dosing_times,  presence: true
+  validates :dosing_times,  presence: true, numericality: true
 
 end
