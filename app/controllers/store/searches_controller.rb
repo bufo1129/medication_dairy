@@ -5,7 +5,7 @@ class Store::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "Store"
-      @store = Store.looks(params[:search], params[:word])
+      @stores = Store.looks(params[:search], params[:word])
     else
       @individuals = Individual.looks(params[:search], params[:word])
     end

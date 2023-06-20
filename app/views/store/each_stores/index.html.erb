@@ -18,55 +18,7 @@
         <h2 class="mb-4 border-bottom border-dark"><strong>店舗一覧</strong></h2>
       </div>
 
-      <table class="table table-hover">
-        <thead class="bg-dark text-light">
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">店舗名</th>
-            <th scope="col">メールアドレス</th>
-            <th scope="col">電話番号</th>
-            <th scope="col">住所</th>
-            <th scope="col"></th>
-            <td scope="col">店舗</br>ステータス</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @stores.each do |store| %>
-          <tr>
-            <td>
-              <%= link_to each_store_path(store.id), class: "text-info" do %>
-                <i class="fas fa-store"></i>
-              <% end %>
-            </td>
-            <td>
-              <%= store.name %>
-            </td>
-            <td>
-              <%= store.email %>
-            </td>
-            <td>
-              <%= store.phone_number %>
-            </td>
-            <td>
-              〒<%= store.postal_code %>
-            </td>
-            <td>
-              <%= store.prefecture_name %>
-              <%= store.address_city %>
-              <%= store.address_street %>
-              <%= store.address_building %>
-            </td>
-            <td>
-              <% if store.is_deleted == false %>
-                <span class="font-weight-bold text-success">有効</span>
-              <% else %>
-                <span class="font-weight-bold text-danger">無効</span>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render "store/each_stores/index", stores: @stores %>
 
       <div class="pagination justify-content-center mt-3 mb-3">
         <%= paginate @stores, theme: 'twitter-bootstrap-4' %>

@@ -1,45 +1,70 @@
-<%= form_with(model: @each_store, url: each_store_path(@each_store), method: :patch, local: true, class: "edit_each_store") do |f| %>
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+
+
   <div class="row">
     <div class="col-md-6">
-
-      <div class="form-group">
-        <label for="customer_name">店舗名</label>
-        <%= f.text_field :name, class: "form-control", placeholder: "店舗名" %>
-      </div>
-      <div class="form-group">
-        <label for="customer_email">メールアドレス</label>
-        <%= f.text_field :email, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <label for="customer_post_code">郵便番号</label>
-        <%= f.text_field :postal_code, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <label for="store_prefecture_code">都道府県</label>
-        <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all,
-        :code, :name,  { prompt: '選択してください' }, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <label for="store_address_city">市町村</label>
-        <%= f.text_field :address_city, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <label for="store_address_street">番地</label>
-        <%= f.text_field :address_street, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <label for="store_address_building">建物名</label>
-        <%= f.text_field :address_building, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <label for="customer_phone_number">電話番号</label>
-        <%= f.text_field :phone_number, class: "form-control" %>
-      </div>
-      <div class="text-right">
-        <%= f.submit "更新する", class: "btn btn-info" %>
-      </div>
-
+      <%= form_with(model: @each_store, url: each_store_path(@each_store), method: :patch, local: true, class: "edit_each_store") do |f| %>
+        <div class="form-group">
+          <label for="customer_name">店舗名</label>
+          <%= f.text_field :name, class: "form-control", placeholder: "店舗名" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_email">メールアドレス</label>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_post_code">郵便番号</label>
+          <%= f.text_field :postal_code, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="store_prefecture_code">都道府県</label>
+          <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all,
+          :code, :name,  { prompt: '選択してください' }, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="store_address_city">市町村</label>
+          <%= f.text_field :address_city, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="store_address_street">番地</label>
+          <%= f.text_field :address_street, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="store_address_building">建物名</label>
+          <%= f.text_field :address_building, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="customer_phone_number">電話番号</label>
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+        <div class="text-right">
+          <%= f.submit "更新する", class: "btn btn-info" %>
+        </div>
+  
+        <div class="text-center">
+          <%= link_to "<<", each_store_path, class: "btn btn-outline-secondary rounded" %>
+        </div>
+  
+        <!--スペース用-->
+        <div class="mb-4"></div>
+      <% end %>
     </div>
   </div>
-<% end %>
 
+
+<script>
+  $(function() {
+  // $(document).on('turbolinks:load', () => {
+    $('#store_postal_code').jpostal({
+      postcode : [
+        '#store_postal_code'
+      ],
+      address: {
+        "#store_prefecture_code"        : "%3",
+        "#store_address_city"           : "%4%5",
+        "#store_address_street"         : "%6%7"
+      }
+    });
+  // });
+});
+</script>
