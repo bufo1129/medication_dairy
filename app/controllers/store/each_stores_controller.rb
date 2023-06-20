@@ -1,5 +1,6 @@
 class Store::EachStoresController < ApplicationController
   before_action :authenticate_store!
+  before_action :is_matching_login_store, only: [:edit, :update]
 
   def index
     @stores = Store.all.page(params[:page]).per(10)
@@ -29,6 +30,13 @@ class Store::EachStoresController < ApplicationController
   end
 
   private
+
+  def is_matching_login_store
+    store = Store.find(params[:id])
+    unless store.id == current_store.id
+      redirect_to each_stores_path
+    end
+  end
 
   def each_store_params
     params.require(:store).permit(
