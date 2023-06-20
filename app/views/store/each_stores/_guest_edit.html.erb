@@ -1,7 +1,7 @@
 <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
 
-  <div class="row">
-    <div class="col-md-6">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-10 col-md-6">
       <%= form_with(model: @each_store, url: each_store_path(@each_store), method: :patch, local: true, class: "edit_each_store") do |f| %>
         <div class="form-group">
           <label for="customer_name">店舗名</label>
@@ -39,6 +39,14 @@
         <div class="text-right">
           <%= f.submit "更新する", class: "btn btn-info" %>
         </div>
+
+        <div class="text-center">
+          <%= link_to "<<", each_store_path, class: "btn btn-outline-secondary rounded" %>
+        </div>
+
+        <!--スペース用-->
+        <div class="mb-4"></div>
+
       <% end %>
     </div>
   </div>
