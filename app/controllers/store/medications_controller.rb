@@ -34,9 +34,6 @@ class Store::MedicationsController < ApplicationController
          @medications = Medication.all.order(created_at: :desc).page(params[:page]).per(8)
       end
     end
-    #お気に入り一覧表示/リロードしないと表示されないため修正必要
-    # favorites = Favorite.where(store_id: current_store.id).pluck(:medication_id)
-    # @favorite_list = Medication.find(favorites)
 
   end
 
@@ -89,7 +86,7 @@ class Store::MedicationsController < ApplicationController
   end
 
   private
-  
+
   def is_matching_login_store
     medication = Medication.find(params[:id])
     unless medication.store_id == current_store.id
